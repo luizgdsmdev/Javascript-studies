@@ -2,7 +2,7 @@
 This repository is designed to keep track of my evolution in JavaScript studies, from basic to advanced, applying exercises, theory, and practical applications of the subject.
 
 ## Topics
-- [Basics](https://github.com/luizgdsmdev/Javascript-studies/tree/main/basics);
+- [Basics](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md);
 
 <!-- - [Prototype chain](https://github.com/luizgdsmdev/Javascript-studies/tree/main/prototype-chain); -->
 
