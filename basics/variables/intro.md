@@ -5,7 +5,7 @@ This section is meant to cover everything we should know about variables in Java
 - [How to use variables](#How-to-use-variables);
 
 
-#### <a name="Variables"></a> What are variables in Javascript?
+#### <a id="Variables"></a> What are variables in Javascript?
 Pretty straightforward, a variable is a space located in the memory that will keep track of a value assigned to it.
 
 But what does it mean?  
@@ -26,4 +26,4 @@ But at which drawer? I mean, how do we know that it is in the first one and not 
 ###### variables are meant to facilitate the addressing and retrieval of values, as well as process these values in different ways, by acting as a "label" for the value, which is kept in the memory.  
 
 
-#### <a name="How-to-use-variables"></a> How to use variables
+#### <a id="How-to-use-variables"></a> How to use variables
