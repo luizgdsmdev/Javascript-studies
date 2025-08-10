@@ -5,7 +5,9 @@ This section is meant to cover everything we should know about variables in Java
 - [How to declare variables](#how-declare-variables)
 - [Basic rules when declaring variables](#basic-rules-when-declaring-variables)
 - [Variables behavior (scope)](#variables-behavior-scope)
+- [Default behavior when declaring a variable](#Default-behavior-when-declaring-a-variable)
 
+After completing this section, you'll have the basics to take a step ahead to check What are [strings in javascript](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
 
 #### What are variables in Javascript?
 Pretty straightforward, a variable is an **assigned name/label to a space located in the memory** that will keep track of a value assigned to it.
@@ -146,4 +148,27 @@ console.log(x); // 1
   const x = 1;
 }
 console.log(x); // ReferenceError: x is not defined
+``` 
+
+
+
+
+#### Default behavior when declaring a variable
+When declaring a variable but not assigning any value, JavaScript will automatically assign the "undefined" value to it.
+Except for "const" which requires immediate assignment of value when being.  
+
+Examples:
+```javascript
+//receives "undefined" by default
+var firstName;
+let secondName;
+
+//As soon as declared and assigned, the variable already points to the value
+var newName = "Silva";
+let number = 10;
+const userName = "Alice";
+
+// const without assignment will cause an error:
+const nick; // Erro: Missing initializer in const declaration
+
 ``` 
