@@ -112,7 +112,7 @@ The answer to this it's the very same logical steps that brought us here. The **
 
 
 #### String characteristics length
-Strings also have a **length property**, meaning that we can access different parts of the string value, as well as check for its* "size"*.  
+Strings also have a **length property**, meaning that we can access different parts of the string value, as well as check for its *"size"*.  
 To check a string size/length, we're going to use the property ***".length"*** already built into JavaScript. Check the example below:
 
 ```javascript
@@ -135,7 +135,13 @@ console.log(myName.length) //Shows '12'
 // |1|2|3|4|5|6|7|8|9|10|11|12|
 // |L|u|i|z| |G|u|s|t|a|v|o|
 ```  
-An **important thing to be aware** of is that, as shown above, **empty spaces are also added to the total count of length**, and that's because empty spaces are still a value character in the string and therefore, represent a space in memory that will **added up to the string value** and visual representation.
+An **important thing to be aware** of is that, as shown above, **empty spaces are also added to the total count of length**, and that's because empty spaces are still a value character in the string and therefore, represent a space in memory that **will added up to the string value** and visual representation.  
+
+Note: For special characters like **emojis**, .length may count more than one per character due to the modification of UTF-16 used by JavaScript.
+```javascript
+let emoji = "😊";
+console.log(emoji.length); //Shows '2' because the emoji 😊 is encoded as a surrogate pair
+```  
 
 
 #### String characteristics index
@@ -157,12 +163,12 @@ console.log(myName[indexNum]); //Shows 'L'
 indexNum = 1;
 console.log(myName[indexNum]); //Shows 'u'
 ```  
-Note that the index points to the characters that are in the string length appointed, we **cannot use another character** as a valid index:
+Note that the index points to the characters that are in the string length appointed, we can** only use numbers** (or variables containing numbers) as valid indices for strings. Let's take a look at some **wrong** examples:
 ```javascript
 let myName = "Luiz";
 console.log(myName['u']); //Shows 'undefined'
+console.log(myName[4]); // Shows 'undefined' (index out of range)
+console.log(myName[-1]); // Shows 'undefined' (negative index)
 ```  
-
-
 
 
