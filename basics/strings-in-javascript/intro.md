@@ -8,6 +8,9 @@ This section is meant to cover everything we should know about string type varia
 - [String methods](#string-methods);
 - [String methods: .charAt(index)](#string-method-charat);
 - [String methods: .slice(start, end)](#string-method-slice);
+- [String methods: substring(start, end)](#string-method-substring);
+
+
 
 
 
@@ -395,4 +398,85 @@ console.log(stringSeq.slice(8, 4)); // Shows '' (8 > 4)
 console.log(stringSeq.slice(-6, -7)); // Shows '' (-6 + 9 = 3 > -7 + 9 = 2)
 console.log(stringSeq.slice(NaN, 3)); // Shows '123' (NaN treated as 0)
 ```
+
+
+
+
+#### String method substring()
+The ``substring()`` method works very similarly to the ``slice()`` above, so it will be easier to understand for now.  
+Their difference occurs most in the way they deal with **negative indexes**, which we'll see.  
+Check some examples:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(0, 3));//shows '123'
+console.log(stringSeq.substring(6, 9));//shows '789'
+console.log(stringSeq.substring(6, 7));//shows '7'
+```  
+If for any reason the ´´´start´´ parameter is lesser than the ``end`` parameter, the ``substring()`` method will automaticly apply the inversion of the parameter in order to create the interval sequence, respecting the ``start > end``.
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(6, 3));// Shows '456'
+// invert to 3, 6
+
+console.log(stringSeq.substring(2, 4));// Shows '34'
+// invert to 2, 4
+
+console.log(stringSeq.substring(9, 2));// Shows '3456789'
+// invert to 2, 9
+```
+##### Negative values
+Their main difference is the way ``.substring()`` deals with **negative indexes**.  
+For ``.substring()``, all negative indexes are **automatically turned into 0**, and when the logic represented by ``start > end``, ``.substring()`` will invert the indexes to create a sequence, when possible. The same occurs if we set the ``end`` parameter to a negative value.  
+Check below:  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(-1, 4));// Shows '1234'
+// -1 turned into 0
+// 0 ... 4 = 1234
+
+console.log(stringSeq.substring(3, -2));// Shows '123'
+// -2 turned into 0
+// 3 ... 0 is inverted by substring() method turning to:
+// 0 ... 3 = 123
+
+console.log(stringSeq.substring(1, -3));// Shows '1'
+// -3 turned into 0
+// 1 ... 0 is inverted by substring() method turning to:
+// 0 ... 1 = 1
+
+console.log(stringSeq.substring(-1));// Shows '123456789'
+// -1 turned into 0
+
+console.log(stringSeq.substring(-2));// Shows '123456789'
+// -2 turned into 0
+
+console.log(stringSeq.substring(-3));// Shows '123456789'
+// -3 turned into 0
+
+console.log(stringSeq.substring(-1, 3));// Shows '123'
+// -1 turned into 0
+
+console.log(stringSeq.substring(-2, 4));// Shows '1234'
+// -2 turned into 0
+
+console.log(stringSeq.substring(-3, 9));// Shows '123456789'
+// -3 turned into 0
+``` 
+
+And of course, if even with the inversion of parameter, the sequence interval doesn't hold any character, ``substring()`` will return an empty string too ``''``.  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(6, 6));// Shows ''
+console.log(stringSeq.substring(-2, 0));// Shows ''
+console.log(stringSeq.substring(0, -9));// Shows ''
+``` 
+And with invalid characters:
+```javascript
+let stringSeq = "123456789";
+console.log(stringSeq.substring(NaN, 3)); // Shows '123' (NaN turns to 0)
+``` 
 
