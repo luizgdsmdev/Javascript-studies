@@ -5,6 +5,7 @@ This section is meant to cover everything we should know about string type varia
 - [String characteristics: length](#string-characteristics-length);
 - [String characteristics: index](#string-characteristics-index);
 - [String characteristics: empty vs null vs undeined](#string-characteristics-empty-vs-null-vs-undeined);
+- [String methods](#string-methods);
 
 
 
@@ -232,4 +233,67 @@ console.log(result); // Shows 'undefined'
 console.log(typeof result); // shows 'undefined'
 ```
 So long story short, empty strings (ex: empty quotes) **ARE NOT the same** as ``null`` or ``undefined``, nor in type or behavior. And since strings can be one of the most used types in applications, it's important to know and understand some of these differences that could save you lots of time.
+
+
+
+#### String methods
+In JavaScript, strings has various built-in method ready to use, and this methods are meant to transform or manipulate its value. We're going to cover some of the most commonly used, but you can check the whole list on [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).  
+
+##### .charAt(index)
+This method **returns the character of the string** sequence at the position appointed between the brackets. Check the examples below:  
+```javascript
+let myName = "luiz";
+console.log(myName.charAt(0));//Shows 'l'
+console.log(myName.charAt(3));//Shows 'z'
+```  
+And yes, it works very similar to the use of the index structure access of "string Variable[0]".  
+```javascript
+let myName = "luiz";
+console.log(myName.charAt(0));//Shows 'l'
+console.log(myName[0]);//Shows 'l'
+
+console.log(myName.charAt(3));//Shows 'z'
+console.log(myName[3]);//Shows 'z'
+```  
+But there's a slight difference between them. While both returns the character of the string, when existing, the way they **will return a non existing** character could lead to different results.
+```javascript
+let myName = "luiz";//Goes up to 4 characters (meaning up to 3 index, starting at 0)
+console.log(myName.charAt(5));//Shows ''
+console.log(myName[5]);//Shows 'undefined'
+
+console.log(myName.charAt(-1));//Shows ''
+console.log(myName[-1]);//Shows 'undefined'
+```  
+Remember that strings are a sequence of characters? and as shown before '``undefined``' indicates that no value exists at the specified index? So yes! basically that's exactly what is happening here, but with a small difference.  
+When using the ***index approach*** we were returned with '``undefined``' because in this scenario the index of character that we tried to access doesn't exist, and therefore, doesn't have any value to it.  
+But when using ``.charAt()`` we received an empty return of ``''``, that's because they ``.charAt()` also didn't find any value in the position requested but since it's a string type method it return a string type anwers, and it's empty string value showing that there's nothing to be retured.  
+This could be very helpful in some situations when, for example, dealing with **strings validations** or manipuation where is imperative that the type should remain as string. Let's see some examples:
+```javascript
+let myName = "Luiz";//Goes only up to 3 indexes, meaning characters
+
+//Both trying to have access to a non existing index/value/character
+let charAtApproach = myName.charAt(5);
+let indexApproach = myName[5];
+
+//Concat with the return of .charAt() that doesn't exist
+console.log(myName.length); //Shows '4'
+console.log(typeof charAtApproach); //shows string
+myName += charAtApproach;
+console.log(myName); //Shows 'Luiz'
+console.log(myName.length); //Shows '4'
+
+//Concat with the return of myName[5] (index approach) that doesn't exist
+console.log(myName.length); //Shows '4'
+console.log(typeof indexApproach); //shows undefined
+myName += indexApproach;
+console.log(myName); //Shows 'Luizundefined'
+console.log(myName.length); //Shows '13'
+```  
+As you can see, when dealing with string, it's **imperative to understand** how strings and strings methods works because, in essence what happened above it's not an error, but certainly could lead to a unwanted result.  
+The same it's true when dealing with special characters/symbols.  
+```javascript
+let emoji = "😊";
+console.log(emoji.charAt(0)); // Shows part of the emoji (not the whole character)
+console.log(emoji.charAt(1)); // Show another part of the emoji
+```
 
