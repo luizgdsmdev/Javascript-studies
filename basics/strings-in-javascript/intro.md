@@ -9,11 +9,7 @@ This section is meant to cover everything we should know about string type varia
 - [String methods: .charAt(index)](#string-method-charat);
 - [String methods: .slice(start, end)](#string-method-slice);
 - [String methods: substring(start, end)](#string-method-substring);
-
-
-
-
-
+- [String methods: replace(searchValue, newValue)](#string-method-replace);
 
 
 #### What are strings
@@ -273,7 +269,7 @@ console.log(myName[-1]);//Shows 'undefined'
 ```  
 Remember that strings are a sequence of characters? and as shown before '``undefined``' indicates that no value exists at the specified index? So yes! basically that's exactly what is happening here, but with a small difference.  
 When using the ***index approach*** we were returned with '``undefined``' because in this scenario the index of character that we tried to access doesn't exist, and therefore, doesn't have any value to it.  
-But when using ``.charAt()`` we received an empty return of ``''``, that's because they ``.charAt()` also didn't find any value in the position requested but since it's a string type method it return a string type anwers, and it's empty string value showing that there's nothing to be retured.  
+But when using ``.charAt()`` we received an empty return of ``''``, that's because the ``.charAt()`` also didn't find any value in the position requested but since it's a **string type method** it return a ***string type anwers***, and it's empty string value showing that there's nothing to be retured.  
 This could be very helpful in some situations when, for example, dealing with **strings validations** or manipuation where is imperative that the type should remain as string. Let's see some examples:
 ```javascript
 let myName = "Luiz";//Goes only up to 3 indexes, meaning characters
@@ -479,5 +475,26 @@ And with invalid characters:
 let stringSeq = "123456789";
 console.log(stringSeq.substring(NaN, 3)); // Shows '123' (NaN turns to 0)
 ``` 
-#### teste
+
+#### String method replace()
+The ``replace(searchValue, newValue)`` method is used to replace the **first occurrence** of the ``searchValue`` for the ``newValue``.
+```javascript
+let myName = "luiz messias";
+
+console.log(myName.replace('messias', 'Gustavo'));//Shows 'luiz Gustavo'
+console.log(myName.replace('luiz', 3));//Shows '3 messias'
+console.log(myName.replace('luiz', undefined));//Shows  'undefined messias'
+
+let newName = "luiz luiz messias";
+console.log(newName.replace('luiz', 'Gustavo'));//Shows 'Gustavo luiz messias'
+console.log(newName.replace('luiz', ''));//Shows ' luiz messias'
+```
+If the ``searchValue`` is not in the string, it return the original string value.
+```javascript
+let myName = "luiz messias";
+
+console.log(myName.replace('Car', 'Gustavo'));//Shows 'luiz messias'
+```
+
+
 
