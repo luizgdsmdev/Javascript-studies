@@ -10,6 +10,7 @@ This section is meant to cover everything we should know about string type varia
 - [String methods: .slice(start, end)](#string-method-slice);
 - [String methods: substring(start, end)](#string-method-substring);
 - [String methods: replace(searchValue, newValue)](#string-method-replace);
+- [String methods: bonus](#string-method-bonus);
 
 
 #### What are strings
@@ -477,7 +478,7 @@ console.log(stringSeq.substring(NaN, 3)); // Shows '123' (NaN turns to 0)
 ``` 
 
 #### String method replace()
-The ``replace(searchValue, newValue)`` method is used to replace the **first occurrence** of the ``searchValue`` for the ``newValue``.
+The ``replace(searchValue, newValue)`` method is used to replace the **first occurrence** of the ``searchValue``with the ``newValue``.
 ```javascript
 let myName = "luiz messias";
 
@@ -489,7 +490,7 @@ let newName = "luiz luiz messias";
 console.log(newName.replace('luiz', 'Gustavo'));//Shows 'Gustavo luiz messias'
 console.log(newName.replace('luiz', ''));//Shows ' luiz messias'
 ```
-If the ``searchValue`` is not in the string, it return the original string value.
+If the ``searchValue`` is not in the string, it returns the original string value.
 ```javascript
 let myName = "luiz messias";
 
@@ -497,4 +498,48 @@ console.log(myName.replace('Car', 'Gustavo'));//Shows 'luiz messias'
 ```
 
 
+
+
+#### String method bonus
+###### ``toUpperCase()``
+Converts a string to uppercase letters.  
+```javascript
+let text = "Hello World";
+let upperText = text.toUpperCase(); // upperText will be "HELLO WORLD"
+```
+
+###### ``toLowerCase()``
+Converts a string to lowercase letters. 
+```javascript
+let text = "HELLO WORLD";
+let lowerText = text.toLowerCase(); // lowerText will be "hello world"
+```
+
+###### ``concat(string2, string3, ...)``
+Joins two or more strings.
+```javascript
+let text1 = "Hello";
+let text2 = "World";
+let result = text1.concat(" ", text2); // result will be "Hello World"
+```
+
+###### ``trim()``
+Removes whitespace from both ends of a string.
+```javascript
+let text = "   Hello World   ";
+let trimmedText = text.trim(); // trimmedText will be "Hello World"
+```
+
+###### ``padStart(targetLength, padString)`` and ``padEnd(targetLength, padString)``
+Pads the current string with another string until the resulting string reaches the targetLength from the start.
+```javascript
+let num = "5";
+let paddedNum = num.padStart(4, "0"); // paddedNum will be "0005"
+```  
+
+Pads the current string with another string until the resulting string reaches the targetLength from the end.  
+```javascript
+let num = "5";
+let paddedNum = num.padEnd(4, "0"); // paddedNum will be "5000"
+```
 
