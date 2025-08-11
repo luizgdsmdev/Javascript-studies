@@ -6,6 +6,10 @@ This section is meant to cover everything we should know about string type varia
 - [String characteristics: index](#string-characteristics-index);
 - [String characteristics: empty vs null vs undeined](#string-characteristics-empty-vs-null-vs-undeined);
 - [String methods](#string-methods);
+- [String methods: .charAt(index)](#string-method-charat);
+- [String methods: .slice(start, end)](#string-method-slice);
+
+
 
 
 
@@ -239,7 +243,7 @@ So long story short, empty strings (ex: empty quotes) **ARE NOT the same** as ``
 #### String methods
 In JavaScript, strings has various built-in method ready to use, and this methods are meant to transform or manipulate its value. We're going to cover some of the most commonly used, but you can check the whole list on [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).  
 
-##### .charAt(index)
+#### String method charAt()
 This method **returns the character of the string** sequence at the position appointed between the brackets. Check the examples below:  
 ```javascript
 let myName = "luiz";
@@ -295,5 +299,100 @@ The same it's true when dealing with special characters/symbols.
 let emoji = "😊";
 console.log(emoji.charAt(0)); // Shows part of the emoji (not the whole character)
 console.log(emoji.charAt(1)); // Show another part of the emoji
+console.log(emoji.charAt(-1)); // Show ''
+console.log(emoji.charAt(10)); // Show ''
+```
+
+
+#### String method slice()
+The "``slice(start, end)``" method works pretty much as taking a 'slice' of the string, meaning, it's going to retrieve a **partial or total of the information** assigned to the string in question and **return this as a brand new string**, not changing the original one, since strings are in the immutability group of JavaScript and it's original value cannot be changed.  
+To use ``.slice(start, end)`` we need to understand the parameter start and end, needed for this method:
+- ``start``: it's a **required parameter** and indicates where to **start** the 'count', per say, of the characters that wil be returned. It is **inclusive**, mening that the character that is in this index **will be counted/inserted** in the value retuned.
+- ``end``: it's a **non required** parameter that indicates **where to stop** the "count" of the character. It's ***NON inclusive*** meaning that the character apointed in this index WON'T be accounted/inserted in the value returned.  
+
+Let's check some examples:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0, 3));//shows '123'
+console.log(stringSeq.slice(6, 9));//shows '789'
+console.log(stringSeq.slice(6, 7));//shows '7'
+```
+As you saw, the first example shows '123', because it's **starting at index 0** (inclusive) with value 1, and going up to **index 2** (with value 3), because **index 3** (which holds the value of 4) it's **non inclusive** and won't be at the final result.  
+The ``end`` parameter, as said before, it's **optional**. It means that we don't need to provide where to stop but the implication of this is the the **slice method will add any character** in the sequence ultil reachs **the end of the sequence**. Check below:
+
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0));//shows '123456789'
+console.log(stringSeq.slice(6));//shows '789'
+console.log(stringSeq.slice(8));//shows '9'
+console.log(stringSeq.slice(0, 100));//shows '123456789'
+```  
+The logic behind it is:
+- if end > str.length: it will use the str.length.  
+Example: console.log(stringSeq.slice(0, 100));//shows '123456789'
+
+
+##### Negative values
+It's also **possible to work with negative** values by using the ``.slice()`` method, which was not possible before using the index approach. 
+When using it, wheter at the ``start`` or ``end`` parameter, the action taking is to count backwards. check below:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(-1));//shows '9'
+console.log(stringSeq.slice(-2));//shows '89'
+console.log(stringSeq.slice(-6));//shows '456789'
+```  
+Negative indexes are converted for the count, and then the ``slice()`` method recovers the rest of the sequence:
+- console.log(stringSeq.slice(-1))  where:  
+stringSeq has 9 characters;  
+-1 + 9 = 8  
+So the returned value will be from index 8 to the end of the sequence, in this case just '9'.  
+
+- console.log(stringSeq.slice(-2));  where:  
+stringSeq has 9 characters;  
+-2 + 9 = 7  
+So the returned value will be from index 7 to the end of the sequence, in this case just '89'.
+
+- console.log(stringSeq.slice(-6));//shows '456789'  where:  
+stringSeq has 9 characters;  
+-6 + 9 = 3  
+So the returned value will be from index 3 to the end of the sequence, in this case just '456789'.
+
+
+Remember that the ``start`` parameter is inclusive? so by just adding it alone we'll get **all the characters till the sequence**.  
+
+But what if i'd also add a negative number for the ``end`` parameter?  
+Let's see some examples
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0, -1));//shows '12345678'
+console.log(stringSeq.slice(1, -4));//shows '2345'
+```  
+The logic still the same, let's see it:
+- console.log(stringSeq.slice(0, -1));  where:  
+stringSeq has 9 characters;  
+-1 + 9 = 8  
+So the returned value will be from index 0 (``start`` parameter) to the end of the sequence appointed by the ``end`` parameter, in this case index '8'.  
+- console.log(stringSeq.slice(1, -4));  where:  
+stringSeq has 9 characters;  
+-4 + 9 = 5  
+So the returned value will be from index 1 (``start`` parameter) to the end of the sequence appointed by the ``end`` parameter, in this case index '5'.
+
+**Remember**: the ``end`` parameter is a ***non inclusive*** one, so the last character in the sequence from the ``slice()`` won't be counted in.
+
+###### Special cases for ``slice()```
+We must be aware that the ``slice()`` method runs behind a simple math logic:
+- ``start`` ***<*** ``end``: returns the **characters in the interval**, not including the ``end`` index;  
+- ``start`` ***>*** ``end``: returns simple **empty string** ``''``, because **there are no characters** to extract when the ``start`` index is greater than the ``end`` index.  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(8, -1)); // Shows '' (8 = -1 + 9, so start = end)
+console.log(stringSeq.slice(8, 4)); // Shows '' (8 > 4)
+console.log(stringSeq.slice(-6, -7)); // Shows '' (-6 + 9 = 3 > -7 + 9 = 2)
+console.log(stringSeq.slice(NaN, 3)); // Shows '123' (NaN treated as 0)
 ```
 
