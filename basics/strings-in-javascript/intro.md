@@ -4,7 +4,7 @@ This section is meant to cover everything we should know about string type varia
 - [String characteristics: immutability](#string-characteristics-immutability);
 - [String characteristics: length](#string-characteristics-length);
 - [String characteristics: index](#string-characteristics-index);
-- [String characteristics: empty vs null vs undeined](#string-characteristics-empty-vs-null-vs-undeined);
+- [String characteristics: empty vs null vs undefined](#string-characteristics-empty-vs-null-vs-undefined);
 - [String methods](#string-methods);
 - [String methods: .charAt(index)](#string-method-charat);
 - [String methods: .slice(start, end)](#string-method-slice);
@@ -479,4 +479,5 @@ And with invalid characters:
 let stringSeq = "123456789";
 console.log(stringSeq.substring(NaN, 3)); // Shows '123' (NaN turns to 0)
 ``` 
+#### teste
 
