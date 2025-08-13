@@ -7,7 +7,7 @@ This section is meant to cover everything we should know about variables in Java
 - [Variables behavior (scope)](#variables-behavior-scope)
 - [Default behavior when declaring a variable](#Default-behavior-when-declaring-a-variable)
 
-After completing this section, you'll have the basics to take a step ahead to check What are [strings in javascript](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
 
 #### What are variables in Javascript?
 Pretty straightforward, a variable is an **assigned name/label to a space located in the memory** that will keep track of a value assigned to it.
