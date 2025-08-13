@@ -1,0 +1,282 @@
+{
+  "1": [
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The Number type in JavaScript can represent both integers and floating-point numbers.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "All numbers in JavaScript are stored as 32-bit integers.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "You can use scientific notation like `1e5` to represent numbers in JavaScript.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `typeof` a number primitive in JavaScript is 'number'.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Using `new Number(42)` creates a number primitive.",
+          "answer": false
+        }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The result of `0.1 + 0.2` in JavaScript is exactly `0.3`.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`Number.isNaN('42')` returns `true`.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Numbers beyond `Number.MAX_SAFE_INTEGER` may lose precision in JavaScript.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Performing arithmetic with `undefined` results in `0`.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `.toFixed()` method returns a number, not a string.",
+          "answer": false
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log(typeof new Number(42));`?",
+          "options": {
+            "1": "'number'",
+            "2": "'object'",
+            "3": "'string'",
+            "4": "'undefined'"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log(Number.parseInt('123.45'));` return?",
+          "options": {
+            "1": "123.45",
+            "2": "123",
+            "3": "NaN",
+            "4": "124"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log((3.14159).toFixed(2));`?",
+          "options": {
+            "1": "3.14",
+            "2": "3.14159",
+            "3": "3.1",
+            "4": "3.15"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log((255).toString(16));` return?",
+          "options": {
+            "1": "'255'",
+            "2": "'ff'",
+            "3": "'11111111'",
+            "4": "'fe'"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log(Number.parseFloat('42.99abc'));`?",
+          "options": {
+            "1": "42.99",
+            "2": "42",
+            "3": "NaN",
+            "4": "43"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "`Number.isFinite(Infinity)` returns `true`.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "`Number.isInteger(42.0)` returns `true`.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log((1234.567).toPrecision(4));` return?",
+          "options": {
+            "1": "'1234.6'",
+            "2": "'1235'",
+            "3": "'1.235e+3'",
+            "4": "'1234'"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log(Number.isSafeInteger(9007199254740992));`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "NaN"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log((1234).toExponential(1));` return?",
+          "options": {
+            "1": "'1.2e+3'",
+            "2": "'1234'",
+            "3": "'1.23e+3'",
+            "4": "'12.34e+2'"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log(null + 10);`?",
+          "options": {
+            "1": "10",
+            "2": "NaN",
+            "3": "0",
+            "4": "undefined"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "The `Number` object methods like `.toFixed()` can be called on number primitives due to autoboxing.",
+          "answer": true
+        }
+      ]
+    }
+  ]
+}
