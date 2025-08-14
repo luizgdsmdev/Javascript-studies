@@ -7,3 +7,219 @@
     animation: none;
     -webkit-tap-highlight-color: transparent;
 }
+
+.main__content{
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-x: hidden;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav__top-header, .nav__top-wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgba(2, 2, 2, 0.742);
+    padding: 0.5rem;
+}
+
+.nav__hamburguer-wrapper{
+    display: none;
+    padding: 0.3rem 0.4rem 0.1rem;
+}
+
+.nav__hamburguer-wrapper.active{
+    background-color: hsl(0, 8%, 30%);
+}
+
+.nav__top-header{
+    height: 100%;
+    max-height: 5rem;
+    position: fixed;
+    z-index: 999;
+}
+
+.nav__top-wrapper{
+    max-width: 1440px;
+    background-color: transparent;
+}
+
+.nav__logo-wrapper img{
+    width: 3rem;
+}
+
+.nav__top-ul{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__top-li{
+    color: white;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.nav__top-li:hover{
+     animation: textLI 0.6s forwards;
+}
+
+.nav__top-li::after{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    border-radius: 1rem;
+    height: 100%;
+}
+
+.nav__top-li:hover::after{
+    animation: afterLI 0.6s forwards;
+    background-color: rgba(274, 223, 30, 1);
+}
+
+@keyframes afterLI {
+    0%{
+        width: 25%;
+        height: 75%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes textLI {
+    0%{
+        color: #ffffff;
+    }
+    100%{
+        color: hsl(0, 0%, 1%);
+        
+    }
+}
+
+
+.content__banner-top{
+    background-image: url("../images/javascript-bg.jpg");
+    width: 100%;
+    height: 100dvh;
+}
+
+body{
+    height: 3000px;
+}
+
+@media screen and (max-width: 1024px) {
+    .content__banner-top{
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__hamburguer-wrapper{
+        display: block;
+    }
+
+    .nav__top-wrapper{
+        z-index: 999;
+    }
+
+    .nav__list-wrapper{
+        display: none;
+    }
+
+    .nav__logo{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 1rem;
+    }
+
+    .nav__mobile-wrapper {
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding-top: 6rem;
+        width: 0%;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .nav__mobile-wrapper.hideMobile{
+        animation: hideMenuMobile 1s ease-in-out forwards;
+    }
+
+    .nav__mobile-wrapper.showMobile{
+        animation: showMenuMobile 1s ease-in-out forwards;
+        padding-right: 1rem;
+    }
+    
+    .nav__mobile-wrapper > .nav__top-ul{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-end;
+        background-color: rgba(2, 2, 2, 0.90);
+        padding-bottom: 1rem;
+    }
+
+    .nav__top-header{
+        background-color: rgba(2, 2, 2, 0.90);
+    }
+}
+
+@keyframes showMenuMobile {
+    0%{
+        width: 30%;
+    }
+    100%{
+        width: 100%;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes hideMenuMobile {
+    0%{
+        width: 100%;
+        visibility: visible;
+        opacity: 1;
+    }
+    70%{
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        width: 0%;
+        visibility: hidden;
+        opacity: 0;
+    }
+}
