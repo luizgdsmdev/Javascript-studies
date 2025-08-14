@@ -8,8 +8,10 @@ This section is meant to cover everything we should know about number type varia
 - [Number characteristics: NaN, Infinity, and -Infinity](#number-characteristics-nan-infinity)
 - [Number methods](#number-methods)
 
-Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
-Take a [practical exercise](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/exercises.md) about this content!
+
+       
+Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/blob/main/basics/intro.md).  
+- Take a [practical exercise](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/exercises.md) about this content!
 
 
 #### What are numbers
