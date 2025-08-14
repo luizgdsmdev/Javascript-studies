@@ -177,7 +177,6 @@ body{
 
     .nav__mobile-wrapper.showMobile{
         animation: showMenuMobile 1s ease-in-out forwards;
-        padding-right: 1rem;
     }
     
     .nav__mobile-wrapper > .nav__top-ul{
@@ -189,6 +188,11 @@ body{
         align-items: flex-end;
         background-color: rgba(2, 2, 2, 0.90);
         padding-bottom: 1rem;
+    }
+
+    .nav__top-li{
+        margin-right: 1rem;
+        margin-bottom: 1rem;
     }
 
     .nav__top-header{
