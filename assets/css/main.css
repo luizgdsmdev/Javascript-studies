@@ -151,6 +151,12 @@
     position: absolute;
     bottom: 6rem;
     padding: 0rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .banner__text{
@@ -176,18 +182,20 @@
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
-    position: relative;
-    z-index: 1;
     justify-self: center;
     margin-top: 2.3rem;
+    transition: 0.2s ease-in-out;
 }
 
-.banner__buttom::after{
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 0;
-    left: 0;
+.banner__buttom:hover{
+    transform: scale(1.06);
+}
+
+.content__banner-top.transition-block{
+    box-shadow: inset 0rem -55rem 48rem 1rem rgba(0,0,0,1);
+    -webkit-box-shadow: inset 0rem -55rem 48rem 1rem rgba(0,0,0,1);
+    -moz-box-shadow: inset 0rem -55rem 48rem 1rem rgba(0,0,0,1);
+    transition: box-shadow 0.9s ease-in;
 }
 
 
@@ -310,4 +318,5 @@
 
 body{
     height: 3000px;
+    overflow-y: hidden;
 }

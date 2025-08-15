@@ -15,10 +15,10 @@
 
     
 
-    <main id="main__content" class="main__content">
+    <section id="main__content" class="main__content">
         <nav id="nav__top-header" class="nav__top-header">
             <div id="nav__top-wrapper" class="nav__top-wrapper">
-                <div id="nav__logo" class="nav__logo">
+                <div id="nav__logo" class="nav__logo"> 
                     <div id="nav__logo-wrapper" class="nav__logo-wrapper">
                         <img src="./assets/images/javascript-logo-svgrepo-com.svg" alt="Javascript logo" loading="lazy" title="Learn Javascript">
                     </div>
@@ -29,34 +29,21 @@
 
                 <div id="nav__list-wrapper" class="nav__list-wrapper">
                     <ul class="nav__top-ul">
-                        <a href="#">
-                            <li class="nav__top-li">Articles</li>
-                        </a>
-                        <a href="#">
-                            <li class="nav__top-li">Practical exercise</li>
-                        </a>
-                        <a href="#">
-                            <li class="nav__top-li">Fast quiz</li>
-                        </a>
+                        <li id="Articles" class="nav__top-li">Articles</li>
+                        <li id="exercise" class="nav__top-li">Practical exercise</li>
+                        <li id="Fast-quiz" class="nav__top-li">Fast quiz</li>
                     </ul>
                 </div>
             </div>
             <div id="nav__mobile-wrapper" class="nav__mobile-wrapper hideMobile">
-                <ul class="nav__top-ul">
-                    <a href="#">
-                        <li class="nav__top-li">Articles</li>
-                    </a>
-                    <a href="#">
-                        <li class="nav__top-li">Practical exercise</li>
-                    </a>
-                    <a href="#">
-                        <li class="nav__top-li">Fast quiz</li>
-                    </a>
+                <ul class="nav__top-ul"> 
+                    <li id="ArticlesM" class="nav__top-li">Articles</li>
+                    <li id="exercise" class="nav__top-li">Practical exercise</li>
+                    <li id="Fast-quiz" class="nav__top-li">Fast quiz</li>
                 </ul>
             </div>
         </nav>
         
-
         <div id="content__banner-wrapper" class="content__banner-wrapper">
             <div id="content__banner-top" class="content__banner-top"></div>
             <div id="banner__text-wrapper" class="banner__text-wrapper">
@@ -71,7 +58,11 @@
             </div>
         </div>
 
-    </main>
+    </section>
+
+    <section id="content__articles-list" class="content__articles-list" style="width: 100%;height: 600px;">
+
+    </section>
 
 
     <script src="./assets/js/main.js"></script>
