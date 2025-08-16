@@ -7,14 +7,14 @@ This section covers everything you should know about arrays in JavaScript, inclu
 - [Arrays characteristics: mutability](#arrays-characteristics-mutability)
 - [Arrays characteristics: length](#arrays-characteristics-length)
 - [Arrays characteristics: memory storage](#arrays-characteristics-memory-storage)
-- [arrays methods](#arrays-methods)
-- [arrays methods: .push() and .pop()](#arrays-methods-push-and-pop)
-- [arrays methods: .unshift() and .shift()](#array-method-push-pop)
-- [arrays methods: .slice(start, end)](#array-method-slice)
-- [arrays methods: .splice(start, deleteCount, ...items)](#array-method-splice)
-- [arrays methods: .forEach(callback)](#array-method-map)
-- [arrays methods: .map(callback)](#array-method-map)
-- [arrays methods: bonus](#array-method-bonus)
+- [Arrays methods](#arrays-methods)
+- [Arrays methods: .push() and .pop()](#arrays-methods-push-and-pop)
+- [Arrays methods: .unshift() and .shift()](#arrays-methods-unshift-and-shift)
+- [Arrays methods: .slice(start, end)](#arrays-methods-slice)
+- [Arrays methods: .splice(start, deleteCount, ...items)](#arrays-methods-splice)
+- [Arrays methods: .forEach(callback)](#arrays-methods-map)
+- [Arrays methods: .map(callback)](#arrays-methods-map)
+- [Arrays methods: bonus](#arrays-methods-bonus)
 
 
 Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).   
@@ -244,7 +244,7 @@ Later in this section, at [arrays methods](#array-methods), we cover some other 
 
 
 
-#### arrays methods
+#### Arrays methods
 The JavaScript built-in methods for arrays can be divided into two main groups:
 - **Mutative**: alters the original structure or its values, and by consequence, any other variable using the same reference;
 - **non-mutative**: returns a new array structure with the updated sequence or altered values;   
@@ -252,9 +252,9 @@ So on one hand, the **mutative** will always be working on the **original refere
 Let's take a better look at some of them.
 
 
-#### arrays methods: .push() and .pop()
-- ``.push(...itens)``: add one or multiple itens to the end of the array, creating new indexes;
-- ``.pop()``: remove the last iten of the array sequence.
+#### Arrays methods: .push() and .pop()
+- ``.push(...itens)``: add one or multiple itens **to the end** of the array, creating new indexes;
+- ``.pop()``: remove the **last iten** of the array sequence.
 Both are a mutative type.
 ###### ``.push(...itens)``
 ````javascript
@@ -309,3 +309,141 @@ console.log(multiD);//Shows 2) [Array(2), Array(1)]
 console.log(multiD.length);//Shows 2
 ````
 
+#### Arrays methods: .unshift() and .shift()
+- ``.unshift(.itens)``: add one or multiple itens **to the begining** of the array, creating new indexes;
+- ``.shift()``: remove the **first iten** of the array sequence.
+###### ``.unshift(...itens)``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.unshift(4);//Add one element
+array.unshift(5,6,"a", {});//Add multiple elements at once
+
+console.log(array);//Shows (8) [5, 6, 'a', {…}, 4, 1, 2, 3]
+console.log(array.length);//Shows 8
+
+// ----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []]];
+
+console.log(multiD);//Shows (2) [Array(3), Array(2)]
+console.log(multiD.length);//Shows 2
+
+multiD[0].unshift(4);//Add one element
+multiD[1].unshift(5,6,"a", {});//Add multiple elements at once
+multiD.unshift(['a','b','c']);//Add multiple elements at once
+
+console.log(multiD);//Shows (3) [Array(3), Array(4), Array(6)]
+console.log(multiD.length);//Shows 3
+````
+
+###### ``.pop()``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.pop();//remove one element
+
+console.log(array);//Shows (2) [1, 2]
+console.log(array.length);//Shows 2
+
+// ----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []], {}];
+
+console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
+console.log(multiD.length);//Shows 3
+
+multiD[0].pop();//remove one element
+multiD[1].pop();
+multiD.pop();
+
+console.log(multiD);//Shows 2) [Array(2), Array(1)]
+console.log(multiD.length);//Shows 2
+````
+
+
+
+#### Arrays methods: .slice()
+The ``.slice(start, end)`` is a **non-mutative method** of JavaScript that returns a copy of the elements inside the designated sequence of the array, where:
+- ``start``: **inclusive parameter**, that indicates where the copy sequence of elements should start. The element at this index will be **included on the return**;
+- ``end``: **non-incusive parameter**, that indicates where the sequence ends. The element at this index **will not be included** on the return.   
+It **supports negative indexes**, like -1 or -12, which invert the counting from the end of the sequence towards the beginning, starting at **-1**.
+````javascript
+let array = [1,2,3,4];
+
+let arrayB = array.slice(0,3);
+console.log(arrayB);//Shows (3) [1, 2, 3]
+
+let arrayC = array.slice(1,2);
+console.log(arrayC);//Shows (1) [2]
+
+let arrayD = array.slice(0, -2);
+console.log(arrayD);//Shows (2) [1, 2]
+
+let arrayE = array.slice(-4, -1);
+console.log(arrayE);//Shows (3) [1,2,3]
+````
+
+The same for multidimensional arrays:
+````javascript
+let array = [
+    [1,2,3,4],
+    ['a', 'b', 'c', 'd']
+];
+
+let arrayB = array[0].slice(0,3);
+console.log(arrayB);//Shows (3) [1, 2, 3]
+
+let arrayC = array[1].slice(1,2);
+console.log(arrayC);//Shows (1) ['b']
+
+let arrayD = array[0].slice(0, -2);
+console.log(arrayD);//Shows (2) [1, 2]
+
+let arrayE = array[1].slice(-4, -1);
+console.log(arrayE);//Shows (3) ['a', 'b', 'c']
+````
+
+
+
+#### Arrays methods: .splice()
+The ``.splice(start, deleteCount, ...items)`` can **remove**, **replace** or **add** an item or group of items in a given interval, inside the array sequence.   
+Also used or creating a copy of the elements.   
+It's a **mutative** method that returns the result of the altered array, where:
+- ``start``: **inclusive parameter**, indicates where to start the interval/counting. The element at this index will be **included on the return or action**;
+- ``deleteCount``: indicates how many items of the interval, starting and counting at the ``start``, should be included in the action (deletion/copying);
+- ``...items``: indicates the elements that will be added in the returned array.
+````javascript
+let array = [1,2,3,4];
+
+// .splice(start, deleteCount)
+console.log(array);//Shows the original array (4) [1, 2, 3, 4]
+console.log(array.splice(0,3));//Return 3 elements, starting at index 0. Shows (3) [1, 2, 3]. Removes these elements from the original reference
+
+//At this point, the original reference was altered, leaving it with just 1 element
+console.log(array);//Shows (1) [4]
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+// .splice(start, ...items) (at the beginning)
+let arrayA = [1,2,3,4];
+let insertion = [5,6,7]
+console.log(arrayA.splice(0, 0, insertion));//Shows [], because nothing was removed from the original and added to the return
+
+//Note that the items were added to the beginning of the sequence, since the counting was set to start at index 0
+console.log(arrayA);//Shows [Array(3), 1, 2, 3, 4]
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+// .splice(start, ...items) (at the end)
+let arrayB = [1,2,3,4];
+let endArray = arrayB.length;///This way we capture the position (index + 1), making sure to add to the end of the sequence
+console.log(arrayB.splice(endArray, 0, 5,6,7));//Shows (0) [], because nothing was removed from the original and added to the return
+
+//Note that the items were added to the end of the sequence, since the counting was set to start at index -1
+console.log(arrayB);//Shows (7) [1, 2, 3, 4, 5, 6, 7]
+````
+
+####
