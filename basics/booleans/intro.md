@@ -12,7 +12,7 @@ This section covers everything you should know about Boolean type variables in J
 
 
 #### What are Booleans
-**Booleans**, in JavaScript, along with [string](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/strings-in-javascript/intro.md) and [numbers](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/intro.md) are also a **primitive type**.  
+**Booleans**, in JavaScript, along with [string](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/strings-in-javascript/intro.md) and [numbers](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/intro.md) are also a **primitive type** and **immutable**.  
 Booleans are the representation of logical values, which can only have **two possible variations**:
 - ``true``
 - ``false``
@@ -74,7 +74,7 @@ while(isNotActive){
 ```
 
 #### Boolean storage and behavior
-Booleans are also stored directly in memory, but JavaScript automatically handles this for us, saving them as a **1-bit value** in the format:   
+Booleans are also stored directly in memory, but JavaScript automatically handles this for us in the format:   
 - 0 (``false``)
 - 1 (``true``)   
 
@@ -220,15 +220,24 @@ console.log(typeof Boolean(value)); //Shows 'boolean'
 console.log(typeof !!value); //Shows 'boolean'
 ```   
 
-
-[Boolean storage and behavior](#boolean-storage-and-behavior)
-
 #### Boolean object: new Boolean()
 The ``new Boolean()`` function can also be used to create or **convert** a non-Boolean type value, but it converts to the **object type**, and not to a Boolean type.
 This approach should be **avoided**, unless special cases, because it would **lead to unexpected behavior**, since, as mentioned before at [Boolean characteristics: truthy vs falsy values](#boolean-characteristics-truthy-vs-falsy-values) section, **every object is considered truthy**.
+```javascript
+let bool = true;
+let boolObj = new Boolean(false);
+
+console.log(bool, typeof bool); //Shows 'true boolean'
+console.log(boolObj, typeof boolObj); //Shows 'Boolean (false) object
+console.log(!!boolObj); //Shows 'true' (objects are truthy)
+console.log(boolObj === false); //Shows 'false' (object vs primitive)
+console.log(boolObj.valueOf() === false); //Shows 'true' (extracts primitive value)
+```
+
 
 #### Boolean methods and usage
-Now that we know that using ``new Boolean()`` we can create an object type, we can use some of the built-in methods of objects that JavaScript offers, like ``toString()`` and ``valueOf()``.
+Now that we know that using ``new Boolean()`` we can create an object type, we can use some of the built-in methods of objects that JavaScript offers, like ``toString()`` and ``valueOf()``.   
+Booleans are temporarily wrapped as objects when methods are called (via autoboxing), which is why true.toString() works below.
 ```javascript
 let bool = true;
 let boolToString = bool.toString();
