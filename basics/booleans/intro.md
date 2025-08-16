@@ -73,7 +73,7 @@ while(isNotActive){
 ```
 
 #### Boolean storage and behavior
-Booleans are also stored directly in memory, but JavaScript automatically handles this for us, saving them as a 1-bit value in the format:   
+Booleans are also stored directly in memory, but JavaScript automatically handles this for us, saving them as a **1-bit value** in the format:   
 - 0 (``false``)
 - 1 (``true``)   
 
@@ -95,11 +95,11 @@ console.log(isActiveObj, typeof isActiveObj);//Shows 'Boolean (true) object'
 console.log(isNotActive, typeof isNotActive);//Shows 'false boolean'
 console.log(isNotActiveObj, typeof isNotActiveObj);//Shows 'Boolean (false) object'
 ```
-But the use of ``new Boolean()``is **not recommended**, unless really special cases, because as shown above, it becomes an object type and could lead to unwanted behaviors and results, as we are going to see next. 
+But the use of ``new Boolean()``is **not recommended**, unless really special cases, because as shown above, it becomes an **object type** and could lead to unwanted behaviors and results, as we are going to see next at the [Boolean conversion: Boolean() vs !!](#boolean-conversion-boolean-vs-double-negation) section.
 
 
 #### Boolean operations: logical operators
-Booleans are often related to logical operators to combine or modify conditions by comparing their values to each other.
+Booleans are often related to **logical operators** to combine or modify conditions by **comparing their values** to each other.
 ```javascript
 let a = true;
 let b = false;
@@ -133,6 +133,72 @@ while(isNotActive || isActive){
     isNotActive = false;
 }
 ``` 
+
+#### Boolean characteristics: truthy vs falsy values
+In JavaScript, other values can assume some level of equality when it comes to comparison to ``true`` or ``false``.  
+It means that the return of the comparison of ``true`` or ``false`` and or the evaluation of the element itself, will also return ``true`` or ``false``.
+The other elements that could also be considered ``true`` are called **truthy** when coerced to a Boolean:
+- Any numerical representation but ``0``: 1, -1, 0.3, -0.3;
+- Any array structure, even an empty one: [], [1,2,3], ["strings", {}, []];
+- Any object structure, even an empty one: {}, {name: "Luiz"};
+- Boolean type ``true``.  
+```javascript
+//Number type
+console.log(!!1);
+console.log(!!-1);
+console.log(!!0.1);
+
+//String type
+console.log(!!"a");
+console.log(!!"Luiz");
+console.log(!!"1");
+
+//Array type
+console.log(!![]);
+console.log(!![1,2,3]);
+console.log(!!["strings", {}, []]);
+
+//Object type
+console.log(!!{});
+console.log(!!{name: "Luiz"});
+```
+
+And the elements to be considered as **falsy** when coerced to a Boolean are:
+- The numerical representation of zero: 0, -0;
+- Any empty string declaration: "", '', ``, String('');
+- The ``undefined`` value;
+- The ``null`` value;
+- The ``NaN`` value;
+- Boolean type ``false``.   
+Note that every **falsy** element is a different representation of a lack of value.
+```javascript
+//Number type
+console.log(!!0);
+console.log(!!-0);
+console.log(!!NaN);
+
+//String type
+console.log(!!"");
+console.log(!!'');
+console.log(!!``);
+
+//Undefined type
+console.log(!!undefined);
+
+//Null
+console.log(!!null);
+``` 
+
+
+
+#### Boolean characteristics: ``null`` vs ``undefined`` vs ``false``
+To understand a little bit more about the difference between them, let's recap what exactly they represent:
+- ``undefined``: standart behavior of JavaScript for every variable **declared but not assigned** to any value. It can be used to indicate **lack of value** (emptiness) or that the variable was declared but not assigned. It has the **``undefined`` type** and it's implicit or not voluntary; 
+- ``null``: it's a explicited/voluntary action to represent a **lack of value** (emptyness) when assigned to a value. has the **``object`` type**, a historical quirk of JavaScript;
+-``false``: a Boolean value that indicates a logical **``false`` state**. It has the **``boolean`` type**, and is also explicitly/voluntarily assigned.
+
+As you saw in the previous section [Boolean characteristics: truthy vs falsy values](#boolean-characteristics-truthy-vs-falsy-values), all of them could be used to represent the **falsy** state, but they're **not** equals in type**. **value** or **essence**.   
+While programming, one really important thing is to make sure your code it's readable for other people, and using the right tools for the right situation is one of the most important ways. For example, imagine setting a variable to ``undefined`` so that you could verify it in an ``if()``statement block, or even setting all variables to ``false`` to indicate that they're empty. Even though you could understand, it's not their original purpose, and it would definitely be very confusing in the long run when new professionals jump into the project.
 
 
 
