@@ -1,14 +1,14 @@
 ### Arrays in JavaScript
 This section covers everything you should know about arrays in JavaScript, including usage, behavior, and more.
 - [What are arrays](#what-are-arrays)
-- [Arrays characteristics: type](#array-characteristics-type)
-- [Arrays characteristics: multi dimension](#array-characteristics-multi-dimension)
-- [Arrays characteristics: index and access](#array-characteristics-index)
-- [Arrays characteristics: length](#array-characteristics-length)
-- [Arrays characteristics: mutability](#array-characteristics-mutability)
-- [Arrays characteristics: memory storaged](#array-characteristics-memory)
-- [arrays methods](#array-methods)
-- [arrays methods: .push() and .pop()](#array-method-push-pop)
+- [Arrays characteristics: type](#arrays-characteristics-type)
+- [Arrays characteristics: multi dimension](#arrays-characteristics-multi-dimension)
+- [Arrays characteristics: index and access](#arrays-characteristics-index-and-access)
+- [Arrays characteristics: mutability](#arrays-characteristics-mutability)
+- [Arrays characteristics: length](#arrays-characteristics-length)
+- [Arrays characteristics: memory storage](#arrays-characteristics-memory-storage)
+- [arrays methods](#arrays-methods)
+- [arrays methods: .push() and .pop()](#arrays-methods-push-and-pop)
 - [arrays methods: .unshift() and .shift()](#array-method-push-pop)
 - [arrays methods: .slice(start, end)](#array-method-slice)
 - [arrays methods: .splice(start, deleteCount, ...items)](#array-method-splice)
@@ -54,7 +54,7 @@ console.log(typeof numeros); // 'object'
 console.log(Array.isArray(numeros)); // true
 ```
 
-#### Multi-dimension
+#### Arrays characteristics: multi dimension
 Arrays can also be multi-dimensional, meaning they can also **incorporate the matrix-like structure** of rows and columns. Imagine it like an array on top of another array, and all these arrays are listed inside an array. Dimensions here are defined by the **number of vertices implemented**, for example:
 - One dimension: there's only a row type structure, meaning there's **only the x vertex to run**.
 - Two dimensions: now there's a row and a column type (table structure), meaning there's the **x vertice** and the **y vertice to run**.
@@ -115,6 +115,45 @@ console.log(array[2]);//Shows {}
 console.log(array[3]);//Shows []
 ````
 
+#### Arrays characteristics: mutability
+Different from what we saw at the basic primitive types in JavaScript, **arrays are mutable**, meaning they can be changed due to the structure they're based on, making it possible to alter the **order or value of different indexes** without having to declare another array.   
+At the end of this section, we're going to see some built-in methods of JavaScript to help us with it, but for now, we're doing it manually.
+````javascript
+let array = [1,2];
+console.log(array[0]);//Shows 1
+console.log(array[1]);//Shows 2
+console.log(array[2]);//Shows undefined, because index 3 don't exist
+console.log(array);//Shows (2) [1, 2]
+
+array = [3,1,2];
+console.log(array[0]);//Shows 3
+console.log(array[1]);//Shows 1
+console.log(array[2]);//Shows 2
+console.log(array);//Shows (3) [3, 1, 2]
+````   
+The same occurs when dealing with multidimensional arrays.
+````javascript
+let array = [
+    [1,2,3],
+    ['a','b','c'],
+];
+console.log(array[0]);//Shows (3) [1, 2, 3]
+console.log(array[1]);//Shows (3) ['a', 'b', 'c']
+console.log(array[2]);//Shows undefined, because index 3 don't exist
+console.log(array);//Shows (2) [Array(3), Array(3)]
+
+array = [
+    ['a','b','c'],
+    {},
+    []
+];
+
+console.log(array[1]);//Shows (3) ['a', 'b', 'c']
+console.log(array[2]);//Shows {}
+console.log(array[3]);//Shows (0) []
+console.log(array);//Shows (3) [Array(3), {…}, Array(0)]
+````
+Different from strings, for example, the original values here are changed by adding or removing elements to the structure.
 
 #### Arrays characteristics: length
 Arrays also have the ``.length`` property, very useful to identify the number os elements inside. Note that the ``.length`` property returns the number of elements directly from the element, meaning that if we're dealing with multi-dimensional arrays, we can also retrieve the ``.length`` from a child element. It returns the higher index value + 1, adding up to the total elements in the array. Also, it's dynamic, so in case the array is changed by adding or removing an element, the ``.length`` property only returns the actual state of the element.
@@ -162,5 +201,57 @@ Like shown above, we can have access to the "arrayC" variable ``.length``, but a
 
 
 
+
+
+
+#### Arrays characteristics: memory storage
+As said before, arrays are **object type**, and therefore they're storaged in memory as **reference**. It means that, once you assign an array structure to a variable, this variable accesses this structure by reference.   
+It's important to know this because, different from string or number type where the value is storage directly in memory and therefore they can only be copied after assigned, arrays variables will always refer to the same section in memory, even if this array it's already assigned to another variable. And any changes applied to one will reflect on the other variables.   
+Check the example:   
+````javascript
+let arrayA = [1,2,3];
+console.log(arrayA);//Shows (3) [1, 2, 3]
+console.log(arrayA.length);//Shows 3
+
+//Changing the reference (arrayA) by the arrayB variable
+let arrayB = arrayA;
+arrayB[0] = 5;
+arrayB.pop();
+
+console.log(arrayA);//Shows (2) [5, 2]
+console.log(arrayA.length);//Shows 2
+````
+
+The same happens on multidimensional arrays:
+````javascript
+let arrayA = [
+    [1,2,3],
+    ['a','b','c'],
+];
+console.log(arrayA);//Shows (2) [Array(3), Array(3)]
+console.log(arrayA.length);//Shows 2
+
+//Changing the reference (arrayA) by the arrayB variable
+let arrayB = arrayA;
+arrayB[0] = [0];
+arrayB.pop();
+
+console.log(arrayA);//Shows (1) [Array(1)]
+console.log(arrayA.length);//Shows 1
+````   
+
+Later in this section, at [arrays methods](#array-methods), we cover some other ways of coping with this array value, and by doing so, we avoid some unwanted behavior, such as the reference, by creating a new one.
+
+
+
+#### arrays methods
+The JavaScript built-in methods for arrays can be divided into two main groups:
+- **Mutative**: alters the original structure or its values, and by consequence, any other variable using the same reference;
+- **non-mutative**: returns a new array structure with the updated sequence or altered values;   
+So on one hand, the **mutative** will always be working on the **original reference** values and changing them, while the **non-mutative** will always **return a new array structure without changing the original** reference.   
+Let's take a better look at some of them.
+
+
+#### arrays methods: .push() and .pop()
 
 
