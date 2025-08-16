@@ -253,5 +253,59 @@ Let's take a better look at some of them.
 
 
 #### arrays methods: .push() and .pop()
+- ``.push(...itens)``: add one or multiple itens to the end of the array, creating new indexes;
+- ``.pop()``: remove the last iten of the array sequence.
+Both are a mutative type.
+###### ``.push(...itens)``
+````javascript
+let array = [1,2,3];
 
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.push(4);//Add one element
+array.push(5,6,"a", {});//Add multiple elements at once
+
+console.log(array);//Shows [1, 2, 3, 4, 5, 6, 'a', {…}]
+console.log(array.length);//Shows 8
+
+// ----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []]];
+
+console.log(multiD);//Shows (2) [Array(3), Array(2)]
+console.log(multiD.length);//Shows 2
+
+multiD[0].push(4);//Add one element
+multiD[1].push(5,6,"a", {});//Add multiple elements at once
+multiD.push(['a','b','c']);//Add multiple elements at once
+
+console.log(multiD);//Shows (3) [Array(4), Array(6), Array(3)]
+console.log(multiD.length);//Shows 3
+````
+
+###### ``.pop()``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.pop();//remove one element
+
+console.log(array);//Shows (2) [1, 2]
+console.log(array.length);//Shows 2
+
+// ----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []], {}];
+
+console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
+console.log(multiD.length);//Shows 3
+
+multiD[0].pop();//remove one element
+multiD[1].pop();
+multiD.pop();
+
+console.log(multiD);//Shows 2) [Array(2), Array(1)]
+console.log(multiD.length);//Shows 2
+````
 
