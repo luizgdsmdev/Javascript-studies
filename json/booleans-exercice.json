@@ -1,0 +1,256 @@
+{
+  "1": [
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Booleans in JavaScript can only have two values: true or false.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The typeof operator returns 'boolean' for a Boolean value.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The logical NOT operator (!) inverts a Boolean value.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Booleans can be used in if statements to control program flow.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "A Boolean primitive has built-in methods like toString() without needing to be an object.",
+          "answer": true
+        }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The expression true && false evaluates to true.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "An empty string ('') is considered a truthy value.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The Boolean() function and !! operator always produce the same result when converting a value.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The value null is considered falsy in a Boolean context.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Using new Boolean(false) creates a primitive Boolean value.",
+          "answer": false
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `let bool = true; console.log(!bool);`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "null"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log(true && false || true);` return?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "null"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `console.log(!!'hello');`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "'hello'",
+            "4": "undefined"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `let obj = new Boolean(false); console.log(!!obj);` return?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "[Boolean: false]"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the result of `let bool = new Boolean(true); console.log(bool.toString());`?",
+          "options": {
+            "1": "'true'",
+            "2": "true",
+            "3": "'false'",
+            "4": "undefined"
+          },
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A new Boolean(false) object evaluates to true in a Boolean context because it is an object.",
+          "answer": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "The expression `null === false` evaluates to true.",
+          "answer": false
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `console.log(Boolean(0));` return?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "0",
+            "4": "undefined"
+          },
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the type of `null` when checked with `typeof` in JavaScript?",
+          "options": {
+            "1": "'null'",
+            "2": "'undefined'",
+            "3": "'object'",
+            "4": "'boolean'"
+          },
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What does `let bool = new Boolean(false); console.log(bool === false);` return?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "[Boolean: false]"
+          },
+          "answer": "2"
+        }
+      ]
+    }
+  ]
+}
