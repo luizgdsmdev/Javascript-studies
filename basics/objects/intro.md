@@ -1,7 +1,7 @@
 ### Objects in JavaScriptThis 
 section covers everything you need to know about objects in JavaScript, including their creation, storage, behavior, methods, and different ways to create them. 
 - [What are objects](#what-are-objects)
-- [Object creation methods](#objects-creation-methods)
+- [Object creation methods](#object-creation-methods)
 - [Objects characteristics: property/method creation & access](#objects-characteristics-propertymethod-creation-and-access)
 - [Objects creation delete](#objects-creation-delete)
 - [Objects characteristics: memory storage](#objects-characteristics-memory-storage)
@@ -338,3 +338,67 @@ console.log(luizClass.study());//Shows error TypeError: luizClass.study is not a
 **Note:** only the StudentClass inherits the PersonClass properties and methods, and not the other way around. So if any instance of PersonClass tries, for example, to have access to the "``.study()``" from the StudentClass, it will result in an error **``TypeError: luizClass.study is not a function``**, since this method doesn't exist for its scope.
 
 
+#### Objects characteristics: property/method creation and access
+In JavaScript, we have two approaches to create or access a property or method of an object:
+- dot notation ``.propertyName``: 
+  - access: used when we know the property name;
+  - creation: often used, doesn't require using string notation, because JavaScript handles the automatic conversion;
+  - return: dot notation often returns the return of the method, because its execution happens at the moment it's invoked.
+- Bracket braces ``[]``: used for dynamic property names, invalid identifiers, or properties with spaces/special characters. The property/method name must be inside string notation.
+  - return: different from above, the bracket approach returns the content/whole function, since it's not executed at the invocation.
+
+Both have the same behavior for creation or access, returning ``undefined`` for invalid or non-existing values.   
+###### Getting a property or method
+````javascript
+let object = {
+    name: 'Luiz',
+    speak(){
+        return "Hello!";
+    }
+}
+
+//Both return 'Luiz'
+console.log(object.name);
+console.log(object['name']);
+
+//While dot notation returns the value, the bracket returns the whole function 
+console.log(object.speak());//Returns 'Hello!'
+console.log(object['speak']);//Returns ƒ speak(){return "Hello!";}
+
+//Passing the function to a new variable and then executing the function
+let funct = object['speak'];
+console.log(funct());///Shows 'Hello!'
+
+//Trying to have access to a invalid property or method
+console.log(object.state);//Shows undefined
+console.log(object['speakLoud']);//Shows undefined
+````
+
+###### Setting a new property or method
+````javascript
+let object = {
+    name: 'Luiz',
+};
+
+//Equivalent on both approaches for setting a property
+object.age = 29;
+object['state'] = 'Minas Gerais - MG';
+
+//Equivalent on both approaches for setting a method
+object.speak = function speak(){
+        return "Hello!";
+    };
+object['speakLoud'] = function speak(){
+        return "HELLLOOOO!";
+    };
+
+console.log(object.speak());//Shows Hello!
+console.log(object.speakLoud());//Shows HELLLOOOO!
+
+console.log(object['speakLoud']);//As expected, returns the new method, ƒ speak(){return "HELLLOOOO!";}
+let funct = object['speakLoud'];
+console.log(funct());//Shows HELLLOOOO!
+````
+
+
+#### What are objects
