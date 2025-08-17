@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz with Instant Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #level-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #level-selector select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        #question {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .answer-option {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .answer-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .true-false-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .true-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        .false-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .true-btn:hover, .false-btn:hover {
+            opacity: 0.9;
+        }
+        .disabled-btn {
+            background-color: #ccc !important;
+            cursor: not-allowed;
+        }
+        #feedback {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .correct {
+            color: #4caf50;
+        }
+        .incorrect {
+            color: #f44336;
+        }
+        #next-btn {
+            display: none;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #next-btn:hover {
+            background-color: #0056b3;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+        }
+        #restart-btn {
+            display: none;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #restart-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Quiz with Instant Feedback</h1>
+    <div id="level-selector">
+        <label for="level">Select Difficulty Level: </label>
+        <select id="level" onchange="startQuiz()">
+            <option value="">Select a level</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+    <div id="quiz-container" style="display: none;">
+        <div id="question"></div>
+        <div id="answers"></div>
+        <div id="feedback"></div>
+        <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <div id="results" style="display: none;"></div>
+    <button id="restart-btn" style="display: none;" onclick="restartQuiz()">Restart Quiz</button>
+
+    <script>
+        // Sample JSON data (replace with your JSON file or fetch dynamically)
+        const quizData = {
+                    "1":[
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Arrays in JavaScript can store elements of different types, such as numbers, strings, and objects.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The `.length` property of an array returns the number of elements, including undefined ones in sparse arrays.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Arrays in JavaScript are immutable, meaning their elements cannot be changed directly.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"An empty array has a `.length` of 0.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The `typeof` operator returns 'array' for an array in JavaScript.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Arrays in JavaScript can be created using the `Array` constructor.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The first element of an array is accessed with index 1.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"An array declared with `const` can have its elements modified.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Accessing an array with an index that does not exist returns `undefined`.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Arrays in JavaScript are always stored as copies when assigned to a new variable.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Strings in JavaScript can be created using single quotes, double quotes, or template literals.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"An empty string has a length of 0.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"A string in JavaScript can contain numbers and special symbols like emojis.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Strings in JavaScript are mutable, meaning their original value can be changed directly.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The `.length` property of a string returns the number of characters, including spaces.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Booleans in JavaScript can only have two values: true or false.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The typeof operator returns 'boolean' for a Boolean value.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The logical NOT operator (!) inverts a Boolean value.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Booleans can be used in if statements to control program flow.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"A Boolean primitive has built-in methods like toString() without needing to be an object.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The Number type in JavaScript can represent both integers and floating-point numbers.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"All numbers in JavaScript are stored as 32-bit integers.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"You can use scientific notation like `1e5` to represent numbers in JavaScript.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"The `typeof` a number primitive in JavaScript is 'number'.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"easy",
+                          "question":[
+                              {
+                                "question":"Using `new Number(42)` creates a number primitive.",
+                                "answer":false
+                              }
+                          ]
+                        }
+                    ],
+                    "2":[
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"Assigning an array to a new variable creates a reference to the same array in memory.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.slice()` method modifies the original array.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.splice()` method can be used to add elements to an array without removing any.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.at()` method supports negative indices to access elements from the end of an array.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.forEach()` method always returns a new array with the results of the callback function.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.unshift()` method adds elements to the beginning of an array and returns the new length.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.shift()` method removes the last element of an array.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3]; console.log(arr.unshift(0));`?",
+                                "options":{
+                                    "1":"[0, 1, 2, 3]",
+                                    "2":"4",
+                                    "3":"[1, 2, 3, 0]",
+                                    "4":"0"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [1, 2, 3]; console.log(arr.shift());` return?",
+                                "options":{
+                                    "1":"1",
+                                    "2":"3",
+                                    "3":"[2, 3]",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3, 4]; console.log(arr.slice(-2));`?",
+                                "options":{
+                                    "1":"[1, 2]",
+                                    "2":"[3, 4]",
+                                    "3":"[2, 3]",
+                                    "4":"[4]"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The result of `0.1 + 0.2` in JavaScript is exactly `0.3`.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"`Number.isNaN('42')` returns `true`.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"Numbers beyond `Number.MAX_SAFE_INTEGER` may lose precision in JavaScript.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"Performing arithmetic with `undefined` results in `0`.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.toFixed()` method returns a number, not a string.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The expression true && false evaluates to true.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"An empty string ('') is considered a truthy value.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The Boolean() function and !! operator always produce the same result when converting a value.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The value null is considered falsy in a Boolean context.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"Using new Boolean(false) creates a primitive Boolean value.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"When concatenating strings, the original string is modified directly in memory.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.charAt(0)` method returns the same result as using the index `string[0]`.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"Accessing a string with a negative index using `string[-1]` returns a valid character.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.slice()` method can accept negative indices to count from the end of the string.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"medium",
+                          "question":[
+                              {
+                                "question":"The `.substring()` method treats negative indices as 0.",
+                                "answer":true
+                              }
+                          ]
+                        }
+                    ],
+                    "3":[
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3]; console.log(arr.push(4, 5));`?",
+                                "options":{
+                                    "1":"[1, 2, 3, 4, 5]",
+                                    "2":"5",
+                                    "3":"[4, 5]",
+                                    "4":"2"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [1, 2, 3, 4]; console.log(arr.pop());` return?",
+                                "options":{
+                                    "1":"1",
+                                    "2":"4",
+                                    "3":"[1, 2, 3]",
+                                    "4":"undefined"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3, 4]; console.log(arr.slice(1, 3));`?",
+                                "options":{
+                                    "1":"[1, 2]",
+                                    "2":"[2, 3]",
+                                    "3":"[2, 3, 4]",
+                                    "4":"[1, 2, 3]"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What happens when you execute `let arr = [1, 2, 3]; console.log(arr.splice(1, 1, 'a'));`?",
+                                "options":{
+                                    "1":"['a']",
+                                    "2":"[2]",
+                                    "3":"[1, 'a', 3]",
+                                    "4":"[1, 2, 3]"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [1, 2, 3]; console.log(arr.map(x => x * 2));` return?",
+                                "options":{
+                                    "1":"[2, 4, 6]",
+                                    "2":"[1, 2, 3]",
+                                    "3":"undefined",
+                                    "4":"[1, 4, 9]"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"Modifying an array declared with `const` will throw an error because the array is immutable.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"Sparse arrays in JavaScript do not allocate memory for undefined indices.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3]; console.log(arr.filter(x => x > 1));`?",
+                                "options":{
+                                    "1":"[1]",
+                                    "2":"[2, 3]",
+                                    "3":"[1, 2, 3]",
+                                    "4":"[]"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [1, 2, 3]; console.log(arr.reduce((acc, x) => acc + x, 0));` return?",
+                                "options":{
+                                    "1":"6",
+                                    "2":"1",
+                                    "3":"[1, 2, 3]",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [5, 10, 15]; console.log(arr.find(x => x > 10));`?",
+                                "options":{
+                                    "1":"5",
+                                    "2":"10",
+                                    "3":"15",
+                                    "4":"undefined"
+                                },
+                                "answer":"3"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [1, 2, 3]; console.log(arr.some(x => x > 2));` return?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"[3]",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"The `.forEach()` method can modify the original array if the callback function alters its elements.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = [1, 2, 3]; let copy = arr; copy[0] = 10; console.log(arr);`?",
+                                "options":{
+                                    "1":"[1, 2, 3]",
+                                    "2":"[10, 2, 3]",
+                                    "3":"[]",
+                                    "4":"undefined"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let arr = [[1, 2], [3, 4]]; console.log(arr[1][0]);` return?",
+                                "options":{
+                                    "1":"1",
+                                    "2":"2",
+                                    "3":"3",
+                                    "4":"4"
+                                },
+                                "answer":"3"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let arr = []; arr[5] = 'x'; console.log(arr.length);`?",
+                                "options":{
+                                    "1":"0",
+                                    "2":"1",
+                                    "3":"5",
+                                    "4":"6"
+                                },
+                                "answer":"4"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let bool = true; console.log(!bool);`?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"undefined",
+                                    "4":"null"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log(true && false || true);` return?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"undefined",
+                                    "4":"null"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log(!!'hello');`?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"'hello'",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let obj = new Boolean(false); console.log(!!obj);` return?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"undefined",
+                                    "4":"[Boolean: false]"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let bool = new Boolean(true); console.log(bool.toString());`?",
+                                "options":{
+                                    "1":"'true'",
+                                    "2":"true",
+                                    "3":"'false'",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"A new Boolean(false) object evaluates to true in a Boolean context because it is an object.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"The expression `null === false` evaluates to true.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log(Boolean(0));` return?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"0",
+                                    "4":"undefined"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the type of `null` when checked with `typeof` in JavaScript?",
+                                "options":{
+                                    "1":"'null'",
+                                    "2":"'undefined'",
+                                    "3":"'object'",
+                                    "4":"'boolean'"
+                                },
+                                "answer":"3"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let bool = new Boolean(false); console.log(bool === false);` return?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"undefined",
+                                    "4":"[Boolean: false]"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log(typeof new Number(42));`?",
+                                "options":{
+                                    "1":"'number'",
+                                    "2":"'object'",
+                                    "3":"'string'",
+                                    "4":"'undefined'"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log(Number.parseInt('123.45'));` return?",
+                                "options":{
+                                    "1":"123.45",
+                                    "2":"123",
+                                    "3":"NaN",
+                                    "4":"124"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log((3.14159).toFixed(2));`?",
+                                "options":{
+                                    "1":"3.14",
+                                    "2":"3.14159",
+                                    "3":"3.1",
+                                    "4":"3.15"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log((255).toString(16));` return?",
+                                "options":{
+                                    "1":"'255'",
+                                    "2":"'ff'",
+                                    "3":"'11111111'",
+                                    "4":"'fe'"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log(Number.parseFloat('42.99abc'));`?",
+                                "options":{
+                                    "1":"42.99",
+                                    "2":"42",
+                                    "3":"NaN",
+                                    "4":"43"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"`Number.isFinite(Infinity)` returns `true`.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"`Number.isInteger(42.0)` returns `true`.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log((1234.567).toPrecision(4));` return?",
+                                "options":{
+                                    "1":"'1234.6'",
+                                    "2":"'1235'",
+                                    "3":"'1.235e+3'",
+                                    "4":"'1234'"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log(Number.isSafeInteger(9007199254740992));`?",
+                                "options":{
+                                    "1":"true",
+                                    "2":"false",
+                                    "3":"undefined",
+                                    "4":"NaN"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `console.log((1234).toExponential(1));` return?",
+                                "options":{
+                                    "1":"'1.2e+3'",
+                                    "2":"'1234'",
+                                    "3":"'1.23e+3'",
+                                    "4":"'12.34e+2'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `console.log(null + 10);`?",
+                                "options":{
+                                    "1":"10",
+                                    "2":"NaN",
+                                    "3":"0",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"The `Number` object methods like `.toFixed()` can be called on number primitives due to autoboxing.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let str = 'hello'; console.log(str.charAt(10));`?",
+                                "options":{
+                                    "1":"'h'",
+                                    "2":"''",
+                                    "3":"undefined",
+                                    "4":"null"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let str = 'JavaScript'; console.log(str.slice(0, 4));` return?",
+                                "options":{
+                                    "1":"'Java'",
+                                    "2":"'JavaS'",
+                                    "3":"'Jav'",
+                                    "4":"'Script'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What happens when you execute `let str = 'test'; console.log(str.substring(4, 2));`?",
+                                "options":{
+                                    "1":"'te'",
+                                    "2":"'st'",
+                                    "3":"''",
+                                    "4":"'es'"
+                                },
+                                "answer":"4"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let str = 'hello world'; console.log(str.replace('world', 'there'));`?",
+                                "options":{
+                                    "1":"'hello there'",
+                                    "2":"'hello world'",
+                                    "3":"'there world'",
+                                    "4":"'hello'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let str = 'abc'; console.log(str.padStart(5, 'x'));` return?",
+                                "options":{
+                                    "1":"'xxabc'",
+                                    "2":"'abcxx'",
+                                    "3":"'xxxxx'",
+                                    "4":"'abc'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"When using `.substring()`, if the start index is greater than the end index, the indices are swapped automatically.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"The `.replace()` method replaces all occurrences of the search value in a string.",
+                                "answer":false
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let str = '12345'; console.log(str.slice(-3));`?",
+                                "options":{
+                                    "1":"'345'",
+                                    "2":"'123'",
+                                    "3":"''",
+                                    "4":"'45'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What does `let str = 'HELLO'; console.log(str.toLowerCase());` return?",
+                                "options":{
+                                    "1":"'hello'",
+                                    "2":"'HELLO'",
+                                    "3":"'Hello'",
+                                    "4":"undefined"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let str = '  test  '; console.log(str.trim().length);`?",
+                                "options":{
+                                    "1":"7",
+                                    "2":"4",
+                                    "3":"5",
+                                    "4":"2"
+                                },
+                                "answer":"2"
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the result of `let str = 'hi'; console.log(str.concat(' ', 'there'));`?",
+                                "options":{
+                                    "1":"'hi there'",
+                                    "2":"'hithere'",
+                                    "3":"'hi'",
+                                    "4":"'there hi'"
+                                },
+                                "answer":"1"
+                              }
+                          ]
+                        },
+                        {
+                          "type":1,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"An emoji in a string may have a `.length` greater than 1 due to UTF-16 encoding.",
+                                "answer":true
+                              }
+                          ]
+                        },
+                        {
+                          "type":2,
+                          "level":"hard",
+                          "question":[
+                              {
+                                "question":"What is the type of `null` when checked with `typeof` in JavaScript?",
+                                "options":{
+                                    "1":"'null'",
+                                    "2":"'undefined'",
+                                    "3":"'object'",
+                                    "4":"'string'"
+                                },
+                                "answer":"3"
+                              }
+                          ]
+                        }
+                    ]
+                  };
+
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        function startQuiz() {
+            const level = document.getElementById('level').value;
+            if (!level) return;
+
+            // Reset quiz state
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('restart-btn').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('next-btn').style.display = 'none';
+
+            // Collect and shuffle questions for selected level
+            for (let key in quizData) {
+                quizData[key].forEach(q => {
+                    if (q.level === level) {
+                        currentQuestions.push(q);
+                    }
+                });
+            }
+
+            // Shuffle questions to vary order
+            currentQuestions = shuffleArray(currentQuestions);
+
+            if (currentQuestions.length === 0) {
+                alert('No questions available for this level.');
+                document.getElementById('quiz-container').style.display = 'none';
+                return;
+            }
+
+            displayQuestion();
+        }
+
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const questionData = currentQuestions[currentQuestionIndex].question[0];
+            const questionElement = document.getElementById('question');
+            const answersElement = document.getElementById('answers');
+            const feedbackElement = document.getElementById('feedback');
+            const nextButton = document.getElementById('next-btn');
+
+            questionElement.textContent = `${currentQuestionIndex + 1}. ${questionData.question}`;
+            answersElement.innerHTML = '';
+            feedbackElement.textContent = '';
+            nextButton.style.display = 'none';
+
+            if (currentQuestions[currentQuestionIndex].type === 1) {
+                // True/False question
+                answersElement.innerHTML = `
+                    <button class="true-false-btn true-btn" onclick="selectAnswer(true)">True</button>
+                    <button class="true-false-btn false-btn" onclick="selectAnswer(false)">False</button>
+                `;
+            } else {
+                // Multiple-choice question with randomized options
+                const options = Object.entries(questionData.options);
+                const shuffledOptions = shuffleArray([...options]);
+
+                shuffledOptions.forEach(([key, value]) => {
+                    answersElement.innerHTML += `
+                        <div class="answer-option">
+                            <input type="radio" name="answer" value="${key}" id="option${key}" onchange="selectAnswer(this.value)">
+                            <label for="option${key}">${value}</label>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function selectAnswer(answer) {
+            const questionData = currentQuestions[currentQuestionIndex].question[0];
+            const feedbackElement = document.getElementById('feedback');
+            const nextButton = document.getElementById('next-btn');
+            const trueBtn = document.querySelector('.true-btn');
+            const falseBtn = document.querySelector('.false-btn');
+            const radioButtons = document.querySelectorAll('input[name="answer"]');
+
+            // Store user answer
+            userAnswers[currentQuestionIndex] = answer;
+
+            // Check if answer is correct
+            const correctAnswer = questionData.answer;
+            const isCorrect = answer == correctAnswer; // Use == to handle string vs boolean comparison
+            if (isCorrect) {
+                score++;
+                feedbackElement.textContent = 'Correct!';
+                feedbackElement.className = 'correct';
+            } else {
+                feedbackElement.textContent = `Incorrect! The correct answer is: ${
+                    currentQuestions[currentQuestionIndex].type === 1 ? correctAnswer : questionData.options[correctAnswer]
+                }`;
+                feedbackElement.className = 'incorrect';
+            }
+
+            // Disable answer options to prevent multiple submissions
+            if (trueBtn && falseBtn) {
+                trueBtn.classList.add('disabled-btn');
+                falseBtn.classList.add('disabled-btn');
+                trueBtn.disabled = true;
+                falseBtn.disabled = true;
+            }
+            radioButtons.forEach(radio => radio.disabled = true);
+
+            // Show next button
+            nextButton.style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            displayQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            const resultsElement = document.getElementById('results');
+            resultsElement.style.display = 'block';
+            document.getElementById('restart-btn').style.display = 'block';
+
+            let resultHTML = `<h2>Results: ${score}/${currentQuestions.length}</h2>`;
+            currentQuestions.forEach((q, index) => {
+                const questionData = q.question[0];
+                const userAnswer = userAnswers[index];
+                const correctAnswer = questionData.answer;
+                const isCorrect = userAnswer == correctAnswer;
+
+                resultHTML += `
+                    <p>
+                        ${index + 1}. ${questionData.question}<br>
+                        Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">
+                            ${q.type === 1 ? userAnswer : (userAnswer ? questionData.options[userAnswer] : 'No answer')}
+                        </span><br>
+                        Correct answer: <span class="correct">
+                            ${q.type === 1 ? correctAnswer : questionData.options[correctAnswer]}
+                        </span>
+                    </p>
+                `;
+            });
+
+            resultsElement.innerHTML = resultHTML;
+        }
+
+        function restartQuiz() {
+            document.getElementById('level').value = '';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('restart-btn').style.display = 'none';
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+        }
+    </script>
+</body>
+</html>
