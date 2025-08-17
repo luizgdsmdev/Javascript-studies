@@ -2,7 +2,7 @@
 This section covers everything you should know about arrays in JavaScript, including usage, behavior, and more.
 - [What are arrays](#what-are-arrays)
 - [Arrays characteristics: type](#arrays-characteristics-type)
-- [Arrays characteristics: multi dimension](#arrays-characteristics-multi-dimension)
+- [Arrays characteristics: multi-dimension](#arrays-characteristics-multi-dimension)
 - [Arrays characteristics: index and access](#arrays-characteristics-index-and-access)
 - [Arrays characteristics: mutability](#arrays-characteristics-mutability)
 - [Arrays characteristics: length](#arrays-characteristics-length)
@@ -12,7 +12,7 @@ This section covers everything you should know about arrays in JavaScript, inclu
 - [Arrays methods: .unshift() and .shift()](#arrays-methods-unshift-and-shift)
 - [Arrays methods: .slice(start, end)](#arrays-methods-slice)
 - [Arrays methods: .splice(start, deleteCount, ...items)](#arrays-methods-splice)
-- [Arrays methods: .forEach(callback)](#arrays-methods-map)
+- [Arrays methods: .forEach(callback)](#arrays-methods-foreach)
 - [Arrays methods: .map(callback)](#arrays-methods-map)
 - [Arrays methods: bonus](#arrays-methods-bonus)
 
@@ -31,9 +31,9 @@ Very similar to any other variable, arrays follow the basic structure of "``keyW
 - variableName: the variable name follows the **basic rules of naming a variable** like not using reserved words, without space between words, no special characters or numbers as the first character of the name;
 - [] (bracket): arrays are created using the brackets, which indicate that the variable being assigned to it can now receive a collection of values, as being an array.
 ###### Note:
-Just like every other ``const`` variable, their value cannot be changed over time, so once assigned to a variable, the items inside the array will remain constant and immutable. Use this approach only when you explicitly need the array to remain constant.  
+Just like every other ``const`` variable, their value cannot be changed over time, so once assigned to a variable, the items inside the array can be changed, but the reference of the variable will remain constant and immutable. Use this approach only when you explicitly need the array to remain constant.  
 
-Similar to a standard vector structure, here used conceptually to describe a more rigid structure in other languages, arrays can point to a ***'list'* of items storaged** in memory (just like any other variable), but with a main difference:
+Similar to a standard vector structure, here used conceptually to describe a more rigid structure in other languages, arrays can point to a ***'list'* of items stored** in memory (just like any other variable), but with a main difference:
 - Vector: can store a limited amount of **items of the same type**: it's a concept of a structure that defines its creation and behavior: 
 ```javascript
 let vectorNumber = [1, 2, -1, 0.5];//A list of only number type
@@ -46,15 +46,15 @@ let arrayAll = [[1, 2, 3], ['luiz', 'gustavo'], {}, arrays, () => console.log("f
 ```
 
 #### Arrays characteristics: type
-Arrays in Javascript are an object type, but even so they're have specific method e propertys  what makes them not equals to generic objects.   
-in order to make a type verification we can use the ``.isArray()`` method.
+Arrays in JavaScript are an object type, but even so, they have specific methods and properties that make them not equal to generic objects.   
+In order to make a type verification, we can use the ``.isArray()`` method.
 ```javascript
 let numeros = [1, 2, 3];
-console.log(typeof numeros); // 'object'
-console.log(Array.isArray(numeros)); // true
+console.log(typeof numeros); //'object'
+console.log(Array.isArray(numeros)); //true
 ```
 
-#### Arrays characteristics: multi dimension
+#### Arrays characteristics: multi-dimensional
 Arrays can also be multi-dimensional, meaning they can also **incorporate the matrix-like structure** of rows and columns. Imagine it like an array on top of another array, and all these arrays are listed inside an array. Dimensions here are defined by the **number of vertices implemented**, for example:
 - One dimension: there's only a row type structure, meaning there's **only the x vertex to run**.
 - Two dimensions: now there's a row and a column type (table structure), meaning there's the **x vertice** and the **y vertice to run**.
@@ -205,8 +205,8 @@ Like shown above, we can have access to the "arrayC" variable ``.length``, but a
 
 
 #### Arrays characteristics: memory storage
-As said before, arrays are **object type**, and therefore they're storaged in memory as **reference**. It means that, once you assign an array structure to a variable, this variable accesses this structure by reference.   
-It's important to know this because, different from string or number type where the value is storage directly in memory and therefore they can only be copied after assigned, arrays variables will always refer to the same section in memory, even if this array it's already assigned to another variable. And any changes applied to one will reflect on the other variables.   
+As said before, arrays are an **object type**, and therefore they're stored in memory as a **reference**. It means that, once you assign an array structure to a variable, this variable accesses this structure by reference.   
+It's important to know this because, different from string or number type where the value is stored directly in memory and therefore they can only be copied after being assigned, array variables will always refer to the same section in memory, even if this array it's already assigned to another variable. And any changes applied to one will reflect on the other variables.   
 Check the example:   
 ````javascript
 let arrayA = [1,2,3];
@@ -269,7 +269,7 @@ array.push(5,6,"a", {});//Add multiple elements at once
 console.log(array);//Shows [1, 2, 3, 4, 5, 6, 'a', {…}]
 console.log(array.length);//Shows 8
 
-// ----------------------------------------------------------
+//----------------------------------------------------------
 let multiD = [[1,2,3], [{}, []]];
 
 console.log(multiD);//Shows (2) [Array(3), Array(2)]
@@ -295,7 +295,7 @@ array.pop();//remove one element
 console.log(array);//Shows (2) [1, 2]
 console.log(array.length);//Shows 2
 
-// ----------------------------------------------------------
+//----------------------------------------------------------
 let multiD = [[1,2,3], [{}, []], {}];
 
 console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
@@ -325,7 +325,7 @@ array.unshift(5,6,"a", {});//Add multiple elements at once
 console.log(array);//Shows (8) [5, 6, 'a', {…}, 4, 1, 2, 3]
 console.log(array.length);//Shows 8
 
-// ----------------------------------------------------------
+//----------------------------------------------------------
 let multiD = [[1,2,3], [{}, []]];
 
 console.log(multiD);//Shows (2) [Array(3), Array(2)]
@@ -339,29 +339,29 @@ console.log(multiD);//Shows (3) [Array(3), Array(4), Array(6)]
 console.log(multiD.length);//Shows 3
 ````
 
-###### ``.pop()``
+###### ``.shift()``
 ````javascript
 let array = [1,2,3];
 
 console.log(array);//Shows (3) [1, 2, 3]
 console.log(array.length);//Shows 3
 
-array.pop();//remove one element
+array.shift();//remove one element
 
 console.log(array);//Shows (2) [1, 2]
 console.log(array.length);//Shows 2
 
-// ----------------------------------------------------------
+//----------------------------------------------------------
 let multiD = [[1,2,3], [{}, []], {}];
 
 console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
 console.log(multiD.length);//Shows 3
 
-multiD[0].pop();//remove one element
-multiD[1].pop();
-multiD.pop();
+multiD[0].shift();//remove one element
+multiD[1].shift();
+multiD.shift();
 
-console.log(multiD);//Shows 2) [Array(2), Array(1)]
+console.log(multiD);//Shows (2) [Array(1), {…}]
 console.log(multiD.length);//Shows 2
 ````
 
@@ -370,7 +370,7 @@ console.log(multiD.length);//Shows 2
 #### Arrays methods: .slice()
 The ``.slice(start, end)`` is a **non-mutative method** of JavaScript that returns a copy of the elements inside the designated sequence of the array, where:
 - ``start``: **inclusive parameter**, that indicates where the copy sequence of elements should start. The element at this index will be **included on the return**;
-- ``end``: **non-incusive parameter**, that indicates where the sequence ends. The element at this index **will not be included** on the return.   
+- ``end``: **non-inclusive parameter**, that indicates where the sequence ends. The element at this index **will not be included** on the return.   
 It **supports negative indexes**, like -1 or -12, which invert the counting from the end of the sequence towards the beginning, starting at **-1**.
 ````javascript
 let array = [1,2,3,4];
@@ -420,24 +420,24 @@ It's a **mutative** method that returns the result of the altered array, where:
 ````javascript
 let array = [1,2,3,4];
 
-// .splice(start, deleteCount)
+//.splice(start, deleteCount)
 console.log(array);//Shows the original array (4) [1, 2, 3, 4]
 console.log(array.splice(0,3));//Return 3 elements, starting at index 0. Shows (3) [1, 2, 3]. Removes these elements from the original reference
 
 //At this point, the original reference was altered, leaving it with just 1 element
 console.log(array);//Shows (1) [4]
-// ---------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------
 
-// .splice(start, ...items) (at the beginning)
+//.splice(start, ...items) (at the beginning)
 let arrayA = [1,2,3,4];
 let insertion = [5,6,7]
 console.log(arrayA.splice(0, 0, insertion));//Shows [], because nothing was removed from the original and added to the return
 
 //Note that the items were added to the beginning of the sequence, since the counting was set to start at index 0
 console.log(arrayA);//Shows [Array(3), 1, 2, 3, 4]
-// ---------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------
 
-// .splice(start, ...items) (at the end)
+//.splice(start, ...items) (at the end)
 let arrayB = [1,2,3,4];
 let endArray = arrayB.length;///This way we capture the position (index + 1), making sure to add to the end of the sequence
 console.log(arrayB.splice(endArray, 0, 5,6,7));//Shows (0) [], because nothing was removed from the original and added to the return
@@ -446,4 +446,154 @@ console.log(arrayB.splice(endArray, 0, 5,6,7));//Shows (0) [], because nothing w
 console.log(arrayB);//Shows (7) [1, 2, 3, 4, 5, 6, 7]
 ````
 
-####
+#### Arrays methods: .forEach()
+The ``.forEach()`` method allows you to execute a provided function (callback function ) **once for each element** of the given array. By default, it's a **non-mutative** method since it doesn't directly affect the original reference.   
+Key Characteristics:   
+- It **does not return** a value (returns only undefined);
+- It **does not modify the original array** (unless the callback explicitly modifies it);
+- It processes elements in **ascending index order** (from index 0 to the last index);
+- It’s ideal for side effects like logging, updating external variables, or DOM manipulation.
+
+The syntax for use is:
+````javascript 
+array.forEach(callback(currentValue [, index [, array]]) [, thisArg])
+````
+Let's break it down:
+- ``callback``: A function executed for each array element. It can take up to three arguments:
+    - ``currentValue`` (required): the current element being processed;
+    - ``index`` (optional): the index of the current element;
+    - ``array`` (optional): the array ``.forEach`` is called on;
+- ``thisArg`` (optional): a value to use as ``this.`` when executing the callback.
+````javascript
+let fruits = ['apple', 'banana', 'orange'];
+
+fruits.forEach(function (fruit){ console.log(fruit) });
+//Shows the following:
+//apple
+//banana
+//orange
+````   
+In the example above, we're only using the required parameters where:
+````javascript 
+//basic structure
+array.forEach(callback(currentValue))
+
+//Array = fruits
+//callback function = function (currentValue){ console.log(currentValue) });
+//Final result below:
+fruits.forEach(function (fruit){ console.log(fruit) });
+````
+What about using an optional parameter?   
+````javascript 
+let numbers = [10, 20, 30];
+
+numbers.forEach(function (num, index, arr) {
+    console.log(`Index ${index}: ${num} (from array: ${arr})`);
+});
+//Shows the following:
+//Index 0: 10 (from array: 10,20,30)
+//Index 1: 20 (from array: 10,20,30)
+//Index 2: 30 (from array: 10,20,30)
+````
+Not often used, we could also work with external information by using the ``this`` parameter.
+````javascript
+const obj = { multiplier: 2 };
+const numbers = [1, 2, 3];
+
+numbers.forEach(function (num) {
+    console.log(num * this.multiplier);
+}, obj);
+//Shows the following:
+// 2
+// 4
+// 6
+````
+
+All examples above were **non-mutative**, since they don't affect in any way the original reference. But what if we want to?   
+Let's see:
+````javascript 
+let numbers = [1, 2, 3];
+
+numbers.forEach((num, index, arr) => {
+    arr[index] = num * 2; //Modifies the original array
+});
+console.log(numbers); //Shows [2, 4, 6]
+````   
+
+
+
+
+
+
+
+
+#### Arrays methods: .map()
+Very similar ``.forEach()`` in structure and behavior, ``.map(callback)`` also iterates once at each element of the sequence from the array, with the slight difference that this method has a **valid return of a new array**, where each value it's the original element after passing through the callback function. Since it's **non-mutative**, it doesn't change the original reference.   
+Key Characteristics:
+- Returns a **new array** with the same length as the original array, where each element is the result of the callback function;
+- **Does not modify** the original array (it’s non-destructive);
+- Processes elements in **ascending index order** (from index 0 to the last index);
+- Ideal for creating a new array with transformed data, unlike .forEach, which is used for side effects and returns undefined.   
+
+The syntax for use is:
+````javascript 
+let newArray = array.map(callback(currentValue [, index [, array]]) [, thisArg])
+````
+Let's break it down:   
+- ``callback``: A function executed for each array element. It can take up to three arguments:
+    - ``currentValue`` (required): the current element being processed;
+    - ``index`` (optional): the index of the current element;
+    - ``array`` (optional): the array .map is called on.
+
+- ``thisArg`` (optional): A value to use as this when executing the callback.
+- ``Return Value``: a new array where each element is the result of the callback function applied to the corresponding element in the original array.   
+````javascript
+let numbers = [1, 2, 3, 4];
+let doubled = numbers.map(function (num){ return num * 2});
+console.log(doubled);//Shows [2, 4, 6, 8]
+console.log(numbers);//Shows [1, 2, 3, 4] (original reference still the same)
+````
+In the example above, we're only using the required parameters where:
+````javascript 
+//basic structure
+let newArray = array.map(function (currentValue){ return currentValue * 2});
+
+//newArray = doubled
+//array = numbers
+//callback function = function (num){ return num * 2});
+//Final result below:
+let doubled = numbers.map(function (num) { return num * 2 });
+````
+What about using an optional parameter?  
+````javascript 
+let fruits = ['apple', 'banana', 'orange'];
+let indexedFruits = fruits.map(function (fruit, index) {return `${index + 1}. ${fruit}`});
+console.log(indexedFruits);//Shows ['1. apple', '2. banana', '3. orange']
+````
+
+
+
+#### Arrays methods: bonus
+###### ``.filter(callback)``
+This method returns a new array after the original elements go through a test/filter callback. It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3, 4];
+let even = num.filter(num => num % 2 === 0);
+console.log(even);//Shows [2, 4]
+````   
+
+###### ``.reduce(callback, initialValue)``
+This method returns a new (single value) that is the result of the accumulator function (callback function). It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3];
+let sum = num.reduce((acc, num) => acc + num, 0);
+console.log(sum);//Shows 6
+````   
+
+###### ``.find(callback)``
+This method returns the first element that is a positive (true) result of the condition (callback function). It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3, 4];
+let higherThanTwo = num.find(num => num > 2);
+console.log(higherThanTwo); // 3
+````  
