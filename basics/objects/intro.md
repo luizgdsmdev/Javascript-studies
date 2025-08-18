@@ -2,18 +2,15 @@
 section covers everything you need to know about objects in JavaScript, including their creation, storage, behavior, methods, and different ways to create them. 
 - [What are objects](#what-are-objects)
 - [Object creation methods](#object-creation-methods)
-- [Objects characteristics: property/method creation & access](#objects-characteristics-propertymethod-creation-and-access)
-- [Objects delete](#objects-delete)
-- [Objects characteristics: memory storage](#objects-characteristics-memory-storage)
+- [Objects characteristics: property/method creation & access](#object-characteristics-propertymethod-creation-and-access)
+- [Objects delete](#object-delete)
+- [Objects characteristics: memory storage](#object-characteristics-memory-storage)
 - [Objects characteristics: type](#object-characteristics-type)
-- [Objects characteristics: mutability](#objects-characteristics-mutability)
-- [Objects creation impact](#objects-creation-impact)
-- [Objects methods](#objects-methods)
-- [Objects methods: Object.keys() and Object.values()](#objects-methods-keys-and-values)
-- [Objects methods: Object.assign()](#objects-methods-assign)
-- [Objects methods: Object.freeze() and Object.seal()](#objects-methods-freeze-and-seal)
-- [Objects methods: hasOwnProperty()](#objects-methods-hasownproperty)
-- [Objects methods: bonus](#objects-methods-bonus)
+- [Objects characteristics: mutability](#object-characteristics-mutability)
+- [Objects methods: Object.keys() and Object.values()](#object-methods-object-keys-and-object-values)
+- [Objects methods: Object.freeze() and Object.seal()](#object-methods-object-freeze-and-object-seal)
+- [Objects methods: hasOwnProperty()](#object-methods-hasownproperty)
+- [Objects methods: bonus](#object-methods-bonus)
 
 
 #### What are objects
@@ -196,14 +193,14 @@ console.log(luizClass.speak());//Shows Hello!
 //Returns an object created through the class StudentClass and assigned to 'student' variable
 let student = new StudentClass("Marta", 21, [1, 2, 3, 4, 5, 6, 7]);
 //Shows original values of StudentClass {name: 'Marta', age: 21, studyDays: Array(7)}
-console.log(studant);
+console.log(student);
 
 //Inherent from the class PersonClass, the StudentClass can already use properties like name
 //and the '.speak()' method, even if it was not explicitly declared inside the class.
-studant.name = 'Luiz';
-studant.age = 29;
-console.log(studant.speak());//Shows Hello!
-console.log(studant.study());//Shows I'm reading book!
+student.name = 'Luiz';
+student.age = 29;
+console.log(student.speak());//Shows Hello!
+console.log(student.study());//Shows I'm reading a book!
 console.log(student);//Shows StudentClass {name: 'Luiz', age: 29, studyDays: Array(7)}
 ````
 
@@ -322,14 +319,14 @@ console.log(luizClass.speak());//Shows Hello!
 //Returns an object created through the class StudentClass and assigned to 'student' variable
 let student = new StudentClass("Marta", 21, [1, 2, 3, 4, 5, 6, 7]);
 //Shows original values of StudentClass {name: 'Marta', age: 21, studyDays: Array(7)}
-console.log(studant);
+console.log(student);
 
 //Inherent from the class PersonClass, the StudentClass can already use properties like name
 //and the '.speak()' method, even if it was not explicitly declared inside the class.
-studant.name = 'Luiz';
-studant.age = 29;
-console.log(studant.speak());//Shows Hello!
-console.log(studant.study());//Shows I'm reading book!
+student.name = 'Luiz';
+student.age = 29;
+console.log(student.speak());//Shows Hello!
+console.log(student.study());//Shows I'm reading book!
 console.log(student);//Shows StudentClass {name: 'Luiz', age: 29, studyDays: Array(7)}
 
 console.log(luizClass.study());//Shows error TypeError: luizClass.study is not a function
@@ -338,7 +335,7 @@ console.log(luizClass.study());//Shows error TypeError: luizClass.study is not a
 
 
 
-#### Objects characteristics: property/method creation and access
+#### Object characteristics: property/method creation and access
 In JavaScript, we have two approaches to create or access a property or method of an object:
 - dot notation ``.propertyName``: 
   - access: used when we know the property name;
@@ -400,7 +397,7 @@ let funct = object['speakLoud'];
 console.log(funct());//Shows HELLLOOOO!
 ````
 
-#### Objects delete
+#### Object delete
 After knowing how to create, we also must know how to delete a property from an object. Notice that this is **not often used** because it could lead to unexpected errors, so use the ``delete`` only when you are sure of it. Such occasions could be the **cleaning of an object** to reduce memory or data use/exposure, or **dynamic configurations**.   
 Notice also that the ``delete`` **only** works on the object properties that are **not private property** (declared as ``#``) or private methods, they won't be affected by it. Also, does't work for inherited properties through prototype or extends, only in the objects' direct properties.
 Also, the ``delete`` has an automatic return every time it's called.
@@ -416,9 +413,9 @@ Also, the ``delete`` has an automatic return every time it's called.
 
 console.log(myObj);//Shows {name: 'Luiz', age: 29, speak: ƒ}
 
-delete myObj.name;//Virtually returns true
-delete myObj['age'];//Virtually returns true
-delete myObj['state'];//Virtually returns true, even if the property doesn't exist
+delete myObj.name;//Returns true
+delete myObj['age'];//Returns true
+delete myObj['state'];//Returns true, even if the property doesn't exist
 console.log(myObj);//Shows {speak: ƒ}
 
 delete myObj.speak//Delets method
@@ -581,9 +578,9 @@ let objLiteral = {
     speak(){return "Hello!";}
 }
 
-//Copy include the method speak()
+//speak() not included
 let copy = JSON.parse(JSON.stringify(objLiteral));
-console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+console.log(copy);//Shows {name: 'object literal'}
 
 //-----------------------------------------------------------------------------------
 //Using Object Constructor
@@ -591,9 +588,9 @@ let objConstructor = new Object();
 objConstructor.name = 'Object Constructor';
 objConstructor.speak = function speak(){return "Hello!";};
 
-//Copy1 include the method speak()
+//speak() not included
 let copy1 = JSON.parse(JSON.stringify(objConstructor));
-console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+console.log(copy1);//Shows {name: 'Object Constructor'}
 
 //-----------------------------------------------------------------------------------
 //Using Object.create(proto)
@@ -603,7 +600,7 @@ let proto = {
     speak(){return "Hello!";}
 }
 
-//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+//speak() not included
 let objProto = Object.create(proto);
 let copy2 = JSON.parse(JSON.stringify(objProto));
 console.log(copy2);//Shows {}
@@ -617,10 +614,10 @@ function FactoryFunc(){
     }
 }
 
-//Copy3 include the method speak()
+//speak() not included
 let objFactFunc = FactoryFunc();
 let copy3 = JSON.parse(JSON.stringify(objFactFunc));
-console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+console.log(copy3);//Shows {name: 'Factory Function'}
 
 //-----------------------------------------------------------------------------------
 //Using Class Syntax
@@ -631,10 +628,10 @@ class ClassSyntax{
     speak(){return "Hello!";}
 }
 
-//Copy4 DON'T include any of the methods or private properties
+//speak() not included
 let objClassSyntax = new ClassSyntax();
 let copy4 = JSON.parse(JSON.stringify(objClassSyntax));
-console.log(copy4);//Shows name: 'luiz'}
+console.log(copy4);//Shows {name: 'luiz'}
 ````
 
 #### Object characteristics: type
@@ -645,7 +642,7 @@ console.log(typeof myObj);//Shows object
 console.log(myObj instanceof Object);//Shows true
 ````
 
-#### Objects characteristics: mutability
+#### Object characteristics: mutability
 Objects are mutable by default, meaning their properties can be added, modified, or deleted after creation, unless explicitly restricted.
 ````javascript
 let myObj = { name: 'Luiz' };
@@ -657,8 +654,137 @@ console.log(myObj);//Shows {name: '', age: 29}
 
 
 
-####
+#### Object methods: Object keys() and Object values()
+Both methods are **non-mutative**, meaning they don't alter the original object, but return a **new array** instead.   
+Let's take a better look at each one:
+- ``Object.keys()``: return an array of the object property names (keys).
+````javascript
+let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.keys(obj));//Shows (3) ['a', 'b', 'c']
+````
+- ``Object.values()``: return an array of the object property values.
+````javascript
+let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.values(obj));//Shows (3) [1, 2, 3]
+````
+
+###### Object.getOwnPropertyNames()
+Different from the ``Object.keys()``, the method ``Object.getOwnPropertyNames()`` also returns the non-enumerable keys.
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Non-enumerable property
+Object.defineProperty(obj, 'location', {
+  state: 'Minas Gerais - MG',
+  enumerable: false
+});
+
+console.log(Object.keys(obj));//Shows only (1) ['name']
+console.log(Object.getOwnPropertyNames(obj));//Shows (2) ['name', 'location']
+````
 
 
 
-####
+
+#### Object methods: Object freeze() and Object seal()
+Both methods are **mutative** and both acts prevent the object from being altered, but in different levels. Don't throw any error, just ignore the action.
+- ``Object.freeze()``: stop any alteration on the object, blocking insertions, deletions, or alterations of the existing properties;
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Basic insertion
+obj.age = 29;
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+
+Object.freeze(obj);//Stoping any possible changing
+obj.state = 'Minas Gerais - MG';
+obj.age = 0;
+delete obj.name;
+
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+````
+
+- ``Object.seal()``: stop any alteration on the object, blocking insertions, deletions, but allows existing properties to be altered.
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Basic insertion
+obj.age = 29;
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+
+Object.seal(obj);//Stoping any possible changing
+obj.state = 'Minas Gerais - MG';
+obj.age = 0;
+delete obj.name;
+
+console.log(obj);//Shows name: 'Luiz', age: 0}
+````
+
+
+
+
+
+#### Object methods: hasOwnProperty()
+The ``hasOwnProperty()`` checks if the object **has a specific property** as its own, meaning it makes part of its direct structure and **not inherited**, returning ``true`` or ``false``.
+````javascript
+let objSpeak = {
+  speak(){
+    return "Hello!";
+  }
+};
+
+let newObj = Object.create(objSpeak);//speak() was inherited
+
+console.log(objSpeak.hasOwnProperty('speak'));//Shows true, because belogns to the object directly
+console.log(newObj.hasOwnProperty('speak'));//Shows false, because it was inherited from objSpeak
+````
+
+
+#### Object methods: bonus
+###### ``Object.entries(obj)``
+Returns an array of ``[key, value]`` pairs for enumerable properties.
+````javascript
+let obj = { a: 1, b: 2 };
+console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]
+````
+
+###### ``Object.fromEntries(entries)``
+Creates an object from an array of ``[key, value]`` pairs.
+````javascript
+let entries = [['x', 10], ['y', 20]];
+console.log(Object.fromEntries(entries)); // { x: 10, y: 20 }
+````
+
+###### ``Object.defineProperty(obj, prop, descriptor)``
+Defines or modifies a property with specific attributes (e.g., writable, enumerable).
+````javascript
+let obj = {};
+Object.defineProperty(obj, 'prop', {
+  value: 42,
+  writable: false
+});
+obj.prop = 100; // Ignored
+console.log(obj.prop); // 42
+````
+
+###### ``Object.is(obj1, obj2)``
+Compares two values for strict equality, handling edge cases like ``NaN`` and ``-0``.
+````javascript
+console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is(0, -0)); // false
+````
+
+###### ``Object.getOwnPropertyNames(obj)``
+Returns an array of all own property names, including non-enumerable ones.
+````javascript
+let obj = { a: 1 };
+Object.defineProperty(obj, 'b', { value: 2, enumerable: false });
+console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']
+````
+
