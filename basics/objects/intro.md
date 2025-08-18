@@ -5,8 +5,7 @@ section covers everything you need to know about objects in JavaScript, includin
 - [Objects characteristics: property/method creation & access](#objects-characteristics-propertymethod-creation-and-access)
 - [Objects delete](#objects-delete)
 - [Objects characteristics: memory storage](#objects-characteristics-memory-storage)
-- [Objects characteristics: type](#objects-characteristics-type)
-- [Objects characteristics: nested objects](#objects-characteristics-nested-objects)
+- [Objects characteristics: type](#object-characteristics-type)
 - [Objects characteristics: mutability](#objects-characteristics-mutability)
 - [Objects creation impact](#objects-creation-impact)
 - [Objects methods](#objects-methods)
@@ -426,6 +425,7 @@ delete myObj.speak//Delets method
 
 console.log(myObj);//Shows {}
 ````
+
 #### Object characteristics: memory storage
 When created, **objects are stored as a reference** in memory. This means that, different from numbers or strings, when an object is assigned to a variable, its reference is sent, and **not a copy** of it.   
 So every time an object is passed to another variable or structure, the original value is being **accessed thoutght the reference** to the section in memory that store the value, and as expected, **every changed made affect the original value directly**, and therefore, changes are reflected throutght the entire code where that same reference is being used.   
@@ -443,7 +443,7 @@ console.log(obj);//Shows {name: 'Marta', age: 29}
 ````
 As shown above, changing the 'objCopy' variable directly impacts direclty in the original variable 'obj' because what was passed was a reference to the original value, and not a copy of it.   
 But what if we need to create a copy in order to preserve the original value? For this situation, we have mainly 3 options:
-- Spreed operator (``...``): it's a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties fromthe  prototype, for example.
+- Spreed operator (``...``): it's a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties from the prototype, for example.
 - ``.assign()`` method: it's also a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties from the prototype, for example.
 - ``JSON.parse(JSON.stringify())``: it's also a **deep copy**, copies all properties including nested objects and arrays, creating an object completely independent of the original.
 
@@ -631,9 +631,34 @@ class ClassSyntax{
     speak(){return "Hello!";}
 }
 
-//Copy4 DON'T include any of the methods or private propeertys
+//Copy4 DON'T include any of the methods or private properties
 let objClassSyntax = new ClassSyntax();
 let copy4 = JSON.parse(JSON.stringify(objClassSyntax));
 console.log(copy4);//Shows name: 'luiz'}
 ````
 
+#### Object characteristics: type
+Objects have their own type (``object``), and naturally inherit properties and methods from the ``Object.prototype`` like ``.toString()`` or ``.hasOwnProperty()``.
+````javascript
+let myObj = { name: 'Luiz' };
+console.log(typeof myObj);//Shows object
+console.log(myObj instanceof Object);//Shows true
+````
+
+#### Objects characteristics: mutability
+Objects are mutable by default, meaning their properties can be added, modified, or deleted after creation, unless explicitly restricted.
+````javascript
+let myObj = { name: 'Luiz' };
+myObj.age = 29;
+myObj.name = "";
+
+console.log(myObj);//Shows {name: '', age: 29}
+````
+
+
+
+####
+
+
+
+####
