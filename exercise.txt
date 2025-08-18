@@ -1,0 +1,2668 @@
+## Variables in Javascript
+
+This section is meant to cover everything we should know about variables in Javascript.
+- [What are variables in Javascript](#what-are-variables-in-javascript)
+- [How to declare variables](#how-declare-variables)
+- [Basic rules when declaring variables](#basic-rules-when-declaring-variables)
+- [Variables behavior (scope)](#variables-behavior-scope)
+- [Default behavior when declaring a variable](#Default-behavior-when-declaring-a-variable)
+
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
+
+#### What are variables in Javascript?
+Pretty straightforward, a variable is an **assigned name/label to a space located in the memory** that will keep track of a value assigned to it.
+
+But what does it mean?  
+Well, let's address the memory as a big cabinet that can hold a limited amount of things in it. But just as a cabinet that you could throw things inside, it would get very messy to keep track of things if we deal with it just like a big black hole that eats things.  
+Example: Last week, you kept your nice new shoes for your friend's wedding and since then, you added lots of things like other clothes, shoes, your cat, the meatloaf your mom brought, I mean, LOTS of things.  
+So now the wedding is in a few hours, and you have no idea of where the shoes are. Are they behind the cat? inside the meatloaf? Do they still exist?  
+
+##### Solution
+Now, just like the 16th century, we face the need for a better way to keep things inside other things and guess what, drawers!!!  
+Now that we have drawers, we can use them for different things, like one for shoes, another one for the cat, and so on.
+
+###### So variables are just... drawers?
+Well, in a sort of sense, they are. Variables are meant to **keep track of different values in memory**, just like the drawers in your cabinet keep different things inside. So now, when you want to retrieve a value, you no longer need to search the entire cabinet because you know that the shoes are in one of the drawers, so you just go for it.  
+
+**But at which drawer?** I mean, how do we know that it is in the first one and not at the second?  
+That's where the variables step in; **they work as a label** for that drawer (space in memory) that holds the shoes (value). Pretty much like a "Shoe for weddings" label in the drawer for this example.
+ 
+
+###### variables are meant to facilitate the addressing and retrieval of values, as well as process these values in different ways, by acting as a "label" for the value, which is kept in the memory.  
+
+
+#### How declare variables
+In order to understand the thing, let's first create the thing.  
+We do this by ***declaring a variable*** (keep this expression in mind). and for this, we use three sacred words:
+```javascript
+let, var, const
+```  
+These are what we call ***"reserved words"*** or ***"reserved keywords"***, and they are used to define the **behavior** (or scope) of the variable we are declaring. We're gonna see more about scope in another section. For now, worry about declaring a variable.  
+Keep in mind that by ***"reserved"*** they literally mean it, you **CAN NOT** use reserved words outside the context for which they are meant. We're gonna see more about it ahead.
+
+The **basic structure** for declaring a variable is:  
+- [1° - keyWord] [2° - nameOfTheVariable]  
+
+Now that we know some of the key words, we can build some examples like:
+```javascript
+let userFirstName;
+var userSecondName;
+
+// const requires an initial value, we'll see about it later
+// But notice that the basic structure is still there in 'const userNickName'
+const userNickName = 'bird';
+```
+
+#### Basic rules when declaring variables
+As you saw, declaring a variable it's really simple, but we need to pay attention for some of the Javascript rules.
+
+##### Structure
+The structure for declaring a variable will always follow:  
+- [1° - keyWord] [2° - nameOfTheVariable]
+```javascript
+let userFirstName;
+```  
+
+###### **WRONG ways would include:**
+```javascript
+//- order inversion
+userFirstName let;
+
+//- just the keyWord
+let;
+
+//- just the variable name
+userFirstName;
+
+//- wrong spelling of the keyWord
+"Let" or "lEt" or "leT"  //Any capital letter
+```
+
+##### Variables name
+variable names **cannot** start with a number, they need to **begin with a letter**, an **underscore**, or a **dollar sign**. Is possible use numbers in the middle or at the end of the variable name, but **NEVER** at the begin.
+###### **WRONG ways would include:**
+```javascript
+//- Using number at the begin
+let 1name;
+let 2name;
+
+//- Using blank space between words
+let first name;
+let second name;
+
+//- Using any JavaScript reserved keyword
+let var;
+let const;
+```
+
+
+#### Variables behavior (scope)
+In this section, we're covering just the variable behavior in different scopes themselves. Bear in mind that scopes are a whole different topic, but a resume of scopes would be:
+
+*"- Global scope: The default scope for all code running in script mode.*
+- *Module scope: The scope for code running in module mode.*
+- *Function scope: The scope created with a function.*
+
+*In addition, identifiers declared with certain syntaxes, including let, const, class, or (in strict mode) function, can belong to an additional scope:*
+
+- *Block scope: The scope created with a pair of curly braces (a block)."*  
+
+As seen at [https://developer.mozilla.org/en-US/docs/Glossary/Scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope).
+
+```javascript
+function exampleFunction() {
+  const x = "declared inside function"; // x can only be used in exampleFunction
+  console.log("Inside function");
+  console.log(x);
+}
+
+console.log(x); // Causes error
+``` 
+
+However, the following code is valid due to the variable being declared outside the function, making it global:  
+```javascript
+const x = "declared outside function";
+
+exampleFunction();
+
+function exampleFunction() {
+  console.log("Inside function");
+  console.log(x);
+}
+
+console.log("Outside function");
+console.log(x);
+```  
+
+Blocks only scope ```let```  and ```const``` declarations, but not ```var``` declarations.
+
+```javascript
+{
+  var x = 1;
+}
+console.log(x); // 1
+``` 
+
+```javascript
+{
+  const x = 1;
+}
+console.log(x); // ReferenceError: x is not defined
+``` 
+
+
+
+
+#### Default behavior when declaring a variable
+When declaring a variable but not assigning any value, JavaScript will automatically assign the "undefined" value to it.
+Except for "const" which requires immediate assignment of value when being.  
+
+Examples:
+```javascript
+//receives "undefined" by default
+var firstName;
+let secondName;
+
+//As soon as declared and assigned, the variable already points to the value
+var newName = "Silva";
+let number = 10;
+const userName = "Alice";
+
+// const without assignment will cause an error:
+const nick; // Erro: Missing initializer in const declaration
+
+``` 
+
+
+
+### Strings in JavaScript
+This section is meant to cover everything we should know about string type variables in JavaScript.  
+- [What are strings](#what-are-strings);
+- [String characteristics: immutability](#string-characteristics-immutability);
+- [String characteristics: length](#string-characteristics-length);
+- [String characteristics: index](#string-characteristics-index);
+- [String characteristics: empty vs null vs undefined](#string-characteristics-empty-vs-null-vs-undefined);
+- [String methods](#string-methods);
+- [String methods: .charAt(index)](#string-method-charat);
+- [String methods: .slice(start, end)](#string-method-slice);
+- [String methods: substring(start, end)](#string-method-substring);
+- [String methods: replace(searchValue, newValue)](#string-method-replace);
+- [String methods: bonus](#string-method-bonus);
+
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
+#### What are strings
+Strings are a **fundamental type**, also called ***"primitive type"***, a structure by a sequence of characters used to represent a text. It can contain **zero or more** character represented by the **alphabet** (*a, b, ...Z*), but **also numbers** (*1, -1, 0*) or special **symbols** (*@, #, _*) thanks to UTF-16.  
+In other words, think of strings as a single (when not empty) letter (character), that when in a **sequence** of more letters would form a text (word), that in another sequence would form a phrase, and so on.  
+Strings can be assigned to any type of variable of the list we saw earlier at the [variables section](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/variables/intro.md), which includes ```let```, ```var```, and ```const```.
+
+To assign a value of the string type to a variable, you can use:  
+- Single quotes - '':
+```javascript
+let singleChar = 'a';
+let doubleChar = 'ab';
+var singleWord = 'phone';
+const multiWord = 'call me when you arrive';
+let specialSym = '😊 世界!';
+```  
+- Double quotes - "":
+```javascript
+let singleChar = "a";
+let doubleChar = "ab";
+var singleWord = "phone";
+const multiWord = "call me when you arrive";
+let specialSym = "😊 世界!";
+``` 
+- Template literals (backticks) - ``:
+```javascript
+let singleChar = `a`;
+let doubleChar = `ab`;
+var singleWord = `phone`;
+const multiWord = `call me when you arrive`;
+let specialSym = `😊 世界!`;
+```  
+
+Backticks are also very common and used for allowing for embedded expressions and multiline strings by the use of ```${}```:
+```javascript
+let firstName = `Luiz`;
+let secondName = `Gustavo`;
+
+//embedded expressions
+let fullName = `${firstName} ${secondName}` //fullName value: 'Luiz Gustavo'
+let sum = `${5 + 5}` //sum value: '10'
+
+//multiline strings
+let multiline = ` 
+    First line
+    Second line
+    ${firstName} ${secondName}
+`
+//multiline value: '\n    First line\n    Second line\n    Luiz Gustavo\n'
+```  
+
+
+
+
+
+#### String characteristics immutability
+Once assigned, the value of the strings has something called ***"immutability"***, which means that the **original value cannot be changed**.  
+But well, it sounds kind of weird because I remember changing the value in various shapes and forms, so how can it be? Let's take a better look:
+
+````javascript
+//Assigning a value
+let myName = "Luiz";
+console.log(myName) //shows 'Luiz'
+
+//Concat with a new value
+myName += " Gustavo";
+console.log(myName) //shows 'Luiz Gustavo'
+
+//Reassigning  with a different value
+myName = "Gustavo";
+console.log(myName) //shows 'Gustavo'
+````  
+What is really happening here is that every time you try to change the value of the string, in reality, you are **creating** a new one in memory. These new strings receive the value of the original one on which they were based.  
+In this case, ```myName``` was the first one that held the value of *"Luiz"*.
+````javascript
+//Assigning a value
+let myName = "Luiz";
+console.log(myName) //shows 'Luiz'
+````  
+Once the concatenation was done, what happened is that a ***new string was created*** receiving the original value (from ```myName```), and adding the extra information *" Gustavo"*. From that, the variable ```myName``` is now pointing to this new string value, ignoring the original one that still exists in its original space in memory.  
+Below we can see, by the use of ```newName```, exactly what would happen by declaring manually a new variable to have the same result.
+````javascript
+//Concat with a new value
+let myName = "Luiz";
+myName += " Gustavo";
+console.log(myName) //shows 'Luiz Gustavo'
+
+//equivalent by using a new variable
+let myName = "Luiz";
+let newName = myName + " Gustavo";
+console.log(newName) //shows 'Luiz Gustavo'
+````  
+
+Okay, so behind the scenes, it's all about creating a new string with the updated value and assigning the variable to this new space in memory. **But what if I return the variable to the original value?** like the example below. What would happen? Does the variable return to the original space in memory or create a new one again?
+````javascript
+let myName = "Luiz";
+let newName = myName + " Gustavo";
+console.log(newName) //shows 'Luiz Gustavo'
+
+myName = "Luiz";
+console.log(myName) //shows 'Luiz'
+````  
+The answer to this is the very same logical steps that brought us here. The **immutability of strings** will hit again and force the creation of a new string and the reassignment of the variable to the updated value in a new space in memory, **even if the new value is the very same** as the original one placed at the beginning.
+
+
+
+#### String characteristics length
+Strings also have a **length property**, meaning that we can access different parts of the string value, as well as check for its *"size"*.  
+To check a string size/length, we're going to use the property ***".length"*** already built into JavaScript. Check the example below:
+
+```javascript
+let myName = "Luiz";
+console.log(myName.length) //Shows '4'
+
+myName += " Gustavo";
+console.log(myName.length) //Shows '12'
+```
+As shown above, by adding the property ".length" right next to the string variable, we're not able to check for its size, meaning, how many characters it has.  
+
+```javascript
+let myName = "Luiz";
+console.log(myName.length) //Shows '4'
+// |1|2|3|4|
+// |L|u|i|z|
+
+myName += " Gustavo";
+console.log(myName.length) //Shows '12'
+// |1|2|3|4|5|6|7|8|9|10|11|12|
+// |L|u|i|z| |G|u|s|t|a|v|o|
+```  
+An **important thing to be aware** of is that, as shown above, **empty spaces are also added to the total count of length**, and that's because empty spaces are still a value character in the string and therefore, represent a space in memory that **will added up to the string value** and visual representation.  
+
+Note: For special characters like **emojis**, .length may count more than one per character due to the modification of UTF-16 used by JavaScript.
+```javascript
+let emoji = "😊";
+console.log(emoji.length); //Shows '2' because the emoji 😊 is encoded as a surrogate pair
+```  
+
+
+#### String characteristics index
+As said before, strings are a **sequence of characters** that follow a **sequence order**, defined at the moment of assigning the value. And since we now know the order, we can actually have **access to each one of these characters** by the use of the **index**.  
+Similar to the structure of *"``length``"*, to use the index, we just need to **add "[]"** (square brackets) right next to the variable name. inside the square brackets, we **add a number**, where this number represents the **position of the character in the string length**. Check the example below.  
+```javascript
+let myName = "Luiz";
+console.log(myName[0]); //Shows 'L'
+console.log(myName[1]); //Shows 'u'
+console.log(myName[2]); //Shows 'i'
+console.log(myName[3]); //Shows 'z'
+```  
+And since a variable can also hold numbers, we're able to use **another variable as an index value**: 
+```javascript
+let myName = "Luiz";
+let indexNum = 0;
+console.log(myName[indexNum]); //Shows 'L'
+
+indexNum = 1;
+console.log(myName[indexNum]); //Shows 'u'
+```  
+Note that the index points to the characters that are in the string length appointed, we can** only use numbers** (or variables containing numbers) as valid indices for strings. Let's take a look at some **wrong** examples:
+```javascript
+let myName = "Luiz";
+console.log(myName['u']); //Shows 'undefined'
+console.log(myName[4]); // Shows 'undefined' (index out of range)
+console.log(myName[-1]); // Shows 'undefined' (negative index)
+```  
+
+#### String characteristics empty vs null vs undefined
+To get a better understanding of these values, first, let's see what each of them actually means.
+##### Empty
+When dealing with empty strings, we are actually saying that the value assigned to a variable is of the type string and has no characters in it. Check the example below:
+```javascript
+//Using double quotes
+let myName = "";
+console.log(myName); //console shows empty line
+console.log(myName.length);  //console shows 0
+
+//Using singe quotes
+let myName = '';
+console.log(myName); //console shows nothing
+console.log(myName.length);  //console shows 0
+
+//Using template literals
+let myName = ``;
+console.log(myName); //console shows nothing
+console.log(myName.length);  //console shows 0
+```
+As you can see, when you don't add any character to a **string type**, it has the state of empty. Still a string type (because we assign it by using the quotes or template literals), still having its properties and still having a length, but is empty in essence.  
+
+##### Null
+``Null`` in JavaScript is also used to refer to a variable that **points to no value or type**. But what differs "``null``" from declaring an empty string like we saw above?
+***"``null``"*** is the **intentional absence of any object value**, meaning, when you set any variable to ``null``, you are **intentionally** saying that the variable holds no value or type of any kind.  
+But when you set a variable using empty quotes or template literals, you are **intentionally** saying that the variable **has no value** (character) **AND** it's of the string type.
+```javascript
+let myName = ""
+console.log(myName.length);// Shows '0' Since it's a string, we can access its properties
+console.log(typeof myName);// Shows 'string'
+
+let secondName = null;
+//Since it's NOT a string type (or a type that has '.length' property), shows a type error
+console.log(secondName.length);//Shows 'Uncaught TypeError: Cannot read properties of null (reading 'length')'
+
+console.log(typeof secondName);//Shows 'object'
+```
+Although both may seem similar in representing an **empty** state, they're **NOT the same** when it comes to properties or even type and behavior, since ``typeof null`` returns '``object``' (a historical quirk in JavaScript), unlike a string type
+
+##### Undefined
+In JavaScript, undefined is another one of the primitive types representing the **absence of a value**. 
+It occurs when a **variable is declared**, but **not assigned to any value**, and in some cases, a function does not explicitly return a value. Check below:
+```javascript
+let myName;//Declared, but not assigned to any type or value.
+
+console.log(myName);//shows 'undefined'
+console.log(typeof myName);//shows 'undefined'
+
+//Since we don't have type or value returns a type error
+console.log(myName.length);// shows 'TypeError: Cannot read properties of undefined (reading 'length')'
+
+
+function noReturn() {
+  // no return
+}
+let result = noReturn();
+console.log(result); // Shows 'undefined'
+console.log(typeof result); // shows 'undefined'
+```
+So long story short, empty strings (ex: empty quotes) **ARE NOT the same** as ``null`` or ``undefined``, nor in type or behavior. And since strings can be one of the most used types in applications, it's important to know and understand some of these differences that could save you lots of time.
+
+
+
+#### String methods
+In JavaScript, strings has various built-in method ready to use, and this methods are meant to transform or manipulate its value. We're going to cover some of the most commonly used, but you can check the whole list on [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).  
+
+#### String method charAt()
+This method **returns the character of the string** sequence at the position appointed between the brackets. Check the examples below:  
+```javascript
+let myName = "luiz";
+console.log(myName.charAt(0));//Shows 'l'
+console.log(myName.charAt(3));//Shows 'z'
+```  
+And yes, it works very similar to the use of the index structure access of "string Variable[0]".  
+```javascript
+let myName = "luiz";
+console.log(myName.charAt(0));//Shows 'l'
+console.log(myName[0]);//Shows 'l'
+
+console.log(myName.charAt(3));//Shows 'z'
+console.log(myName[3]);//Shows 'z'
+```  
+But there's a slight difference between them. While both returns the character of the string, when existing, the way they **will return a non existing** character could lead to different results.
+```javascript
+let myName = "luiz";//Goes up to 4 characters (meaning up to 3 index, starting at 0)
+console.log(myName.charAt(5));//Shows ''
+console.log(myName[5]);//Shows 'undefined'
+
+console.log(myName.charAt(-1));//Shows ''
+console.log(myName[-1]);//Shows 'undefined'
+```  
+Remember that strings are a sequence of characters? and as shown before '``undefined``' indicates that no value exists at the specified index? So yes! basically that's exactly what is happening here, but with a small difference.  
+When using the ***index approach*** we were returned with '``undefined``' because in this scenario the index of character that we tried to access doesn't exist, and therefore, doesn't have any value to it.  
+But when using ``.charAt()`` we received an empty return of ``''``, that's because the ``.charAt()`` also didn't find any value in the position requested but since it's a **string type method** it return a ***string type anwers***, and it's empty string value showing that there's nothing to be retured.  
+This could be very helpful in some situations when, for example, dealing with **strings validations** or manipuation where is imperative that the type should remain as string. Let's see some examples:
+```javascript
+let myName = "Luiz";//Goes only up to 3 indexes, meaning characters
+
+//Both trying to have access to a non existing index/value/character
+let charAtApproach = myName.charAt(5);
+let indexApproach = myName[5];
+
+//Concat with the return of .charAt() that doesn't exist
+console.log(myName.length); //Shows '4'
+console.log(typeof charAtApproach); //shows string
+myName += charAtApproach;
+console.log(myName); //Shows 'Luiz'
+console.log(myName.length); //Shows '4'
+
+//Concat with the return of myName[5] (index approach) that doesn't exist
+console.log(myName.length); //Shows '4'
+console.log(typeof indexApproach); //shows undefined
+myName += indexApproach;
+console.log(myName); //Shows 'Luizundefined'
+console.log(myName.length); //Shows '13'
+```  
+As you can see, when dealing with string, it's **imperative to understand** how strings and strings methods works because, in essence what happened above it's not an error, but certainly could lead to a unwanted result.  
+The same it's true when dealing with special characters/symbols.  
+```javascript
+let emoji = "😊";
+console.log(emoji.charAt(0)); // Shows part of the emoji (not the whole character)
+console.log(emoji.charAt(1)); // Show another part of the emoji
+console.log(emoji.charAt(-1)); // Show ''
+console.log(emoji.charAt(10)); // Show ''
+```
+
+
+#### String method slice()
+The "``slice(start, end)``" method works pretty much as taking a 'slice' of the string, meaning, it's going to retrieve a **partial or total of the information** assigned to the string in question and **return this as a brand new string**, not changing the original one, since strings are in the immutability group of JavaScript and it's original value cannot be changed.  
+To use ``.slice(start, end)`` we need to understand the parameter start and end, needed for this method:
+- ``start``: it's a **required parameter** and indicates where to **start** the 'count', per say, of the characters that wil be returned. It is **inclusive**, mening that the character that is in this index **will be counted/inserted** in the value retuned.
+- ``end``: it's a **non required** parameter that indicates **where to stop** the "count" of the character. It's ***NON inclusive*** meaning that the character apointed in this index WON'T be accounted/inserted in the value returned.  
+
+Let's check some examples:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0, 3));//shows '123'
+console.log(stringSeq.slice(6, 9));//shows '789'
+console.log(stringSeq.slice(6, 7));//shows '7'
+```
+As you saw, the first example shows '123', because it's **starting at index 0** (inclusive) with value 1, and going up to **index 2** (with value 3), because **index 3** (which holds the value of 4) it's **non inclusive** and won't be at the final result.  
+The ``end`` parameter, as said before, it's **optional**. It means that we don't need to provide where to stop but the implication of this is the the **slice method will add any character** in the sequence ultil reachs **the end of the sequence**. Check below:
+
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0));//shows '123456789'
+console.log(stringSeq.slice(6));//shows '789'
+console.log(stringSeq.slice(8));//shows '9'
+console.log(stringSeq.slice(0, 100));//shows '123456789'
+```  
+The logic behind it is:
+- if end > str.length: it will use the str.length.  
+Example: console.log(stringSeq.slice(0, 100));//shows '123456789'
+
+
+##### Negative values
+It's also **possible to work with negative** values by using the ``.slice()`` method, which was not possible before using the index approach. 
+When using it, wheter at the ``start`` or ``end`` parameter, the action taking is to count backwards. check below:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(-1));//shows '9'
+console.log(stringSeq.slice(-2));//shows '89'
+console.log(stringSeq.slice(-6));//shows '456789'
+```  
+Negative indexes are converted for the count, and then the ``slice()`` method recovers the rest of the sequence:
+- console.log(stringSeq.slice(-1))  where:  
+stringSeq has 9 characters;  
+-1 + 9 = 8  
+So the returned value will be from index 8 to the end of the sequence, in this case just '9'.  
+
+- console.log(stringSeq.slice(-2));  where:  
+stringSeq has 9 characters;  
+-2 + 9 = 7  
+So the returned value will be from index 7 to the end of the sequence, in this case just '89'.
+
+- console.log(stringSeq.slice(-6));//shows '456789'  where:  
+stringSeq has 9 characters;  
+-6 + 9 = 3  
+So the returned value will be from index 3 to the end of the sequence, in this case just '456789'.
+
+
+Remember that the ``start`` parameter is inclusive? so by just adding it alone we'll get **all the characters till the sequence**.  
+
+But what if i'd also add a negative number for the ``end`` parameter?  
+Let's see some examples
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(0, -1));//shows '12345678'
+console.log(stringSeq.slice(1, -4));//shows '2345'
+```  
+The logic still the same, let's see it:
+- console.log(stringSeq.slice(0, -1));  where:  
+stringSeq has 9 characters;  
+-1 + 9 = 8  
+So the returned value will be from index 0 (``start`` parameter) to the end of the sequence appointed by the ``end`` parameter, in this case index '8'.  
+- console.log(stringSeq.slice(1, -4));  where:  
+stringSeq has 9 characters;  
+-4 + 9 = 5  
+So the returned value will be from index 1 (``start`` parameter) to the end of the sequence appointed by the ``end`` parameter, in this case index '5'.
+
+**Remember**: the ``end`` parameter is a ***non inclusive*** one, so the last character in the sequence from the ``slice()`` won't be counted in.
+
+###### Special cases for ``slice()```
+We must be aware that the ``slice()`` method runs behind a simple math logic:
+- ``start`` ***<*** ``end``: returns the **characters in the interval**, not including the ``end`` index;  
+- ``start`` ***>*** ``end``: returns simple **empty string** ``''``, because **there are no characters** to extract when the ``start`` index is greater than the ``end`` index.  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.slice(8, -1)); // Shows '' (8 = -1 + 9, so start = end)
+console.log(stringSeq.slice(8, 4)); // Shows '' (8 > 4)
+console.log(stringSeq.slice(-6, -7)); // Shows '' (-6 + 9 = 3 > -7 + 9 = 2)
+console.log(stringSeq.slice(NaN, 3)); // Shows '123' (NaN treated as 0)
+```
+
+
+
+
+#### String method substring()
+The ``substring()`` method works very similarly to the ``slice()`` above, so it will be easier to understand for now.  
+Their difference occurs most in the way they deal with **negative indexes**, which we'll see.  
+Check some examples:
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(0, 3));//shows '123'
+console.log(stringSeq.substring(6, 9));//shows '789'
+console.log(stringSeq.substring(6, 7));//shows '7'
+```  
+If for any reason the ´´´start´´ parameter is lesser than the ``end`` parameter, the ``substring()`` method will automaticly apply the inversion of the parameter in order to create the interval sequence, respecting the ``start > end``.
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(6, 3));// Shows '456'
+// invert to 3, 6
+
+console.log(stringSeq.substring(2, 4));// Shows '34'
+// invert to 2, 4
+
+console.log(stringSeq.substring(9, 2));// Shows '3456789'
+// invert to 2, 9
+```
+##### Negative values
+Their main difference is the way ``.substring()`` deals with **negative indexes**.  
+For ``.substring()``, all negative indexes are **automatically turned into 0**, and when the logic represented by ``start > end``, ``.substring()`` will invert the indexes to create a sequence, when possible. The same occurs if we set the ``end`` parameter to a negative value.  
+Check below:  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(-1, 4));// Shows '1234'
+// -1 turned into 0
+// 0 ... 4 = 1234
+
+console.log(stringSeq.substring(3, -2));// Shows '123'
+// -2 turned into 0
+// 3 ... 0 is inverted by substring() method turning to:
+// 0 ... 3 = 123
+
+console.log(stringSeq.substring(1, -3));// Shows '1'
+// -3 turned into 0
+// 1 ... 0 is inverted by substring() method turning to:
+// 0 ... 1 = 1
+
+console.log(stringSeq.substring(-1));// Shows '123456789'
+// -1 turned into 0
+
+console.log(stringSeq.substring(-2));// Shows '123456789'
+// -2 turned into 0
+
+console.log(stringSeq.substring(-3));// Shows '123456789'
+// -3 turned into 0
+
+console.log(stringSeq.substring(-1, 3));// Shows '123'
+// -1 turned into 0
+
+console.log(stringSeq.substring(-2, 4));// Shows '1234'
+// -2 turned into 0
+
+console.log(stringSeq.substring(-3, 9));// Shows '123456789'
+// -3 turned into 0
+``` 
+
+And of course, if even with the inversion of parameter, the sequence interval doesn't hold any character, ``substring()`` will return an empty string too ``''``.  
+```javascript
+let stringSeq = "123456789";
+
+console.log(stringSeq.substring(6, 6));// Shows ''
+console.log(stringSeq.substring(-2, 0));// Shows ''
+console.log(stringSeq.substring(0, -9));// Shows ''
+``` 
+And with invalid characters:
+```javascript
+let stringSeq = "123456789";
+console.log(stringSeq.substring(NaN, 3)); // Shows '123' (NaN turns to 0)
+``` 
+
+#### String method replace()
+The ``replace(searchValue, newValue)`` method is used to replace the **first occurrence** of the ``searchValue``with the ``newValue``.
+```javascript
+let myName = "luiz messias";
+
+console.log(myName.replace('messias', 'Gustavo'));//Shows 'luiz Gustavo'
+console.log(myName.replace('luiz', 3));//Shows '3 messias'
+console.log(myName.replace('luiz', undefined));//Shows  'undefined messias'
+
+let newName = "luiz luiz messias";
+console.log(newName.replace('luiz', 'Gustavo'));//Shows 'Gustavo luiz messias'
+console.log(newName.replace('luiz', ''));//Shows ' luiz messias'
+```
+If the ``searchValue`` is not in the string, it returns the original string value.
+```javascript
+let myName = "luiz messias";
+
+console.log(myName.replace('Car', 'Gustavo'));//Shows 'luiz messias'
+```
+
+
+
+
+#### String method bonus
+###### ``toUpperCase()``
+Converts a string to uppercase letters.  
+```javascript
+let text = "Hello World";
+let upperText = text.toUpperCase(); // upperText will be "HELLO WORLD"
+```
+
+###### ``toLowerCase()``
+Converts a string to lowercase letters. 
+```javascript
+let text = "HELLO WORLD";
+let lowerText = text.toLowerCase(); // lowerText will be "hello world"
+```
+
+###### ``concat(string2, string3, ...)``
+Joins two or more strings.
+```javascript
+let text1 = "Hello";
+let text2 = "World";
+let result = text1.concat(" ", text2); // result will be "Hello World"
+```
+
+###### ``trim()``
+Removes whitespace from both ends of a string.
+```javascript
+let text = "   Hello World   ";
+let trimmedText = text.trim(); // trimmedText will be "Hello World"
+```
+
+###### ``padStart(targetLength, padString)`` and ``padEnd(targetLength, padString)``
+Pads the current string with another string until the resulting string reaches the targetLength from the start.
+```javascript
+let num = "5";
+let paddedNum = num.padStart(4, "0"); // paddedNum will be "0005"
+```  
+
+Pads the current string with another string until the resulting string reaches the targetLength from the end.  
+```javascript
+let num = "5";
+let paddedNum = num.padEnd(4, "0"); // paddedNum will be "5000"
+```
+
+
+
+
+### Objects in JavaScriptThis 
+section covers everything you need to know about objects in JavaScript, including their creation, storage, behavior, methods, and different ways to create them. 
+- [What are objects](#what-are-objects)
+- [Object creation methods](#object-creation-methods)
+- [Objects characteristics: property/method creation & access](#object-characteristics-propertymethod-creation-and-access)
+- [Objects delete](#object-delete)
+- [Objects characteristics: memory storage](#object-characteristics-memory-storage)
+- [Objects characteristics: type](#object-characteristics-type)
+- [Objects characteristics: mutability](#object-characteristics-mutability)
+- [Objects methods: Object.keys() and Object.values()](#object-methods-object-keys-and-object-values)
+- [Objects methods: Object.freeze() and Object.seal()](#object-methods-object-freeze-and-object-seal)
+- [Objects methods: hasOwnProperty()](#object-methods-hasownproperty)
+- [Objects methods: bonus](#object-methods-bonus)
+
+
+#### What are objects
+Objects in JavaScript are an **unordered** structure of **key-pair** values. It means that, in essence, objects don't have a first or last element like, for example, arrays.   
+The keys (properties) are usually declared as a **string or symbol value**, and the values are most of any data or structure of JavaScript, like numbers, strings, functions, arrays, or even other objects. For being so **flexible**, objects are often used for **data structure and code organization** when it comes to working with higher amounts of data, offering not only a 'stored' approach for properties, but also a **set of behaviors** (custom or built-in) to complement the structure.
+
+#### Object creation methods
+In JavaScript, we have mainly ways for creating an object, which with characteristics and behavior. It's important to at least know them and some use cases so that you can better apply the right solution or avoid unwanted results.   
+To delve further into the object's details, let's first know how to create one.   
+**Note:** like the arrays behavior, objects created with the ``const`` **can not** be reassigned to a new object, we can only alter the properties and methods, but not the reference itself.
+
+###### ``object literal``
+The most common approach is the **``object literal``** syntax, by the use of the curly brackets/braces ``{}``. Let's check the basic structure for declaring an object:
+````javascript
+let objectName = {};
+````
+As shown above, the basic structure it's very similar for declaring a variable or an array. Let's break it down:
+- ``let``: keyword (or commonly named as a reserved word), to declare the variable and its specificities;
+- ``objectName``: the declaration of the variable name, under the JavaScript basic rules of naming, like not using numbers or symbols at the beginning, and so on;
+- ``=``: attribution symbol, to pass the object reference to the variable;
+- ``{}``: braces, for an explicit point that this is an object type.   
+The object literal is a very **short and syntax-friendly** way for declaring and reading an object and **doesn't require any additional class or function**. It's used most for **basic and unique objects**, meaning it's not meant to be reused for creating more objects based on its structure, because its properties and methods must be declared directly into the object itself.   
+The downside of this approach it's that, for being so simple, it's quite hard when it comes to scalability, since they are explicitly created, and have no inherent native. The most common use cases would be, for example, configurations, a small set of data, or when it has to be a unique object.
+Let's see:
+````javascript
+let myObject = {
+  name: 'luiz',
+  age: 29,
+  information: {country: 'Brazil', state: 'Minas Gerais - MG'},
+  studyDays: [1, 2, 3, 4, 5, 6, 7],
+  speak(){
+    return 'Hello!';
+  }
+};
+````
+
+###### ``Object Constructor``
+Also called a **constructor function** or **custom builder function**, the ``Object Constructor`` approach for creating objects it's a step ahead of the last one.   
+It gives us the ability to **create multiple objects** by using a 'template' structure, per se, create previously on the declaration of the object. It natively supports the ``prototype`` inheritance and the ``this.`` reference, meaning that now, by using this approach, all **new object based on this constructor** comes by default with the object 'template' properties and method behavior. We'll be talking more about  ``this.`` and ``prototype`` in another section; for now, let's focus only on the object creation.   
+The downside of this approach is that the creation of more objects here is not really optimized, which could lead to **excessive/unnecessary use of memory** and the required syntax it's **more verbose** when compared to the ``object literal`` approach.
+We'll often see this approach where the creation of multiple objects it's needed with the same structure, and the memory optimization/usage is not a primary concern for the application.
+The two main ways here are:
+- ``new Object()`` (constructor function):
+````javascript
+let myObject = new Object();
+
+myObject.name = 'Luiz';
+myObject.age = 29;
+myObject.information = {country: 'Brazil', state: 'Minas Gerais - MG'};
+myObject.studyDays = [1, 2, 3, 4, 5, 6, 7];
+myObject.speak = function (){
+    return 'Hello!';
+}
+````
+
+- ``function functionName(){}`` (custom builder function):
+````javascript
+//These functions are often initialized with a capital letter, for convention
+Function CreatMyObject(name, age, information, studyDays){
+    this.name = name;
+    this.age = age;
+    this.information = information;
+    this.studyDays = studyDays;
+    this.speak = function (){
+        return 'Hello!';
+    }
+}
+
+//Declaring and assigning a value to the object using the custom builder function
+let luizObject = new CreatMyObject('Luiz', 29, {country: 'Brazil', state: 'Minas Gerais - MG'}, [1, 2, 3, 4, 5, 6, 7]);
+````
+
+###### ``Object.create(proto)``
+This approach is one of the most used, and it **handles memory better** than the ``Object Constructor`` approach because it allows us to, through ``prototype`` inheritance, **share properties and methods** between different objects. It means that we only have to create and instantiate it once, and from there, we only share the reference with others, leading to **space and memory optimization**. And since we have to explicitly create it, we have full control of the prototype, meaning more customization and effect for the actual use.   
+The downside of this approach is that we have to manually create and declare the properties and methods, which could lead to more verbose coding.
+````javascript
+//Creating the object's basic structure that will be shared
+let objectProto = {
+    studyDays: [1, 2, 3, 4, 5, 6, 7],
+    speak: function (){
+        return 'Hello!';
+    }
+}
+
+let luizObject = Object.create(objectProto);
+luizObject.name = 'Luiz';
+luizObject.age = 29;
+
+
+//Even though not assigned above, I can now have access to the properties and methods shared
+//by the 'objectProto', that is the base for every object created by this approach
+console.log(luizObject.studyDays);//Shows (7) [1, 2, 3, 4, 5, 6, 7]
+console.log(luizObject.speak());//Shows Hello!
+console.log(luizObject);
+//This last console of the whole object shows:
+// {name: 'Luiz', age: 29} 
+ 
+//where:
+// -> direct properties from the object 
+// age =29 and name ='Luiz'
+
+//-> inherited properties from 'objectProto' object
+// speak =ƒ (){return 'Hello!';} and studyDays = (7) [1, 2, 3, 4, 5, 6, 7]
+
+
+let newObject = Object.create(objectProto);
+newObject.name = 'Marta';
+console.log(newObject);
+//This last console of the whole object shows:
+// {name: 'Marta'}
+ 
+//where:
+// -> direct properties from the object 
+// name = 'Marta'
+
+//-> inherited properties from 'objectProto' object
+// speak = ƒ (){return 'Hello!'} and studyDays = (7) [1, 2, 3, 4, 5, 6, 7]
+````
+
+
+###### ``Factory Functions``
+Less used, the ``Factory Functions`` could be compared as a **manual approach** for creating objects. It naturally **encapsulates the object creation logic** and allows us to, for example, create private variables through closures and have a more flexible object when it comes to different structures **without the need** for the ``this.`` or prototype system. We get our object through the **direct return of an object structure** when the function is called.    
+The downside of this approach is that it's **less memory optimized**, since it duplicates the structure as a new object every time, and **doesn't have the prototype inheritance**, forcing us to explicitly create every property and method needed. We can use this approach for simple or encapsulated logic when the memory consumption is not a primary concern in the project.   
+````javascript
+//Factory Function
+function createObject(name, age){
+    return {
+        name,
+        age,
+        studyDays: [1, 2, 3, 4, 5, 6, 7],
+        speak(){
+            return "Hello!"; 
+        }
+
+    };
+}
+
+//Object creation and assign
+let luiz = createObject('Luiz', 29);
+console.log(luiz); //Shows {name: 'Luiz', age: 29, studyDays: Array(7), speak: ƒ}
+````
+
+
+
+###### ``Class Syntax``
+The ``Class Syntax``, as the name says, has the **class structure** very often used in many programming languages when it comes to OOP programming. Now note that, even with the name, the ``Class Syntax`` it's **not really an real class** as in other languages, it's still an constructor method for objects of JavaScript and it's depended of the prototype system, working more as an approach for OOP that could be more familiar, earning the title of 'syntactic sugar'.   
+It has the **default support for the prototype** inheritance and by the use of the ``extends`` keyword on new objects, offering **flexibility between instances** of the main object, leading to a more **memory optimized** approach when compared to others.   
+The downside is that ``Class Syntax`` could lead to a more verbose code depending on the use.
+````javascript
+class PersonClass{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    speak(){
+        return "Hello!";
+    }
+}
+
+class StudentClass extends PersonClass{
+    constructor(name, age, studyDays){
+        super(name, age);
+        this.studyDays = studyDays;
+    }
+
+    study(){
+        return "I'm reading a book!";
+    }
+}
+
+let luizClass = new PersonClass("Luiz", 29);
+
+//Returns an object created through the class PersonClass and assigned to the 'luizClass' variable
+console.log(luizClass);//Shows PersonClass {name: 'Luiz', age: 29}
+
+//Inherent from the class PersonClass, here we can have access to the '.speak()' method
+console.log(luizClass.speak());//Shows Hello!
+
+//Returns an object created through the class StudentClass and assigned to 'student' variable
+let student = new StudentClass("Marta", 21, [1, 2, 3, 4, 5, 6, 7]);
+//Shows original values of StudentClass {name: 'Marta', age: 21, studyDays: Array(7)}
+console.log(student);
+
+//Inherent from the class PersonClass, the StudentClass can already use properties like name
+//and the '.speak()' method, even if it was not explicitly declared inside the class.
+student.name = 'Luiz';
+student.age = 29;
+console.log(student.speak());//Shows Hello!
+console.log(student.study());//Shows I'm reading a book!
+console.log(student);//Shows StudentClass {name: 'Luiz', age: 29, studyDays: Array(7)}
+````
+
+**Note:** only the StudentClass inherits the PersonClass properties and methods, and not the other way around. So if any instance of PersonClass tries, for example, to have access to the "``.study()``" from StudentClass will result in an error **``TypeError: luizClass.study is not a function``**, since this method doesn't exist for its scope.
+
+
+
+
+########## ``Object.create(proto)``
+This approach is one of the most used, and it **handles memory better** than the ``Object Constructor`` approach because it allows us to, through ``prototype`` inheritance, **share properties and methods** between different objects. It means that we only have to create and instantiate it once, and from there, we only share the reference with others, leading to **space and memory optimization**. And since we have to explicitly create it, we have full control of the prototype, meaning more customization and effect for the actual use.   
+The downside of this approach is that we have to manually create and declare the properties and methods, which could lead to more verbose coding.
+````javascript
+//Creating the object's basic structure that will be shared
+let objectProto = {
+    studyDays: [1, 2, 3, 4, 5, 6, 7],
+    speak: function (){
+        return 'Hello!';
+    }
+}
+
+let luizObject = Object.create(objectProto);
+luizObject.name = 'Luiz';
+luizObject.age = 29;
+
+
+//Even though not assigned above, I can now have access to the properties and methods shared
+//by the 'objectProto', that is the base for every object created by this approach
+console.log(luizObject.studyDays);//Shows (7) [1, 2, 3, 4, 5, 6, 7]
+console.log(luizObject.speak());//Shows Hello!
+console.log(luizObject);
+//This last console of the whole object shows:
+// {name: 'Luiz', age: 29} 
+ 
+//where:
+// -> direct properties from the object 
+// age =29 and name ='Luiz'
+
+//-> inherited properties from 'objectProto' object
+// speak =ƒ (){return 'Hello!';} and studyDays = (7) [1, 2, 3, 4, 5, 6, 7]
+
+
+let newObject = Object.create(objectProto);
+newObject.name = 'Marta';
+console.log(newObject);
+//This last console of the whole object shows:
+// {name: 'Marta'}
+ 
+//where:
+// -> direct properties from the object 
+// name = 'Marta'
+
+//-> inherited properties from 'objectProto' object
+// speak = ƒ (){return 'Hello!'} and studyDays = (7) [1, 2, 3, 4, 5, 6, 7]
+````
+
+
+###### ``Factory Functions``
+Less used, the ``Factory Functions`` could be compared as a **manual approach** for creating objects. It naturally **encapsulates the object creation logic** and allows us to, for example, create private variables through closures and have a more flexible object when it comes to different structures **without the need** for the ``this.`` or prototype system. We get our object through the **direct return of an object structure** when the function is called.    
+The downside of this approach is that it's **less memory optimized**, since it duplicates the structure as a new object every time, and **doesn't have the prototype inheritance**, forcing us to explicitly create every property and method needed. We can use this approach for simple or encapsulated logic when the memory consumption is not a primary concern in the project.   
+````javascript
+//Factory Function
+function createObject(name, age){
+    return {
+        name,
+        age,
+        studyDays: [1, 2, 3, 4, 5, 6, 7],
+        speak(){
+            return "Hello!"; 
+        }
+
+    };
+}
+
+//Object creation and assign
+let luiz = createObject('Luiz', 29);
+console.log(luiz); //Shows {name: 'Luiz', age: 29, studyDays: Array(7), speak: ƒ}
+````
+
+
+
+###### ``Class Syntax``
+The ``Class Syntax``, as the name says, has the **class structure** very often used in many programming languages when it comes to OOP programming. Now note that, even with the name, the ``Class Syntax`` it's **not really an real class** as in other languages, it's still an constructor method for objects of JavaScript and it's depended of the prototype system, working more as an approach for OOP that could be more familiar, earning the title of 'syntactic sugar'.   
+It has the **default support for the prototype** inheritance and by the use of the ``extends`` keyword on new objects, offering **flexibility between instances** of the main object, leading to a more **memory optimized** approach when compared to others.   
+The downside is that ``Class Syntax`` could lead to a more verbose code depending on the use.
+````javascript
+class PersonClass{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    speak(){
+        return "Hello!";
+    }
+}
+
+class StudentClass extends PersonClass{
+    constructor(name, age, studyDays){
+        super(name, age);
+        this.studyDays = studyDays;
+    }
+
+    study(){
+        return "I'm reading a book!";
+    }
+}
+
+let luizClass = new PersonClass("Luiz", 29);
+
+//Returns an object created through the class PersonClass and assigned to the 'luizClass' variable
+console.log(luizClass);//Shows PersonClass {name: 'Luiz', age: 29}
+
+//Inherent from the class PersonClass, here we can have access to the '.speak()' method
+console.log(luizClass.speak());//Shows Hello!
+
+//Returns an object created through the class StudentClass and assigned to 'student' variable
+let student = new StudentClass("Marta", 21, [1, 2, 3, 4, 5, 6, 7]);
+//Shows original values of StudentClass {name: 'Marta', age: 21, studyDays: Array(7)}
+console.log(student);
+
+//Inherent from the class PersonClass, the StudentClass can already use properties like name
+//and the '.speak()' method, even if it was not explicitly declared inside the class.
+student.name = 'Luiz';
+student.age = 29;
+console.log(student.speak());//Shows Hello!
+console.log(student.study());//Shows I'm reading book!
+console.log(student);//Shows StudentClass {name: 'Luiz', age: 29, studyDays: Array(7)}
+
+console.log(luizClass.study());//Shows error TypeError: luizClass.study is not a function
+````
+**Note:** only the StudentClass inherits the PersonClass properties and methods, and not the other way around. So if any instance of PersonClass tries, for example, to have access to the "``.study()``" from the StudentClass, it will result in an error **``TypeError: luizClass.study is not a function``**, since this method doesn't exist for its scope.
+
+
+
+#### Object characteristics: property/method creation and access
+In JavaScript, we have two approaches to create or access a property or method of an object:
+- dot notation ``.propertyName``: 
+  - access: used when we know the property name;
+  - creation: often used, doesn't require using string notation, because JavaScript handles the automatic conversion;
+  - return: dot notation often returns the return of the method, because its execution happens at the moment it's invoked.
+- Bracket braces ``[]``: used for dynamic property names, invalid identifiers, or properties with spaces/special characters. The property/method name must be inside string notation.
+  - return: different from above, the bracket approach returns the content/whole function, since it's not executed at the invocation.
+
+Both have the same behavior for creation or access, returning ``undefined`` for invalid or non-existing values.   
+###### Getting a property or method
+````javascript
+let object = {
+    name: 'Luiz',
+    speak(){
+        return "Hello!";
+    }
+}
+
+//Both return 'Luiz'
+console.log(object.name);
+console.log(object['name']);
+
+//While dot notation returns the value, the bracket returns the whole function 
+console.log(object.speak());//Returns 'Hello!'
+console.log(object['speak']);//Returns ƒ speak(){return "Hello!";}
+
+//Passing the function to a new variable and then executing the function
+let funct = object['speak'];
+console.log(funct());///Shows 'Hello!'
+
+//Trying to have access to a invalid property or method
+console.log(object.state);//Shows undefined
+console.log(object['speakLoud']);//Shows undefined
+````
+
+###### Setting a new property or method
+````javascript
+let object = {
+    name: 'Luiz',
+};
+
+//Equivalent on both approaches for setting a property
+object.age = 29;
+object['state'] = 'Minas Gerais - MG';
+
+//Equivalent on both approaches for setting a method
+object.speak = function speak(){
+        return "Hello!";
+    };
+object['speakLoud'] = function speak(){
+        return "HELLLOOOO!";
+    };
+
+console.log(object.speak());//Shows Hello!
+console.log(object.speakLoud());//Shows HELLLOOOO!
+
+console.log(object['speakLoud']);//As expected, returns the new method, ƒ speak(){return "HELLLOOOO!";}
+let funct = object['speakLoud'];
+console.log(funct());//Shows HELLLOOOO!
+````
+
+#### Object delete
+After knowing how to create, we also must know how to delete a property from an object. Notice that this is **not often used** because it could lead to unexpected errors, so use the ``delete`` only when you are sure of it. Such occasions could be the **cleaning of an object** to reduce memory or data use/exposure, or **dynamic configurations**.   
+Notice also that the ``delete`` **only** works on the object properties that are **not private property** (declared as ``#``) or private methods, they won't be affected by it. Also, does't work for inherited properties through prototype or extends, only in the objects' direct properties.
+Also, the ``delete`` has an automatic return every time it's called.
+- return ``true``: if the property was **located and removed** or if the **property doesn't exist**, and therefore don't need removal;
+- return ``false``: if the property removal is not permitted.   
+
+````javascript
+  let myObj = {
+    name: 'Luiz',
+    age: 29,
+    speak(){return "Hello!";}
+}
+
+console.log(myObj);//Shows {name: 'Luiz', age: 29, speak: ƒ}
+
+delete myObj.name;//Returns true
+delete myObj['age'];//Returns true
+delete myObj['state'];//Returns true, even if the property doesn't exist
+console.log(myObj);//Shows {speak: ƒ}
+
+delete myObj.speak//Delets method
+
+console.log(myObj);//Shows {}
+````
+
+#### Object characteristics: memory storage
+When created, **objects are stored as a reference** in memory. This means that, different from numbers or strings, when an object is assigned to a variable, its reference is sent, and **not a copy** of it.   
+So every time an object is passed to another variable or structure, the original value is being **accessed thoutght the reference** to the section in memory that store the value, and as expected, **every changed made affect the original value directly**, and therefore, changes are reflected throutght the entire code where that same reference is being used.   
+Let's check an example.   
+````javascript
+let obj = {
+    name: 'Luiz',
+    age: 29
+}
+
+let objCopy = obj;
+objCopy.name = 'Marta';
+
+console.log(obj);//Shows {name: 'Marta', age: 29}
+````
+As shown above, changing the 'objCopy' variable directly impacts direclty in the original variable 'obj' because what was passed was a reference to the original value, and not a copy of it.   
+But what if we need to create a copy in order to preserve the original value? For this situation, we have mainly 3 options:
+- Spreed operator (``...``): it's a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties from the prototype, for example.
+- ``.assign()`` method: it's also a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties from the prototype, for example.
+- ``JSON.parse(JSON.stringify())``: it's also a **deep copy**, copies all properties including nested objects and arrays, creating an object completely independent of the original.
+
+###### Spreed operator ``...``
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//Copy include the method speak()
+let copy = {...objLiteral};
+console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//Copy1 include the method speak()
+let copy1 = {...objConstructor};
+console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+let objProto = Object.create(proto);
+let copy2 = {...objProto};
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//Copy3 include the method speak()
+let objFactFunc = FactoryFunc();
+let copy3 = {...objFactFunc};
+console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//Copy4 DON'T include any of the methods or private properties
+let objClassSyntax = new ClassSyntax();
+let copy4 = {...objClassSyntax};
+console.log(copy4);//Shows name: 'luiz'}
+````
+###### ``.assign()`` method
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//Copy include the method speak()
+let copy = Object.assign({}, objLiteral);
+console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//Copy1 include the method speak()
+let copy1 = Object.assign({}, objConstructor);
+console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+let objProto = Object.create(proto);
+let copy2 = Object.assign({}, objProto);
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//Copy3 include the method speak()
+let objFactFunc = FactoryFunc();
+let copy3 = Object.assign({}, objFactFunc);
+console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//Copy4 DON'T include any of the methods or private properties
+let objClassSyntax = new ClassSyntax();
+let copy4 = Object.assign({}, objClassSyntax);
+console.log(copy4);//Shows name: 'luiz'}
+````
+###### ``JSON.parse(JSON.stringify())``
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//speak() not included
+let copy = JSON.parse(JSON.stringify(objLiteral));
+console.log(copy);//Shows {name: 'object literal'}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//speak() not included
+let copy1 = JSON.parse(JSON.stringify(objConstructor));
+console.log(copy1);//Shows {name: 'Object Constructor'}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//speak() not included
+let objProto = Object.create(proto);
+let copy2 = JSON.parse(JSON.stringify(objProto));
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//speak() not included
+let objFactFunc = FactoryFunc();
+let copy3 = JSON.parse(JSON.stringify(objFactFunc));
+console.log(copy3);//Shows {name: 'Factory Function'}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//speak() not included
+let objClassSyntax = new ClassSyntax();
+let copy4 = JSON.parse(JSON.stringify(objClassSyntax));
+console.log(copy4);//Shows {name: 'luiz'}
+````
+
+#### Object characteristics: type
+Objects have their own type (``object``), and naturally inherit properties and methods from the ``Object.prototype`` like ``.toString()`` or ``.hasOwnProperty()``.
+````javascript
+let myObj = { name: 'Luiz' };
+console.log(typeof myObj);//Shows object
+console.log(myObj instanceof Object);//Shows true
+````
+
+#### Object characteristics: mutability
+Objects are mutable by default, meaning their properties can be added, modified, or deleted after creation, unless explicitly restricted.
+````javascript
+let myObj = { name: 'Luiz' };
+myObj.age = 29;
+myObj.name = "";
+
+console.log(myObj);//Shows {name: '', age: 29}
+````
+
+
+
+#### Object methods: Object keys() and Object values()
+Both methods are **non-mutative**, meaning they don't alter the original object, but return a **new array** instead.   
+Let's take a better look at each one:
+- ``Object.keys()``: return an array of the object property names (keys).
+````javascript
+let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.keys(obj));//Shows (3) ['a', 'b', 'c']
+````
+- ``Object.values()``: return an array of the object property values.
+````javascript
+let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.values(obj));//Shows (3) [1, 2, 3]
+````
+
+###### Object.getOwnPropertyNames()
+Different from the ``Object.keys()``, the method ``Object.getOwnPropertyNames()`` also returns the non-enumerable keys.
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Non-enumerable property
+Object.defineProperty(obj, 'location', {
+  state: 'Minas Gerais - MG',
+  enumerable: false
+});
+
+console.log(Object.keys(obj));//Shows only (1) ['name']
+console.log(Object.getOwnPropertyNames(obj));//Shows (2) ['name', 'location']
+````
+
+
+
+
+#### Object methods: Object freeze() and Object seal()
+Both methods are **mutative** and both acts prevent the object from being altered, but in different levels. Don't throw any error, just ignore the action.
+- ``Object.freeze()``: stop any alteration on the object, blocking insertions, deletions, or alterations of the existing properties;
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Basic insertion
+obj.age = 29;
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+
+Object.freeze(obj);//Stoping any possible changing
+obj.state = 'Minas Gerais - MG';
+obj.age = 0;
+delete obj.name;
+
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+````
+
+- ``Object.seal()``: stop any alteration on the object, blocking insertions, deletions, but allows existing properties to be altered.
+````javascript
+const obj = {
+  name: 'Luiz',
+};
+
+//Basic insertion
+obj.age = 29;
+console.log(obj);//Shows {name: 'Luiz', age: 29}
+
+Object.seal(obj);//Stoping any possible changing
+obj.state = 'Minas Gerais - MG';
+obj.age = 0;
+delete obj.name;
+
+console.log(obj);//Shows name: 'Luiz', age: 0}
+````
+
+
+
+
+
+#### Object methods: hasOwnProperty()
+The ``hasOwnProperty()`` checks if the object **has a specific property** as its own, meaning it makes part of its direct structure and **not inherited**, returning ``true`` or ``false``.
+````javascript
+let objSpeak = {
+  speak(){
+    return "Hello!";
+  }
+};
+
+let newObj = Object.create(objSpeak);//speak() was inherited
+
+console.log(objSpeak.hasOwnProperty('speak'));//Shows true, because belogns to the object directly
+console.log(newObj.hasOwnProperty('speak'));//Shows false, because it was inherited from objSpeak
+````
+
+
+#### Object methods: bonus
+###### ``Object.entries(obj)``
+Returns an array of ``[key, value]`` pairs for enumerable properties.
+````javascript
+let obj = { a: 1, b: 2 };
+console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]
+````
+
+###### ``Object.fromEntries(entries)``
+Creates an object from an array of ``[key, value]`` pairs.
+````javascript
+let entries = [['x', 10], ['y', 20]];
+console.log(Object.fromEntries(entries)); // { x: 10, y: 20 }
+````
+
+###### ``Object.defineProperty(obj, prop, descriptor)``
+Defines or modifies a property with specific attributes (e.g., writable, enumerable).
+````javascript
+let obj = {};
+Object.defineProperty(obj, 'prop', {
+  value: 42,
+  writable: false
+});
+obj.prop = 100; // Ignored
+console.log(obj.prop); // 42
+````
+
+###### ``Object.is(obj1, obj2)``
+Compares two values for strict equality, handling edge cases like ``NaN`` and ``-0``.
+````javascript
+console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is(0, -0)); // false
+````
+
+###### ``Object.getOwnPropertyNames(obj)``
+Returns an array of all own property names, including non-enumerable ones.
+````javascript
+let obj = { a: 1 };
+Object.defineProperty(obj, 'b', { value: 2, enumerable: false });
+console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']
+````
+
+
+
+
+### Numbers in JavaScript
+This section is meant to cover everything we should know about number type variables in JavaScript.  
+- [What are numbers](#what-are-numbers)
+- [The Number()](#the-number)
+- [Arithmetic operations with numbers](#arithmetic-operations-with-numbers)
+- [Number characteristics: precision](#number-characteristics-precision)
+- [Number characteristics: null vs undefined vs zero](#number-characteristics-null-vs-undefined-vs-zero)
+- [Number characteristics: NaN, Infinity, and -Infinity](#number-characteristics-nan-infinity)
+- [Number methods](#number-methods)
+
+
+       
+Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/blob/main/basics/intro.md).  
+- Take a [practical exercise](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/exercises.md) about this content!
+
+
+#### What are numbers
+The **number type** is used to represent **numerical values** with positive or negative charges such as **integers** (3,6,-99), **floating-points** also now as fractional numbers (0.3,-0.9), or **special values** like ``NaN``, ``Infinity``, ``-Infinity``.   
+And just like we saw at the [strings](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/strings-in-javascript/intro.md) section, numbers can also be assigned to [variables](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/variables/intro.md) such as ``let``, ``var``, or ``const``.  
+Let's see some examples:  
+```javascript
+let num = 5;
+console.log(typeof num);//Shows 'number'
+
+var floatNum = -0.9;
+console.log(typeof floatNum);//Shows 'number'
+
+const piNum = 3.14159;
+console.log(typeof piNum);//Shows 'number'
+```  
+Now, if you know different programming languages, you may have noticed that all of them hold the same type ``number``, even floating ones. Why's that?  
+See, the JavaScript architecture uses the IEEE 754 standard, meaning that all values of the type number will be stored as a double-precision 64-bit floating-point number. A What???  
+In other words, all values of the ``number type`` are floating-point, even if you assign an integer to a variable. Let's put this to the test:
+```javascript
+let numberA = 5;
+let numberB = 5.0;
+
+console.log(numberA === numberB);//Shows 'true'
+
+let numberD = 4.0;
+console.log(numberA === numberD);//Shows 'false'
+console.log(numberB === numberD);//Shows 'false'
+```
+
+So as you can see above, for JavaScript '5' and '5.0' hold the **same value**, because since their stored as floating-point numbers, all integers are automatically converted and stored as so.  
+The second example makes it clear that '4' doesn't share the **same value** as the previous variables.
+##### Immutability
+Numbers also have the **immutability** property, meaning that you **can't change** the original value of a number variable once it has been assigned.
+
+#### The Number()
+Another way to create a number is by using the "**``Number()``**" function. It allows you to **create and assign** a value of the number type to a variable, just like we saw earlier.
+
+```javascript
+let num = Number(5);
+console.log(typeof num);//Shows 'number'
+
+var floatNum = Number(-0.9);
+console.log(typeof floatNum);//Shows 'number'
+
+const piNum = Number(3.14159);
+console.log(typeof piNum);//Shows 'number'
+```  
+This approach is **not commonly used** for creating a number per se, we'll see more of its use for **converting** other types (like a string) to a number type, and you want to make it **explicit** that the value is being converted to a number.
+```javascript
+let string = '5';
+
+let stringForNum = Number(string);
+
+console.log(typeof string);//Shows 'string'
+console.log(typeof stringForNum);//Shows 'number'
+```  
+
+#### Arithmetic operations with numbers
+We can also use arithmetic operations with numbers, like:
+- addition (``+``);
+- subtraction (``-``);
+- multiplication (``*``);
+- division (``/``);
+- modulus (``%``);
+- and exponentiation (``**``);
+```javascript
+let a = 10;
+let b = 5;
+
+console.log(a + b); //Shows 15
+console.log(a * b); //Shows 50
+console.log(a ** 2); //Shows 100
+```
+
+
+
+#### Number characteristics: precision
+For using the **64-bit floating-point representation**, JavaScript ends up having imprecise accuracy, especially with **large numbers**.  
+But what does it mean for your code? Let's check:
+
+```javascript
+let a = 0.1;
+let b = 0.2;
+let c = a + b;
+
+console.log(a);//Shows '0.1'
+console.log(b);//Shows '0.2'
+console.log(c === 0.3);//Shows 'false'
+```
+Wait a minute... Why does the value of c show false???  
+That's happening because of the way JavaScript deals with numbers behind the scenes. In reality, the value of 'a' (0.1) and 'b' (0.2) isn't really what we saw at the console.
+The more realistic number for 'a' would be ``0.10000000000000000555...`` and for 'b' ``0.2000000000000000111...``. This is because, as told you before, the 64-bit floating-point representation **tends to be way too precise** in its representation of the number, and later it would **result in imprecise numbers** when dealing with operations.  
+We didn't see this huge number at the console because it will be useless in most cases, so JavaScript goes ahead and rounds these values for readability.
+
+```javascript
+let a = 0.1;//Actually stored as something like 0.10000000000000000555...
+let b = 0.2;//Actually stored as something like 0.2000000000000000111...
+let c = a + b;//Actually stored as something like 0.30000000000000004
+
+console.log(a);//Shows auto rounded '0.1'
+console.log(b);//Shows auto rounded '0.2'
+console.log(c);//Shows '0.30000000000000004'
+
+console.log(c === 0.3);//Shows 'false'
+console.log(c === 0.30000000000000004);//Shows 'true'
+```
+
+#### Number characteristics: ``null`` vs ``undefined`` vs ``zero``
+In JavaScript, we have different ways of saying that a **variable can lack a value**, but each approach could lead to different results.  
+###### ``undefined``
+Undefined is an **implicit**, **unintentional** way of saying that a variable has a lack of value, meaning, empty. It's the **standard behavior of JavaScript** and it's also used to indicate that the variable was declared, but not assigned to any value.  
+Now, in essence, undefined itself is a value, per se, but it's used to define and symbolize emptiness. So at the beginning, every variable will hold the ``undefined`` value until assigned to one.  
+```javascript
+let myName;
+console.log(myName);//Shows 'undefined'
+console.log(typeof myName);//Shows 'undefined'
+
+//Meaning the variable was created but not assigned
+//Also means, from a reading perspective, that it holds no intentional value aside from undefined.
+```
+###### ``null``
+Pretty much similar to ´´undefined´´. It's also used to indicate that a variable **holds no value**, aside from ``null``, and it's also used to represent emptiness.  
+The key difference between them it's that ``null`` is **intentionally and explicitly assigned** to a variable, and **can't appear as a value** of a variable if not intentionally assigned.
+```javascript
+let myName = null;
+console.log(myName);//Shows 'null'
+console.log(typeof myName);//Shows 'object'
+
+//MUST be assigned to a variable, otherwise doesn't appear
+//Also means, from a reading perspective, that it intentionally represents a lack of value.
+```
+The ``typeof``  operator returns "``object``" when applied to ``null``. This behavior is a long-standing, well-known bug in JavaScript that dates back to its initial implementation. 
+
+###### ``zero`` (``0``)
+The zero (``0``) in JavaScript it's the numerical representation of the number zero, and zero it's commonly used to represent the lack of value or a point on a map. Even though zero, in essence, represents no value, in JavaScript, the numerical representation of the number actually holds a value.  
+It means that a variable with the number type '``0``' assigned to it it's not empty, like the ``undefined`` or ``null``. Let's check that out:  
+```javascript
+let num = 0;
+console.log(num);//Shows '0'
+console.log(typeof num);//Shows 'number'
+```  
+
+##### Comparing ``null`` vs ``undefined`` vs ``zero``
+```javascript
+let undefined;
+let nullVar = null;
+let num = 0;
+
+console.log(undefined);//Shows 'undefined'
+console.log(nullVar);//Shows 'null'
+console.log(num);//Shows '0'
+
+
+//comparing with loose equality
+console.log(undefined == nullVar);//Shows 'true', because in essence they both represent emptiness/lack of value
+
+//strict equality
+console.log(undefined === nullVar);//Shows 'false', because they are different types
+
+//Shows 'false', because the 'num' variable it's not empty per se, it holds the numerical value of '0' (zero). And zero in turn represents the lack of a numerical value.
+console.log(undefined == num);
+console.log(nullVar == num);
+```
+
+#### Number characteristics: ``NaN``, ``Infinity``, and ``-Infinity``
+##### ``NaN``
+In JavaScript, ``NaN`` is a reserved key to represent an invalid number value. It means literally "**Not a Number**".
+Oddly, it has the ``number`` type, but **can't** be used as a number for arithmetic operations of any kind. It's not necessarily an error, but it represents that a value or the result of an operation is not a valid numerical type.  
+```javascript
+console.log(0 / 0); //Shows 'NaN'
+console.log(Math.sqrt(-1)); //Shows 'NaN'
+console.log(typeof NaN); //Shows 'number'
+```  
+It has a nice method ``.isNaN()``designed to check if a variable is ``Nan``.
+```javascript
+console.log(Number.isNaN(NaN)); //Shows 'true'
+console.log(Number.isNaN("hello")); //Shows 'false'
+```  
+
+##### ``Infinity`` and ``-Infinity``
+Due to the way that JavaScript deals with the ``number`` type, sometimes some numbers can get out of reach, and for that we have ``Infinity`` and ``-Infinity``.  
+They both represent values that went beyond the maximum representable number, and are also the ``number`` type.
+```javascript
+let positiveInfinity = 1 / 0;
+let negativeInfinity = -1 / 0;
+
+console.log(positiveInfinity); //Shows Infinity
+console.log(typeof (positiveInfinity)); //Shows number
+
+console.log(negativeInfinity); //Shows -Infinity
+console.log(typeof negativeInfinity); //Shows number
+```
+
+#### Number methods
+JavaScript provides **built-in methods** for the **number type** to manipulate and format numbers. These methods are accessible on **number primitives**, let's check some examples below.
+
+##### Number methods: .toPrecision(precision)
+Formats a number to a **specified length** (total digits, not just decimals) and returns a string. Rounds or pads as needed.
+```javascript
+let num = 123.456;
+console.log(num.toPrecision(4)); // "123.5"
+console.log(num.toPrecision(2)); // "1.2e2" (scientific notation for large numbers)
+```
+
+##### Number methods: .isInteger(value)
+Checks if a value is an integer.
+```javascript
+console.log(Number.isInteger(42)); // true
+console.log(Number.isInteger(42.0)); // true (no decimal part)
+console.log(Number.isInteger(42.5)); // false
+```
+##### Number methods: ``.toFixed(digits)``
+The ``.toFixed(digits)`` method formats a **number type** to a specified number of **decimal places** and returns it as a **string**.  
+**Note**: **the maximum valid value of digits are 0 to 20**.
+```javascript
+let num = 3.14159;
+num = num.toFixed(2);
+console.log(num); //Shows "3.14" (rounds to 2 decimal places)
+console.log(typeof num);//Shows 'string
+
+num = 3.14159;
+num = num.toFixed(0);
+console.log(num); //Shows "3" (no decimal places)
+console.log(typeof num);//Shows 'string
+
+num = 3.14159;
+num = num.toFixed(4);
+console.log(num); //Shows "3.1416" (rounds to 4 decimal places)
+console.log(typeof num);//Shows 'string
+```
+With **integer values**:
+```javascript
+let num = 3;
+num = num.toFixed(2);
+console.log(num); //Shows "3.00" (rounds to 2 decimal places)
+console.log(typeof num);//Shows 'string
+
+num = 3;
+num = num.toFixed(0);
+console.log(num); //Shows "3" (no decimal places)
+console.log(typeof num);//Shows 'string
+
+num = 3;
+num = num.toFixed(4);
+console.log(num); //Shows "3.0000" (rounds to 4 decimal places)
+console.log(typeof num);//Shows 'string
+```
+##### Number methods: .toExponential(fractionDigits)
+Checks if a value is an integer.
+```javascript
+let num = 1234;
+console.log(num.toExponential(2)); // "1.23e+3"
+```
+##### Number methods: .toString(radix)
+The ``.toString(radix)`` method converts a number to a **string** in a specified base (radix).  
+**Note**: **the maximum valid value for radix are 2 to 36**, with 10 as default value.
+```javascript
+let num = 255;
+console.log(num.toString());//Shows "255" (base 10, default)
+console.log(num.toString(2));//Shows "11111111" (binary)
+console.log(num.toString(16));//Shows "ff" (hexadecimal)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+### Numbers in JavaScript
+This section covers everything you should know about Boolean type variables in JavaScript, a fundamental primitive type used to represent logical values.
+
+- [What are Booleans](#what-are-booleans)
+- [Boolean storage and behavior](#boolean-storage-and-behavior)
+- [Boolean operations: logical operators](#boolean-operations-logical-operators)
+- [Boolean characteristics: truthy vs falsy values](#boolean-characteristics-truthy-vs-falsy-values)
+- [Boolean characteristics: null vs undefined vs false](#boolean-characteristics-null-vs-undefined-vs-false)
+- [Boolean conversion: `Boolean()` vs !!](#boolean-conversion-boolean-vs-double-negation)
+- [Boolean object: new Boolean()](#boolean-object-new-boolean)
+- [Boolean methods and usage](#boolean-methods-and-usage)   
+
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).   
+#### What are Booleans
+**Booleans**, in JavaScript, along with [string](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/strings-in-javascript/intro.md) and [numbers](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/intro.md) are also a **primitive type** and **immutable**.  
+Booleans are the representation of logical values, which can only have **two possible variations**:
+- ``true``
+- ``false``
+
+They are very often use in control structures like if statements, loops, or logical operations, for flow and state control of the aplication, and they have their on type (``boolean``).
+```javascript
+let isActive = true;
+var isComplete = false;
+const hasAccess = true;
+
+console.log(isActive, typeof isActive); // Shows: 'true boolean'
+console.log(isComplete, typeof isComplete); // Shows: 'false boolean'
+console.log(hasAccess, typeof hasAccess); // Shows: 'true boolean'
+```
+
+##### Operator '``!``'
+One of the things that you will see around programming is the '``!``' (negative or also called inversion) operator. As the name says, it's used to 'negate' or invert the first result of comparison. Check below:
+```javascript
+let isActive = true;
+var isComplete = false;
+const hasAccess = true;
+
+console.log(!isActive, typeof isActive); // Shows: 'false boolean'
+console.log(!isComplete, typeof isComplete); // Shows: 'true boolean'
+console.log(!hasAccess, typeof hasAccess); // Shows: 'false boolean'
+```  
+Its use is mainly to invert the first result into the opposite of it, like shown above.
+
+###### Conditional structures
+Booleans can determine if a block of code will or will not be executed:
+```javascript
+let isActive = true;
+let isNotActive = false;
+
+if(isActive) console.log("Executed");//Shows Executed
+
+//Since 'isNotActive' variable holds 'false', this block is never executed
+//Imagine it like a 'yes' or 'no' answer for the question 'Should I execute this block?'
+//Where 'false' = no, and 'true' = yes
+if(isNotActive) console.log("Not executed");
+```
+###### Flow control
+``booleans`` are also very often used for flow control, like:
+```javascript
+let isActive = true;
+let isNotActive = false;
+
+while(isActive){
+    console.log("Executed");//Shows Executed
+    isActive = false;
+}
+
+//Again, this block is never executed because the answer for 'Should I execute this block?'
+//Is already 'false'
+while(isNotActive){
+    console.log("Executed");
+    isNotActive = false;
+}
+```
+
+#### Boolean storage and behavior
+Booleans are also stored directly in memory, but JavaScript automatically handles this for us in the format:   
+- 0 (``false``)
+- 1 (``true``)   
+
+Because of its structure, **booleans don't keep with them any method or property** like the string or number type, as a standart structure. This will only occur if added as **a wrapper of the object** declared as ``new Boolean()``. Check the example below:
+```javascript
+//Direct assign
+let isActive = true;
+let isNotActive = false;
+
+//Using the Object approach
+let isActiveObj = new Boolean(true);
+let isNotActiveObj = new Boolean(false);
+
+
+console.log(isActive, typeof isActive);//Shows 'true boolean'
+console.log(isActiveObj, typeof isActiveObj);//Shows 'Boolean (true) object'
+
+
+console.log(isNotActive, typeof isNotActive);//Shows 'false boolean'
+console.log(isNotActiveObj, typeof isNotActiveObj);//Shows 'Boolean (false) object'
+```
+But the use of ``new Boolean()``is **not recommended**, unless really special cases, because as shown above, it becomes an **object type** and could lead to unwanted behaviors and results, as we are going to see next at the [Boolean object: new Boolean()](#boolean-object-new-boolean) section.
+
+
+#### Boolean operations: logical operators
+Booleans are often related to **logical operators** to combine or modify conditions by **comparing their values** to each other.
+```javascript
+let a = true;
+let b = false;
+
+console.log(a && b); // Shows: 'false' (both must be true)
+console.log(a || b); // Shows: 'true' (at least one is true)
+console.log(!a); // Shows: 'false' (inverts true)
+console.log(!b); // Shows: 'true' (inverts false)
+```   
+The same occurs with structures of decision or loops:
+```javascript
+let isActive = true;
+let isNotActive = false;
+
+//Not executed because the condition asked for both to be 'true', but only one is
+if(isActive && isNotActive){
+    console.log("Executed");
+    isActive = false;
+}
+
+//Executed because the condition asked only FOR ONE to be 'true', and 'isActive' variable suffices
+while(isActive || isNotActive){
+    console.log("Executed");//Shows Executed
+    isActive = false;
+}
+
+//Again, this block is never executed because the answer for 'Should I execute this block?'
+//Is already 'false', once both variables hold the value of 'false'
+while(isNotActive || isActive){
+    console.log("Executed");
+    isNotActive = false;
+}
+``` 
+
+#### Boolean characteristics: truthy vs falsy values
+In JavaScript, other values can assume some level of equality when it comes to comparison to ``true`` or ``false``.  
+It means that the return of the comparison of ``true`` or ``false`` and or the evaluation of the element itself, will also return ``true`` or ``false``.
+The other elements that could also be considered ``true`` are called **truthy** when coerced to a Boolean:
+- Any numerical representation but ``0``: 1, -1, 0.3, -0.3;
+- Any array structure, even an empty one: [], [1,2,3], ["strings", {}, []];
+- Any object structure, even an empty one: {}, {name: "Luiz"};
+- Boolean type ``true``.  
+```javascript
+//Number type
+console.log(!!1);
+console.log(!!-1);
+console.log(!!0.1);
+
+//String type
+console.log(!!"a");
+console.log(!!"Luiz");
+console.log(!!"1");
+
+//Array type
+console.log(!![]);
+console.log(!![1,2,3]);
+console.log(!!["strings", {}, []]);
+
+//Object type
+console.log(!!{});
+console.log(!!{name: "Luiz"});
+```
+
+And the elements to be considered as **falsy** when coerced to a Boolean are:
+- The numerical representation of zero: 0, -0;
+- Any empty string declaration: "", '', ``, String('');
+- The ``undefined`` value;
+- The ``null`` value;
+- The ``NaN`` value;
+- Boolean type ``false``.   
+Note that every **falsy** element is a different representation of a lack of value.
+```javascript
+//Number type
+console.log(!!0);
+console.log(!!-0);
+console.log(!!NaN);
+
+//String type
+console.log(!!"");
+console.log(!!'');
+console.log(!!``);
+
+//Undefined type
+console.log(!!undefined);
+
+//Null
+console.log(!!null);
+``` 
+
+
+
+#### Boolean characteristics: ``null`` vs ``undefined`` vs ``false``
+To understand a little bit more about the difference between them, let's recap what exactly they represent:
+- ``undefined``: standart behavior of JavaScript for every variable **declared but not assigned** to any value. It can be used to indicate **lack of value** (emptiness) or that the variable was declared but not assigned. It has the **``undefined`` type** and it's implicit or not voluntary; 
+- ``null``: it's a explicited/voluntary action to represent a **lack of value** (emptyness) when assigned to a value. has the **``object`` type**, a historical quirk of JavaScript;
+-``false``: a Boolean value that indicates a logical **``false`` state**. It has the **``boolean`` type**, and is also explicitly/voluntarily assigned.
+
+As you saw in the previous section [Boolean characteristics: truthy vs falsy values](#boolean-characteristics-truthy-vs-falsy-values), all of them could be used to represent the **falsy** state, but they're **not** equals in type**. **value** or **essence**.   
+While programming, one really important thing is to make sure your code it's readable for other people, and using the right tools for the right situation is one of the most important ways. For example, imagine setting a variable to ``undefined`` so that you could verify it in an ``if()``statement block, or even setting all variables to ``false`` to indicate that they're empty. Even though you could understand, it's not their original purpose, and it would definitely be very confusing in the long run when new professionals jump into the project.
+
+
+
+#### Boolean conversion: Boolean() vs double negation
+Both the ``Boolean()`` function and the ``!!`` negation operator come to the same functionality when it comes to conversion of other values to the Boolean type.   
+The main difference between them is:
+-  ``Boolean()``: most commonly used for value conversion to Boolean type, it returns a **boolean type** value being ``true`` or ``false``. Tends to be more visually clear about the conversion (readability), but slightly slower than double negation. 
+- ``!!``: most often used approach for converting different values, returns a **Boolean type** value being ``true`` or ``false``. Slightly faster than the function approach, but less readable.
+```javascript
+let value = "hello";
+let zero = 0;
+
+console.log(Boolean(value)); //Shows 'true'
+console.log(!!value); //Shows 'true'
+console.log(Boolean(zero)); //Shows 'false'
+console.log(!!zero); //Shows 'false'
+console.log(typeof Boolean(value)); //Shows 'boolean'
+console.log(typeof !!value); //Shows 'boolean'
+```   
+
+#### Boolean object: new Boolean()
+The ``new Boolean()`` function can also be used to create or **convert** a non-Boolean type value, but it converts to the **object type**, and not to a Boolean type.
+This approach should be **avoided**, unless special cases, because it would **lead to unexpected behavior**, since, as mentioned before at [Boolean characteristics: truthy vs falsy values](#boolean-characteristics-truthy-vs-falsy-values) section, **every object is considered truthy**.
+```javascript
+let bool = true;
+let boolObj = new Boolean(false);
+
+console.log(bool, typeof bool); //Shows 'true boolean'
+console.log(boolObj, typeof boolObj); //Shows 'Boolean (false) object
+console.log(!!boolObj); //Shows 'true' (objects are truthy)
+console.log(boolObj === false); //Shows 'false' (object vs primitive)
+console.log(boolObj.valueOf() === false); //Shows 'true' (extracts primitive value)
+```
+
+
+#### Boolean methods and usage
+Now that we know that using ``new Boolean()`` we can create an object type, we can use some of the built-in methods of objects that JavaScript offers, like ``toString()`` and ``valueOf()``.   
+Booleans are temporarily wrapped as objects when methods are called (via autoboxing), which is why true.toString() works below.
+```javascript
+let bool = true;
+let boolToString = bool.toString();
+let boolValueOf = bool.valueOf();
+
+console.log(bool, typeof bool); //Shows 'true boolean'
+console.log(boolToString, typeof boolToString); //Shows 'true string'
+console.log(boolValueOf, typeof boolValueOf); //Shows 'true boolean'
+
+
+//Using the object approach
+let boolObj = new Boolean(false);
+let objToString = boolObj.toString();
+let objValueOf = boolObj.valueOf();
+
+console.log(boolObj, typeof boolObj); //Shows 'Boolean (false) object'
+console.log(objToString, typeof objToString); //Shows 'false string'
+console.log(objValueOf, typeof objValueOf); //Shows 'false boolean'
+```
+
+
+
+### Arrays in JavaScript
+This section covers everything you should know about arrays in JavaScript, including usage, behavior, and more.
+- [What are arrays](#what-are-arrays)
+- [Arrays characteristics: type](#arrays-characteristics-type)
+- [Arrays characteristics: multi-dimension](#arrays-characteristics-multi-dimension)
+- [Arrays characteristics: index and access](#arrays-characteristics-index-and-access)
+- [Arrays characteristics: mutability](#arrays-characteristics-mutability)
+- [Arrays characteristics: length](#arrays-characteristics-length)
+- [Arrays characteristics: memory storage](#arrays-characteristics-memory-storage)
+- [Arrays methods](#arrays-methods)
+- [Arrays methods: .push() and .pop()](#arrays-methods-push-and-pop)
+- [Arrays methods: .unshift() and .shift()](#arrays-methods-unshift-and-shift)
+- [Arrays methods: .slice(start, end)](#arrays-methods-slice)
+- [Arrays methods: .splice(start, deleteCount, ...items)](#arrays-methods-splice)
+- [Arrays methods: .forEach(callback)](#arrays-methods-foreach)
+- [Arrays methods: .map(callback)](#arrays-methods-map)
+- [Arrays methods: bonus](#arrays-methods-bonus)
+
+
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).   
+
+
+#### What are arrays
+Arrays, also known as vectors or *'list'* in JavaScript, are an **ordered collection of values** wrapped in a special **object type** structure.   
+Let's check how to declare an array:
+```javascript
+let newArray = [];
+```   
+Very similar to any other variable, arrays follow the basic structure of "``keyWord`` variableName = []". Let's break it down.
+- ``keyWord``: Arrays can be declared using any of the three valid keywords for variable instantiation, like ``let``, ``const``, and ``var``;
+- variableName: the variable name follows the **basic rules of naming a variable** like not using reserved words, without space between words, no special characters or numbers as the first character of the name;
+- [] (bracket): arrays are created using the brackets, which indicate that the variable being assigned to it can now receive a collection of values, as being an array.
+###### Note:
+Just like every other ``const`` variable, their value cannot be changed over time, so once assigned to a variable, the items inside the array can be changed, but the reference of the variable will remain constant and immutable. Use this approach only when you explicitly need the array to remain constant.  
+
+Similar to a standard vector structure, here used conceptually to describe a more rigid structure in other languages, arrays can point to a ***'list'* of items stored** in memory (just like any other variable), but with a main difference:
+- Vector: can store a limited amount of **items of the same type**: it's a concept of a structure that defines its creation and behavior: 
+```javascript
+let vectorNumber = [1, 2, -1, 0.5];//A list of only number type
+let vectorString = ['luiz', 'gustavo', 'apple', 'car'];//A list of only string type
+```
+- Arrays: on the other hand, arrays in JavaScript are way more 'flexible' per se, they allow you to **store multiple types** at the same time, it's a vector-based structure but more loose in some ways:
+```javascript   
+let arrays = [[10, 11], ['rock', 'stone']];//A list of only arrays
+let arrayAll = [[1, 2, 3], ['luiz', 'gustavo'], {}, arrays, () => console.log("functions too")];//A list with numbers, strings, arrays, objects, and functions
+```
+
+#### Arrays characteristics: type
+Arrays in JavaScript are an object type, but even so, they have specific methods and properties that make them not equal to generic objects.   
+In order to make a type verification, we can use the ``.isArray()`` method.
+```javascript
+let numeros = [1, 2, 3];
+console.log(typeof numeros); //'object'
+console.log(Array.isArray(numeros)); //true
+```
+
+#### Arrays characteristics: multi-dimensional
+Arrays can also be multi-dimensional, meaning they can also **incorporate the matrix-like structure** of rows and columns. Imagine it like an array on top of another array, and all these arrays are listed inside an array. Dimensions here are defined by the **number of vertices implemented**, for example:
+- One dimension: there's only a row type structure, meaning there's **only the x vertex to run**.
+- Two dimensions: now there's a row and a column type (table structure), meaning there's the **x vertice** and the **y vertice to run**.
+```javascript
+//One dimension
+let arraysNumber = [1, 2, -1, 0.5];
+let arraysString = ['luiz', 'gustavo', 'apple', 'car'];
+
+//Two dimensions
+let matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+    ];
+
+//Two-dimensional array
+let arraysAll = [
+    [1, 2, 3, 4],
+    ['a', 'b', 'c', 'd'],
+    [1, 'a', [2, 'b']]
+    ];
+```
+Let's break the structure:   
+```javascript
+//Two dimensions
+let twoDimension = [
+    [1, 2, 3, 4], //→ row 0
+    [5, 6, 7, 8]  //→ row 1
+//   ↓  ↓  ↓  ↓
+//  C0 c1 c2 c3
+
+    ]
+```
+- Each array structure "``[1, 2, 3, 4]``" inside the array variable represents a row. We have 2 rows in the example above, counting starts at 0 to 1;
+- Each item inside this structure "``1, 2, 3, 4``" represents a column. We have 4 columns in the example above, counting starts at 0 to 3.
+
+#### Arrays characteristics: index and access
+Now that we know how to create an array, let's check how we can have access to its values. As mentioned earlier, arrays are an **ordered structure**, meaning that every element placed inside an array has an **identifier integer number**, starting at 0, and through this number we can have access to the value it holds.   
+For that, we're going to use the index approach, very similar to what we do to strings. The basic structure is:
+- arrayName[index];
+````javascript
+let array = [1,2,3,4];
+console.log(array[0]);//Shows 1
+console.log(array[1]);//Shows 2
+console.log(array[2]);//Shows 3
+console.log(array[3]);//Shows 4
+````   
+The same occurs when dealing with multidimensional arrays.
+````javascript
+let array = [
+    [1,2,3],
+    ['a','b','c'],
+    {},
+    []
+];
+console.log(array[0]);//Shows [1, 2, 3]
+console.log(array[1]);//Shows ['a', 'b', 'c']
+console.log(array[2]);//Shows {}
+console.log(array[3]);//Shows []
+````
+
+#### Arrays characteristics: mutability
+Different from what we saw at the basic primitive types in JavaScript, **arrays are mutable**, meaning they can be changed due to the structure they're based on, making it possible to alter the **order or value of different indexes** without having to declare another array.   
+At the end of this section, we're going to see some built-in methods of JavaScript to help us with it, but for now, we're doing it manually.
+````javascript
+let array = [1,2];
+console.log(array[0]);//Shows 1
+console.log(array[1]);//Shows 2
+console.log(array[2]);//Shows undefined, because index 3 don't exist
+console.log(array);//Shows (2) [1, 2]
+
+array = [3,1,2];
+console.log(array[0]);//Shows 3
+console.log(array[1]);//Shows 1
+console.log(array[2]);//Shows 2
+console.log(array);//Shows (3) [3, 1, 2]
+````   
+The same occurs when dealing with multidimensional arrays.
+````javascript
+let array = [
+    [1,2,3],
+    ['a','b','c'],
+];
+console.log(array[0]);//Shows (3) [1, 2, 3]
+console.log(array[1]);//Shows (3) ['a', 'b', 'c']
+console.log(array[2]);//Shows undefined, because index 3 don't exist
+console.log(array);//Shows (2) [Array(3), Array(3)]
+
+array = [
+    ['a','b','c'],
+    {},
+    []
+];
+
+console.log(array[1]);//Shows (3) ['a', 'b', 'c']
+console.log(array[2]);//Shows {}
+console.log(array[3]);//Shows (0) []
+console.log(array);//Shows (3) [Array(3), {…}, Array(0)]
+````
+Different from strings, for example, the original values here are changed by adding or removing elements to the structure.
+
+#### Arrays characteristics: length
+Arrays also have the ``.length`` property, very useful to identify the number os elements inside. Note that the ``.length`` property returns the number of elements directly from the element, meaning that if we're dealing with multi-dimensional arrays, we can also retrieve the ``.length`` from a child element. It returns the higher index value + 1, adding up to the total elements in the array. Also, it's dynamic, so in case the array is changed by adding or removing an element, the ``.length`` property only returns the actual state of the element.
+```javascript
+//One dimension
+let arrayA = [1,2,3];
+console.log(arrayA.length);//Shows 3 where: (higher index) + 1 => 2 + 1 = 3
+arrayA = [1, 2, 3, 4];
+console.log(arrayA.length);//Shows 4 where: (higher index) + 1 => 3 + 1 = 4
+
+
+let arrayB = ['a', 'b'];
+console.log(arrayB.length);//Shows 2 where: (higher index) + 1 => 1 + 1 = 2
+arrayB = ['a'];
+console.log(arrayB.length);//Shows 1 2 where: (higher index) + 1 => 0 + 1 = 1
+
+
+//Two dimension
+let arrayC = [
+            [1,2,-3, 7],
+            [],
+            [[4,5,6], {}, 'string', {obj: 'object'}, []]
+        ];
+console.log(arrayC.length);//Shows 3
+
+console.log(arrayC[0].length);//Shows 4
+arrayC[0] = [1,2,-3];
+console.log(arrayC[0].length);//Shows 3
+
+console.log(arrayC[1].length);//Shows 0
+arrayC[1] = [1,2,3];
+console.log(arrayC[1].length);//Shows 3
+
+
+console.log(arrayC[2].length);//Shows 5
+arrayC[2] = [{}, 'string', {obj: 'object'}, []]
+console.log(arrayC[2].length);//Shows 4
+```   
+Like shown above, we can have access to the "arrayC" variable ``.length``, but also for each one of its elements that, of course, has the ``.length`` property to it.
+
+
+
+
+
+
+
+
+
+
+
+#### Arrays characteristics: memory storage
+As said before, arrays are an **object type**, and therefore they're stored in memory as a **reference**. It means that, once you assign an array structure to a variable, this variable accesses this structure by reference.   
+It's important to know this because, different from string or number type where the value is stored directly in memory and therefore they can only be copied after being assigned, array variables will always refer to the same section in memory, even if this array it's already assigned to another variable. And any changes applied to one will reflect on the other variables.   
+Check the example:   
+````javascript
+let arrayA = [1,2,3];
+console.log(arrayA);//Shows (3) [1, 2, 3]
+console.log(arrayA.length);//Shows 3
+
+//Changing the reference (arrayA) by the arrayB variable
+let arrayB = arrayA;
+arrayB[0] = 5;
+arrayB.pop();
+
+console.log(arrayA);//Shows (2) [5, 2]
+console.log(arrayA.length);//Shows 2
+````
+
+The same happens on multidimensional arrays:
+````javascript
+let arrayA = [
+    [1,2,3],
+    ['a','b','c'],
+];
+console.log(arrayA);//Shows (2) [Array(3), Array(3)]
+console.log(arrayA.length);//Shows 2
+
+//Changing the reference (arrayA) by the arrayB variable
+let arrayB = arrayA;
+arrayB[0] = [0];
+arrayB.pop();
+
+console.log(arrayA);//Shows (1) [Array(1)]
+console.log(arrayA.length);//Shows 1
+````   
+
+Later in this section, at [arrays methods](#array-methods), we cover some other ways of coping with this array value, and by doing so, we avoid some unwanted behavior, such as the reference, by creating a new one.
+
+
+
+#### Arrays methods
+The JavaScript built-in methods for arrays can be divided into two main groups:
+- **Mutative**: alters the original structure or its values, and by consequence, any other variable using the same reference;
+- **non-mutative**: returns a new array structure with the updated sequence or altered values;   
+So on one hand, the **mutative** will always be working on the **original reference** values and changing them, while the **non-mutative** will always **return a new array structure without changing the original** reference.   
+Let's take a better look at some of them.
+
+
+#### Arrays methods: .push() and .pop()
+- ``.push(...itens)``: add one or multiple itens **to the end** of the array, creating new indexes;
+- ``.pop()``: remove the **last iten** of the array sequence.
+Both are a mutative type.
+###### ``.push(...itens)``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.push(4);//Add one element
+array.push(5,6,"a", {});//Add multiple elements at once
+
+console.log(array);//Shows [1, 2, 3, 4, 5, 6, 'a', {…}]
+console.log(array.length);//Shows 8
+
+//----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []]];
+
+console.log(multiD);//Shows (2) [Array(3), Array(2)]
+console.log(multiD.length);//Shows 2
+
+multiD[0].push(4);//Add one element
+multiD[1].push(5,6,"a", {});//Add multiple elements at once
+multiD.push(['a','b','c']);//Add multiple elements at once
+
+console.log(multiD);//Shows (3) [Array(4), Array(6), Array(3)]
+console.log(multiD.length);//Shows 3
+````
+
+###### ``.pop()``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.pop();//remove one element
+
+console.log(array);//Shows (2) [1, 2]
+console.log(array.length);//Shows 2
+
+//----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []], {}];
+
+console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
+console.log(multiD.length);//Shows 3
+
+multiD[0].pop();//remove one element
+multiD[1].pop();
+multiD.pop();
+
+console.log(multiD);//Shows 2) [Array(2), Array(1)]
+console.log(multiD.length);//Shows 2
+````
+
+#### Arrays methods: .unshift() and .shift()
+- ``.unshift(.itens)``: add one or multiple itens **to the begining** of the array, creating new indexes;
+- ``.shift()``: remove the **first iten** of the array sequence.
+###### ``.unshift(...itens)``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.unshift(4);//Add one element
+array.unshift(5,6,"a", {});//Add multiple elements at once
+
+console.log(array);//Shows (8) [5, 6, 'a', {…}, 4, 1, 2, 3]
+console.log(array.length);//Shows 8
+
+//----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []]];
+
+console.log(multiD);//Shows (2) [Array(3), Array(2)]
+console.log(multiD.length);//Shows 2
+
+multiD[0].unshift(4);//Add one element
+multiD[1].unshift(5,6,"a", {});//Add multiple elements at once
+multiD.unshift(['a','b','c']);//Add multiple elements at once
+
+console.log(multiD);//Shows (3) [Array(3), Array(4), Array(6)]
+console.log(multiD.length);//Shows 3
+````
+
+###### ``.shift()``
+````javascript
+let array = [1,2,3];
+
+console.log(array);//Shows (3) [1, 2, 3]
+console.log(array.length);//Shows 3
+
+array.shift();//remove one element
+
+console.log(array);//Shows (2) [1, 2]
+console.log(array.length);//Shows 2
+
+//----------------------------------------------------------
+let multiD = [[1,2,3], [{}, []], {}];
+
+console.log(multiD);//Shows (3) [Array(3), Array(2), {…}]
+console.log(multiD.length);//Shows 3
+
+multiD[0].shift();//remove one element
+multiD[1].shift();
+multiD.shift();
+
+console.log(multiD);//Shows (2) [Array(1), {…}]
+console.log(multiD.length);//Shows 2
+````
+
+
+
+#### Arrays methods: .slice()
+The ``.slice(start, end)`` is a **non-mutative method** of JavaScript that returns a copy of the elements inside the designated sequence of the array, where:
+- ``start``: **inclusive parameter**, that indicates where the copy sequence of elements should start. The element at this index will be **included on the return**;
+- ``end``: **non-inclusive parameter**, that indicates where the sequence ends. The element at this index **will not be included** on the return.   
+It **supports negative indexes**, like -1 or -12, which invert the counting from the end of the sequence towards the beginning, starting at **-1**.
+````javascript
+let array = [1,2,3,4];
+
+let arrayB = array.slice(0,3);
+console.log(arrayB);//Shows (3) [1, 2, 3]
+
+let arrayC = array.slice(1,2);
+console.log(arrayC);//Shows (1) [2]
+
+let arrayD = array.slice(0, -2);
+console.log(arrayD);//Shows (2) [1, 2]
+
+let arrayE = array.slice(-4, -1);
+console.log(arrayE);//Shows (3) [1,2,3]
+````
+
+The same for multidimensional arrays:
+````javascript
+let array = [
+    [1,2,3,4],
+    ['a', 'b', 'c', 'd']
+];
+
+let arrayB = array[0].slice(0,3);
+console.log(arrayB);//Shows (3) [1, 2, 3]
+
+let arrayC = array[1].slice(1,2);
+console.log(arrayC);//Shows (1) ['b']
+
+let arrayD = array[0].slice(0, -2);
+console.log(arrayD);//Shows (2) [1, 2]
+
+let arrayE = array[1].slice(-4, -1);
+console.log(arrayE);//Shows (3) ['a', 'b', 'c']
+````
+
+
+
+#### Arrays methods: .splice()
+The ``.splice(start, deleteCount, ...items)`` can **remove**, **replace** or **add** an item or group of items in a given interval, inside the array sequence.   
+Also used or creating a copy of the elements.   
+It's a **mutative** method that returns the result of the altered array, where:
+- ``start``: **inclusive parameter**, indicates where to start the interval/counting. The element at this index will be **included on the return or action**;
+- ``deleteCount``: indicates how many items of the interval, starting and counting at the ``start``, should be included in the action (deletion/copying);
+- ``...items``: indicates the elements that will be added in the returned array.
+````javascript
+let array = [1,2,3,4];
+
+//.splice(start, deleteCount)
+console.log(array);//Shows the original array (4) [1, 2, 3, 4]
+console.log(array.splice(0,3));//Return 3 elements, starting at index 0. Shows (3) [1, 2, 3]. Removes these elements from the original reference
+
+//At this point, the original reference was altered, leaving it with just 1 element
+console.log(array);//Shows (1) [4]
+//---------------------------------------------------------------------------------------------------------------------------------
+
+//.splice(start, ...items) (at the beginning)
+let arrayA = [1,2,3,4];
+let insertion = [5,6,7]
+console.log(arrayA.splice(0, 0, insertion));//Shows [], because nothing was removed from the original and added to the return
+
+//Note that the items were added to the beginning of the sequence, since the counting was set to start at index 0
+console.log(arrayA);//Shows [Array(3), 1, 2, 3, 4]
+//---------------------------------------------------------------------------------------------------------------------------------
+
+//.splice(start, ...items) (at the end)
+let arrayB = [1,2,3,4];
+let endArray = arrayB.length;///This way we capture the position (index + 1), making sure to add to the end of the sequence
+console.log(arrayB.splice(endArray, 0, 5,6,7));//Shows (0) [], because nothing was removed from the original and added to the return
+
+//Note that the items were added to the end of the sequence, since the counting was set to start at index -1
+console.log(arrayB);//Shows (7) [1, 2, 3, 4, 5, 6, 7]
+````
+
+#### Arrays methods: .forEach()
+The ``.forEach()`` method allows you to execute a provided function (callback function ) **once for each element** of the given array. By default, it's a **non-mutative** method since it doesn't directly affect the original reference.   
+Key Characteristics:   
+- It **does not return** a value (returns only undefined);
+- It **does not modify the original array** (unless the callback explicitly modifies it);
+- It processes elements in **ascending index order** (from index 0 to the last index);
+- It’s ideal for side effects like logging, updating external variables, or DOM manipulation.
+
+The syntax for use is:
+````javascript 
+array.forEach(callback(currentValue [, index [, array]]) [, thisArg])
+````
+Let's break it down:
+- ``callback``: A function executed for each array element. It can take up to three arguments:
+    - ``currentValue`` (required): the current element being processed;
+    - ``index`` (optional): the index of the current element;
+    - ``array`` (optional): the array ``.forEach`` is called on;
+- ``thisArg`` (optional): a value to use as ``this.`` when executing the callback.
+````javascript
+let fruits = ['apple', 'banana', 'orange'];
+
+fruits.forEach(function (fruit){ console.log(fruit) });
+//Shows the following:
+//apple
+//banana
+//orange
+````   
+In the example above, we're only using the required parameters where:
+````javascript 
+//basic structure
+array.forEach(callback(currentValue))
+
+//Array = fruits
+//callback function = function (currentValue){ console.log(currentValue) });
+//Final result below:
+fruits.forEach(function (fruit){ console.log(fruit) });
+````
+What about using an optional parameter?   
+````javascript 
+let numbers = [10, 20, 30];
+
+numbers.forEach(function (num, index, arr) {
+    console.log(`Index ${index}: ${num} (from array: ${arr})`);
+});
+//Shows the following:
+//Index 0: 10 (from array: 10,20,30)
+//Index 1: 20 (from array: 10,20,30)
+//Index 2: 30 (from array: 10,20,30)
+````
+Not often used, we could also work with external information by using the ``this`` parameter.
+````javascript
+const obj = { multiplier: 2 };
+const numbers = [1, 2, 3];
+
+numbers.forEach(function (num) {
+    console.log(num * this.multiplier);
+}, obj);
+//Shows the following:
+// 2
+// 4
+// 6
+````
+
+All examples above were **non-mutative**, since they don't affect in any way the original reference. But what if we want to?   
+Let's see:
+````javascript 
+let numbers = [1, 2, 3];
+
+numbers.forEach((num, index, arr) => {
+    arr[index] = num * 2; //Modifies the original array
+});
+console.log(numbers); //Shows [2, 4, 6]
+````   
+
+
+
+
+
+
+
+
+#### Arrays methods: .map()
+Very similar ``.forEach()`` in structure and behavior, ``.map(callback)`` also iterates once at each element of the sequence from the array, with the slight difference that this method has a **valid return of a new array**, where each value it's the original element after passing through the callback function. Since it's **non-mutative**, it doesn't change the original reference.   
+Key Characteristics:
+- Returns a **new array** with the same length as the original array, where each element is the result of the callback function;
+- **Does not modify** the original array (it’s non-destructive);
+- Processes elements in **ascending index order** (from index 0 to the last index);
+- Ideal for creating a new array with transformed data, unlike .forEach, which is used for side effects and returns undefined.   
+
+The syntax for use is:
+````javascript 
+let newArray = array.map(callback(currentValue [, index [, array]]) [, thisArg])
+````
+Let's break it down:   
+- ``callback``: A function executed for each array element. It can take up to three arguments:
+    - ``currentValue`` (required): the current element being processed;
+    - ``index`` (optional): the index of the current element;
+    - ``array`` (optional): the array .map is called on.
+
+- ``thisArg`` (optional): A value to use as this when executing the callback.
+- ``Return Value``: a new array where each element is the result of the callback function applied to the corresponding element in the original array.   
+````javascript
+let numbers = [1, 2, 3, 4];
+let doubled = numbers.map(function (num){ return num * 2});
+console.log(doubled);//Shows [2, 4, 6, 8]
+console.log(numbers);//Shows [1, 2, 3, 4] (original reference still the same)
+````
+In the example above, we're only using the required parameters where:
+````javascript 
+//basic structure
+let newArray = array.map(function (currentValue){ return currentValue * 2});
+
+//newArray = doubled
+//array = numbers
+//callback function = function (num){ return num * 2});
+//Final result below:
+let doubled = numbers.map(function (num) { return num * 2 });
+````
+What about using an optional parameter?  
+````javascript 
+let fruits = ['apple', 'banana', 'orange'];
+let indexedFruits = fruits.map(function (fruit, index) {return `${index + 1}. ${fruit}`});
+console.log(indexedFruits);//Shows ['1. apple', '2. banana', '3. orange']
+````
+
+
+
+#### Arrays methods: bonus
+###### ``.filter(callback)``
+This method returns a new array after the original elements go through a test/filter callback. It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3, 4];
+let even = num.filter(num => num % 2 === 0);
+console.log(even);//Shows [2, 4]
+````   
+
+###### ``.reduce(callback, initialValue)``
+This method returns a new (single value) that is the result of the accumulator function (callback function). It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3];
+let sum = num.reduce((acc, num) => acc + num, 0);
+console.log(sum);//Shows 6
+````   
+
+###### ``.find(callback)``
+This method returns the first element that is a positive (true) result of the condition (callback function). It's ``non-mutative``.
+````javascript
+let num = [1, 2, 3, 4];
+let higherThanTwo = num.find(num => num > 2);
+console.log(higherThanTwo); // 3
+````  

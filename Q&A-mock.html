@@ -1306,7 +1306,631 @@
           "example": "let obj = { a: null }; \nconsole.log(obj.a === null); \n// true"
         }
       ]
-    }
+    },
+     {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A `let` variable declared in a `for` loop creates a new binding for each iteration, preventing closure issues with asynchronous code.",
+        "answer": true,
+        "explanation": "Each iteration of a `for` loop with `let` creates a new block-scoped binding, ensuring that asynchronous callbacks capture the correct value for each iteration, unlike `var`.",
+        "example": "for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 0); } // 0, 1, 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Redeclaring a `const` variable in a nested block scope does not throw a syntax error.",
+        "answer": true,
+        "explanation": "A `const` variable can be redeclared in a nested block scope because it creates a new binding in a different scope, adhering to block scoping rules.",
+        "example": "const x = 1; { const x = 2; console.log(x); } console.log(x); \n// 2, 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `String.prototype.slice()` method handles negative indices differently than `substring()`, counting from the end of the string.",
+        "answer": true,
+        "explanation": "`slice()` interprets negative indices as counting from the string's end, while `substring()` treats them as 0, leading to different substring extractions.",
+        "example": "let str = 'hello'; console.log(str.slice(-2), str.substring(-2)); \n// 'lo', 'hello'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`Object.defineProperties()` can define non-enumerable properties, excluding them from `for...in` loops.",
+        "answer": true,
+        "explanation": "`Object.defineProperties()` allows setting `enumerable: false`, preventing properties from appearing in `for...in` loops while remaining accessible.",
+        "example": "let obj = {}; Object.defineProperties(obj, { a: { value: 1, enumerable: false } }); for (let key in obj) { console.log(key); } // no output"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Calling `.toPrecision()` with an argument less than 1 or greater than 100 throws a `RangeError`.",
+        "answer": true,
+        "explanation": "The `.toPrecision()` method requires its precision argument to be between 1 and 100; values outside this range cause a `RangeError`.",
+        "example": "let num = 123.456; console.log(num.toPrecision(101)); \n// RangeError"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Converting a string to a boolean with `Boolean()` treats an empty string as falsy and a whitespace string as truthy.",
+        "answer": true,
+        "explanation": "An empty string (`''`) is falsy, while any non-empty string, including whitespace (`' '`), is truthy when converted with `Boolean()`.",
+        "example": "console.log(Boolean(''), Boolean(' ')); \n// false, true"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Calling `.reduce()` on an empty array without an initial value throws a `TypeError`.",
+        "answer": true,
+        "explanation": "Without an initial value, `.reduce()` expects at least one element; an empty array causes a `TypeError` as there's no accumulator to start with.",
+        "example": "let arr = []; arr.reduce((acc, val) => acc + val); \n// TypeError"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `String.prototype.normalize()` method can change a string’s length when converting between Unicode normalization forms.",
+        "answer": true,
+        "explanation": "`.normalize()` can combine or decompose Unicode characters (e.g., NFC vs. NFD), altering the string’s length based on the normalization form.",
+        "example": "let str = 'é'; console.log(str.normalize('NFC').length, str.normalize('NFD').length); \n// 1, 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Properties inherited via `Object.create()` are included in `for...in` loops if they are enumerable in the prototype.",
+        "answer": true,
+        "explanation": "Enumerable properties in the prototype chain are iterated over by `for...in`, as long as they are marked `enumerable: true`.",
+        "example": "let proto = { a: 1 }; Object.defineProperty(proto, 'a', { enumerable: true }); let obj = Object.create(proto); for (let key in obj) { console.log(key); } // 'a'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `.flatMap()` method is more efficient than chaining `.map()` and `.flat()` for deeply nested arrays.",
+        "answer": true,
+        "explanation": "`.flatMap()` combines mapping and flattening in one pass, reducing overhead compared to separate `.map()` and `.flat()` operations.",
+        "example": "let arr = [1, 2]; console.log(arr.flatMap(x => [x, x * 2])); \n// [1, 2, 2, 4]"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `typeof` operator returns 'number' for both `NaN` and `Infinity`.",
+        "answer": true,
+        "explanation": "In JavaScript, `NaN` and `Infinity` are of type `number`, so `typeof NaN` and `typeof Infinity` return 'number'.",
+        "example": "console.log(typeof NaN, typeof Infinity); \n// 'number', 'number'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`Object.is()` distinguishes between `0` and `-0`, unlike the `===` operator.",
+        "answer": true,
+        "explanation": "`Object.is()` treats `0` and `-0` as distinct values, while `===` considers them equal due to JavaScript’s equality coercion.",
+        "example": "console.log(Object.is(0, -0), 0 === -0); \n// false, true"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `String.prototype.match()` method returns `null` when no matches are found with a regular expression.",
+        "answer": true,
+        "explanation": "`.match()` returns `null` if the regular expression finds no matches, rather than an empty array.",
+        "example": "let str = 'hello'; console.log(str.match(/x/)); \n// null"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `.splice()` method always returns an array, even if no elements are removed.",
+        "answer": true,
+        "explanation": "`.splice()` returns an array of removed elements, which is empty if no elements are removed, never returning `undefined`.",
+        "example": "let arr = [1, 2]; console.log(arr.splice(1, 0, 'a')); \n// []"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`Object.getOwnPropertySymbols()` retrieves `Symbol` properties directly defined on an object.",
+        "answer": true,
+        "explanation": "`Object.getOwnPropertySymbols()` returns an array of `Symbol` keys defined directly on the object, ignoring string-based properties.",
+        "example": "let sym = Symbol('id'); let obj = { [sym]: 1 }; console.log(Object.getOwnPropertySymbols(obj).length); \n// 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Overriding `.toString()` on a `Number` object can cause `.toString()` to return unexpected results.",
+        "answer": true,
+        "explanation": "If `.toString()` is overridden on a `Number` object, it may not return the number’s string representation, leading to custom or unexpected output.",
+        "example": "let num = new Number(42); num.toString = () => 'custom'; console.log(num.toString()); \n// 'custom'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let x; { let x = 1; { x = 2; } console.log(x); } console.log(x);`?",
+        "options": {
+          "1": "2, undefined",
+          "2": "1, undefined",
+          "3": "2, 1",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `let x` in the outer block creates a block-scoped variable. The assignment `x = 2` in the nested block modifies it. Outside, the global `x` is `undefined`.",
+        "example": "let x; { let x = 1; { x = 2; } console.log(x); } console.log(x); \n// 2, undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let str = 'café'; console.log(str.normalize('NFD').length);` return?",
+        "options": {
+          "1": "4",
+          "2": "5",
+          "3": "6",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The string 'café' has 4 characters, but NFD normalization decomposes 'é' into 'e' and an accent, resulting in 5 code units.",
+        "example": "let str = 'café'; console.log(str.normalize('NFD').length); \n// 5"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let obj = Object.create({ a: 1 }, { b: { value: 2, writable: false } }); console.log(obj.b = 3, obj.b);`?",
+        "options": {
+          "1": "3, 2",
+          "2": "2, 2",
+          "3": "3, 3",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The property `b` is non-writable (`writable: false`). Assigning `obj.b = 3` returns 3 but doesn’t change `b`, which remains 2.",
+        "example": "let obj = Object.create({ a: 1 }, { b: { value: 2, writable: false } }); console.log(obj.b = 3, obj.b); \n// 3, 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let num = 0.1 + 0.2; console.log(Math.fround(num) === 0.3);` return?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "`Math.fround()` converts to 32-bit float, but `0.1 + 0.2` yields ~0.30000000000000004, which is not equal to 0.3.",
+        "example": "let num = 0.1 + 0.2; console.log(Math.fround(num) === 0.3); \n// false"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2]; arr.length = 5; arr.fill(0, 2); console.log(arr);`?",
+        "options": {
+          "1": "[1, 2, 0, 0, 0]",
+          "2": "[1, 2, undefined, undefined, undefined]",
+          "3": "[1, 2, 0, undefined, undefined]",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Setting `arr.length = 5` creates empty slots. `.fill(0, 2)` fills indices 2 to 4 with 0, resulting in `[1, 2, 0, 0, 0]`.",
+        "example": "let arr = [1, 2]; arr.length = 5; arr.fill(0, 2); console.log(arr); \n// [1, 2, 0, 0, 0]"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let str = 'hello'; console.log(str.match(/(l+)/g));` return?",
+        "options": {
+          "1": "['ll']",
+          "2": "['l', 'l']",
+          "3": "null",
+          "4": "['ll', 'l']"
+        },
+        "answer": "1",
+        "explanation": "The regex `(l+)/g` captures sequences of one or more 'l's. In 'hello', it matches 'll', returning `['ll']`.",
+        "example": "let str = 'hello'; console.log(str.match(/(l+)/g)); \n// ['ll']"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2, 3]; let result = arr.reduceRight((acc, num) => acc + num, ''); console.log(result);`?",
+        "options": {
+          "1": "'321'",
+          "2": "'123'",
+          "3": "6",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.reduceRight()` processes from right to left, concatenating numbers to the initial string `''`, resulting in '3' + '2' + '1' = '321'.",
+        "example": "let arr = [1, 2, 3]; let result = arr.reduceRight((acc, num) => acc + num, ''); console.log(result); \n// '321'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let obj = Object.create(null); Object.defineProperty(obj, Symbol('id'), { value: 1 }); console.log(Object.getOwnPropertySymbols(obj).length);` return?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "`Object.defineProperty()` adds a `Symbol('id')` property. `Object.getOwnPropertySymbols()` returns an array with that symbol, so the length is 1.",
+        "example": "let obj = Object.create(null); Object.defineProperty(obj, Symbol('id'), { value: 1 }); console.log(Object.getOwnPropertySymbols(obj).length); \n// 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2]; arr[3] = 4; console.log(arr.reduce((acc, num) => acc + num, 0));`?",
+        "options": {
+          "1": "7",
+          "2": "3",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Assigning `arr[3] = 4` creates a sparse array `[1, 2, undefined, 4]`. `.reduce()` skips empty slots, summing 1 + 2 + 4 = 7.",
+        "example": "let arr = [1, 2]; arr[3] = 4; console.log(arr.reduce((acc, num) => acc + num, 0)); \n// 7"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let str = 'hello'; console.log(str.replaceAll('l', () => 'p'));` return?",
+        "options": {
+          "1": "'heppo'",
+          "2": "'helpo'",
+          "3": "'heppop'",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.replaceAll()` replaces all 'l's with the result of the function, which returns 'p', yielding 'heppo'.",
+        "example": "let str = 'hello'; console.log(str.replaceAll('l', () => 'p')); \n// 'heppo'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let num = 1e308; console.log(num * 2);`?",
+        "options": {
+          "1": "Infinity",
+          "2": "2e308",
+          "3": "NaN",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Multiplying `1e308` by 2 exceeds `Number.MAX_VALUE` (~1.797e308), resulting in `Infinity`.",
+        "example": "let num = 1e308; console.log(num * 2); \n// Infinity"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let arr = [1, [2, [3]]]; console.log(arr.flat(Infinity).length);` return?",
+        "options": {
+          "1": "3",
+          "2": "2",
+          "3": "4",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.flat(Infinity)` flattens all nested arrays, resulting in `[1, 2, 3]`, with a length of 3.",
+        "example": "let arr = [1, [2, [3]]]; console.log(arr.flat(Infinity).length); \n// 3"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let obj = { a: 1 }; Object.defineProperty(obj, 'a', { value: 2, configurable: false }); delete obj.a; console.log(obj.a);`?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "Setting `configurable: false` prevents deletion of `a`. The value is updated to 2, and `delete` has no effect, so `obj.a` is 2.",
+        "example": "let obj = { a: 1 }; Object.defineProperty(obj, 'a', { value: 2, configurable: false }); delete obj.a; console.log(obj.a); \n// 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let arr = [1, 2, 3]; console.log(arr.copyWithin(1, 0, 2));` return?",
+        "options": {
+          "1": "[1, 1, 2]",
+          "2": "[1, 2, 3]",
+          "3": "[1, 1, 3]",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.copyWithin(1, 0, 2)` copies elements from indices 0 to 1 to start at index 1, resulting in `[1, 1, 2]`.",
+        "example": "let arr = [1, 2, 3]; console.log(arr.copyWithin(1, 0, 2)); \n// [1, 1, 2]"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let str = 'hello'; console.log(str.codePointAt(0));` return?",
+        "options": {
+          "1": "104",
+          "2": "72",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.codePointAt(0)` returns the Unicode code point of 'h', which is 104.",
+        "example": "let str = 'hello'; console.log(str.codePointAt(0)); \n// 104"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let arr = [1, 2, 3]; console.log(arr.findLast(num => num < 3));` return?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "`.findLast()` returns the last element satisfying `< 3`, which is 2, iterating from right to left.",
+        "example": "let arr = [1, 2, 3]; console.log(arr.findLast(num => num < 3)); \n// 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let num = 123.456; console.log(Number.parseFloat(num.toFixed(2)));`?",
+        "options": {
+          "1": "123.46",
+          "2": "123.45",
+          "3": "123.456",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.toFixed(2)` rounds to '123.46' as a string. `Number.parseFloat()` converts it back to the number 123.46.",
+        "example": "let num = 123.456; console.log(Number.parseFloat(num.toFixed(2))); \n// 123.46"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let obj = { [Symbol.toPrimitive]() { return 42; } }; console.log(+obj);` return?",
+        "options": {
+          "1": "42",
+          "2": "NaN",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `[Symbol.toPrimitive]` method defines the object’s primitive value, returning 42 when the unary `+` operator is applied.",
+        "example": "let obj = { [Symbol.toPrimitive]() { return 42; } }; console.log(+obj); \n// 42"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2, 3]; arr[Symbol.iterator] = null; console.log([...arr]);`?",
+        "options": {
+          "1": "[1, 2, 3]",
+          "2": "[]",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "4",
+        "explanation": "Setting `arr[Symbol.iterator] = null` removes the array’s default iterator, causing a `TypeError` when the spread operator (`...`) is used.",
+        "example": "let arr = [1, 2, 3]; arr[Symbol.iterator] = null; console.log([...arr]); \n// TypeError"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let str = 'hello'; console.log(str.replace(/(l)/g, '$1$1'));` return?",
+        "options": {
+          "1": "'heelloo'",
+          "2": "'hhello'",
+          "3": "'ll'",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The regex `(l)/g` captures each 'l', and `$1$1` replaces each 'l' with two 'l's, resulting in 'heelloo'.",
+        "example": "let str = 'hello'; console.log(str.replace(/(l)/g, '$1$1')); \n// 'heelloo'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2, 3]; console.log(arr.at(-2));`?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The `.at(-2)` method accesses the element at index 1 (length - 2), returning 2.",
+        "example": "let arr = [1, 2, 3]; console.log(arr.at(-2)); \n// 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let obj = { a: 1 }; Object.preventExtensions(obj); obj.b = 2; console.log(obj.b);` return?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "3",
+        "explanation": "`Object.preventExtensions()` prevents adding new properties. Assigning `obj.b = 2` has no effect, and `obj.b` is `undefined`.",
+        "example": "let obj = { a: 1 }; Object.preventExtensions(obj); obj.b = 2; console.log(obj.b); \n// undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let num = 42; console.log(num.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));`?",
+        "options": {
+          "1": "$42.00",
+          "2": "42",
+          "3": "USD 42",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.toLocaleString('en-US', { style: 'currency', currency: 'USD' })` formats the number as US currency, resulting in '$42.00'.",
+        "example": "let num = 42; console.log(num.toLocaleString('en-US', { style: 'currency', currency: 'USD' })); \n// '$42.00'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let arr = [1, 2, 3]; console.log(arr.toSpliced(1, 1, 4));` return?",
+        "options": {
+          "1": "[1, 4, 3]",
+          "2": "[1, 2, 3]",
+          "3": "[2]",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`.toSpliced(1, 1, 4)` is a non-mutating method that returns a new array with the element at index 1 replaced by 4, yielding `[1, 4, 3]`.",
+        "example": "let arr = [1, 2, 3]; console.log(arr.toSpliced(1, 1, 4)); \n// [1, 4, 3]"
+      }
+    ]
+  }
   ]
 };
 
@@ -1420,7 +2044,7 @@
 
             // Check if answer is correct
             const correctAnswer = questionData.answer;
-            const isCorrect = answer == correctAnswer; // Use == to handle string vs boolean comparison
+            const isCorrect = answer == correctAnswer;// Use == to handle string vs boolean comparison
             if (isCorrect) {
                 score++;
                 feedbackResult.textContent = 'Correct!';
