@@ -3,7 +3,7 @@ section covers everything you need to know about objects in JavaScript, includin
 - [What are objects](#what-are-objects)
 - [Object creation methods](#object-creation-methods)
 - [Objects characteristics: property/method creation & access](#objects-characteristics-propertymethod-creation-and-access)
-- [Objects creation delete](#objects-creation-delete)
+- [Objects delete](#objects-delete)
 - [Objects characteristics: memory storage](#objects-characteristics-memory-storage)
 - [Objects characteristics: type](#objects-characteristics-type)
 - [Objects characteristics: nested objects](#objects-characteristics-nested-objects)
@@ -338,6 +338,7 @@ console.log(luizClass.study());//Shows error TypeError: luizClass.study is not a
 **Note:** only the StudentClass inherits the PersonClass properties and methods, and not the other way around. So if any instance of PersonClass tries, for example, to have access to the "``.study()``" from the StudentClass, it will result in an error **``TypeError: luizClass.study is not a function``**, since this method doesn't exist for its scope.
 
 
+
 #### Objects characteristics: property/method creation and access
 In JavaScript, we have two approaches to create or access a property or method of an object:
 - dot notation ``.propertyName``: 
@@ -400,5 +401,239 @@ let funct = object['speakLoud'];
 console.log(funct());//Shows HELLLOOOO!
 ````
 
+#### Objects delete
+After knowing how to create, we also must know how to delete a property from an object. Notice that this is **not often used** because it could lead to unexpected errors, so use the ``delete`` only when you are sure of it. Such occasions could be the **cleaning of an object** to reduce memory or data use/exposure, or **dynamic configurations**.   
+Notice also that the ``delete`` **only** works on the object properties that are **not private property** (declared as ``#``) or private methods, they won't be affected by it. Also, does't work for inherited properties through prototype or extends, only in the objects' direct properties.
+Also, the ``delete`` has an automatic return every time it's called.
+- return ``true``: if the property was **located and removed** or if the **property doesn't exist**, and therefore don't need removal;
+- return ``false``: if the property removal is not permitted.   
 
-#### What are objects
+````javascript
+  let myObj = {
+    name: 'Luiz',
+    age: 29,
+    speak(){return "Hello!";}
+}
+
+console.log(myObj);//Shows {name: 'Luiz', age: 29, speak: ƒ}
+
+delete myObj.name;//Virtually returns true
+delete myObj['age'];//Virtually returns true
+delete myObj['state'];//Virtually returns true, even if the property doesn't exist
+console.log(myObj);//Shows {speak: ƒ}
+
+delete myObj.speak//Delets method
+
+console.log(myObj);//Shows {}
+````
+#### Object characteristics: memory storage
+When created, **objects are stored as a reference** in memory. This means that, different from numbers or strings, when an object is assigned to a variable, its reference is sent, and **not a copy** of it.   
+So every time an object is passed to another variable or structure, the original value is being **accessed thoutght the reference** to the section in memory that store the value, and as expected, **every changed made affect the original value directly**, and therefore, changes are reflected throutght the entire code where that same reference is being used.   
+Let's check an example.   
+````javascript
+let obj = {
+    name: 'Luiz',
+    age: 29
+}
+
+let objCopy = obj;
+objCopy.name = 'Marta';
+
+console.log(obj);//Shows {name: 'Marta', age: 29}
+````
+As shown above, changing the 'objCopy' variable directly impacts direclty in the original variable 'obj' because what was passed was a reference to the original value, and not a copy of it.   
+But what if we need to create a copy in order to preserve the original value? For this situation, we have mainly 3 options:
+- Spreed operator (``...``): it's a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties fromthe  prototype, for example.
+- ``.assign()`` method: it's also a **shallow copy**, meaning that you only consider the direct properties (or, depending on the structure type, also methods) on the first level of the object. Doesn't copy private properties or inherited properties from the prototype, for example.
+- ``JSON.parse(JSON.stringify())``: it's also a **deep copy**, copies all properties including nested objects and arrays, creating an object completely independent of the original.
+
+###### Spreed operator ``...``
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//Copy include the method speak()
+let copy = {...objLiteral};
+console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//Copy1 include the method speak()
+let copy1 = {...objConstructor};
+console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+let objProto = Object.create(proto);
+let copy2 = {...objProto};
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//Copy3 include the method speak()
+let objFactFunc = FactoryFunc();
+let copy3 = {...objFactFunc};
+console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//Copy4 DON'T include any of the methods or private properties
+let objClassSyntax = new ClassSyntax();
+let copy4 = {...objClassSyntax};
+console.log(copy4);//Shows name: 'luiz'}
+````
+###### ``.assign()`` method
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//Copy include the method speak()
+let copy = Object.assign({}, objLiteral);
+console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//Copy1 include the method speak()
+let copy1 = Object.assign({}, objConstructor);
+console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+let objProto = Object.create(proto);
+let copy2 = Object.assign({}, objProto);
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//Copy3 include the method speak()
+let objFactFunc = FactoryFunc();
+let copy3 = Object.assign({}, objFactFunc);
+console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//Copy4 DON'T include any of the methods or private properties
+let objClassSyntax = new ClassSyntax();
+let copy4 = Object.assign({}, objClassSyntax);
+console.log(copy4);//Shows name: 'luiz'}
+````
+###### ``JSON.parse(JSON.stringify())``
+````javascript
+//Using object literal
+let objLiteral = {
+    name: 'object literal',
+    speak(){return "Hello!";}
+}
+
+//Copy include the method speak()
+let copy = JSON.parse(JSON.stringify(objLiteral));
+console.log(copy);//Shows {name: 'object literal', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object Constructor
+let objConstructor = new Object();
+objConstructor.name = 'Object Constructor';
+objConstructor.speak = function speak(){return "Hello!";};
+
+//Copy1 include the method speak()
+let copy1 = JSON.parse(JSON.stringify(objConstructor));
+console.log(copy1);//Shows {name: 'Object Constructor', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Object.create(proto)
+
+let proto = {
+    name: 'Object.create(proto)',
+    speak(){return "Hello!";}
+}
+
+//Copy2 DON'T include any of the inherited properties or methods. Spread don't support prototype copy
+let objProto = Object.create(proto);
+let copy2 = JSON.parse(JSON.stringify(objProto));
+console.log(copy2);//Shows {}
+
+//-----------------------------------------------------------------------------------
+//Using Factory Functions
+function FactoryFunc(){
+    return {
+        name: 'Factory Function',
+        speak(){return "Hello!";}
+    }
+}
+
+//Copy3 include the method speak()
+let objFactFunc = FactoryFunc();
+let copy3 = JSON.parse(JSON.stringify(objFactFunc));
+console.log(copy3);//Shows {name: 'Factory Function', speak: ƒ}
+
+//-----------------------------------------------------------------------------------
+//Using Class Syntax
+
+class ClassSyntax{
+    name = 'luiz';
+    #password = 123;
+    speak(){return "Hello!";}
+}
+
+//Copy4 DON'T include any of the methods or private propeertys
+let objClassSyntax = new ClassSyntax();
+let copy4 = JSON.parse(JSON.stringify(objClassSyntax));
+console.log(copy4);//Shows name: 'luiz'}
+````
+
