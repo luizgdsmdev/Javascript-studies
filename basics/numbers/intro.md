@@ -11,8 +11,6 @@ This section is meant to cover everything we should know about number type varia
 
        
 Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/blob/main/basics/intro.md).  
-- Take a [practical exercise](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/exercises.md) about this content!
-
 
 #### What are numbers
 The **number type** is used to represent **numerical values** with positive or negative charges such as **integers** (3,6,-99), **floating-points** also now as fractional numbers (0.3,-0.9), or **special values** like ``NaN``, ``Infinity``, ``-Infinity``.   

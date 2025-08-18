@@ -17,7 +17,7 @@ This section covers everything you should know about arrays in JavaScript, inclu
 - [Arrays methods: bonus](#arrays-methods-bonus)
 
 
-Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).   
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md). 
 
 
 #### What are arrays

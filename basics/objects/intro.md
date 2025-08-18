@@ -12,6 +12,7 @@ section covers everything you need to know about objects in JavaScript, includin
 - [Objects methods: hasOwnProperty()](#object-methods-hasownproperty)
 - [Objects methods: bonus](#object-methods-bonus)
 
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md). 
 
 #### What are objects
 Objects in JavaScript are an **unordered** structure of **key-pair** values. It means that, in essence, objects don't have a first or last element like, for example, arrays.   

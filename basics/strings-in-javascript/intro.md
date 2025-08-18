@@ -12,7 +12,8 @@ This section is meant to cover everything we should know about string type varia
 - [String methods: replace(searchValue, newValue)](#string-method-replace);
 - [String methods: bonus](#string-method-bonus);
 
-Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md). 
+
 #### What are strings
 Strings are a **fundamental type**, also called ***"primitive type"***, a structure by a sequence of characters used to represent a text. It can contain **zero or more** character represented by the **alphabet** (*a, b, ...Z*), but **also numbers** (*1, -1, 0*) or special **symbols** (*@, #, _*) thanks to UTF-16.  
 In other words, think of strings as a single (when not empty) letter (character), that when in a **sequence** of more letters would form a text (word), that in another sequence would form a phrase, and so on.  

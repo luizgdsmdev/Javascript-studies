@@ -10,7 +10,8 @@ This section covers everything you should know about Boolean type variables in J
 - [Boolean object: new Boolean()](#boolean-object-new-boolean)
 - [Boolean methods and usage](#boolean-methods-and-usage)   
 
-Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).   
+Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md).  
+
 #### What are Booleans
 **Booleans**, in JavaScript, along with [string](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/strings-in-javascript/intro.md) and [numbers](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/numbers/intro.md) are also a **primitive type** and **immutable**.  
 Booleans are the representation of logical values, which can only have **two possible variations**:
