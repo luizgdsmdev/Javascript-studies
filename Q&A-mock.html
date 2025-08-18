@@ -157,6 +157,156 @@
         
         const quizData = {
   "1": [
+      {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "An object created with object literal syntax using `{}` is immediately usable without requiring a constructor.",
+        "answer": true,
+        "explanation": "Object literal syntax `{}` creates an object directly, allowing immediate property and method assignments without a constructor function.",
+        "example": "let obj = { name: 'Luiz' }; console.log(obj.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A `const` object cannot have its properties modified.",
+        "answer": false,
+        "explanation": "A `const` object prevents reassignment of the object reference, but its properties can still be modified as objects are mutable.",
+        "example": "const obj = { name: 'Luiz' }; obj.name = 'Marta'; console.log(obj.name); \n// 'Marta'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "The `new Object()` constructor creates an empty object by default.",
+        "answer": true,
+        "explanation": "The `new Object()` constructor creates an empty object, which can then have properties and methods assigned to it.",
+        "example": "let obj = new Object(); console.log(Object.keys(obj)); \n// []"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Factory Functions return a new object each time they are called.",
+        "answer": true,
+        "explanation": "Factory Functions return a new object with the specified structure every time they are invoked, without relying on `this` or prototypes.",
+        "example": "function createObj() { return { name: 'Luiz' }; } console.log(createObj().name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "The Class Syntax in JavaScript requires a `constructor` method to initialize properties.",
+        "answer": false,
+        "explanation": "While a `constructor` is commonly used in Class Syntax, it is not required; properties can be defined directly in the class body or methods.",
+        "example": "class Person { name = 'Luiz'; } let p = new Person(); console.log(p.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let obj = { name: 'Luiz' }; console.log(obj.name);`?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The object literal `{ name: 'Luiz' }` defines a property `name`, which is accessed using dot notation, returning 'Luiz'.",
+        "example": "let obj = { name: 'Luiz' }; console.log(obj.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does `let obj = new Object(); obj.name = 'Luiz'; console.log(obj.name);` return?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`new Object()` creates an empty object, and assigning `obj.name = 'Luiz'` adds the `name` property, which is then accessed.",
+        "example": "let obj = new Object(); obj.name = 'Luiz'; console.log(obj.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `function createObj() { return { name: 'Luiz' }; } let obj = createObj(); console.log(obj.name);`?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The Factory Function `createObj` returns a new object with a `name` property, which is accessed as `obj.name`.",
+        "example": "function createObj() { return { name: 'Luiz' }; } let obj = createObj(); console.log(obj.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does `class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p.name);` return?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `Person` class constructor sets the `name` property, which is accessed on the instance `p`.",
+        "example": "class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let proto = { greet: () => 'Hi' }; let obj = Object.create(proto); console.log(obj.greet());`?",
+        "options": {
+          "1": "'Hi'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`Object.create(proto)` creates an object with `proto` as its prototype, inheriting the `greet` method, which returns 'Hi'.",
+        "example": "let proto = { greet: () => 'Hi' }; let obj = Object.create(proto); console.log(obj.greet()); \n// 'Hi'"
+      }
+    ]
+  },
     {
       "type": 1,
       "level": "easy",
@@ -579,6 +729,174 @@
     }
   ],
   "2": [
+    {
+  "type": 2,
+  "level": "medium",
+  "question": [
+    {
+      "question": "Which of the following correctly lists all primary methods for creating an object in JavaScript along with an example for each?",
+      "options": {
+        "1": "Object Literal: `let obj = { name: 'Luiz' };`, Object Constructor: `let obj = new Object(); obj.name = 'Luiz';`, Object.create: `let obj = Object.create({ name: 'Luiz' });`, Factory Function: `function createObj() { return { name: 'Luiz' }; }`, Class Syntax: `class Person { constructor(name) { this.name = name; } } let obj = new Person('Luiz');`",
+        "2": "Object Literal: `let obj = [];`, Object Constructor: `let obj = new Object();`, Object.create: `let obj = Object.create(null);`, Factory Function: `function createObj() { return new Object(); }`, Class Syntax: `class Person { name = 'Luiz'; }`",
+        "3": "Object Literal: `let obj = { name: 'Luiz' };`, Object Constructor: `let obj = Object();`, Object.create: `let obj = Object.create({});`, Factory Function: `function createObj() { return { name: 'Luiz' }; }`, Class Syntax: `class Person { constructor() { name: 'Luiz'; } }`",
+        "4": "Object Literal: `let obj = new Object();`, Object Constructor: `let obj = {};`, Object.create: `let obj = Object.create(null); obj.name = 'Luiz';`, Factory Function: `function createObj() { this.name = 'Luiz'; }`, Class Syntax: `class Person { constructor(name) { this.name = name; } }`"
+      },
+      "answer": "1",
+      "explanation": "The primary methods for creating objects in JavaScript are: Object Literal (`{}`), Object Constructor (`new Object()`), Object.create (`Object.create(proto)`), Factory Function (returns an object), and Class Syntax (`class`). Option 1 correctly demonstrates each method with valid syntax and examples, while others contain errors (e.g., incorrect syntax for Object Literal, invalid constructor usage, or missing `this`).",
+      "example": "let obj1 = { name: 'Luiz' }; // Object Literal\nlet obj2 = new Object(); obj2.name = 'Luiz'; // Object Constructor\nlet obj3 = Object.create({ name: 'Luiz' }); // Object.create\nfunction createObj() { return { name: 'Luiz' }; } let obj4 = createObj(); // Factory Function\nclass Person { constructor(name) { this.name = name; } } let obj5 = new Person('Luiz'); // Class Syntax\nconsole.log(obj1.name, obj2.name, obj3.name, obj4.name, obj5.name); \n// 'Luiz', 'Luiz', 'Luiz', 'Luiz', 'Luiz'"
+    }
+  ]
+},
+     {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Properties defined in an object literal are automatically enumerable, making them appear in `for...in` loops.",
+        "answer": true,
+        "explanation": "Object literal properties are enumerable by default, so they are included in `for...in` loops unless explicitly set to `enumerable: false`.",
+        "example": "let obj = { name: 'Luiz' }; for (let key in obj) { console.log(key); } \n// 'name'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A custom constructor function using `this` allows creating multiple objects with shared methods via the prototype.",
+        "answer": true,
+        "explanation": "Constructor functions use `this` to assign properties, and methods added to the constructor’s prototype are shared across instances.",
+        "example": "function Person(name) { this.name = name; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person('Luiz'); console.log(p.greet()); \n// 'Hi'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "`Object.create(null)` creates an object with no prototype, preventing inheritance of `Object.prototype` methods.",
+        "answer": true,
+        "explanation": "`Object.create(null)` creates an object with no prototype, so it does not inherit methods like `toString()` from `Object.prototype`.",
+        "example": "let obj = Object.create(null); console.log(obj.toString); \n// undefined"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Factory Functions can create private variables using closures, unlike Class Syntax.",
+        "answer": true,
+        "explanation": "Factory Functions can encapsulate private data via closures, while Class Syntax exposes properties through `this`, making them public.",
+        "example": "function createObj() { let secret = 'hidden'; return { getSecret: () => secret }; } let obj = createObj(); console.log(obj.getSecret()); \n// 'hidden'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `extends` keyword in Class Syntax allows a subclass to inherit methods from a parent class.",
+        "answer": true,
+        "explanation": "The `extends` keyword enables a subclass to inherit properties and methods from a parent class via the prototype chain.",
+        "example": "class Parent { greet() { return 'Hi'; } } class Child extends Parent {} let c = new Child(); console.log(c.greet()); \n// 'Hi'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function Person(name) { this.name = name; } let p1 = new Person('Luiz'); let p2 = new Person('Marta'); console.log(p1.name, p2.name);`?",
+        "options": {
+          "1": "'Luiz', 'Marta'",
+          "2": "'Marta', 'Luiz'",
+          "3": "undefined, undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The constructor function `Person` assigns the `name` property to each instance, so `p1` and `p2` have their respective names.",
+        "example": "function Person(name) { this.name = name; } let p1 = new Person('Luiz'); let p2 = new Person('Marta'); console.log(p1.name, p2.name); \n// 'Luiz', 'Marta'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `let proto = { greet: () => 'Hi' }; let obj = Object.create(proto); console.log(Object.getPrototypeOf(obj) === proto);` return?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`Object.create(proto)` sets `proto` as the prototype of `obj`, so `Object.getPrototypeOf(obj)` returns `proto`.",
+        "example": "let proto = { greet: () => 'Hi' }; let obj = Object.create(proto); console.log(Object.getPrototypeOf(obj) === proto); \n// true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function createObj() { return { name: 'Luiz', getName: function() { return this.name; } }; } let obj = createObj(); console.log(obj.getName());`?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The Factory Function returns an object with a `getName` method that uses `this` to access the `name` property, returning 'Luiz'.",
+        "example": "function createObj() { return { name: 'Luiz', getName: function() { return this.name; } }; } let obj = createObj(); console.log(obj.getName()); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p instanceof Person);` return?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `instanceof` operator checks if `Person.prototype` is in `p`’s prototype chain, which is true for an instance created with `new Person`.",
+        "example": "class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p instanceof Person); \n// true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let obj = Object.create({ name: 'Luiz' }); obj.name = 'Marta'; console.log(obj.name, Object.getPrototypeOf(obj).name);`?",
+        "options": {
+          "1": "'Marta', 'Luiz'",
+          "2": "'Luiz', 'Marta'",
+          "3": "'Marta', undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Assigning `obj.name = 'Marta'` creates an own property, shadowing the prototype’s `name`. The prototype’s `name` remains 'Luiz'.",
+        "example": "let obj = Object.create({ name: 'Luiz' }); obj.name = 'Marta'; console.log(obj.name, Object.getPrototypeOf(obj).name); \n// 'Marta', 'Luiz'"
+      }
+    ]
+  },
     {
       "type": 1,
       "level": "medium",
@@ -1037,6 +1355,156 @@
     }
   ],
   "3": [
+     {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Modifying a property on an object created with `Object.create()` can affect the prototype if the property is not shadowed.",
+        "answer": true,
+        "explanation": "If a property is not defined as an own property on the object, modifying it updates the prototype’s property, as it’s accessed via the prototype chain.",
+        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); proto.name = 'Marta'; console.log(obj.name); \n// 'Marta'"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Factory Functions create a new copy of methods for each object, leading to higher memory usage compared to Class Syntax.",
+        "answer": true,
+        "explanation": "Factory Functions duplicate methods for each object, while Class Syntax shares methods via the prototype, optimizing memory.",
+        "example": "function createObj() { return { greet: () => 'Hi' }; } let obj1 = createObj(); let obj2 = createObj(); console.log(obj1.greet === obj2.greet); \n// false"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A class constructor that omits `super()` in a subclass causes a `ReferenceError` if `this` is used before calling `super`.",
+        "answer": true,
+        "explanation": "In a subclass, `this` cannot be accessed before calling `super()`, as the parent class must initialize the instance first.",
+        "example": "class Parent {} class Child extends Parent { constructor() { this.name = 'Luiz'; } } let c = new Child(); \n// ReferenceError"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`Object.create()` with a non-enumerable prototype property prevents that property from appearing in `for...in` loops on the derived object.",
+        "answer": true,
+        "explanation": "Non-enumerable properties in the prototype are not iterated over in `for...in` loops, even if accessible via the prototype chain.",
+        "example": "let proto = Object.defineProperty({}, 'name', { value: 'Luiz', enumerable: false }); let obj = Object.create(proto); for (let key in obj) { console.log(key); } \n// no output"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `Object.defineProperty()` on a `new Object()` instance can make a property non-writable, preventing future modifications.",
+        "answer": true,
+        "explanation": "`Object.defineProperty()` can set `writable: false`, making a property immutable unless reconfigured with `configurable: true`.",
+        "example": "let obj = new Object(); Object.defineProperty(obj, 'name', { value: 'Luiz', writable: false }); obj.name = 'Marta'; console.log(obj.name); \n// 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `function Person(name) { this.name = name; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person('Luiz'); delete p.greet; console.log(p.greet());`?",
+        "options": {
+          "1": "'Hi'",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Deleting `p.greet` removes any own `greet` property, but the prototype’s `greet` method is still accessible via the prototype chain.",
+        "example": "function Person(name) { this.name = name; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person('Luiz'); delete p.greet; console.log(p.greet()); \n// 'Hi'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `let proto = { name: 'Luiz' }; let obj = Object.create(proto); Object.defineProperty(obj, 'name', { value: 'Marta', writable: false }); obj.name = 'John'; console.log(obj.name);` return?",
+        "options": {
+          "1": "'Luiz'",
+          "2": "'Marta'",
+          "3": "'John'",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "Defining `name` as non-writable on `obj` creates an own property, shadowing the prototype’s `name`. The assignment `obj.name = 'John'` has no effect.",
+        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); Object.defineProperty(obj, 'name', { value: 'Marta', writable: false }); obj.name = 'John'; console.log(obj.name); \n// 'Marta'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name);`?",
+        "options": {
+          "1": "'Marta', undefined",
+          "2": "'Marta', 'Luiz'",
+          "3": "'Luiz', 'Marta'",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `Child` constructor sets `name` to 'Marta' after calling `super()`. The prototype (Parent instance) has no own `name` property, so it’s `undefined`.",
+        "example": "class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name); \n// 'Marta', undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `function createObj() { let secret = 'hidden'; return { getSecret: () => secret }; } let obj1 = createObj(); let obj2 = createObj(); secret = 'changed'; console.log(obj1.getSecret());` return?",
+        "options": {
+          "1": "'hidden'",
+          "2": "'changed'",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `secret` variable is private to each `createObj` call via closure. Changing `secret` outside does not affect the closure’s value.",
+        "example": "function createObj() { let secret = 'hidden'; return { getSecret: () => secret }; } let obj1 = createObj(); let obj2 = createObj(); secret = 'changed'; console.log(obj1.getSecret()); \n// 'hidden'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let obj = Object.create(null); obj[Symbol('id')] = 1; console.log(Object.getOwnPropertySymbols(obj).length);`?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "Assigning a `Symbol` property to `obj` creates an own property. `Object.getOwnPropertySymbols()` returns an array with one symbol, so the length is 1.",
+        "example": "let obj = Object.create(null); obj[Symbol('id')] = 1; console.log(Object.getOwnPropertySymbols(obj).length); \n// 1"
+      }
+    ]
+  },
     {
       "type": 2,
       "level": "hard",
