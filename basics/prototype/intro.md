@@ -180,7 +180,53 @@ obj.speak();//Shows 'Now it's coming from the 'obj' object.', changed only on ow
 ````
 
 
-###### 
+###### Object Constructor, Class Syntax, and Constructor Function
+```` javascript
+//Creates the object
+class Human{
+  name = 'Luiz';
+  constructor(age){
+    this.age = age;
+  }
+}
+console.log(Human.prototype);//Shows {speak: ƒ}, constructor: class, Humanspeak: ƒ speak(), [[Prototype]]: Object
+
+//Inherit properties and methods from 'Human' class
+let obj = new Human(29);
+console.log(obj);//Shows Human {name: 'Luiz', age: 29}
+console.log(obj.__proto__);//Shows {speak: ƒ}, constructor: class, Humanspeak: ƒ speak(), [[Prototype]]: Object
+
+//Changes only on own level
+obj.name = 'Marta';
+console.log(obj);//Shows Human {name: 'Marta', age: 29}
+console.log(obj.__proto__);//Shows {age: 10, speak: ƒ}, age: 10, constructor: class Human, speak: ƒ speak(), [[Prototype]]: Object
+
+
+//----------------------------------------------------------------------
+//Creating a new method and property for 'Human'
+Human.prototype.speak =  function() {return "It's from Human class.";};
+console.log(Human.prototype.speak());//Shows 'It's from Human class.'
+
+console.log(obj.speak());//Shows 'It's from Human class.', inherited from Human class
+console.log(obj.__proto__);//Shows {speak: ƒ}, speak: ƒ (), constructor: class Human, [[Prototype]]: Object
+
+
+//__proto__ points to the prototype from the class, therefore, it's going to change not only for it's own but for 
+//all existing instances from class Human
+obj.__proto__.speak = function() {return "New source, changed from the 'obj' object.";};
+
+
+console.log(Human.prototype.speak());//Shows 'New source, changed from the 'obj' object.' changed above by '__proto__'
+let obj2 = new Human(30);
+
+console.log(obj2.speak());//Shows 'New source, changed from the 'obj' object.', confirming that prototype was changed
+````
+
+
+
+
+#### Prototype Characteristics: Mutability
+
 
 
 
