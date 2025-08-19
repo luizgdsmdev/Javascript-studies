@@ -1,15 +1,14 @@
 ### Prototype in JavaScriptThis 
-This section covers everything you need to know about Prototype in JavaScript, including their creation, storage, behavior, methods, and more.   
+This section covers everything you need to know about prototypes in JavaScript, including their creation, storage, behavior, methods, and more.   
 - [What is a Prototype](#what-is-a-prototype)
 - [Prototype Characteristics: The Prototype Chain](#prototype-characteristics-the-prototype-chain)
-- [.prototype vs .__proto__](#prototype-vs-__proto__)
+- [.prototype vs .__proto__](#prototype-vs-proto)
 - [Prototype in Object Creation Methods](#prototype-in-object-creation-methods)
 - [Prototype Characteristics: Property/Method Creation & Access](#prototype-characteristics-propertymethod-creation-and-access)
 - [Prototype Characteristics: Mutability](#prototype-characteristics-mutability)
 - [Prototype Characteristics: Memory Storage](#prototype-characteristics-memory-storage)
 - [Prototype Methods: Object.getPrototypeOf() and Object.setPrototypeOf()](#prototype-methods-objectgetprototypeof-and-objectsetprototypeof)
 - [Prototype Methods: Object.prototype Methods](#prototype-methods-objectprototype-methods)
-- [Prototype Methods: Bonus](#prototype-methods-bonus)
 
 Go back to [basics listing](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md). 
 
@@ -21,7 +20,7 @@ Some of the reasons for this approach would be a more concise and non-verbose co
 And some more.
 
 #### Prototype Characteristics: The Prototype Chain
-The **Prototype Chain** works as a road, a chain of events that starts at the object level, **checking for its own properties and methods**. If **not found**, it goes through the **Prototype Chain** by checking the prototype of the object it inherited, and if it doesn't find again, keeps the process until it reaches the ``Object.prototype``, the origin proto for every object in JavaScript, meaning that it reaches the hights level of the search.
+The **Prototype Chain** works as a road, a chain of events that starts at the object level, **checking for its own properties and methods**. If **not found**, it goes through the **Prototype Chain** by checking the prototype of the object it inherited, and if it doesn't find again, keeps the process until it reaches the ``Object.prototype``, the origin proto for every object in JavaScript, meaning that it reaches the highest level of the search.
 - If the property or method is found, the call returns its value;
 - if not found, it keeps checking the nearest proto inherited until the element is found or reaches ``Object.prototype``.
 If the element of the search **was never found**, the return will be ``undefined``, meaning it doesn't exist in the referred **Prototype Chain**.
@@ -86,7 +85,7 @@ console.log(Object.getPrototypeOf(newObj));//Shows { speak: [Function: speak], c
 console.log(newObj.__proto__ === Human.prototype);//Shows true
 console.log(newObj.speak());//Shows "Hello!"
 ````
-Applying this logic, it is right to imagine that, for being an object, **both the class and the constructor function** also inherited. In this case, the prototype chain is directly from ``Function.prototype``, that later points to **Object.prototype**, closing the ``prototype chain``.
+Applying this logic, it is right to imagine that, for being an object, **both the class and the constructor function** also inherit. In this case, the prototype chain is directly from ``Function.prototype``, which later points to **Object.prototype**, closing the ``prototype chain``.
 Let's check it:
 ````javascript
 class ClassSyntax {
@@ -145,7 +144,7 @@ console.log(obj.age);//Shows 29
 console.log(Object.getPrototypeOf(obj) === proto);//Shows true
 ````
 
-#### Prototype Characteristics: Property/Method Creation & Access
+#### Prototype Characteristics: Property/Method Creation and Access
 As shown before, methods and properties can be shared across multiple objects for memory optimization and non-verbose code.   
 Let's check a few ways for creating some:
 
@@ -188,12 +187,12 @@ class Human{
     this.age = age;
   }
 }
-console.log(Human.prototype);//Shows {speak: ƒ}, constructor: class, Humanspeak: ƒ speak(), [[Prototype]]: Object
+console.log(Human.prototype);//Shows {speak: ƒ}, constructor: class Human, speak: ƒ speak(), [[Prototype]]: Object
 
 //Inherit properties and methods from 'Human' class
 let obj = new Human(29);
 console.log(obj);//Shows Human {name: 'Luiz', age: 29}
-console.log(obj.__proto__);//Shows {speak: ƒ}, constructor: class, Humanspeak: ƒ speak(), [[Prototype]]: Object
+console.log(obj.__proto__);//Shows {speak: ƒ}, constructor: class Human, speak: ƒ speak(), [[Prototype]]: Object
 
 //Changes only on own level
 obj.name = 'Marta';
@@ -210,7 +209,7 @@ console.log(obj.speak());//Shows 'It's from Human class.', inherited from Human 
 console.log(obj.__proto__);//Shows {speak: ƒ}, speak: ƒ (), constructor: class Human, [[Prototype]]: Object
 
 
-//__proto__ points to the prototype from the class, therefore, it's going to change not only for it's own but for 
+//__proto__ points to the prototype from the class, therefore, it's going to change not only for itself but for 
 //all existing instances from class Human
 obj.__proto__.speak = function() {return "New source, changed from the 'obj' object.";};
 
@@ -218,7 +217,7 @@ obj.__proto__.speak = function() {return "New source, changed from the 'obj' obj
 console.log(Human.prototype.speak());//Shows 'New source, changed from the 'obj' object.' changed above by '__proto__'
 let obj2 = new Human(30);
 
-console.log(obj2.speak());//Shows 'New source, changed from the 'obj' object.', confirming that prototype was changed
+console.log(obj2.speak());//Shows 'New source, changed from the 'obj' object.', confirming that the prototype was changed
 ````
 
 #### Prototype Characteristics: Mutability
@@ -252,7 +251,7 @@ console.log(instance.speak());//Shows TypeError: instance.speak is not a functio
 instance2.__proto__.speak = function(){return "Hello from instance2!"};
 
 console.log(instance2.name);//Shows 'Marta'
-console.log(instance2.speak());//Shows 'Hello from instance2!!'
+console.log(instance2.speak());//Shows 'Hello from instance2!'
 console.log(instance.speak());//Shows 'Hello from instance2!', because by altering the '__proto__' at 'instance2' we change 
 //the prototype of the Human class, reflecting all instances 
 ````
@@ -310,7 +309,7 @@ console.log(instance.name);//Shows Luiz
 
 Object.setPrototypeOf(instance, proto);
 
-console.log(instance.name);//Shows undefined, because 'proto' prototype overwritten the last one from 'obj' and 'name' no longer exist in
+console.log(instance.name);//Shows undefined, because 'proto' lacks name property
 console.log(instance.speak());//Shows Hello from proto!
 ````
 
@@ -324,15 +323,39 @@ console.log(instance.name);//Shows Luiz
 
 Object.assign(Object.getPrototypeOf(obj), proto);//Adding 'proto' prototype, without removing the last one from 'obj'
 
-console.log(instance.name);//Shows Luiz, property wasn't overwritten by adding the new one
+console.log(instance.name);//Shows Luiz, property wasn't erased by adding the new one
 console.log(instance.speak());//Shows Hello from proto!
 ````
+#### Prototype Methods: Object.prototype Methods
+Objects inheriting from Object.prototype (default for most objects, including object literals) gain access to built-in methods, including:
+- ``hasOwnProperty(prop)``: Checks if a property is an own property, not inherited from the prototype.
+````javascript
+let proto = { name: 'Luiz' };
+let obj = Object.create(proto);
+obj.age = 30;
+console.log(obj.hasOwnProperty('age'));//Shows true
+console.log(obj.hasOwnProperty('name'));//Shows false
+````
 
+- ``toString()``: Returns a string representation, often overridden in custom prototypes.
+````javascript
+function Person() {}
+Person.prototype.toString = function() { return 'Person Object'; };
+let p = new Person();
+console.log(p.toString());//Shows 'Person Object'
+````
 
+- **Dynamic Prototype Extension**: Prototypes can be extended at runtime, affecting all instances.
+````javascript
+function Person() {}
+let p = new Person();
+Person.prototype.newMethod = function() { return 'New'; };
+console.log(p.newMethod());//Shows 'New'
+````
 
-
-
-####
-
-###
-
+- **No-Prototype Objects**: Using ``Object.create(null)`` creates objects without a prototype, useful for clean dictionaries.
+````javascript
+let obj = Object.create(null);
+console.log(Object.getPrototypeOf(obj));//Shows null
+console.log(obj.toString);//Shows undefined
+````
