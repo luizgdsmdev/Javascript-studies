@@ -1,0 +1,818 @@
+{
+  "1": [
+    {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of calling toString() on an object created with Object Literal syntax?",
+        "options": {
+          "1": "[object Object]",
+          "2": "undefined",
+          "3": "Object Literal",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "Objects created with Object Literal syntax inherit from Object.prototype, which provides the toString() method returning '[object Object]' by default.",
+        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.toString()); // '[object Object]'"
+      }
+    ]
+    },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Which method checks if a property is an own property of an object, not inherited from its prototype?",
+        "options": {
+          "1": "Object.getPrototypeOf()",
+          "2": "hasOwnProperty()",
+          "3": "toString()",
+          "4": "Object.setPrototypeOf()"
+        },
+        "answer": "2",
+        "explanation": "hasOwnProperty() is a method on Object.prototype that checks if a property exists directly on the object, not inherited via the prototype chain.",
+        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.hasOwnProperty('name')); // true\nconsole.log(obj.hasOwnProperty('toString')); // false"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the prototype of an object created with new Object()?",
+        "options": {
+          "1": "null",
+          "2": "Object.prototype",
+          "3": "Function.prototype",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "Objects created with new Object() inherit from Object.prototype, which provides methods like toString() and hasOwnProperty().",
+        "example": "let obj = new Object();\nconsole.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does Object.getPrototypeOf() return for an object created with Object.create(null)?",
+        "options": {
+          "1": "Object.prototype",
+          "2": "null",
+          "3": "Function.prototype",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "Object.create(null) creates an object with no prototype, so Object.getPrototypeOf() returns null.",
+        "example": "let obj = Object.create(null);\nconsole.log(Object.getPrototypeOf(obj)); // null"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of accessing a non-existent property on an object created with Object Literal syntax?",
+        "options": {
+          "1": "null",
+          "2": "undefined",
+          "3": "throws an error",
+          "4": "empty string"
+        },
+        "answer": "2",
+        "explanation": "Accessing a non-existent property on an object returns undefined, as the prototype chain is traversed until null is reached.",
+        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.age); // undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Which syntax defines a method on a Constructor Function’s prototype?",
+        "options": {
+          "1": "function Person() { this.greet = () => 'Hi!'; }",
+          "2": "Person.prototype.greet = function() { return 'Hi!'; };",
+          "3": "let obj = new Person(); obj.greet = () => 'Hi!';",
+          "4": "Person.greet = function() { return 'Hi!'; };"
+        },
+        "answer": "2",
+        "explanation": "Person.prototype.greet adds a method to the prototype, shared by all instances. Option 1 adds it to each instance, option 3 to a single instance, and option 4 to the constructor function itself.",
+        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hi!'; };\nlet p = new Person();\nconsole.log(p.greet()); // 'Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the prototype of an instance created with a Class Syntax constructor?",
+        "options": {
+          "1": "Class.prototype",
+          "2": "Object.prototype",
+          "3": "Function.prototype",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "Instances created with Class Syntax inherit from the class’s prototype (e.g., Person.prototype), not directly from Object.prototype or Function.prototype.",
+        "example": "class Person {}\nlet p = new Person();\nconsole.log(Object.getPrototypeOf(p) === Person.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does the following code log: let obj = Object.create({ name: 'Luiz' }); console.log(obj.name);?",
+        "options": {
+          "1": "Luiz",
+          "2": "undefined",
+          "3": "null",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Object.create() sets the specified object as the prototype, so obj.name accesses the inherited name property from the prototype.",
+        "example": "let obj = Object.create({ name: 'Luiz' });\nconsole.log(obj.name); // 'Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of calling hasOwnProperty('toString') on an Object Literal?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "null"
+        },
+        "answer": "2",
+        "explanation": "toString is inherited from Object.prototype, not an own property, so hasOwnProperty('toString') returns false.",
+        "example": "let obj = {};\nconsole.log(obj.hasOwnProperty('toString')); // false"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does the following Factory Function return: function createPerson(name) { return { name }; }?",
+        "options": {
+          "1": "An object with Object.prototype as its prototype",
+          "2": "An object with Function.prototype as its prototype",
+          "3": "An object with no prototype",
+          "4": "A function"
+        },
+        "answer": "1",
+        "explanation": "Factory Functions return objects that inherit from Object.prototype by default unless customized.",
+        "example": "function createPerson(name) { return { name }; }\nlet p = createPerson('Luiz');\nconsole.log(Object.getPrototypeOf(p) === Object.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the prototype of a Constructor Function itself?",
+        "options": {
+          "1": "Object.prototype",
+          "2": "Function.prototype",
+          "3": "null",
+          "4": "Person.prototype"
+        },
+        "answer": "2",
+        "explanation": "Constructor Functions are functions, so they inherit from Function.prototype, which chains to Object.prototype.",
+        "example": "function Person() {}\nconsole.log(Object.getPrototypeOf(Person) === Function.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { greet() { return 'Hi!'; } } let p = new Person(); console.log(p.greet());?",
+        "options": {
+          "1": "Hi!",
+          "2": "undefined",
+          "3": "throws an error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The greet method is defined on Person.prototype and inherited by the instance p, so p.greet() returns 'Hi!'.",
+        "example": "class Person {\n  greet() { return 'Hi!'; }\n}\nlet p = new Person();\nconsole.log(p.greet()); // 'Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of adding a property to Person.prototype and accessing it from an instance?",
+        "options": {
+          "1": "The property is accessible",
+          "2": "The property is undefined",
+          "3": "Throws an error",
+          "4": "The property is null"
+        },
+        "answer": "1",
+        "explanation": "Properties added to Person.prototype are inherited by all instances of Person, making them accessible.",
+        "example": "function Person() {}\nPerson.prototype.role = 'Student';\nlet p = new Person();\nconsole.log(p.role); // 'Student'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does Object.getPrototypeOf({}) return?",
+        "options": {
+          "1": "Object.prototype",
+          "2": "null",
+          "3": "Function.prototype",
+          "4": "undefined"
+        },
+        "answer": "1",
+        "explanation": "Objects created with Object Literal syntax ({}) inherit from Object.prototype.",
+        "example": "let obj = {};\nconsole.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of calling a method defined on a Constructor Function’s prototype?",
+        "options": {
+          "1": "The method executes",
+          "2": "undefined",
+          "3": "Throws an error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "Methods defined on a Constructor Function’s prototype are inherited by instances and can be called.",
+        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hello!'; };\nlet p = new Person();\nconsole.log(p.greet()); // 'Hello!'"
+      }
+    ]
+  }
+    ],
+  "2": [
+    {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: let proto = { name: 'Luiz' }; let obj = Object.create(proto); obj.name = 'Marta'; console.log(obj.name, proto.name);?",
+        "options": {
+          "1": "Marta Luiz",
+          "2": "Luiz Marta",
+          "3": "Marta Marta",
+          "4": "undefined undefined"
+        },
+        "answer": "1",
+        "explanation": "Setting obj.name creates an own property, shadowing the prototype’s name. proto.name remains unchanged.",
+        "example": "let proto = { name: 'Luiz' };\nlet obj = Object.create(proto);\nobj.name = 'Marta';\nconsole.log(obj.name, proto.name); // 'Marta Luiz'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What happens when you modify a Constructor Function’s prototype after creating instances?",
+        "options": {
+          "1": "Only new instances are affected",
+          "2": "All instances are affected",
+          "3": "No instances are affected",
+          "4": "Throws an error"
+        },
+        "answer": "2",
+        "explanation": "Modifying a Constructor Function’s prototype affects all instances that inherit from it, unless shadowed by own properties.",
+        "example": "function Person() {}\nPerson.prototype.role = 'Student';\nlet p = new Person();\nPerson.prototype.role = 'Teacher';\nconsole.log(p.role); // 'Teacher'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Person.prototype.greet = function() { return 'Hello!'; }; let p1 = new Person(); let p2 = new Person(); console.log(p1.greet === p2.greet);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Methods on Person.prototype are shared by all instances, so p1.greet and p2.greet reference the same function.",
+        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hello!'; };\nlet p1 = new Person();\nlet p2 = new Person();\nconsole.log(p1.greet === p2.greet); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: function createPerson() { return { greet: () => 'Hi!' }; } let p1 = createPerson(); let p2 = createPerson(); console.log(p1.greet === p2.greet);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "2",
+        "explanation": "Factory Functions create new objects with separate method instances, so p1.greet and p2.greet are different functions, unlike prototype methods.",
+        "example": "function createPerson() { return { greet: () => 'Hi!' }; }\nlet p1 = createPerson();\nlet p2 = createPerson();\nconsole.log(p1.greet === p2.greet); // false"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does Object.setPrototypeOf(obj, proto) do?",
+        "options": {
+          "1": "Adds proto’s properties to obj",
+          "2": "Sets proto as obj’s prototype",
+          "3": "Copies obj’s properties to proto",
+          "4": "Merges obj and proto"
+        },
+        "answer": "2",
+        "explanation": "Object.setPrototypeOf(obj, proto) changes obj’s prototype to proto, affecting its inheritance chain, though it’s slow and should be used cautiously.",
+        "example": "let obj = {};\nlet proto = { greet: () => 'Hi!' };\nObject.setPrototypeOf(obj, proto);\nconsole.log(obj.greet()); // 'Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: let base = { role: 'User' }; let proto = Object.create(base); proto.greet = () => 'Hi!'; let obj = Object.create(proto); console.log(obj.role, obj.greet());?",
+        "options": {
+          "1": "User Hi!",
+          "2": "undefined Hi!",
+          "3": "User undefined",
+          "4": "undefined undefined"
+        },
+        "answer": "1",
+        "explanation": "obj inherits role from base via proto and greet from proto through the prototype chain.",
+        "example": "let base = { role: 'User' };\nlet proto = Object.create(base);\nproto.greet = () => 'Hi!';\nlet obj = Object.create(proto);\nconsole.log(obj.role, obj.greet()); // 'User Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(Object.getPrototypeOf(p) === Person.prototype);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Instances created with Class Syntax inherit from the class’s prototype, so Object.getPrototypeOf(p) equals Person.prototype.",
+        "example": "class Person { constructor(name) { this.name = name; } }\nlet p = new Person('Luiz');\nconsole.log(Object.getPrototypeOf(p) === Person.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Person.prototype.role = 'Student'; let p = new Person(); p.role = 'Teacher'; console.log(p.role, Person.prototype.role);?",
+        "options": {
+          "1": "Teacher Student",
+          "2": "Student Teacher",
+          "3": "Teacher Teacher",
+          "4": "undefined undefined"
+        },
+        "answer": "1",
+        "explanation": "Setting p.role creates an own property, shadowing the prototype’s role. Person.prototype.role remains unchanged.",
+        "example": "function Person() {}\nPerson.prototype.role = 'Student';\nlet p = new Person();\np.role = 'Teacher';\nconsole.log(p.role, Person.prototype.role); // 'Teacher Student'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the result of modifying a prototype method after instance creation?",
+        "options": {
+          "1": "Only the instance is affected",
+          "2": "All instances are affected",
+          "3": "No instances are affected",
+          "4": "Throws an error"
+        },
+        "answer": "2",
+        "explanation": "Modifying a prototype method affects all instances that inherit it, unless shadowed by an own property.",
+        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hello!'; };\nlet p = new Person();\nPerson.prototype.greet = function() { return 'Hi!'; };\nconsole.log(p.greet()); // 'Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: let obj = { name: 'Luiz' }; let proto = { greet: () => 'Hi!' }; Object.setPrototypeOf(obj, proto); console.log(obj.greet());?",
+        "options": {
+          "1": "Hi!",
+          "2": "undefined",
+          "3": "throws an error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "Object.setPrototypeOf(obj, proto) sets proto as obj’s prototype, allowing obj to inherit the greet method.",
+        "example": "let obj = { name: 'Luiz' };\nlet proto = { greet: () => 'Hi!' };\nObject.setPrototypeOf(obj, proto);\nconsole.log(obj.greet()); // 'Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { greet() { return 'Hello!'; } } let p = new Person(); console.log(Object.getPrototypeOf(Person.prototype) === Object.prototype);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Person.prototype inherits from Object.prototype, so Object.getPrototypeOf(Person.prototype) equals Object.prototype.",
+        "example": "class Person { greet() { return 'Hello!'; } }\nlet p = new Person();\nconsole.log(Object.getPrototypeOf(Person.prototype) === Object.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the difference between .prototype and Object.getPrototypeOf()?",
+        "options": {
+          "1": ".prototype is a property on constructors; Object.getPrototypeOf() retrieves an instance’s prototype",
+          "2": ".prototype retrieves an instance’s prototype; Object.getPrototypeOf() is a constructor property",
+          "3": "Both are identical",
+          "4": ".prototype is deprecated"
+        },
+        "answer": "1",
+        "explanation": ".prototype is a property on constructor functions/classes defining the shared prototype, while Object.getPrototypeOf() retrieves the prototype of an instance.",
+        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hi!'; };\nlet p = new Person();\nconsole.log(Object.getPrototypeOf(p) === Person.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Person.prototype.data = [1, 2]; let p1 = new Person(); let p2 = new Person(); p1.data.push(3); console.log(p2.data);?",
+        "options": {
+          "1": "[1, 2, 3]",
+          "2": "[1, 2]",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Prototype properties are shared by reference, so modifying p1.data affects p2.data since they reference the same array.",
+        "example": "function Person() {}\nPerson.prototype.data = [1, 2];\nlet p1 = new Person();\nlet p2 = new Person();\np1.data.push(3);\nconsole.log(p2.data); // [1, 2, 3]"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: let obj = Object.create(null); obj.name = 'Luiz'; console.log(obj.hasOwnProperty('name'));?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "throws an error",
+          "4": "undefined"
+        },
+        "answer": "3",
+        "explanation": "Objects created with Object.create(null) have no prototype, so hasOwnProperty() is not inherited and calling it throws an error.",
+        "example": "let obj = Object.create(null);\nobj.name = 'Luiz';\ntry { console.log(obj.hasOwnProperty('name')); } catch (e) { console.log('throws an error'); } // throws an error"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Person.prototype.toString = function() { return 'Person'; }; let p = new Person(); console.log(p.toString());?",
+        "options": {
+          "1": "Person",
+          "2": "[object Object]",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Overriding toString on Person.prototype changes the method for all instances, so p.toString() returns 'Person'.",
+        "example": "function Person() {}\nPerson.prototype.toString = function() { return 'Person'; };\nlet p = new Person();\nconsole.log(p.toString()); // 'Person'"
+      }
+    ]
+  }
+  ],
+  "3": [
+    {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Person.prototype.data = [1, 2]; let p1 = new Person(); p1.data = [3, 4]; let p2 = new Person(); console.log(p2.data);?",
+        "options": {
+          "1": "[1, 2]",
+          "2": "[3, 4]",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Setting p1.data creates an own property, shadowing the prototype’s data. p2.data still references the prototype’s [1, 2].",
+        "example": "function Person() {}\nPerson.prototype.data = [1, 2];\nlet p1 = new Person();\np1.data = [3, 4];\nlet p2 = new Person();\nconsole.log(p2.data); // [1, 2]"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { greet() { return 'Hello!'; } } let p = new Person(); let orig = Person.prototype.greet; Person.prototype.greet = () => 'Hi!'; console.log(orig.call(p), p.greet());?",
+        "options": {
+          "1": "Hello! Hi!",
+          "2": "Hi! Hello!",
+          "3": "undefined undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "orig holds the original greet method, which returns 'Hello!' when called with p’s context. The new prototype greet returns 'Hi!'.",
+        "example": "class Person { greet() { return 'Hello!'; } }\nlet p = new Person();\nlet orig = Person.prototype.greet;\nPerson.prototype.greet = () => 'Hi!';\nconsole.log(orig.call(p), p.greet()); // 'Hello! Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: let base = { role: 'User' }; let proto = Object.create(base); let obj = Object.create(proto); Object.setPrototypeOf(obj, { greet: () => 'Hi!' }); console.log(obj.role, obj.greet());?",
+        "options": {
+          "1": "User Hi!",
+          "2": "undefined Hi!",
+          "3": "User undefined",
+          "4": "undefined undefined"
+        },
+        "answer": "2",
+        "explanation": "Object.setPrototypeOf(obj, { greet: () => 'Hi!' }) replaces obj’s prototype, losing access to role from base and adding greet.",
+        "example": "let base = { role: 'User' };\nlet proto = Object.create(base);\nlet obj = Object.create(proto);\nObject.setPrototypeOf(obj, { greet: () => 'Hi!' });\nconsole.log(obj.role, obj.greet()); // 'undefined Hi!'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: let obj = Object.create(null); let id = Symbol('id'); obj[id] = 1; console.log(Object.getOwnPropertySymbols(obj).length);?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "2",
+        "explanation": "Object.create(null) creates an object with no prototype. Adding a Symbol property (id) results in one Symbol property, counted by Object.getOwnPropertySymbols().",
+        "example": "let obj = Object.create(null);\nlet id = Symbol('id');\nobj[id] = 1;\nconsole.log(Object.getOwnPropertySymbols(obj).length); // 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { greet() { return 'Hello!'; } } class Student extends Person { study() { return 'Studying!'; } } let s = new Student(); console.log(Object.getPrototypeOf(Object.getPrototypeOf(s)) === Person.prototype);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Student.prototype inherits from Person.prototype, so the prototype of s’s prototype (Student.prototype) is Person.prototype.",
+        "example": "class Person { greet() { return 'Hello!'; } }\nclass Student extends Person { study() { return 'Studying!'; } }\nlet s = new Student();\nconsole.log(Object.getPrototypeOf(Object.getPrototypeOf(s)) === Person.prototype); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Object.defineProperty(Person.prototype, 'name', { value: 'Luiz', enumerable: false }); let p = new Person(); let keys = []; for (let key in p) { keys.push(key); } console.log(keys, p.name);?",
+        "options": {
+          "1": "[] Luiz",
+          "2": "['name'] Luiz",
+          "3": "[] undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "The name property is non-enumerable, so it’s not included in the for...in loop. It’s still accessible directly as p.name.",
+        "example": "function Person() {}\nObject.defineProperty(Person.prototype, 'name', { value: 'Luiz', enumerable: false });\nlet p = new Person();\nlet keys = [];\nfor (let key in p) { keys.push(key); }\nconsole.log(keys, p.name); // [] Luiz"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person(name) { this.name = name; } function Employee(name, role) { Person.apply(this, [name]); this.role = role; } Employee.prototype = Object.create(Person.prototype); let e = new Employee('Luiz', 'Developer'); console.log(e.greet ? e.greet() : 'undefined');?",
+        "options": {
+          "1": "Hello!",
+          "2": "undefined",
+          "3": "Developer",
+          "4": "throws an error"
+        },
+        "answer": "2",
+        "explanation": "Employee.prototype inherits from Person.prototype, but no greet method is defined, so e.greet is undefined.",
+        "example": "function Person(name) { this.name = name; }\nfunction Employee(name, role) { Person.apply(this, [name]); this.role = role; }\nEmployee.prototype = Object.create(Person.prototype);\nlet e = new Employee('Luiz', 'Developer');\nconsole.log(e.greet ? e.greet() : 'undefined'); // 'undefined'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person() {} Object.defineProperty(Person.prototype, 'data', { value: [1, 2], writable: false }); let p = new Person(); p.data.push(3); console.log(p.data);?",
+        "options": {
+          "1": "[1, 2, 3]",
+          "2": "[1, 2]",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "2",
+        "explanation": "The data property is non-writable, so p.data.push(3) fails silently (or throws in strict mode). p.data remains [1, 2].",
+        "example": "function Person() {}\nObject.defineProperty(Person.prototype, 'data', { value: [1, 2], writable: false });\nlet p = new Person();\np.data.push(3);\nconsole.log(p.data); // [1, 2]"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function createPerson(name) { let obj = { name }; Object.setPrototypeOf(obj, { greet: () => 'Hi!' }); return obj; } let p1 = createPerson('Luiz'); let p2 = createPerson('Marta'); console.log(p1.greet === p2.greet);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "Object.setPrototypeOf() sets the same prototype object for both p1 and p2, so their greet methods are the same.",
+        "example": "function createPerson(name) { let obj = { name }; Object.setPrototypeOf(obj, { greet: () => 'Hi!' }); return obj; }\nlet p1 = createPerson('Luiz');\nlet p2 = createPerson('Marta');\nconsole.log(p1.greet === p2.greet); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person(name) { let secret = 'hidden'; this.getSecret = () => secret; } Person.prototype.getSecret = function() { return this.getSecret(); }; let p = new Person('Luiz'); console.log(p.getSecret(), p.secret);?",
+        "options": {
+          "1": "hidden undefined",
+          "2": "undefined hidden",
+          "3": "hidden hidden",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "The closure in getSecret() accesses the private secret variable. p.secret is undefined as it’s not a property.",
+        "example": "function Person(name) { let secret = 'hidden'; this.getSecret = () => secret; }\nPerson.prototype.getSecret = function() { return this.getSecret(); };\nlet p = new Person('Luiz');\nconsole.log(p.getSecret(), p.secret); // 'hidden undefined'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: let obj = Object.create({ name: 'Luiz' }); Object.defineProperty(obj, 'name', { value: 'Marta', writable: false }); console.log(obj.name); Object.assign(obj, { name: 'John' }); console.log(obj.name);?",
+        "options": {
+          "1": "Marta Marta",
+          "2": "Luiz Marta",
+          "3": "Marta John",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "The own property name is non-writable, so Object.assign() cannot change it. The prototype’s name is shadowed.",
+        "example": "let obj = Object.create({ name: 'Luiz' });\nObject.defineProperty(obj, 'name', { value: 'Marta', writable: false });\nconsole.log(obj.name);\nObject.assign(obj, { name: 'John' });\nconsole.log(obj.name); // 'Marta Marta'"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); delete Person.prototype.constructor; console.log(p instanceof Person);?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "throws an error"
+        },
+        "answer": "1",
+        "explanation": "The instanceof operator checks the prototype chain, not the constructor property, so deleting Person.prototype.constructor doesn’t affect it.",
+        "example": "class Person { constructor(name) { this.name = name; } }\nlet p = new Person('Luiz');\ndelete Person.prototype.constructor;\nconsole.log(p instanceof Person); // true"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: let base = { role: 'User' }; let obj = Object.create(base); Object.preventExtensions(obj); obj.name = 'Luiz'; console.log(obj.name);?",
+        "options": {
+          "1": "Luiz",
+          "2": "undefined",
+          "3": "throws an error",
+          "4": "null"
+        },
+        "answer": "2",
+        "explanation": "Object.preventExtensions(obj) prevents adding new own properties, so obj.name = 'Luiz' fails, and obj.name remains undefined.",
+        "example": "let base = { role: 'User' };\nlet obj = Object.create(base);\nObject.preventExtensions(obj);\nobj.name = 'Luiz';\nconsole.log(obj.name); // undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: class Person { greet() { return 'Hello'; } } let p = new Person(); Object.defineProperty(Person.prototype, 'greet', { value: () => 'Hi', enumerable: false }); let keys = []; for (let key in p) { keys.push(key); } console.log(keys, p.greet());?",
+        "options": {
+          "1": "[] Hi",
+          "2": "['greet'] Hi",
+          "3": "[] Hello",
+          "4": "['greet'] Hello"
+        },
+        "answer": "1",
+        "explanation": "The new greet method is non-enumerable, so it’s not included in the for...in loop. p.greet() calls the new method.",
+        "example": "class Person { greet() { return 'Hello'; } }\nlet p = new Person();\nObject.defineProperty(Person.prototype, 'greet', { value: () => 'Hi', enumerable: false });\nlet keys = [];\nfor (let key in p) { keys.push(key); }\nconsole.log(keys, p.greet()); // [] Hi"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does the following code log: function Person(name) { this.name = name; } Person.prototype = { greet: () => 'Hi!' }; let p = new Person('Luiz'); console.log(p.greet());?",
+        "options": {
+          "1": "Hi!",
+          "2": "undefined",
+          "3": "throws an error",
+          "4": "null"
+        },
+        "answer": "3",
+        "explanation": "Replacing Person.prototype removes the constructor property, causing new Person() to throw an error as the prototype lacks a valid constructor.",
+        "example": "function Person(name) { this.name = name; }\nPerson.prototype = { greet: () => 'Hi!' };\ntry { let p = new Person('Luiz'); console.log(p.greet()); } catch (e) { console.log('throws an error'); } // throws an error"
+      }
+    ]
+  }
+  ]
+}
