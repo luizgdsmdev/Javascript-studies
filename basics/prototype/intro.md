@@ -179,7 +179,6 @@ proto.speak();//Shows 'This is from the 'proto' obj.', wasn't affected by the ch
 obj.speak();//Shows 'Now it's coming from the 'obj' object.', changed only on own level
 ````
 
-
 ###### Object Constructor, Class Syntax, and Constructor Function
 ```` javascript
 //Creates the object
@@ -222,13 +221,118 @@ let obj2 = new Human(30);
 console.log(obj2.speak());//Shows 'New source, changed from the 'obj' object.', confirming that prototype was changed
 ````
 
-
-
-
 #### Prototype Characteristics: Mutability
+Prototypes are mutable, meaning we can add, change, or delete properties and methods at any time during the run time.   
+As shown above, by changing the prototype, we're changing the reference where all instances are based, so the new information/structure is shared for all instances.
+````javascript
+//Creates the object
+class Human{
+  constructor(age){
+    this.age = age;
+  }
+}
+
+Human.prototype.name = 'Luiz';
+Human.prototype.speak = function(){return "Hello!"};
+
+let instance = new Human(29);
+let instance2 = new Human(10);
+console.log(instance.name);//Shows 'Luiz'
+console.log(instance.speak());//Shows 'Hello!'
+console.log(instance2.name);//Shows 'Luiz'
+console.log(instance2.speak());//Shows 'Hello!'
+
+Human.prototype.name = 'Marta';
+delete Human.prototype.speak;
+
+console.log(instance.name);//Shows 'Marta'
+console.log(instance.speak());//Shows TypeError: instance.speak is not a function, because 'speak' no longer exists at this point
+
+//Adding the 'speak' method by changing the prototype through 'instance2'
+instance2.__proto__.speak = function(){return "Hello from instance2!"};
+
+console.log(instance2.name);//Shows 'Marta'
+console.log(instance2.speak());//Shows 'Hello from instance2!!'
+console.log(instance.speak());//Shows 'Hello from instance2!', because by altering the '__proto__' at 'instance2' we change 
+//the prototype of the Human class, reflecting all instances 
+````
+###### Shadowing
+Shadowing at prototype means that, if we change a property or method at our own level of the object, this new value is **only applied to the object itself** and it's not reflected to all instances throughout the prototype chain.   
+````javascript
+function Human(name){
+  this.name = name;
+  this.speak = function(){return "Hello from the Human class!"};
+}
+
+let instance =  new Human('Luiz');
+let instance2 = new Human('Marta');
+
+console.log(instance);//Shows Human {name: 'Luiz', speak: ƒ}
+console.log(instance2);//Shows Human {name: 'Marta', speak: ƒ}
+console.log(instance.speak());//Shows Hello from the Human class!
+console.log(instance2.speak());//Shows Hello from the Human class!
+
+//Shadowing the 'name' property and speak method on instance2
+instance2.name = 'JavaScript';
+instance2.speak = function(){return "This is instance2 speaking!"};
+
+console.log(instance);//Shows Human {name: 'Luiz', speak: ƒ}
+console.log(instance2);//Shows Human {name: 'JavaScript', speak: ƒ}
+console.log(instance.speak());//Shows Hello from the Human class!
+console.log(instance2.speak());//Shows This is instance2 speaking!
+````
+
+
+
+
+
+#### Prototype Characteristics: Memory Storage
+As shown above, the properties and methods from the prototype are shared similarly to an object or array, **through reference**. This approach is more optimized and **requires less memory** and code if compared to objects from literal syntax (``{}``), or Factory functions (returns and new object).   
+The downside of this approach is that, by only passing the reference (when not copied), we must have caution when changing the prototype, to avoid errors and unwanted results mirroring the instances.
+
+
+
+#### Prototype Methods: Object.getPrototypeOf() and Object.setPrototypeOf()
+- ``Object.getPrototypeOf()``: as we saw some examples of its use above, this is a modern alternative for ``__proto__`` also returning the prototype of the own object, including inherited.
+````javascript
+let obj = Object.create({ name: 'Luiz' });
+console.log(Object.getPrototypeOf(obj).name); // 'Luiz'
+````
+
+- ``Object.setPrototypeOf()``: sets a new prototype for an object, though this is discouraged due to performance costs. We could use ``.assign()`` as an alternative to add the new prototype without losing the existing one.
+````javascript
+let obj = Object.create({ name: 'Luiz' });
+let proto = {speak: function(){return "Hello from proto!"}};
+
+let instance = Object.create(obj);
+console.log(instance.name);//Shows Luiz
+//console.log(instance.speak());//Shows TypeError: instance.speak is not a function, because it doesn't exist yet
+
+Object.setPrototypeOf(instance, proto);
+
+console.log(instance.name);//Shows undefined, because 'proto' prototype overwritten the last one from 'obj' and 'name' no longer exist in
+console.log(instance.speak());//Shows Hello from proto!
+````
+
+###### using ``.assign()``
+````javascript
+let obj = Object.create({ name: 'Luiz' });
+let proto = {speak: function(){return "Hello from proto!"}};
+
+let instance = Object.create(obj);
+console.log(instance.name);//Shows Luiz
+
+Object.assign(Object.getPrototypeOf(obj), proto);//Adding 'proto' prototype, without removing the last one from 'obj'
+
+console.log(instance.name);//Shows Luiz, property wasn't overwritten by adding the new one
+console.log(instance.speak());//Shows Hello from proto!
+````
+
 
 
 
 
 ####
+
+###
 
