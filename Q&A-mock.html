@@ -405,7 +405,7 @@
         },
         "answer": "1",
         "explanation": "Objects created with Object Literal syntax inherit from Object.prototype, which provides the toString() method returning '[object Object]' by default.",
-        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.toString()); // '[object Object]'"
+        "example": "let obj = { name: 'Luiz' };console.log(obj.toString()); // '[object Object]'"
       }
     ]
     },
@@ -423,7 +423,7 @@
         },
         "answer": "2",
         "explanation": "hasOwnProperty() is a method on Object.prototype that checks if a property exists directly on the object, not inherited via the prototype chain.",
-        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.hasOwnProperty('name')); // true\nconsole.log(obj.hasOwnProperty('toString')); // false"
+        "example": "let obj = { name: 'Luiz' };console.log(obj.hasOwnProperty('name')); // trueconsole.log(obj.hasOwnProperty('toString')); // false"
       }
     ]
   },
@@ -441,7 +441,7 @@
         },
         "answer": "2",
         "explanation": "Objects created with new Object() inherit from Object.prototype, which provides methods like toString() and hasOwnProperty().",
-        "example": "let obj = new Object();\nconsole.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
+        "example": "let obj = new Object();console.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
       }
     ]
   },
@@ -459,7 +459,7 @@
         },
         "answer": "2",
         "explanation": "Object.create(null) creates an object with no prototype, so Object.getPrototypeOf() returns null.",
-        "example": "let obj = Object.create(null);\nconsole.log(Object.getPrototypeOf(obj)); // null"
+        "example": "let obj = Object.create(null);console.log(Object.getPrototypeOf(obj)); // null"
       }
     ]
   },
@@ -477,7 +477,7 @@
         },
         "answer": "2",
         "explanation": "Accessing a non-existent property on an object returns undefined, as the prototype chain is traversed until null is reached.",
-        "example": "let obj = { name: 'Luiz' };\nconsole.log(obj.age); // undefined"
+        "example": "let obj = { name: 'Luiz' };console.log(obj.age); // undefined"
       }
     ]
   },
@@ -495,7 +495,7 @@
         },
         "answer": "2",
         "explanation": "Person.prototype.greet adds a method to the prototype, shared by all instances. Option 1 adds it to each instance, option 3 to a single instance, and option 4 to the constructor function itself.",
-        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hi!'; };\nlet p = new Person();\nconsole.log(p.greet()); // 'Hi!'"
+        "example": "function Person() {}Person.prototype.greet = function() { return 'Hi!'; };let p = new Person();console.log(p.greet()); // 'Hi!'"
       }
     ]
   },
@@ -513,7 +513,7 @@
         },
         "answer": "1",
         "explanation": "Instances created with Class Syntax inherit from the class’s prototype (e.g., Person.prototype), not directly from Object.prototype or Function.prototype.",
-        "example": "class Person {}\nlet p = new Person();\nconsole.log(Object.getPrototypeOf(p) === Person.prototype); // true"
+        "example": "class Person {}let p = new Person();console.log(Object.getPrototypeOf(p) === Person.prototype); // true"
       }
     ]
   },
@@ -531,7 +531,7 @@
         },
         "answer": "1",
         "explanation": "Object.create() sets the specified object as the prototype, so obj.name accesses the inherited name property from the prototype.",
-        "example": "let obj = Object.create({ name: 'Luiz' });\nconsole.log(obj.name); // 'Luiz'"
+        "example": "let obj = Object.create({ name: 'Luiz' });console.log(obj.name); // 'Luiz'"
       }
     ]
   },
@@ -549,7 +549,7 @@
         },
         "answer": "2",
         "explanation": "toString is inherited from Object.prototype, not an own property, so hasOwnProperty('toString') returns false.",
-        "example": "let obj = {};\nconsole.log(obj.hasOwnProperty('toString')); // false"
+        "example": "let obj = {};console.log(obj.hasOwnProperty('toString')); // false"
       }
     ]
   },
@@ -567,7 +567,7 @@
         },
         "answer": "1",
         "explanation": "Factory Functions return objects that inherit from Object.prototype by default unless customized.",
-        "example": "function createPerson(name) { return { name }; }\nlet p = createPerson('Luiz');\nconsole.log(Object.getPrototypeOf(p) === Object.prototype); // true"
+        "example": "function createPerson(name) { return { name }; }let p = createPerson('Luiz');console.log(Object.getPrototypeOf(p) === Object.prototype); // true"
       }
     ]
   },
@@ -585,7 +585,7 @@
         },
         "answer": "2",
         "explanation": "Constructor Functions are functions, so they inherit from Function.prototype, which chains to Object.prototype.",
-        "example": "function Person() {}\nconsole.log(Object.getPrototypeOf(Person) === Function.prototype); // true"
+        "example": "function Person() {}console.log(Object.getPrototypeOf(Person) === Function.prototype); // true"
       }
     ]
   },
@@ -603,7 +603,7 @@
         },
         "answer": "1",
         "explanation": "The greet method is defined on Person.prototype and inherited by the instance p, so p.greet() returns 'Hi!'.",
-        "example": "class Person {\n  greet() { return 'Hi!'; }\n}\nlet p = new Person();\nconsole.log(p.greet()); // 'Hi!'"
+        "example": "class Person {  greet() { return 'Hi!'; }}let p = new Person();console.log(p.greet()); // 'Hi!'"
       }
     ]
   },
@@ -621,7 +621,7 @@
         },
         "answer": "1",
         "explanation": "Properties added to Person.prototype are inherited by all instances of Person, making them accessible.",
-        "example": "function Person() {}\nPerson.prototype.role = 'Student';\nlet p = new Person();\nconsole.log(p.role); // 'Student'"
+        "example": "function Person() {}Person.prototype.role = 'Student';let p = new Person();console.log(p.role); // 'Student'"
       }
     ]
   },
@@ -639,7 +639,7 @@
         },
         "answer": "1",
         "explanation": "Objects created with Object Literal syntax ({}) inherit from Object.prototype.",
-        "example": "let obj = {};\nconsole.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
+        "example": "let obj = {};console.log(Object.getPrototypeOf(obj) === Object.prototype); // true"
       }
     ]
   },
@@ -657,7 +657,7 @@
         },
         "answer": "1",
         "explanation": "Methods defined on a Constructor Function’s prototype are inherited by instances and can be called.",
-        "example": "function Person() {}\nPerson.prototype.greet = function() { return 'Hello!'; };\nlet p = new Person();\nconsole.log(p.greet()); // 'Hello!'"
+        "example": "function Person() {}Person.prototype.greet = function() { return 'Hello!'; };\nlet p = new Person();\nconsole.log(p.greet()); // 'Hello!'"
       }
     ]
   },
@@ -1456,24 +1456,6 @@
     ]
   },
     {
-      "type": 2,
-      "level": "medium",
-      "question": [
-        {
-          "question": "What is the result of `let arr = [1, 2, 3]; console.log(arr.map(x => x * 2));`?",
-          "options": {
-            "1": "[2, 4, 6]",
-            "2": "[1, 2, 3]",
-            "3": "undefined",
-            "4": "Error"
-          },
-          "answer": "1",
-          "explanation": "The `map()` method creates a new array with the results of the callback function applied to each element, here doubling each value.",
-          "example": "let arr = [1, 2, 3]; console.log(arr.map(x => x * 2)); // [2, 4, 6]"
-        }
-      ]
-    },
-    {
       "type": 1,
       "level": "medium",
       "question": [
@@ -1530,24 +1512,6 @@
           "answer": "2",
           "explanation": "The `||` operator returns the first truthy value; `0` is falsy, so it returns `'hello'`, which is truthy.",
           "example": "console.log(0 || 'hello'); // 'hello'"
-        }
-      ]
-    },
-    {
-      "type": 2,
-      "level": "medium",
-      "question": [
-        {
-          "question": "What is the result of `let arr = [1, 2, 3]; console.log(arr.unshift(0));`?",
-          "options": {
-            "1": "[0, 1, 2, 3]",
-            "2": "4",
-            "3": "[1, 2, 3, 0]",
-            "4": "0"
-          },
-          "answer": "2",
-          "explanation": "The `unshift()` method adds elements to the beginning of an array and returns the new length, which is 4 in this case.",
-          "example": "let arr = [1, 2, 3]; console.log(arr.unshift(0)); console.log(arr); // 4, [0, 1, 2, 3]"
         }
       ]
     },
@@ -1680,24 +1644,6 @@
         "answer": "1",
         "explanation": "The Factory Function returns an object with a `getName` method that uses `this` to access the `name` property, returning 'Luiz'.",
         "example": "function createObj() { return { name: 'Luiz', getName: function() { return this.name; } }; } let obj = createObj(); console.log(obj.getName()); \n// 'Luiz'"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "medium",
-    "question": [
-      {
-        "question": "What does `class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p instanceof Person);` return?",
-        "options": {
-          "1": "true",
-          "2": "false",
-          "3": "undefined",
-          "4": "Error"
-        },
-        "answer": "1",
-        "explanation": "The `instanceof` operator checks if `Person.prototype` is in `p`’s prototype chain, which is true for an instance created with `new Person`.",
-        "example": "class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); console.log(p instanceof Person); \n// true"
       }
     ]
   },
@@ -1901,7 +1847,7 @@
           "question": "The `.at()` method supports negative indices to access elements from the end of an array.",
           "answer": true,
           "explanation": "The `.at()` method, introduced in ES2022, allows negative indices to access elements from the array's end.",
-          "example": "let arr = [1, 2, 3]; \nconsole.log(arr.at(-1)); \n// 3"
+          "example": "let arr = [1, 2, 3]; \nconsole.log(arr.at(-1)); // 3"
         }
       ]
     },
@@ -1913,7 +1859,7 @@
           "question": "The `.forEach()` method always returns a new array with the results of the callback function.",
           "answer": false,
           "explanation": "`.forEach()` executes a callback for each element and returns `undefined`, not a new array.",
-          "example": "let arr = [1, 2]; \nconsole.log(arr.forEach(x => x * 2)); \n// undefined"
+          "example": "let arr = [1, 2]; console.log(arr.forEach(x => x * 2)); // undefined"
         }
       ]
     },
@@ -1925,7 +1871,7 @@
           "question": "The `.unshift()` method adds elements to the beginning of an array and returns the new length.",
           "answer": true,
           "explanation": "`.unshift()` adds elements to the start of an array and returns the new `.length` of the array.",
-          "example": "let arr = [1, 2]; \nconsole.log(arr.unshift(0)); \n// 3"
+          "example": "let arr = [1, 2]; console.log(arr.unshift(0)); // 3"
         }
       ]
     },
@@ -1937,7 +1883,7 @@
           "question": "The `.shift()` method removes the last element of an array.",
           "answer": false,
           "explanation": "`.shift()` removes the first element of an array, not the last (which is done by `.pop()`).",
-          "example": "let arr = [1, 2, 3]; \nconsole.log(arr.shift()); \n// 1"
+          "example": "let arr = [1, 2, 3]; console.log(arr.shift()); // 1"
         }
       ]
     },
@@ -1946,25 +1892,7 @@
       "level": "medium",
       "question": [
         {
-          "question": "What is the result of `let arr = [1, 2, 3]; \nconsole.log(arr.unshift(0));`?",
-          "options": {
-            "1": "[0, 1, 2, 3]",
-            "2": "4",
-            "3": "[1, 2, 3, 0]",
-            "4": "0"
-          },
-          "answer": "2",
-          "explanation": "`.unshift(0)` adds 0 to the beginning of the array and returns the new length, which is 4.",
-          "example": "let arr = [1, 2, 3]; \nconsole.log(arr.unshift(0)); \nconsole.log(arr); \n// 4 [0, 1, 2, 3]"
-        }
-      ]
-    },
-    {
-      "type": 2,
-      "level": "medium",
-      "question": [
-        {
-          "question": "What does `let arr = [1, 2, 3]; \nconsole.log(arr.shift());` return?",
+          "question": "What does `let arr = [1, 2, 3]; console.log(arr.shift());` return?",
           "options": {
             "1": "1",
             "2": "3",
@@ -1973,25 +1901,7 @@
           },
           "answer": "1",
           "explanation": "`.shift()` removes and returns the first element of the array, which is 1.",
-          "example": "let arr = [1, 2, 3]; \nconsole.log(arr.shift()); \nconsole.log(arr); \n// 1 [2, 3]"
-        }
-      ]
-    },
-    {
-      "type": 2,
-      "level": "medium",
-      "question": [
-        {
-          "question": "What is the result of `let arr = [1, 2, 3, 4]; \nconsole.log(arr.slice(-2));`?",
-          "options": {
-            "1": "[1, 2]",
-            "2": "[3, 4]",
-            "3": "[2, 3]",
-            "4": "[4]"
-          },
-          "answer": "2",
-          "explanation": "`.slice(-2)` extracts the last two elements of the array, returning `[3, 4]`.",
-          "example": "let arr = [1, 2, 3, 4]; \nconsole.log(arr.slice(-2)); \n// [3, 4]"
+          "example": "let arr = [1, 2, 3]; console.log(arr.shift()); console.log(arr); // 1 [2, 3]"
         }
       ]
     },
@@ -2003,7 +1913,7 @@
           "question": "The result of `0.1 + 0.2` in JavaScript is exactly `0.3`.",
           "answer": false,
           "explanation": "Due to floating-point precision issues in JavaScript, `0.1 + 0.2` results in `0.30000000000000004`, not exactly `0.3`.",
-          "example": "console.log(0.1 + 0.2); \n// 0.30000000000000004"
+          "example": "console.log(0.1 + 0.2); // 0.30000000000000004"
         }
       ]
     },
@@ -2014,8 +1924,8 @@
         {
           "question": "`Number.isNaN('42')` returns `true`.",
           "answer": false,
-          "explanation": "`Number.isNaN()` only returns `true` for the `NaN` value; \n`'42'` is a string and returns `false`.",
-          "example": "console.log(Number.isNaN('42')); \n// false"
+          "explanation": "`Number.isNaN()` only returns `true` for the `NaN` value; `'42'` is a string and returns `false`.",
+          "example": "console.log(Number.isNaN('42')); // false"
         }
       ]
     },
@@ -2027,7 +1937,7 @@
           "question": "Numbers beyond `Number.MAX_SAFE_INTEGER` may lose precision in JavaScript.",
           "answer": true,
           "explanation": "Numbers larger than `Number.MAX_SAFE_INTEGER` (2^53 - 1) may lose precision due to JavaScript's 64-bit floating-point representation.",
-          "example": "console.log(Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2); \n// true (loss of precision)"
+          "example": "console.log(Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2); // true (loss of precision)"
         }
       ]
     },
@@ -2039,7 +1949,7 @@
           "question": "Performing arithmetic with `undefined` results in `0`.",
           "answer": false,
           "explanation": "Arithmetic operations with `undefined` coerce it to `NaN`, resulting in `NaN`, not `0`.",
-          "example": "console.log(undefined + 1); \n// NaN"
+          "example": "console.log(undefined + 1); // NaN"
         }
       ]
     },
@@ -2051,7 +1961,7 @@
           "question": "The `.toFixed()` method returns a number, not a string.",
           "answer": false,
           "explanation": "`.toFixed()` returns a string representing the number with a specified number of decimal places.",
-          "example": "let num = 3.14159; \nconsole.log(num.toFixed(2)); \nconsole.log(typeof num.toFixed(2)); \n// '3.14' 'string'"
+          "example": "let num = 3.14159; console.log(num.toFixed(2)); console.log(typeof num.toFixed(2)); // '3.14' 'string'"
         }
       ]
     },
@@ -2063,7 +1973,7 @@
           "question": "The expression true && false evaluates to true.",
           "answer": false,
           "explanation": "The `&&` operator returns `false` if any operand is `false`, so `true && false` is `false`.",
-          "example": "console.log(true && false); \n// false"
+          "example": "console.log(true && false); // false"
         }
       ]
     },
@@ -2075,7 +1985,7 @@
           "question": "An empty string ('') is considered a truthy value.",
           "answer": false,
           "explanation": "An empty string is a falsy value in JavaScript, evaluating to `false` in a boolean context.",
-          "example": "console.log(Boolean('')); \n// false"
+          "example": "console.log(Boolean('')); // false"
         }
       ]
     },
@@ -2087,7 +1997,7 @@
           "question": "The Boolean() function and !! operator always produce the same result when converting a value.",
           "answer": true,
           "explanation": "Both `Boolean()` and the double NOT operator (`!!`) convert a value to a boolean, producing identical results.",
-          "example": "let val = 'hello'; \nconsole.log(Boolean(val), !!val); \n// true true"
+          "example": "let val = 'hello'; console.log(Boolean(val), !!val); // true true"
         }
       ]
     },
@@ -2099,7 +2009,7 @@
           "question": "The value null is considered falsy in a Boolean context.",
           "answer": true,
           "explanation": "`null` is a falsy value, evaluating to `false` in a boolean context.",
-          "example": "console.log(Boolean(null)); \n// false"
+          "example": "console.log(Boolean(null)); // false"
         }
       ]
     },
@@ -2111,7 +2021,7 @@
           "question": "Using new Boolean(false) creates a primitive Boolean value.",
           "answer": false,
           "explanation": "`new Boolean(false)` creates a Boolean object, not a primitive boolean value.",
-          "example": "let bool = new Boolean(false); \nconsole.log(typeof bool); \n// 'object'"
+          "example": "let bool = new Boolean(false); console.log(typeof bool); // 'object'"
         }
       ]
     },
@@ -2123,7 +2033,7 @@
           "question": "When concatenating strings, the original string is modified directly in memory.",
           "answer": false,
           "explanation": "Strings are immutable, so concatenation creates a new string without modifying the original.",
-          "example": "let str = 'hello'; \nlet newStr = str + ' world'; \nconsole.log(str); \n// 'hello'"
+          "example": "let str = 'hello'; let newStr = str + ' world'; console.log(str); // 'hello'"
         }
       ]
     },
@@ -2135,7 +2045,7 @@
           "question": "The `.charAt(0)` method returns the same result as using the index `string[0]`.",
           "answer": true,
           "explanation": "Both `.charAt(0)` and `string[0]` return the character at index 0, though `.charAt()` handles out-of-bounds differently.",
-          "example": "let str = 'hello'; \nconsole.log(str.charAt(0), str[0]); \n// 'h' 'h'"
+          "example": "let str = 'hello'; console.log(str.charAt(0), str[0]); // 'h' 'h'"
         }
       ]
     },
@@ -2146,8 +2056,8 @@
         {
           "question": "Accessing a string with a negative index using `string[-1]` returns a valid character.",
           "answer": false,
-          "explanation": "JavaScript strings do not support negative indexing with bracket notation; \nit returns `undefined`.",
-          "example": "let str = 'hello'; \nconsole.log(str[-1]); \n// undefined"
+          "explanation": "JavaScript strings do not support negative indexing with bracket notation; it returns `undefined`.",
+          "example": "let str = 'hello'; console.log(str[-1]); // undefined"
         }
       ]
     },
@@ -2159,7 +2069,7 @@
           "question": "The `.slice()` method can accept negative indices to count from the end of the string.",
           "answer": true,
           "explanation": "`.slice()` supports negative indices, counting from the end of the string to extract a substring.",
-          "example": "let str = 'hello'; \nconsole.log(str.slice(-2)); \n// 'lo'"
+          "example": "let str = 'hello'; console.log(str.slice(-2)); // 'lo'"
         }
       ]
     },
@@ -2171,106 +2081,10 @@
           "question": "The `.substring()` method treats negative indices as 0.",
           "answer": true,
           "explanation": "`.substring()` converts negative indices to 0, treating them as the start of the string.",
-          "example": "let str = 'hello'; \nconsole.log(str.substring(-1, 2)); \n// 'he'"
+          "example": "let str = 'hello'; console.log(str.substring(-1, 2)); // 'he'"
         }
       ]
-    },
-     {
-    "type": 1,
-    "level": "medium",
-    "question": [
-      {
-        "question": "The `.splice()` method can be used to add elements to an array without removing any.",
-        "answer": true,
-        "explanation": "The `.splice()` method can insert elements at a specified index by setting the delete count to 0, without removing any elements.",
-        "example": "let arr = [1, 2]; arr.splice(1, 0, 'a'); console.log(arr); // [1, 'a', 2]"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "level": "medium",
-    "question": [
-      {
-        "question": "The `.at()` method supports negative indices to access elements from the end of an array.",
-        "answer": true,
-        "explanation": "The `.at()` method, introduced in ES2022, allows negative indices to access elements from the end of an array, e.g., `-1` for the last element.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.at(-1)); // 3"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "level": "medium",
-    "question": [
-      {
-        "question": "The `.forEach()` method always returns a new array with the results of the callback function.",
-        "answer": false,
-        "explanation": "The `.forEach()` method executes a callback for each element and returns `undefined`, not a new array.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.forEach(x => x * 2)); console.log(arr); // undefined, [1, 2, 3]"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "level": "medium",
-    "question": [
-      {
-        "question": "The `.unshift()` method adds elements to the beginning of an array and returns the new length.",
-        "answer": true,
-        "explanation": "The `.unshift()` method adds one or more elements to the start of an array and returns the new length of the array.",
-        "example": "let arr = [1, 2]; console.log(arr.unshift(0)); console.log(arr); // 3, [0, 1, 2]"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "level": "medium",
-    "question": [
-      {
-        "question": "The `.shift()` method removes the last element of an array.",
-        "answer": false,
-        "explanation": "The `.shift()` method removes the first element of an array and returns it, shifting all other elements down.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.shift()); console.log(arr); // 1, [2, 3]"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "medium",
-    "question": [
-      {
-        "question": "What does `let arr = [1, 2, 3]; console.log(arr.shift());` return?",
-        "options": {
-          "1": "1",
-          "2": "3",
-          "3": "[2, 3]",
-          "4": "undefined"
-        },
-        "answer": "1",
-        "explanation": "The `.shift()` method removes and returns the first element of the array, which is 1, and the array becomes [2, 3].",
-        "example": "let arr = [1, 2, 3]; console.log(arr.shift()); console.log(arr); // 1, [2, 3]"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "medium",
-    "question": [
-      {
-        "question": "What is the result of `let arr = [1, 2, 3, 4]; console.log(arr.slice(-2));`?",
-        "options": {
-          "1": "[1, 2]",
-          "2": "[3, 4]",
-          "3": "[2, 3]",
-          "4": "[4]"
-        },
-        "answer": "2",
-        "explanation": "The `.slice(-2)` method extracts the last two elements of the array, returning [3, 4], without modifying the original array.",
-        "example": "let arr = [1, 2, 3, 4]; console.log(arr.slice(-2)); console.log(arr); // [3, 4], [1, 2, 3, 4]"
-      }
-    ]
-  }, 
+    }, 
   ],
   "3": [
     {
@@ -2507,24 +2321,6 @@
           }
         ]
       },
-      {
-        "type": 2,
-        "level": "hard",
-        "question": [
-          {
-            "question": "What is the result of `let arr = [1, 2, 3]; console.log(arr.push(4, 5));`?",
-            "options": {
-              "1": "[1, 2, 3, 4, 5]",
-              "2": "5",
-              "3": "[4, 5]",
-              "4": "2"
-            },
-            "answer": "2",
-            "explanation": "The `push()` method adds elements to the end of an array and returns the new length, which is 5.",
-            "example": "let arr = [1, 2, 3]; console.log(arr.push(4, 5)); console.log(arr); // 5, [1, 2, 3, 4, 5]"
-          }
-        ]
-      },
     {
       "type": 2,
       "level": "hard",
@@ -2551,7 +2347,7 @@
         "question": "Modifying a property on an object created with `Object.create()` can affect the prototype if the property is not shadowed.",
         "answer": true,
         "explanation": "If a property is not defined as an own property on the object, modifying it updates the prototype’s property, as it’s accessed via the prototype chain.",
-        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); proto.name = 'Marta'; console.log(obj.name); \n// 'Marta'"
+        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); proto.name = 'Marta'; console.log(obj.name); // 'Marta'"
       }
     ]
   },
@@ -2563,7 +2359,7 @@
         "question": "Factory Functions create a new copy of methods for each object, leading to higher memory usage compared to Class Syntax.",
         "answer": true,
         "explanation": "Factory Functions duplicate methods for each object, while Class Syntax shares methods via the prototype, optimizing memory.",
-        "example": "function createObj() { return { greet: () => 'Hi' }; } let obj1 = createObj(); let obj2 = createObj(); console.log(obj1.greet === obj2.greet); \n// false"
+        "example": "function createObj() { return { greet: () => 'Hi' }; } let obj1 = createObj(); let obj2 = createObj(); console.log(obj1.greet === obj2.greet); // false"
       }
     ]
   },
@@ -2587,7 +2383,7 @@
         "question": "`Object.create()` with a non-enumerable prototype property prevents that property from appearing in `for...in` loops on the derived object.",
         "answer": true,
         "explanation": "Non-enumerable properties in the prototype are not iterated over in `for...in` loops, even if accessible via the prototype chain.",
-        "example": "let proto = Object.defineProperty({}, 'name', { value: 'Luiz', enumerable: false }); let obj = Object.create(proto); for (let key in obj) { console.log(key); } \n// no output"
+        "example": "let proto = Object.defineProperty({}, 'name', { value: 'Luiz', enumerable: false }); let obj = Object.create(proto); for (let key in obj) { console.log(key); } // no output"
       }
     ]
   },
@@ -2599,7 +2395,7 @@
         "question": "Using `Object.defineProperty()` on a `new Object()` instance can make a property non-writable, preventing future modifications.",
         "answer": true,
         "explanation": "`Object.defineProperty()` can set `writable: false`, making a property immutable unless reconfigured with `configurable: true`.",
-        "example": "let obj = new Object(); Object.defineProperty(obj, 'name', { value: 'Luiz', writable: false }); obj.name = 'Marta'; console.log(obj.name); \n// 'Luiz'"
+        "example": "let obj = new Object(); Object.defineProperty(obj, 'name', { value: 'Luiz', writable: false }); obj.name = 'Marta'; console.log(obj.name); // 'Luiz'"
       }
     ]
   },
@@ -2617,7 +2413,7 @@
         },
         "answer": "1",
         "explanation": "Deleting `p.greet` removes any own `greet` property, but the prototype’s `greet` method is still accessible via the prototype chain.",
-        "example": "function Person(name) { this.name = name; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person('Luiz'); delete p.greet; console.log(p.greet()); \n// 'Hi'"
+        "example": "function Person(name) { this.name = name; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person('Luiz'); delete p.greet; console.log(p.greet()); // 'Hi'"
       }
     ]
   },
@@ -2635,7 +2431,7 @@
         },
         "answer": "2",
         "explanation": "Defining `name` as non-writable on `obj` creates an own property, shadowing the prototype’s `name`. The assignment `obj.name = 'John'` has no effect.",
-        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); Object.defineProperty(obj, 'name', { value: 'Marta', writable: false }); obj.name = 'John'; console.log(obj.name); \n// 'Marta'"
+        "example": "let proto = { name: 'Luiz' }; let obj = Object.create(proto); Object.defineProperty(obj, 'name', { value: 'Marta', writable: false }); obj.name = 'John'; console.log(obj.name); // 'Marta'"
       }
     ]
   },
@@ -2653,7 +2449,7 @@
         },
         "answer": "1",
         "explanation": "The `Child` constructor sets `name` to 'Marta' after calling `super()`. The prototype (Parent instance) has no own `name` property, so it’s `undefined`.",
-        "example": "class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name); \n// 'Marta', undefined"
+        "example": "class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name); // 'Marta', undefined"
       }
     ]
   },
@@ -2671,7 +2467,7 @@
         },
         "answer": "1",
         "explanation": "The `secret` variable is private to each `createObj` call via closure. Changing `secret` outside does not affect the closure’s value.",
-        "example": "function createObj() { let secret = 'hidden'; return { getSecret: () => secret }; } let obj1 = createObj(); let obj2 = createObj(); secret = 'changed'; console.log(obj1.getSecret()); \n// 'hidden'"
+        "example": "function createObj() { let secret = 'hidden'; return { getSecret: () => secret }; } let obj1 = createObj(); let obj2 = createObj(); secret = 'changed'; console.log(obj1.getSecret()); // 'hidden'"
       }
     ]
   },
@@ -2776,7 +2572,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: 1 }; \nObject.assign(obj, { b: 2 }); \nconsole.log(obj);`?",
+          "question": "What is the result of `let obj = { a: 1 }; Object.assign(obj, { b: 2 }); console.log(obj);`?",
           "options": {
             "1": "{ a: 1 }",
             "2": "{ b: 2 }",
@@ -2785,7 +2581,7 @@
           },
           "answer": "3",
           "explanation": "`Object.assign()` merges properties from the source object into the target, modifying the target to include both `a` and `b`.",
-          "example": "let obj = { a: 1 }; \nObject.assign(obj, { b: 2 }); \nconsole.log(obj); \n// { a: 1, b: 2 }"
+          "example": "let obj = { a: 1 }; Object.assign(obj, { b: 2 }); console.log(obj); // { a: 1, b: 2 }"
         }
       ]
     },
@@ -2794,7 +2590,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What does `let obj = { a: 1 }; \nObject.freeze(obj); \nobj.a = 2; \nconsole.log(obj.a);` return?",
+          "question": "What does `let obj = { a: 1 }; Object.freeze(obj); obj.a = 2; console.log(obj.a);` return?",
           "options": {
             "1": "1",
             "2": "2",
@@ -2803,7 +2599,7 @@
           },
           "answer": "1",
           "explanation": "`Object.freeze()` makes the object immutable, preventing modifications to existing properties, so `obj.a` remains 1.",
-          "example": "let obj = { a: 1 }; \nObject.freeze(obj); \nobj.a = 2; \nconsole.log(obj.a); \n// 1"
+          "example": "let obj = { a: 1 }; Object.freeze(obj); obj.a = 2; console.log(obj.a); // 1"
         }
       ]
     },
@@ -2812,7 +2608,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: 1 }; \nObject.seal(obj); \nobj.a = 2; \nconsole.log(obj);`?",
+          "question": "What is the result of `let obj = { a: 1 }; Object.seal(obj); obj.a = 2; console.log(obj);`?",
           "options": {
             "1": "{ a: 1 }",
             "2": "{ a: 2 }",
@@ -2821,7 +2617,7 @@
           },
           "answer": "2",
           "explanation": "`Object.seal()` allows modifying existing properties but prevents adding or deleting properties, so `obj.a` is updated to 2.",
-          "example": "let obj = { a: 1 }; \nObject.seal(obj); \nobj.a = 2; \nconsole.log(obj); \n// { a: 2 }"
+          "example": "let obj = { a: 1 }; Object.seal(obj); obj.a = 2; console.log(obj); // { a: 2 }"
         }
       ]
     },
@@ -2830,7 +2626,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What does `let proto = { a: 1 }; \nlet obj = Object.create(proto); \nconsole.log(obj.hasOwnProperty('a'));` return?",
+          "question": "What does `let proto = { a: 1 }; let obj = Object.create(proto); console.log(obj.hasOwnProperty('a'));` return?",
           "options": {
             "1": "true",
             "2": "false",
@@ -2839,7 +2635,7 @@
           },
           "answer": "2",
           "explanation": "`hasOwnProperty()` checks for own properties, not inherited ones. Since `a` is on the prototype, it returns `false`.",
-          "example": "let proto = { a: 1 }; \nlet obj = Object.create(proto); \nconsole.log(obj.hasOwnProperty('a')); \n// false"
+          "example": "let proto = { a: 1 }; let obj = Object.create(proto); console.log(obj.hasOwnProperty('a')); // false"
         }
       ]
     },
@@ -2848,7 +2644,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: 1, b: { c: 2 } }; \nlet copy = JSON.parse(JSON.stringify(obj)); \ncopy.b.c = 3; \nconsole.log(obj.b.c);`?",
+          "question": "What is the result of `let obj = { a: 1, b: { c: 2 } }; let copy = JSON.parse(JSON.stringify(obj)); copy.b.c = 3; console.log(obj.b.c);`?",
           "options": {
             "1": "2",
             "2": "3",
@@ -2857,7 +2653,7 @@
           },
           "answer": "1",
           "explanation": "`JSON.parse(JSON.stringify())` creates a deep copy, so modifying `copy.b.c` does not affect `obj.b.c`.",
-          "example": "let obj = { a: 1, b: { c: 2 } }; \nlet copy = JSON.parse(JSON.stringify(obj)); \ncopy.b.c = 3; \nconsole.log(obj.b.c); \n// 2"
+          "example": "let obj = { a: 1, b: { c: 2 } }; let copy = JSON.parse(JSON.stringify(obj)); copy.b.c = 3; console.log(obj.b.c); // 2"
         }
       ]
     },
@@ -2869,7 +2665,7 @@
           "question": "The `JSON.parse(JSON.stringify())` method can copy methods of an object.",
           "answer": false,
           "explanation": "`JSON.stringify()` does not serialize functions, so methods are excluded in the deep copy created by `JSON.parse(JSON.stringify())`.",
-          "example": "let obj = { a: 1, f: () => 'hi' }; \nlet copy = JSON.parse(JSON.stringify(obj)); \nconsole.log(copy.f); \n// undefined"
+          "example": "let obj = { a: 1, f: () => 'hi' }; let copy = JSON.parse(JSON.stringify(obj)); console.log(copy.f); // undefined"
         }
       ]
     },
@@ -2881,7 +2677,7 @@
           "question": "The `Object.getOwnPropertyNames()` method returns both enumerable and non-enumerable own properties.",
           "answer": true,
           "explanation": "`Object.getOwnPropertyNames()` returns all own property names, including non-enumerable ones, unlike `Object.keys()`.",
-          "example": "let obj = { a: 1 }; \nObject.defineProperty(obj, 'b', { value: 2, enumerable: false }); \nconsole.log(Object.getOwnPropertyNames(obj)); \n// ['a', 'b']"
+          "example": "let obj = { a: 1 }; Object.defineProperty(obj, 'b', { value: 2, enumerable: false }); console.log(Object.getOwnPropertyNames(obj)); // ['a', 'b']"
         }
       ]
     },
@@ -2890,7 +2686,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: 1 }; \nObject.defineProperty(obj, 'b', { value: 2, enumerable: false }); \nconsole.log(Object.keys(obj));`?",
+          "question": "What is the result of `let obj = { a: 1 }; Object.defineProperty(obj, 'b', { value: 2, enumerable: false }); console.log(Object.keys(obj));`?",
           "options": {
             "1": "['a', 'b']",
             "2": "['a']",
@@ -2899,7 +2695,7 @@
           },
           "answer": "2",
           "explanation": "`Object.keys()` returns only enumerable own properties, so `b` (non-enumerable) is excluded.",
-          "example": "let obj = { a: 1 }; \nObject.defineProperty(obj, 'b', { value: 2, enumerable: false }); \nconsole.log(Object.keys(obj)); \n// ['a']"
+          "example": "let obj = { a: 1 }; Object.defineProperty(obj, 'b', { value: 2, enumerable: false }); console.log(Object.keys(obj)); // ['a']"
         }
       ]
     },
@@ -2908,7 +2704,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What does `let entries = [['x', 10], ['y', 20]]; \nconsole.log(Object.fromEntries(entries));` return?",
+          "question": "What does `let entries = [['x', 10], ['y', 20]]; console.log(Object.fromEntries(entries));` return?",
           "options": {
             "1": "{ x: 10, y: 20 }",
             "2": "[['x', 10], ['y', 20]]",
@@ -2917,7 +2713,7 @@
           },
           "answer": "1",
           "explanation": "`Object.fromEntries()` transforms an array of key-value pairs into an object, creating `{ x: 10, y: 20 }`.",
-          "example": "let entries = [['x', 10], ['y', 20]]; \nconsole.log(Object.fromEntries(entries)); \n// { x: 10, y: 20 }"
+          "example": "let entries = [['x', 10], ['y', 20]]; console.log(Object.fromEntries(entries)); // { x: 10, y: 20 }"
         }
       ]
     },
@@ -2926,7 +2722,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let objA = { a: 1 }; \nlet objB = objA; \nobjB.a = 2; \nconsole.log(objA.a);`?",
+          "question": "What is the result of `let objA = { a: 1 }; let objB = objA; objB.a = 2; console.log(objA.a);`?",
           "options": {
             "1": "1",
             "2": "2",
@@ -2935,7 +2731,7 @@
           },
           "answer": "2",
           "explanation": "Since `objB` is a reference to `objA`, modifying `objB.a` changes `objA.a` as they point to the same object.",
-          "example": "let objA = { a: 1 }; \nlet objB = objA; \nobjB.a = 2; \nconsole.log(objA.a); \n// 2"
+          "example": "let objA = { a: 1 }; let objB = objA; objB.a = 2; console.log(objA.a); // 2"
         }
       ]
     },
@@ -2944,7 +2740,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What does `let obj = { a: 1, b: 2 }; \nconsole.log(Object.entries(obj));` return?",
+          "question": "What does `let obj = { a: 1, b: 2 }; console.log(Object.entries(obj));` return?",
           "options": {
             "1": "[['a', 1], ['b', 2]]",
             "2": "['a', 'b']",
@@ -2953,7 +2749,7 @@
           },
           "answer": "1",
           "explanation": "`Object.entries()` returns an array of arrays, each containing a key-value pair of the object's enumerable properties.",
-          "example": "let obj = { a: 1, b: 2 }; \nconsole.log(Object.entries(obj)); \n// [['a', 1], ['b', 2]]"
+          "example": "let obj = { a: 1, b: 2 }; console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]"
         }
       ]
     },
@@ -2965,7 +2761,7 @@
           "question": "The `Object.defineProperty()` method can make a property non-writable.",
           "answer": true,
           "explanation": "`Object.defineProperty()` can set a property's `writable` attribute to `false`, preventing value changes.",
-          "example": "let obj = {}; \nObject.defineProperty(obj, 'a', { value: 1, writable: false }); \nobj.a = 2; \nconsole.log(obj.a); \n// 1"
+          "example": "let obj = {}; Object.defineProperty(obj, 'a', { value: 1, writable: false }); obj.a = 2; console.log(obj.a); // 1"
         }
       ]
     },
@@ -2974,7 +2770,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: NaN }; \nconsole.log(Object.is(obj.a, NaN));`?",
+          "question": "What is the result of `let obj = { a: NaN }; console.log(Object.is(obj.a, NaN));`?",
           "options": {
             "1": "true",
             "2": "false",
@@ -2983,7 +2779,7 @@
           },
           "answer": "1",
           "explanation": "`Object.is()` performs strict equality, correctly identifying `NaN` as equal to itself, unlike `===`.",
-          "example": "let obj = { a: NaN }; \nconsole.log(Object.is(obj.a, NaN)); \n// true"
+          "example": "let obj = { a: NaN }; console.log(Object.is(obj.a, NaN)); // true"
         }
       ]
     },
@@ -2992,7 +2788,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What does `let obj = { name: 'Luiz', details: { age: 29 } }; \nlet copy = { ...obj }; \ncopy.details.age = 30; \nconsole.log(obj.details.age);` return?",
+          "question": "What does `let obj = { name: 'Luiz', details: { age: 29 } }; let copy = { ...obj }; copy.details.age = 30; console.log(obj.details.age);` return?",
           "options": {
             "1": "29",
             "2": "30",
@@ -3001,7 +2797,7 @@
           },
           "answer": "2",
           "explanation": "The spread operator creates a shallow copy, so `details` is still a reference to the same nested object, and modifying `copy.details.age` affects `obj.details.age`.",
-          "example": "let obj = { name: 'Luiz', details: { age: 29 } }; \nlet copy = { ...obj }; \ncopy.details.age = 30; \nconsole.log(obj.details.age); \n// 30"
+          "example": "let obj = { name: 'Luiz', details: { age: 29 } }; let copy = { ...obj }; copy.details.age = 30; console.log(obj.details.age); // 30"
         }
       ]
     },
@@ -3019,7 +2815,7 @@
           },
           "answer": "2",
           "explanation": "`Number.isSafeInteger()` returns `false` for numbers beyond `Number.MAX_SAFE_INTEGER` (2^53 - 1), as 9007199254740992 exceeds this limit and may lose precision.",
-          "example": "console.log(Number.isSafeInteger(9007199254740992)); \n// false"
+          "example": "console.log(Number.isSafeInteger(9007199254740992)); // false"
         }
       ]
     },
@@ -3028,7 +2824,7 @@
       "level": "hard",
       "question": [
         {
-          "question": "What is the result of `let obj = { a: null }; \nconsole.log(obj.a === null);`?",
+          "question": "What is the result of `let obj = { a: null }; console.log(obj.a === null);`?",
           "options": {
             "1": "true",
             "2": "false",
@@ -3037,7 +2833,7 @@
           },
           "answer": "1",
           "explanation": "The `===` operator checks for strict equality in both value and type. Since `obj.a` is explicitly `null`, `obj.a === null` returns `true`.",
-          "example": "let obj = { a: null }; \nconsole.log(obj.a === null); \n// true"
+          "example": "let obj = { a: null }; console.log(obj.a === null); // true"
         }
       ]
     },
@@ -3061,7 +2857,7 @@
         "question": "Redeclaring a `const` variable in a nested block scope does not throw a syntax error.",
         "answer": true,
         "explanation": "A `const` variable can be redeclared in a nested block scope because it creates a new binding in a different scope, adhering to block scoping rules.",
-        "example": "const x = 1; { const x = 2; console.log(x); } console.log(x); \n// 2, 1"
+        "example": "const x = 1; { const x = 2; console.log(x); } console.log(x); // 2, 1"
       }
     ]
   },
@@ -3073,7 +2869,7 @@
         "question": "The `String.prototype.slice()` method handles negative indices differently than `substring()`, counting from the end of the string.",
         "answer": true,
         "explanation": "`slice()` interprets negative indices as counting from the string's end, while `substring()` treats them as 0, leading to different substring extractions.",
-        "example": "let str = 'hello'; console.log(str.slice(-2), str.substring(-2)); \n// 'lo', 'hello'"
+        "example": "let str = 'hello'; console.log(str.slice(-2), str.substring(-2)); // 'lo', 'hello'"
       }
     ]
   },
@@ -3097,7 +2893,7 @@
         "question": "Calling `.toPrecision()` with an argument less than 1 or greater than 100 throws a `RangeError`.",
         "answer": true,
         "explanation": "The `.toPrecision()` method requires its precision argument to be between 1 and 100; values outside this range cause a `RangeError`.",
-        "example": "let num = 123.456; console.log(num.toPrecision(101)); \n// RangeError"
+        "example": "let num = 123.456; console.log(num.toPrecision(101)); // RangeError"
       }
     ]
   },
@@ -3109,7 +2905,7 @@
         "question": "Converting a string to a boolean with `Boolean()` treats an empty string as falsy and a whitespace string as truthy.",
         "answer": true,
         "explanation": "An empty string (`''`) is falsy, while any non-empty string, including whitespace (`' '`), is truthy when converted with `Boolean()`.",
-        "example": "console.log(Boolean(''), Boolean(' ')); \n// false, true"
+        "example": "console.log(Boolean(''), Boolean(' ')); // false, true"
       }
     ]
   },
@@ -3121,7 +2917,7 @@
         "question": "Calling `.reduce()` on an empty array without an initial value throws a `TypeError`.",
         "answer": true,
         "explanation": "Without an initial value, `.reduce()` expects at least one element; an empty array causes a `TypeError` as there's no accumulator to start with.",
-        "example": "let arr = []; arr.reduce((acc, val) => acc + val); \n// TypeError"
+        "example": "let arr = []; arr.reduce((acc, val) => acc + val); // TypeError"
       }
     ]
   },
@@ -3133,7 +2929,7 @@
         "question": "The `String.prototype.normalize()` method can change a string’s length when converting between Unicode normalization forms.",
         "answer": true,
         "explanation": "`.normalize()` can combine or decompose Unicode characters (e.g., NFC vs. NFD), altering the string’s length based on the normalization form.",
-        "example": "let str = 'é'; console.log(str.normalize('NFC').length, str.normalize('NFD').length); \n// 1, 2"
+        "example": "let str = 'é'; console.log(str.normalize('NFC').length, str.normalize('NFD').length); // 1, 2"
       }
     ]
   },
@@ -3157,7 +2953,7 @@
         "question": "The `.flatMap()` method is more efficient than chaining `.map()` and `.flat()` for deeply nested arrays.",
         "answer": true,
         "explanation": "`.flatMap()` combines mapping and flattening in one pass, reducing overhead compared to separate `.map()` and `.flat()` operations.",
-        "example": "let arr = [1, 2]; console.log(arr.flatMap(x => [x, x * 2])); \n// [1, 2, 2, 4]"
+        "example": "let arr = [1, 2]; console.log(arr.flatMap(x => [x, x * 2])); // [1, 2, 2, 4]"
       }
     ]
   },
@@ -3169,7 +2965,7 @@
         "question": "The `typeof` operator returns 'number' for both `NaN` and `Infinity`.",
         "answer": true,
         "explanation": "In JavaScript, `NaN` and `Infinity` are of type `number`, so `typeof NaN` and `typeof Infinity` return 'number'.",
-        "example": "console.log(typeof NaN, typeof Infinity); \n// 'number', 'number'"
+        "example": "console.log(typeof NaN, typeof Infinity); // 'number', 'number'"
       }
     ]
   },
@@ -3181,7 +2977,7 @@
         "question": "`Object.is()` distinguishes between `0` and `-0`, unlike the `===` operator.",
         "answer": true,
         "explanation": "`Object.is()` treats `0` and `-0` as distinct values, while `===` considers them equal due to JavaScript’s equality coercion.",
-        "example": "console.log(Object.is(0, -0), 0 === -0); \n// false, true"
+        "example": "console.log(Object.is(0, -0), 0 === -0); // false, true"
       }
     ]
   },
@@ -3193,7 +2989,7 @@
         "question": "The `String.prototype.match()` method returns `null` when no matches are found with a regular expression.",
         "answer": true,
         "explanation": "`.match()` returns `null` if the regular expression finds no matches, rather than an empty array.",
-        "example": "let str = 'hello'; console.log(str.match(/x/)); \n// null"
+        "example": "let str = 'hello'; console.log(str.match(/x/)); // null"
       }
     ]
   },
@@ -3205,7 +3001,7 @@
         "question": "The `.splice()` method always returns an array, even if no elements are removed.",
         "answer": true,
         "explanation": "`.splice()` returns an array of removed elements, which is empty if no elements are removed, never returning `undefined`.",
-        "example": "let arr = [1, 2]; console.log(arr.splice(1, 0, 'a')); \n// []"
+        "example": "let arr = [1, 2]; console.log(arr.splice(1, 0, 'a')); // []"
       }
     ]
   },
@@ -3217,7 +3013,7 @@
         "question": "`Object.getOwnPropertySymbols()` retrieves `Symbol` properties directly defined on an object.",
         "answer": true,
         "explanation": "`Object.getOwnPropertySymbols()` returns an array of `Symbol` keys defined directly on the object, ignoring string-based properties.",
-        "example": "let sym = Symbol('id'); let obj = { [sym]: 1 }; console.log(Object.getOwnPropertySymbols(obj).length); \n// 1"
+        "example": "let sym = Symbol('id'); let obj = { [sym]: 1 }; console.log(Object.getOwnPropertySymbols(obj).length); // 1"
       }
     ]
   },
@@ -3229,7 +3025,7 @@
         "question": "Overriding `.toString()` on a `Number` object can cause `.toString()` to return unexpected results.",
         "answer": true,
         "explanation": "If `.toString()` is overridden on a `Number` object, it may not return the number’s string representation, leading to custom or unexpected output.",
-        "example": "let num = new Number(42); num.toString = () => 'custom'; console.log(num.toString()); \n// 'custom'"
+        "example": "let num = new Number(42); num.toString = () => 'custom'; console.log(num.toString()); // 'custom'"
       }
     ]
   },
@@ -3247,7 +3043,7 @@
         },
         "answer": "1",
         "explanation": "The `let x` in the outer block creates a block-scoped variable. The assignment `x = 2` in the nested block modifies it. Outside, the global `x` is `undefined`.",
-        "example": "let x; { let x = 1; { x = 2; } console.log(x); } console.log(x); \n// 2, undefined"
+        "example": "let x; { let x = 1; { x = 2; } console.log(x); } console.log(x); // 2, undefined"
       }
     ]
   },
@@ -3265,7 +3061,7 @@
         },
         "answer": "2",
         "explanation": "The string 'café' has 4 characters, but NFD normalization decomposes 'é' into 'e' and an accent, resulting in 5 code units.",
-        "example": "let str = 'café'; console.log(str.normalize('NFD').length); \n// 5"
+        "example": "let str = 'café'; console.log(str.normalize('NFD').length); // 5"
       }
     ]
   },
@@ -3283,7 +3079,7 @@
         },
         "answer": "1",
         "explanation": "The property `b` is non-writable (`writable: false`). Assigning `obj.b = 3` returns 3 but doesn’t change `b`, which remains 2.",
-        "example": "let obj = Object.create({ a: 1 }, { b: { value: 2, writable: false } }); console.log(obj.b = 3, obj.b); \n// 3, 2"
+        "example": "let obj = Object.create({ a: 1 }, { b: { value: 2, writable: false } }); console.log(obj.b = 3, obj.b); // 3, 2"
       }
     ]
   },
@@ -3301,7 +3097,7 @@
         },
         "answer": "2",
         "explanation": "`Math.fround()` converts to 32-bit float, but `0.1 + 0.2` yields ~0.30000000000000004, which is not equal to 0.3.",
-        "example": "let num = 0.1 + 0.2; console.log(Math.fround(num) === 0.3); \n// false"
+        "example": "let num = 0.1 + 0.2; console.log(Math.fround(num) === 0.3); // false"
       }
     ]
   },
@@ -3319,7 +3115,7 @@
         },
         "answer": "1",
         "explanation": "Setting `arr.length = 5` creates empty slots. `.fill(0, 2)` fills indices 2 to 4 with 0, resulting in `[1, 2, 0, 0, 0]`.",
-        "example": "let arr = [1, 2]; arr.length = 5; arr.fill(0, 2); console.log(arr); \n// [1, 2, 0, 0, 0]"
+        "example": "let arr = [1, 2]; arr.length = 5; arr.fill(0, 2); console.log(arr); // [1, 2, 0, 0, 0]"
       }
     ]
   },
@@ -3337,7 +3133,7 @@
         },
         "answer": "1",
         "explanation": "The regex `(l+)/g` captures sequences of one or more 'l's. In 'hello', it matches 'll', returning `['ll']`.",
-        "example": "let str = 'hello'; console.log(str.match(/(l+)/g)); \n// ['ll']"
+        "example": "let str = 'hello'; console.log(str.match(/(l+)/g)); // ['ll']"
       }
     ]
   },
@@ -3355,7 +3151,7 @@
         },
         "answer": "1",
         "explanation": "`.reduceRight()` processes from right to left, concatenating numbers to the initial string `''`, resulting in '3' + '2' + '1' = '321'.",
-        "example": "let arr = [1, 2, 3]; let result = arr.reduceRight((acc, num) => acc + num, ''); console.log(result); \n// '321'"
+        "example": "let arr = [1, 2, 3]; let result = arr.reduceRight((acc, num) => acc + num, ''); console.log(result); // '321'"
       }
     ]
   },
@@ -3373,7 +3169,7 @@
         },
         "answer": "2",
         "explanation": "`Object.defineProperty()` adds a `Symbol('id')` property. `Object.getOwnPropertySymbols()` returns an array with that symbol, so the length is 1.",
-        "example": "let obj = Object.create(null); Object.defineProperty(obj, Symbol('id'), { value: 1 }); console.log(Object.getOwnPropertySymbols(obj).length); \n// 1"
+        "example": "let obj = Object.create(null); Object.defineProperty(obj, Symbol('id'), { value: 1 }); console.log(Object.getOwnPropertySymbols(obj).length); // 1"
       }
     ]
   },
@@ -3391,7 +3187,7 @@
         },
         "answer": "1",
         "explanation": "Assigning `arr[3] = 4` creates a sparse array `[1, 2, undefined, 4]`. `.reduce()` skips empty slots, summing 1 + 2 + 4 = 7.",
-        "example": "let arr = [1, 2]; arr[3] = 4; console.log(arr.reduce((acc, num) => acc + num, 0)); \n// 7"
+        "example": "let arr = [1, 2]; arr[3] = 4; console.log(arr.reduce((acc, num) => acc + num, 0)); // 7"
       }
     ]
   },
@@ -3409,7 +3205,7 @@
         },
         "answer": "1",
         "explanation": "`.replaceAll()` replaces all 'l's with the result of the function, which returns 'p', yielding 'heppo'.",
-        "example": "let str = 'hello'; console.log(str.replaceAll('l', () => 'p')); \n// 'heppo'"
+        "example": "let str = 'hello'; console.log(str.replaceAll('l', () => 'p')); // 'heppo'"
       }
     ]
   },
@@ -3427,7 +3223,7 @@
         },
         "answer": "1",
         "explanation": "Multiplying `1e308` by 2 exceeds `Number.MAX_VALUE` (~1.797e308), resulting in `Infinity`.",
-        "example": "let num = 1e308; console.log(num * 2); \n// Infinity"
+        "example": "let num = 1e308; console.log(num * 2); // Infinity"
       }
     ]
   },
@@ -3445,7 +3241,7 @@
         },
         "answer": "1",
         "explanation": "`.flat(Infinity)` flattens all nested arrays, resulting in `[1, 2, 3]`, with a length of 3.",
-        "example": "let arr = [1, [2, [3]]]; console.log(arr.flat(Infinity).length); \n// 3"
+        "example": "let arr = [1, [2, [3]]]; console.log(arr.flat(Infinity).length); // 3"
       }
     ]
   },
@@ -3463,7 +3259,7 @@
         },
         "answer": "2",
         "explanation": "Setting `configurable: false` prevents deletion of `a`. The value is updated to 2, and `delete` has no effect, so `obj.a` is 2.",
-        "example": "let obj = { a: 1 }; Object.defineProperty(obj, 'a', { value: 2, configurable: false }); delete obj.a; console.log(obj.a); \n// 2"
+        "example": "let obj = { a: 1 }; Object.defineProperty(obj, 'a', { value: 2, configurable: false }); delete obj.a; console.log(obj.a); // 2"
       }
     ]
   },
@@ -3481,7 +3277,7 @@
         },
         "answer": "1",
         "explanation": "`.copyWithin(1, 0, 2)` copies elements from indices 0 to 1 to start at index 1, resulting in `[1, 1, 2]`.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.copyWithin(1, 0, 2)); \n// [1, 1, 2]"
+        "example": "let arr = [1, 2, 3]; console.log(arr.copyWithin(1, 0, 2)); // [1, 1, 2]"
       }
     ]
   },
@@ -3499,7 +3295,7 @@
         },
         "answer": "1",
         "explanation": "`.codePointAt(0)` returns the Unicode code point of 'h', which is 104.",
-        "example": "let str = 'hello'; console.log(str.codePointAt(0)); \n// 104"
+        "example": "let str = 'hello'; console.log(str.codePointAt(0)); // 104"
       }
     ]
   },
@@ -3517,7 +3313,7 @@
         },
         "answer": "2",
         "explanation": "`.findLast()` returns the last element satisfying `< 3`, which is 2, iterating from right to left.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.findLast(num => num < 3)); \n// 2"
+        "example": "let arr = [1, 2, 3]; console.log(arr.findLast(num => num < 3)); // 2"
       }
     ]
   },
@@ -3535,7 +3331,7 @@
         },
         "answer": "1",
         "explanation": "`.toFixed(2)` rounds to '123.46' as a string. `Number.parseFloat()` converts it back to the number 123.46.",
-        "example": "let num = 123.456; console.log(Number.parseFloat(num.toFixed(2))); \n// 123.46"
+        "example": "let num = 123.456; console.log(Number.parseFloat(num.toFixed(2))); // 123.46"
       }
     ]
   },
@@ -3553,7 +3349,7 @@
         },
         "answer": "1",
         "explanation": "The `[Symbol.toPrimitive]` method defines the object’s primitive value, returning 42 when the unary `+` operator is applied.",
-        "example": "let obj = { [Symbol.toPrimitive]() { return 42; } }; console.log(+obj); \n// 42"
+        "example": "let obj = { [Symbol.toPrimitive]() { return 42; } }; console.log(+obj); // 42"
       }
     ]
   },
@@ -3571,7 +3367,7 @@
         },
         "answer": "4",
         "explanation": "Setting `arr[Symbol.iterator] = null` removes the array’s default iterator, causing a `TypeError` when the spread operator (`...`) is used.",
-        "example": "let arr = [1, 2, 3]; arr[Symbol.iterator] = null; console.log([...arr]); \n// TypeError"
+        "example": "let arr = [1, 2, 3]; arr[Symbol.iterator] = null; console.log([...arr]); // TypeError"
       }
     ]
   },
@@ -3589,7 +3385,7 @@
         },
         "answer": "1",
         "explanation": "The regex `(l)/g` captures each 'l', and `$1$1` replaces each 'l' with two 'l's, resulting in 'heelloo'.",
-        "example": "let str = 'hello'; console.log(str.replace(/(l)/g, '$1$1')); \n// 'heelloo'"
+        "example": "let str = 'hello'; console.log(str.replace(/(l)/g, '$1$1')); // 'heelloo'"
       }
     ]
   },
@@ -3607,7 +3403,7 @@
         },
         "answer": "2",
         "explanation": "The `.at(-2)` method accesses the element at index 1 (length - 2), returning 2.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.at(-2)); \n// 2"
+        "example": "let arr = [1, 2, 3]; console.log(arr.at(-2)); // 2"
       }
     ]
   },
@@ -3625,7 +3421,7 @@
         },
         "answer": "3",
         "explanation": "`Object.preventExtensions()` prevents adding new properties. Assigning `obj.b = 2` has no effect, and `obj.b` is `undefined`.",
-        "example": "let obj = { a: 1 }; Object.preventExtensions(obj); obj.b = 2; console.log(obj.b); \n// undefined"
+        "example": "let obj = { a: 1 }; Object.preventExtensions(obj); obj.b = 2; console.log(obj.b); // undefined"
       }
     ]
   },
@@ -3643,25 +3439,7 @@
         },
         "answer": "1",
         "explanation": "`.toLocaleString('en-US', { style: 'currency', currency: 'USD' })` formats the number as US currency, resulting in '$42.00'.",
-        "example": "let num = 42; console.log(num.toLocaleString('en-US', { style: 'currency', currency: 'USD' })); \n// '$42.00'"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "hard",
-    "question": [
-      {
-        "question": "What is the result of `let arr = [1, 2, 3]; console.log(arr.push(4, 5));`?",
-        "options": {
-          "1": "[1, 2, 3, 4, 5]",
-          "2": "5",
-          "3": "[4, 5]",
-          "4": "2"
-        },
-        "answer": "2",
-        "explanation": "The `push()` method adds one or more elements to the end of an array and returns the new length of the array, which is 5 after adding 4 and 5.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.push(4, 5)); console.log(arr); // 5, [1, 2, 3, 4, 5]"
+        "example": "let num = 42; console.log(num.toLocaleString('en-US', { style: 'currency', currency: 'USD' })); // '$42.00'"
       }
     ]
   },
@@ -3698,24 +3476,6 @@
         "answer": "2",
         "explanation": "The `slice(1, 3)` method returns a new array containing elements from index 1 up to, but not including, index 3, resulting in [2, 3].",
         "example": "let arr = [1, 2, 3, 4]; console.log(arr.slice(1, 3)); console.log(arr); // [2, 3], [1, 2, 3, 4]"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "hard",
-    "question": [
-      {
-        "question": "What happens when you execute `let arr = [1, 2, 3]; console.log(arr.splice(1, 1, 'a'));`?",
-        "options": {
-          "1": "['a']",
-          "2": "[2]",
-          "3": "[1, 'a', 3]",
-          "4": "[1, 2, 3]"
-        },
-        "answer": "2",
-        "explanation": "The `splice(1, 1, 'a')` method removes 1 element at index 1 (the value 2) and inserts 'a', returning the removed elements [2]. The array becomes [1, 'a', 3].",
-        "example": "let arr = [1, 2, 3]; console.log(arr.splice(1, 1, 'a')); console.log(arr); // [2], [1, 'a', 3]"
       }
     ]
   },
@@ -3900,66 +3660,6 @@
     ]
   },
   {
-    "type": 1,
-    "level": "hard",
-    "question": [
-      {
-        "question": "`Object.defineProperties()` can define multiple non-enumerable properties simultaneously.",
-        "answer": true,
-        "explanation": "`Object.defineProperties()` allows defining multiple properties with descriptors, setting `enumerable: false` to exclude them from `for...in` loops.",
-        "example": "let obj = {}; Object.defineProperties(obj, { a: { value: 1, enumerable: false }, b: { value: 2, enumerable: false } }); for (let key in obj) { console.log(key); } // no output"
-      }
-    ]
-  },
-  {
-    "type": 1,
-    "level": "hard",
-    "question": [
-      {
-        "question": "A class constructor that omits `super()` in a subclass causes a `ReferenceError` if `this` is used before calling `super`.",
-        "answer": true,
-        "explanation": "In a subclass, `this` cannot be accessed before calling `super()`, as the parent class must initialize the instance first.",
-        "example": "class Parent {} class Child extends Parent { constructor() { this.name = 'Luiz'; super(); } } let c = new Child(); // ReferenceError: Must call super constructor before using 'this'"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "hard",
-    "question": [
-      {
-        "question": "What is the output of `class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name);`?",
-        "options": {
-          "1": "'Marta', undefined",
-          "2": "'Marta', 'Luiz'",
-          "3": "'Luiz', 'Marta'",
-          "4": "Error"
-        },
-        "answer": "1",
-        "explanation": "The `Child` constructor sets `name` to 'Marta' after calling `super()`. `Object.getPrototypeOf(c)` returns `Child.prototype`, which has no `name` property, so it’s `undefined`.",
-        "example": "class Parent { constructor() { this.name = 'Luiz'; } } class Child extends Parent { constructor() { super(); this.name = 'Marta'; } } let c = new Child(); console.log(c.name, Object.getPrototypeOf(c).name); // 'Marta', undefined"
-      }
-    ]
-  },
-  {
-    "type": 2,
-    "level": "hard",
-    "question": [
-      {
-        "question": "What is the output of `let obj = { [Symbol.toStringTag]: 'Custom' }; console.log(Object.prototype.toString.call(obj));`?",
-        "options": {
-          "1": "[object Custom]",
-          "2": "[object Object]",
-          "3": "undefined",
-          "4": "Error"
-        },
-        "answer": "1",
-        "explanation": "The `Symbol.toStringTag` property customizes the result of `Object.prototype.toString.call()`, returning '[object Custom]'.",
-        "example": "let obj = { [Symbol.toStringTag]: 'Custom' }; console.log(Object.prototype.toString.call(obj)); // [object Custom]"
-      }
-    ]
-  },
-  {
     "type": 2,
     "level": "hard",
     "question": [
@@ -3973,7 +3673,7 @@
         },
         "answer": "1",
         "explanation": "`.toSpliced(1, 1, 4)` is a non-mutating method that returns a new array with the element at index 1 replaced by 4, yielding `[1, 4, 3]`.",
-        "example": "let arr = [1, 2, 3]; console.log(arr.toSpliced(1, 1, 4)); \n// [1, 4, 3]"
+        "example": "let arr = [1, 2, 3]; console.log(arr.toSpliced(1, 1, 4)); // [1, 4, 3]"
       }
     ]
   }
