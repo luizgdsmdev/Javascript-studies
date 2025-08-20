@@ -158,6 +158,222 @@
         const quizData = {
   "1": [
     {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function declaration in JavaScript is hoisted, allowing it to be called before its definition.",
+        "answer": true,
+        "explanation": "Function declarations are fully hoisted, meaning their entire definition is moved to the top of the scope during compilation, allowing calls before the declaration.",
+        "example": "greet(); function greet() { console.log('Hello!'); } // Hello!"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function in JavaScript can be assigned to a variable.",
+        "answer": true,
+        "explanation": "Functions are first-class objects in JavaScript, meaning they can be assigned to variables, passed as arguments, or returned from other functions.",
+        "example": "const greet = function() { console.log('Hello!'); }; greet(); // Hello!"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function without a `return` statement returns `undefined`.",
+        "answer": true,
+        "explanation": "If a function does not explicitly return a value, it implicitly returns `undefined`.",
+        "example": "function noReturn() { console.log('Hi'); } console.log(noReturn()); // Hi, undefined"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "An arrow function can be used as a constructor with `new`.",
+        "answer": false,
+        "explanation": "Arrow functions cannot be used as constructors because they lack a `prototype` property and their own `this` binding.",
+        "example": "const Fn = () => {}; new Fn(); // TypeError: Fn is not a constructor"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Functions can accept multiple parameters in JavaScript.",
+        "answer": true,
+        "explanation": "Functions can accept zero or more parameters, which act as placeholders for values passed during invocation.",
+        "example": "function add(a, b) { return a + b; } console.log(add(2, 3)); // 5"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Which of the following is a valid way to create a function in JavaScript?",
+        "options": {
+          "1": "function greet() {}",
+          "2": "const greet = () => {}",
+          "3": "(function() {})()",
+          "4": "All of the above"
+        },
+        "answer": "4",
+        "explanation": "JavaScript supports multiple ways to create functions, including function declarations, arrow functions, and immediately invoked function expressions (IIFEs).",
+        "example": "function greet() { console.log('Hi'); } const greet2 = () => console.log('Hi'); (function() { console.log('Hi'); })(); // All valid"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does `function sayHi() { console.log('Hi'); } sayHi();` output?",
+        "options": {
+          "1": "Hi",
+          "2": "undefined",
+          "3": "null",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Calling the function `sayHi` executes the `console.log('Hi')` statement, outputting 'Hi'.",
+        "example": "function sayHi() { console.log('Hi'); } sayHi(); // Hi"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the result of `const fn = function() { return 'Hello'; }; console.log(fn());`?",
+        "options": {
+          "1": "Hello",
+          "2": "undefined",
+          "3": "function",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The function expression returns the string 'Hello' when called.",
+        "example": "const fn = function() { return 'Hello'; }; console.log(fn()); // Hello"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "An IIFE (Immediately Invoked Function Expression) runs automatically without needing to be called explicitly.",
+        "answer": true,
+        "explanation": "An IIFE is executed immediately after its definition by wrapping it in parentheses and adding `()`.",
+        "example": "(function() { console.log('Runs now!'); })(); // Runs now!"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Functions in JavaScript cannot have properties like objects.",
+        "answer": false,
+        "explanation": "Functions are first-class objects in JavaScript and can have properties and methods like any other object.",
+        "example": "function fn() {} fn.prop = 'test'; console.log(fn.prop); // test"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does `const double = x => x * 2; console.log(double(5));` return?",
+        "options": {
+          "1": "10",
+          "2": "5",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The arrow function `double` multiplies its input by 2, so `double(5)` returns 10.",
+        "example": "const double = x => x * 2; console.log(double(5)); // 10"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function can return another function in JavaScript.",
+        "answer": true,
+        "explanation": "Functions are first-class objects and can return other functions, enabling higher-order functions and closures.",
+        "example": "function outer() { return function() { console.log('Inner'); }; } const fn = outer(); fn(); // Inner"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Which method is NOT a valid way to create a function in JavaScript?",
+        "options": {
+          "1": "function greet() {}",
+          "2": "const greet = function() {}",
+          "3": "let greet = () => {}",
+          "4": "greet() {}"
+        },
+        "answer": "4",
+        "explanation": "The syntax `greet() {}` is invalid. Valid methods include function declarations, function expressions, and arrow functions.",
+        "example": "function greet() {} // Valid; const greet2 = function() {} // Valid; const greet3 = () => {} // Valid"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Functions can be passed as arguments to other functions.",
+        "answer": true,
+        "explanation": "As first-class objects, functions can be passed as arguments, enabling higher-order functions.",
+        "example": "function callFn(fn) { fn(); } callFn(() => console.log('Called')); // Called"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does `(function(name) { console.log(name); })('Alice');` output?",
+        "options": {
+          "1": "Alice",
+          "2": "undefined",
+          "3": "Error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The IIFE takes a parameter `name` and logs it when invoked with 'Alice'.",
+        "example": "(function(name) { console.log(name); })('Alice'); // Alice"
+      }
+    ]
+  },
+    {
   "type": 2,
   "level": "easy",
   "question": [
@@ -1018,6 +1234,228 @@
   ],
   "2": [
     {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A named function expression is hoisted like a function declaration.",
+        "answer": false,
+        "explanation": "Named function expressions are not hoisted; only the variable declaration is hoisted (if using `var`), and the function assignment happens at runtime.",
+        "example": "console.log(fn()); const fn = function named() { return 'Hi'; }; // TypeError: fn is not a function"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A closure allows an inner function to access variables from its outer function even after the outer function has finished executing.",
+        "answer": true,
+        "explanation": "Closures maintain access to the outer function’s scope, keeping variables alive in memory for the inner function.",
+        "example": "function outer() { let x = 10; return () => x++; } const fn = outer(); console.log(fn()); // 10, console.log(fn()); // 11"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `const greet = function() { console.log(this.name); }.bind({ name: 'Alice' }); greet();` output?",
+        "options": {
+          "1": "Alice",
+          "2": "undefined",
+          "3": "Error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The `bind` method creates a new function with `this` set to the provided object `{ name: 'Alice' }`, so `greet()` logs 'Alice'.",
+        "example": "const greet = function() { console.log(this.name); }.bind({ name: 'Alice' }); greet(); // Alice"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Functions can have properties added to them dynamically.",
+        "answer": true,
+        "explanation": "Since functions are objects, properties can be added to them dynamically, just like any other object.",
+        "example": "function fn() {} fn.version = '1.0'; console.log(fn.version); // 1.0"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is a valid way to create a function using the constructor function pattern?",
+        "options": {
+          "1": "function Person(name) { this.name = name; }",
+          "2": "() => { this.name = name; }",
+          "3": "const Person = name => name;",
+          "4": "(function Person(name) {})()"
+        },
+        "answer": "1",
+        "explanation": "Constructor functions are typically defined using function declarations or expressions and use `this` to set properties on new instances.",
+        "example": "function Person(name) { this.name = name; } const p = new Person('Alice'); console.log(p.name); // Alice"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `arguments` object is available in arrow functions.",
+        "answer": false,
+        "explanation": "Arrow functions do not have their own `arguments` object; they inherit it from the enclosing scope.",
+        "example": "const fn = () => console.log(arguments); fn(); // ReferenceError: arguments is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `function sum() { let total = 0; for (let x of arguments) total += x; return total; } console.log(sum(1, 2, 3));` return?",
+        "options": {
+          "1": "6",
+          "2": "undefined",
+          "3": "[1, 2, 3]",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `arguments` object contains all passed arguments, and the function sums them to return 6.",
+        "example": "function sum() { let total = 0; for (let x of arguments) total += x; return total; } console.log(sum(1, 2, 3)); // 6"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A function can use default parameters to provide fallback values.",
+        "answer": true,
+        "explanation": "Default parameters allow functions to assign fallback values to parameters if no argument is provided.",
+        "example": "function greet(name = 'Guest') { console.log(`Hello, ${name}!`); } greet(); // Hello, Guest!"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `const module = (function() { let x = 1; return { get: () => x }; })(); console.log(module.get());` return?",
+        "options": {
+          "1": "1",
+          "2": "undefined",
+          "3": "Error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The IIFE creates a module with a private variable `x` and returns an object with a `get` method that accesses `x` via a closure.",
+        "example": "const module = (function() { let x = 1; return { get: () => x }; })(); console.log(module.get()); // 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `call()` method can set the `this` context of a function.",
+        "answer": true,
+        "explanation": "The `call()` method invokes a function with a specified `this` context and individual arguments.",
+        "example": "function greet() { console.log(this.name); } greet.call({ name: 'Alice' }); // Alice"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `function greet(name = 'Guest') { return `Hello, ${name}!`; } console.log(greet());` return?",
+        "options": {
+          "1": "Hello, Guest!",
+          "2": "Hello, undefined!",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The function uses a default parameter `name = 'Guest'`, so calling it without arguments returns 'Hello, Guest!'.",
+        "example": "function greet(name = 'Guest') { return `Hello, ${name}!`; } console.log(greet()); // Hello, Guest!"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A function’s properties can be deleted using the `delete` operator.",
+        "answer": true,
+        "explanation": "Since functions are objects, their properties can be deleted using the `delete` operator.",
+        "example": "function fn() {} fn.prop = 'test'; delete fn.prop; console.log(fn.prop); // undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is a correct way to use a rest parameter in a function?",
+        "options": {
+          "1": "function sum(...numbers) { return numbers.reduce((a, b) => a + b, 0); }",
+          "2": "function sum(numbers...) { return numbers.reduce((a, b) => a + b, 0); }",
+          "3": "function sum(...numbers) { return arguments.reduce((a, b) => a + b, 0); }",
+          "4": "function sum(numbers) { return numbers.reduce(...a, b); }"
+        },
+        "answer": "1",
+        "explanation": "Rest parameters use the `...` syntax to collect all arguments into an array, which can be processed (e.g., with `reduce`).",
+        "example": "function sum(...numbers) { return numbers.reduce((a, b) => a + b, 0); } console.log(sum(1, 2, 3)); // 6"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A higher-order function can return another function.",
+        "answer": true,
+        "explanation": "Higher-order functions can accept functions as arguments and/or return functions, enabling patterns like closures.",
+        "example": "function createAdder(x) { return y => x + y; } const add5 = createAdder(5); console.log(add5(3)); // 8"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What does `const obj = {}; (function(o) { o.fn = () => console.log('Hi'); })(obj); obj.fn();` output?",
+        "options": {
+          "1": "Hi",
+          "2": "undefined",
+          "3": "Error",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The IIFE adds a method `fn` to the `obj` object, which logs 'Hi' when called.",
+        "example": "const obj = {}; (function(o) { o.fn = () => console.log('Hi'); })(obj); obj.fn(); // Hi"
+      }
+    ]
+  },
+    {
       "type": 2,
       "level": "medium",
       "question": [
@@ -1835,6 +2273,228 @@
   }, 
   ],
   "3": [
+    {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Arrow functions inherit the `arguments` object from their enclosing scope.",
+        "answer": true,
+        "explanation": "Arrow functions do not have their own `arguments` object and instead inherit it from the enclosing non-arrow function or global scope.",
+        "example": "function outer() { return () => console.log(arguments[0]); } outer('test')(); // test"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `Object.freeze()` on a function prevents adding new properties but allows modifying existing ones.",
+        "answer": false,
+        "explanation": "`Object.freeze()` prevents adding, removing, or modifying properties on a function (or any object).",
+        "example": "function fn() {} fn.prop = 'test'; Object.freeze(fn); fn.prop = 'new'; console.log(fn.prop); // test"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `function fn() {} console.log(Object.keys(fn));` return if no custom properties are added?",
+        "options": {
+          "1": "[]",
+          "2": "['name', 'length']",
+          "3": "['prototype']",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`Object.keys()` returns an array of a function’s enumerable own properties. Built-in properties like `name` and `length` are non-enumerable, so an empty array is returned.",
+        "example": "function fn() {} console.log(Object.keys(fn)); // []"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Closures can cause memory leaks if not managed properly.",
+        "answer": true,
+        "explanation": "Closures retain references to outer scope variables, which can prevent garbage collection if the closure persists, potentially causing memory leaks.",
+        "example": "function outer() { let largeObj = new Array(1000000).fill(0); return () => largeObj; } const fn = outer(); // largeObj persists in memory"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `const fn = function named() { console.log(typeof named); }; fn();` output?",
+        "options": {
+          "1": "function",
+          "2": "undefined",
+          "3": "Error",
+          "4": "string"
+        },
+        "answer": "1",
+        "explanation": "In a named function expression, the function’s name (`named`) is only accessible within its own scope, and `typeof named` returns 'function'.",
+        "example": "const fn = function named() { console.log(typeof named); }; fn(); // function"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `apply()` method passes arguments as individual parameters like `call()`.",
+        "answer": false,
+        "explanation": "`apply()` passes arguments as an array, while `call()` passes them individually.",
+        "example": "function fn(a, b) { console.log(a + b); } fn.call(null, 1, 2); // 3, fn.apply(null, [1, 2]); // 3"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `const obj = (function() { let x = 10; return { get: () => x, set: v => x = v }; })(); obj.set(20); console.log(obj.get());` return?",
+        "options": {
+          "1": "20",
+          "2": "10",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The IIFE creates a closure, allowing the returned object’s methods to access and modify the private variable `x`. After setting `x` to 20, `get()` returns 20.",
+        "example": "const obj = (function() { let x = 10; return { get: () => x, set: v => x = v }; })(); obj.set(20); console.log(obj.get()); // 20"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A function’s `prototype` property is only available for constructor functions.",
+        "answer": true,
+        "explanation": "All functions (except arrow functions) have a `prototype` property, which is used when the function is invoked as a constructor with `new`.",
+        "example": "function fn() {} console.log(fn.prototype); // { constructor: fn }; const af = () => {}; console.log(af.prototype); // undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the result of `async function fn() { return 'Done'; } fn().then(console.log);`?",
+        "options": {
+          "1": "Done",
+          "2": "Promise { 'Done' }",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Async functions return a Promise, and the `then` method logs the resolved value 'Done'.",
+        "example": "async function fn() { return 'Done'; } fn().then(console.log); // Done"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `Object.seal()` on a function allows modifying existing properties but prevents adding new ones.",
+        "answer": true,
+        "explanation": "`Object.seal()` prevents adding or removing properties but allows modifying the values of existing properties.",
+        "example": "function fn() {} fn.prop = 'test'; Object.seal(fn); fn.prop = 'new'; fn.newProp = 'x'; console.log(fn.prop, fn.newProp); // new, undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `function fn() {} fn.prop = 'test'; console.log(fn.hasOwnProperty('prop'));` return?",
+        "options": {
+          "1": "true",
+          "2": "false",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "`hasOwnProperty()` checks if a property exists directly on the function object, returning `true` for the added `prop` property.",
+        "example": "function fn() {} fn.prop = 'test'; console.log(fn.hasOwnProperty('prop')); // true"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A named function expression’s name is accessible outside its scope.",
+        "answer": false,
+        "explanation": "The name of a named function expression is only accessible within the function’s own scope, not externally.",
+        "example": "const fn = function named() { console.log(typeof named); }; fn(); // function, console.log(typeof named); // undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Which of the following correctly creates a function using the revealing module pattern?",
+        "options": {
+          "1": "const module = (function() { let x = 0; function inc() { x++; } return { inc }; })();",
+          "2": "const module = function() { let x = 0; return x; };",
+          "3": "const module = () => { let x = 0; x++; };",
+          "4": "const module = function inc() { let x = 0; return x; };"
+        },
+        "answer": "1",
+        "explanation": "The revealing module pattern uses an IIFE to create a closure, returning an object that exposes private methods like `inc` while keeping `x` private.",
+        "example": "const module = (function() { let x = 0; function inc() { x++; } return { inc }; })(); module.inc();"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Functions declared with `const` cannot have their properties modified.",
+        "answer": false,
+        "explanation": "`const` prevents reassignment of the function itself, but since functions are objects, their properties can still be modified.",
+        "example": "const fn = function() {}; fn.prop = 'test'; console.log(fn.prop); // test"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What does `function outer() { let x = 1; return function() { return x++; }; } const fn1 = outer(); const fn2 = outer(); console.log(fn1(), fn2());` return?",
+        "options": {
+          "1": "1, 1",
+          "2": "1, 2",
+          "3": "2, 1",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "Each call to `outer()` creates a new closure with its own `x`. Thus, `fn1` and `fn2` each start with `x = 1`, returning 1 for their first calls.",
+        "example": "function outer() { let x = 1; return function() { return x++; }; } const fn1 = outer(); const fn2 = outer(); console.log(fn1(), fn2()); // 1, 1"
+      }
+    ]
+  },
         {
         "type": 1,
         "level": "hard",
