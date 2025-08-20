@@ -2,7 +2,6 @@
 This section is meant to cover everything we should know about functions in JavaScript.  
 - [What are functions](#what-are-functions)
 - [Function creation methods](#function-creation-methods)
-- [Use of 'this' and 'arguments'](#Use-of-this-and-arguments)
 - [How functions work](#how-functions-work)
 - [Function scope and closures](#function-scope-and-closures)
 - [Function properties and methods](#function-properties-and-methods)
@@ -23,7 +22,7 @@ We have some different ways of creating a function in JavaScript, each approach 
 function functionName(optionalParameters){}
 ````
 - ``function``: reserved word for declaring a function. It basically brings the function to 'life' by pointing its existence in the code, pretty much the same as ``let`` or ``const`` does for variables;
-- ``functionName``: follows the basic naming on JavaScript, like no numbers or symbols at the beginning, and so on;
+- ``functionName``: follows the basic naming of JavaScript, like no numbers or symbols at the beginning, and so on;
 - ``optionalParameters``: can be none, one or more parameters of different structured data like numbers, strings, objects, or even other functions;
 - Brackets ``{}``: determine the beginning and the end of the block where the function instructions take place.
 
@@ -172,15 +171,15 @@ console.log(sum.totalSum);//Shows 6
 
 
 ###### Immediately Invoked Function Expression (IIFE)
-As the name states, this approach inpplys that the function are immediately executed, with no need for being evock by naming or variable assign.
+As the name states, this approach implies that the functions are immediately executed, with no need for being invoked by naming or variable assignment.
 Allows ``this`` and ``arguments`` and optional parameters.
-It's often used for a variate of reasons, and had some nice variations. The basic/formal structure would be:
+It's often used for a variety of reasons and has some nice variations. The basic/formal structure would be:
 ````javascript
 (function() {
   //actions
 })();
 ````
-As you can see, it's very simmilar to a normal function. The key here are the ``()()`` components where:
+As you can see, it's very similar to a normal function. The key here are the ``()()`` components where:
 - The first ``()`` acts as a wrapper for **encapsulate** the function structure;
 - the second ``()`` it's the **imedialty invok** for execution for what is inside the first one.
 
@@ -196,7 +195,7 @@ So let's check some of the variations:
     console.log(a + 10)
 })(a = 10);
 
-//Named functions, which allows recursion
+//Named functions, which allow recursion
 let b = 10;
 (function printSum(message){
     a++;
@@ -208,7 +207,7 @@ let b = 10;
 ````
 
 Some of the reasons for using this approach could be:
-- **Doesn't pollute** the global object namespaces, throught scope or closures by isolating declarations within the function:
+- **Doesn't pollute** the global object namespaces, through scope or closures by isolating declarations within the function:
 ````javascript
 let num = 10;
 let printNum = function print(){console.log(num)};
@@ -225,14 +224,14 @@ printNum();//Shows 10
 printNum();//Shows 10
 ````
 
-- Creates the possibility for **private variables** and method from closure:
+- Creates the possibility for **private variables** and methods from closure:
 ````javascript
-//Passing the function to a variable so that we can evok multiple times
+//Passing the function to a variable so that we can invoke multiple times
 let increment = (() =>{
-    //Count only exist inside this function, , it's not passed as a property
+    //Count only exists inside this function, it's not passed as a property
     let count = Number();
 
-    //printCount only exist inside this function, it's not passed as a method
+    //printCount only exists inside this function, it's not passed as a method
     const printCount = (countUpdate) => console.log(`The counting was updated to ${countUpdate}.`);
 
     return () => {count++; printCount(count);}
@@ -242,7 +241,194 @@ increment();//Shows The counting was updated to 1.
 increment();//Shows The counting was updated to 2.
 increment();//Shows The counting was updated to 3.
 
-//If you try to called the printCount() method, get the error ReferenceError: printCount is not defined
+//If you try to call the printCount() method, you get the error ReferenceError: printCount is not defined
 //printCount();
 ````
 
+- also can present the **module pattern**, where **an object is returned** and has **direct access** to methods that can alter the function data, like private variables. In the example below, the object returned to the instance 'AlterNum' has 3 methods that, when invoked outside the function, can alter the variable, even when the 'AlterNum' instance doesn't have direct access to this private variable.
+````javascript
+let AlterNum = (() => {
+    this.count = Number();
+
+    return {
+        incrementNum: () => this.count++,
+        resetNum: () => this.count = 0,
+        showNum: () => console.log(`the count is ${this.count}.`),
+    }
+})();
+ 
+
+AlterNum.showNum();//Shows the count is 0.
+AlterNum.incrementNum();
+AlterNum.incrementNum();
+AlterNum.showNum();//Shows the count is 2.
+
+AlterNum.resetNum();
+AlterNum.showNum();//Shows the count is 0.
+
+
+console.log(AlterNum.count)//Shows undefined
+````
+
+
+- "**Revealing pattern**" as a variation from the module pattern above, but instead of passing the method directly in the object, we passed the pointer. This way, not only the variable but also the methods became private to the IIFE.
+````javascript
+let AlterNum = (() => {
+    this.count = Number();
+    let incrementNum = () => this.count++;
+    let resetNum = () => this.count = 0;
+    let showNum = () => console.log(`the count is ${this.count}.`);
+    return {
+        incrementNum: incrementNum,
+        resetNum: resetNum,
+        showNum: showNum,
+    }
+})();
+ 
+
+AlterNum.showNum();//Shows the count is 0.
+AlterNum.incrementNum();
+AlterNum.incrementNum();
+AlterNum.showNum();//Shows the count is 2.
+
+AlterNum.resetNum();
+AlterNum.showNum();//Shows the count is 0.
+
+
+console.log(AlterNum.count)//Shows undefined
+````
+
+- "**Injecting a namespace object**": the key difference to this approach it's that we are using the IIFE to alter an already existing object. It works the same as the previous examples, but to work with an existing structure passed as a parameter.   
+Note in the example below that, through the IIEF, I can inject and retrieve data from the object. But if I try to have
+````javascript
+//Here, the person represents an existent object or structure 
+let person = {name: 'Luiz', age: 29, country: "Brazil", speak: () => "Hello!"};
+
+//person.speakLoud();//Shows TypeError: person.speakLoud is not a function, because it only exists after the IIEF
+
+((person) => {
+
+    person.setName = function (name){this.name = name;};
+    person.getName = function (){console.log(this.name);};
+    person.speakLoud = function (){console.log(this.speak().toUpperCase())}
+
+    function goSleep(){
+        console.log('Sleeping...');
+    }
+
+})(person);
+
+//goSleep();//Shows ReferenceError: goSleep is not defined, because it doesn't exist outside IIEF
+
+person.getName();//Shows Luiz
+person.setName('Marta');
+person.getName();//Shows Marta
+person.speakLoud();//Shows HELLO!
+
+person.walk = () => console.log("Walking...");
+person.walk();//Shows Walking...
+
+console.log(person);//{name: 'Marta', age: 29, country: 'Brazil', speak: ƒ, setName: ƒ, …}
+````
+
+
+#### How functions work
+As said before, functions are a block of reusable code that can perform a specific task or compute values. It's basically a list of sequence actions that take place from the top to the bottom as soon as the function is invoked.
+Functions can:
+- **Accept parameters** as optional;
+- **Return values** if needed, where the ``undefined`` is the default return; 
+- **Maintain scope**, having access to their own scope or outer scopes;
+- **Control context** by the use of ``this``, combine by the ``.call()`` or ``.bind()`` functions. 
+````javascript
+function add(a, b) {
+  return a + b;
+}
+console.log(add(2, 3));//Shows 5
+````
+Also, Functions can be invoked with multiple approaches, like:
+- **Directly invoked** by use of the function name.
+````javascript
+function printHello(){
+    console.log("Hello!");
+}
+
+//Directly invoked
+printHello();
+````
+- **As a method** of an object.
+````javascript
+let obj = {
+    printHello: () => console.log("Hello!"),
+}
+
+//Invoked as method
+obj.printHello();
+````
+
+- **With the ``new``** word, like in a constructor function.
+````javascript
+let obj = new Object();
+let array = new Array();
+
+function ConstructorFunction(){};
+let newFunction = new ConstructorFunction();
+````
+
+- using build-in funtions like ``.call()`` or ``.apply()``.
+````javascript
+function add(a, b) {
+  console.log(a + b);
+}
+
+add.call(null, 2,3);//Shows 5
+````
+
+
+#### Function scope and closures
+Functions are able to have access to **their own environment**, meaning that properties and methods/functions created inside their block could be invoked at any time.   
+The same it's true for the **outer scope**, which could be a child function having access to the father function's properties and methods.   
+Both, child and the father function also have access to the global scope. Let's take a look at some examples:
+````javascript
+//This is the global scope
+let globalScope = 'Global scope';
+
+function fatherFunction(){
+    //This is the function scope (from the father scope)
+    const functScope = 'Function scope';
+    const speak = () => console.log(functScope);
+
+    //Invoking properties from outer scope (In this case, global scope) 
+    console.log(globalScope);//Shows Global scope
+
+
+    (function childFuntion(){
+        //This is the function scope (from child scope)
+        const childScope = 'Child scope';
+        const newSpeak = () => console.log(childScope);
+        newSpeak();//Shows Child scope
+
+        //Invoking properties from outer scope (father function) 
+        console.log(functScope);//Shows Function scope
+        speak();//Shows Function scope
+        
+    })();
+}
+
+fatherFunction();
+````
+Notice that, in the example above:
+- the **global scope** can be accessed from any other scope;
+- the **function scope** can only have access to **it's own scope** and the **outer scope**, meaning the father function or the global scope;
+- The 'childFunction' here has access to its own scope, the outer scope ('fatherFunction'), and the global scope.
+
+This behavior it's really important because by setting and **controlling these scopes** we're not only given a better structure but also **avoid to polluto the previous scopes** with unnecessary properties, leading to better **memory optimization** and avoiding reference errors.
+
+
+###### Closures
+We can also go a step ahead and take better use of these scopes by applying the **closure** approach. Closures can be defined as the constant access of an internal function to the outer properties and methods, even after the outer function is **already closed**.   
+in other words, a retuned inner/child function keeps access to the outer (father function) information even after the father function was already invoked and closed its cycle.   
+What happens is, normally, once the function is declared during the compilation, its information (like variable names and values) is stored in memory during its entire execution, and then, when it's closed, this information is discarded by the garbage collector. But when you have a **closure**, like an inner function with **pointers to outer references**, like the father function properties, these values are **kept in memory** so that the child function can use them when needed.
+
+
+
+####
