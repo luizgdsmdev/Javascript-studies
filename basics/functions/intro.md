@@ -387,7 +387,7 @@ add.call(null, 2,3);//Shows 5
 #### Function scope and closures
 Functions are able to have access to **their own environment**, meaning that properties and methods/functions created inside their block could be invoked at any time.   
 The same it's true for the **outer scope**, which could be a child function having access to the father function's properties and methods.   
-Both, child and the father function also have access to the global scope. Let's take a look at some examples:
+Both the child and the father function also have access to the global scope. Let's take a look at some examples:
 ````javascript
 //This is the global scope
 let globalScope = 'Global scope';
@@ -425,9 +425,170 @@ This behavior it's really important because by setting and **controlling these s
 
 
 ###### Closures
-We can also go a step ahead and take better use of these scopes by applying the **closure** approach. Closures can be defined as the constant access of an internal function to the outer properties and methods, even after the outer function is **already closed**.   
-in other words, a retuned inner/child function keeps access to the outer (father function) information even after the father function was already invoked and closed its cycle.   
-What happens is, normally, once the function is declared during the compilation, its information (like variable names and values) is stored in memory during its entire execution, and then, when it's closed, this information is discarded by the garbage collector. But when you have a **closure**, like an inner function with **pointers to outer references**, like the father function properties, these values are **kept in memory** so that the child function can use them when needed.
+Closures can be defined as the constant access of an internal function to the outer scope properties and methods, even after the outer function is **already closed**.   
+In other words, a retuned inner/child function keeps access to the outer/father function information, even after the father function was already invoked and closed its cycle.   
+What happens is, normally, once the function is declared during the compilation, its information (like variable names and values) is stored in memory during its entire execution, and then, when it's closed, this information is discarded by the garbage collector. But when you have a **closure**, like an inner function with **pointers to outer references**, like the father function properties, these values are **kept in memory** so that the child function can use them when needed.   
+This way, the closure (inner/child function) can have access to and alter these values by having a pointer to these reference values.
+
+Let's take a look at an example:
+````javascript
+function fatherFunction(){
+    let obj = {
+        name: 'Luiz', 
+        age: 29, 
+        speak: function(){return `${this.name} is ${this.age} years old.`}};
+
+    function childFunction(){
+        console.log(obj.speak());
+        obj.age++;
+    }
+
+    console.log('fatherFunction was closed.');
+    return childFunction;
+}
+
+let closure = fatherFunction();//Shows fatherFunction was closed., and also return the 'childFunction' function
+
+closure();//Shows Luiz is 29 years old.
+closure();//Shows Luiz is 30 years old.
+````
+As shown above, even after the father function has already closed, we are able not only to have access to the 'obj' but also to change its value.   
+By using the **Revealing pattern**, for example, we can also change and create new properties:
+````javascript
+function fatherFunction(){
+    let obj = {
+        name: 'Luiz', 
+        age: 29, 
+        speak: function(){return `${this.name} is ${this.age} years old.`}};
+
+    function childFunction(){
+        function getProperty(){console.log(obj[arguments[0]])};
+        function setProperty(){return obj[arguments[0]] = arguments[1]};
+        function getAll(){console.log(obj)};
+        function objSpeak(){console.log(obj.speak())}
+
+        return {
+            getProperty: getProperty,
+            setProperty: setProperty,
+            getAll: getAll,
+            objSpeak: objSpeak,
+            
+        }
+    }
+    return childFunction();
+}
+
+let closure = fatherFunction();
+
+closure.getProperty('name');//Shows Luiz
+closure.setProperty('name', 'Marta');
+closure.setProperty('country', 'Brazil');
+closure.objSpeak();//Shows Marta is 29 years old.
+closure.getAll();//Shows {name: 'Luiz', age: 29, speak: ƒ, country: 'Brazil'}
+````
+- **Note**: although powerful for encapsulations and maintaining state without global variables, closures have an impact on the memory usage and could cause a possible memory leak if not managed correctly.
+
+#### Function properties and methods
+- Since functions are objects, we can add, change, or delete their properties:
+````javascript
+function sum(){};
+
+//Adding a property
+sum.description = console.log('This function return the sum of all parameter. Use ".showTotal" method.');
+
+//Adding a method
+sum.showTotal = function(){
+    this.sumTotal = Number();
+    for (let i = 0; i < arguments.length; i++) {
+        this.sumTotal = arguments[i];
+    }
+
+    console.log(this.sumTotal);
+}
+
+sum.showTotal(1,2,3);//Shows 3
+sum.description;//Shows This function returns the sum of all parameters. Use the ".showTotal" method.
+
+delete sum.showTotal;
+sum.showTotal(1,2,3);//TypeError: sum.showTotal is not a function, because it was deleted
+````
+Functions also has **build-in methods** like:
+- ``.call(context, ...args)``: immediately calls the function and explicitly defines the ``this`` value by sending an object as the first parameter (context), with more arguments as optional. Notice that the order of the parameter matters.
+````javascript
+let obj = {name: 'Luiz', age: 29};
+
+function printInformation(){
+    console.log(`The ${this.name} developer is ${this.age} years old. He lives in ${arguments[0]}, ${arguments[1]}.`)
+}
+
+printInformation.call(obj, 'Brazil', 'Minas Gerais - MG');//Shows The Luiz developer is 29 years old. He lives in Brazil, Minas Gerais - MG.
+````
+
+- ``.apply(context, argsArray)``: similar to the ``.call(context, ...args)``, ``.apply()`` also imedialy calls the function and sends an object as the first parameter (context), but the 'argsArray' here are sent as an array and get the same result. Notice that the order of the parameter matters.
+````javascript
+let obj = {name: 'Luiz', age: 29};
+
+function printInformation(){
+    console.log(`The ${this.name} developer is ${this.age} years old. He lives in ${arguments[0]}, ${arguments[1]}.`)
+}
+
+printInformation.apply(obj, ['Brazil', 'Minas Gerais - MG']);//Shows The Luiz developer is 29 years old. He lives in Brazil, Minas Gerais - MG.
+````
+
+- ``.bind(context)``: it doesn't immediately call the function, instead, it returns a new function where the ``this`` points to the reference object passed as a parameter. Later on, we can send more optional parameters when calling the function.
+````javascript
+let obj = {name: 'Luiz', age: 29};
+
+function printInformation(){
+    console.log(`The ${this.name} developer is ${this.age} years old. He lives in ${arguments[0]}, ${arguments[1]}.`)
+}
+
+let newFunction = printInformation.bind(obj);
+newFunction('Brazil', 'Minas Gerais - MG');//Shows The Luiz developer is 29 years old. He lives in Brazil, Minas Gerais - MG.
+````
+
+
+
+
+#### Function mutability and memory
+- Functions are **mutable** in terms of their properties, which can be added, modified, or deleted:
+````javascript
+function sum(){};
+
+//Adding a property
+sum.description = console.log('This function return the sum of all parameter. Use ".showTotal" method.');
+
+//Adding a method
+sum.showTotal = function(){
+    this.sumTotal = Number();
+    for (let i = 0; i < arguments.length; i++) {
+        this.sumTotal = arguments[i];
+    }
+
+    console.log(this.sumTotal);
+}
+
+sum.showTotal(1,2,3);//Shows 3
+sum.description;//Shows This function returns the sum of all parameters. Use the ".showTotal" method.
+
+delete sum.showTotal;
+sum.showTotal(1,2,3);//TypeError: sum.showTotal is not a function, because it was deleted
+````
+
+- Functions are **stored in the heap as objects**. References to functions are maintained in variables or scopes, and unreferenced functions are eligible for garbage collection. Closures, however, keep referenced variables alive in memory. In the example below ``message`` persists in memory due to the closure.
+````javascript
+function printHello() {
+  let message = "Hello!";
+  return () => message;
+}
+const greeter = printHello();
+console.log(greeter());//Shows "Hello!"
+````
+
+
+
+
+####
 
 
 
