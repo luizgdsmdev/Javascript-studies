@@ -8,3 +8,4 @@ This section covers:
 - [Booleans](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/booleans/intro.md);
 - [Arrays](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/arrays/intro.md);
 - [Objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/objects/intro.md);
+- [Functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/functions/intro.md);
