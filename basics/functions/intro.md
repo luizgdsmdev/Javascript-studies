@@ -85,10 +85,12 @@ function TotalSum(){
     for (let i = 0; i < arguments.length; i++) {
         this.totalSum += arguments[i];
     }
+
+    return this.totalSum;
 }
 
-let sum = new TotalSum(1,2,3);
-console.log(sum.totalSum);//Shows 6
+let sum = TotalSum(1,2,3);
+console.log(sum);//Shows 6
 ````
 - **anonymous**: with this approach, the function doesn't receive a name, and sometimes you can even do without the ``function`` word with what is called **arrow functions** or **IIFE**, as we'll see ahead. But how would it work?   
 Since we don't have a name for the function, we need to **assign it to a variable** or call it imidealy as an **IIFE**. Because of this, anonymous expressions are not **hoisted**, meaning that even though the variables are, the content of the function itself is only assigned to the variable when declared.
@@ -107,7 +109,6 @@ let printSum = function(){
 printSum(1, 2);//Shows The sum of the 2 parameters is 3.
 printSum(4, 5, 6, 7);//Shows The sum of the 4 parameters is 22.
 ````
-
 
 ###### Arrow Function
 Arrow Functions are a more **concise way of declaring functions** for their short syntax. It's often used for functional operations and simple tasks that usually don't require more than one action because it automatically offers a ``return``, although it can receive unlimited action steps if needed. The use of parameters sis till optional.   
@@ -152,7 +153,96 @@ console.log(arrowExample2(arrayList));//Shows 6
 
 
 
+###### Constructor Function
+very similar to the **named function expression**, with the difference that with the Constructor Function we use the **``new``** word to create an instance.   
+Also allows to use of the ``this`` or ``arguments`` and is more memory efficient by sharing properties and methods.
+````javascript
+function TotalSum(){
+    this.totalSum = Number();
+    for (let i = 0; i < arguments.length; i++) {
+        this.totalSum += arguments[i];
+    }
+}
+
+//For being a 'TotalSum' instance, the 'sum' variable has direct access to '.totalSum' as its own property
+let sum = new TotalSum(1,2,3);
+console.log(sum.totalSum);//Shows 6
+````
 
 
 
-#### How functions work
+###### Immediately Invoked Function Expression (IIFE)
+As the name states, this approach inpplys that the function are immediately executed, with no need for being evock by naming or variable assign.
+Allows ``this`` and ``arguments`` and optional parameters.
+It's often used for a variate of reasons, and had some nice variations. The basic/formal structure would be:
+````javascript
+(function() {
+  //actions
+})();
+````
+As you can see, it's very simmilar to a normal function. The key here are the ``()()`` components where:
+- The first ``()`` acts as a wrapper for **encapsulate** the function structure;
+- the second ``()`` it's the **imedialty invok** for execution for what is inside the first one.
+
+So let's check some of the variations:
+````javascript
+//Anonymous arrow functions, parameters are optional
+(() =>{
+    console.log(10 + 10);
+})();
+
+//anonymous functions
+(function(){
+    console.log(a + 10)
+})(a = 10);
+
+//Named functions, which allows recursion
+let b = 10;
+(function printSum(message){
+    a++;
+    console.log(message);
+
+    return a < 10 ? printSum('Needs more') : console.log('Sufficient');
+    
+})(a = 0);
+````
+
+Some of the reasons for using this approach could be:
+- **Doesn't pollute** the global object namespaces, throught scope or closures by isolating declarations within the function:
+````javascript
+let num = 10;
+let printNum = function print(){console.log(num)};
+printNum();//Shows 10
+
+
+(() =>{
+    let num = 30;
+    let printNum = function print(){console.log(num)};
+    printNum();//Shows 30
+})();
+
+//Wasn't affected
+printNum();//Shows 10
+````
+
+- Creates the possibility for **private variables** and method from closure:
+````javascript
+//Passing the function to a variable so that we can evok multiple times
+let increment = (() =>{
+    //Count only exist inside this function, , it's not passed as a property
+    let count = Number();
+
+    //printCount only exist inside this function, it's not passed as a method
+    const printCount = (countUpdate) => console.log(`The counting was updated to ${countUpdate}.`);
+
+    return () => {count++; printCount(count);}
+})();
+
+increment();//Shows The counting was updated to 1.
+increment();//Shows The counting was updated to 2.
+increment();//Shows The counting was updated to 3.
+
+//If you try to called the printCount() method, get the error ReferenceError: printCount is not defined
+//printCount();
+````
+
