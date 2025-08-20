@@ -7,7 +7,6 @@ This section is meant to cover everything we should know about functions in Java
 - [Function properties and methods](#function-properties-and-methods)
 - [Function mutability and memory](#function-mutability-and-memory)
 - [Object methods for functions](#object-methods-for-functions)
-- [Special function features](#special-function-features)
 
 Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/blob/main/basics/intro.md).  
 
