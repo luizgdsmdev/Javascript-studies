@@ -15,6 +15,7 @@ Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/b
 #### What are functions
 Functions are a **reusable block of code** designed to **perform specific tasks** and **compute values**. More specifically, in JavaScript, functions are **first-class objects**, meaning they can be **assigned to different structures** like variables, passed as arguments, returned from other functions, and stored in data structures like arrays or objects.   
 They are **callable**, allowing the execution of their code **when invoked**. Also, functions have the option of **receiving arguments** when needed.
+Also, we call '**Higher-Order Functions**' functions that receive another function as a parameter and/or return one.
 
 #### Function creation methods
 We have some different ways of creating a function in JavaScript, each approach holds some specificities. The basic and formal way of declaring a function is:
@@ -80,11 +81,10 @@ function printHello(){ console.log('Hello!')};
 
 //Using this and arguments
 function TotalSum(){
-    this.totalSum = Number();
+    this.totalSum = 0;
     for (let i = 0; i < arguments.length; i++) {
         this.totalSum += arguments[i];
     }
-
     return this.totalSum;
 }
 
@@ -98,7 +98,7 @@ Since we don't have a name for the function, we need to **assign it to a variabl
 //printSum(1, 2);//Shows Uncaught ReferenceError: Cannot access 'printSum' before initialization
 
 let printSum = function(){
-    this.totalSum = Number();
+    this.totalSum = 0;
     for (let i = 0; i < arguments.length; i++) {
         this.totalSum += arguments[i];
     }
@@ -111,7 +111,7 @@ printSum(4, 5, 6, 7);//Shows The sum of the 4 parameters is 22.
 
 ###### Arrow Function
 Arrow Functions are a more **concise way of declaring functions** for their short syntax. It's often used for functional operations and simple tasks that usually don't require more than one action because it automatically offers a ``return``, although it can receive unlimited action steps if needed. The use of parameters sis till optional.   
-This approach doesn't support ``this`` or ``arguments`` use and, similar to anonymous functions, it's **not hoisted**.   
+This approach doesn't have their own ``this`` or ``arguments`` objects, and similar to anonymous functions it's **not hoisted**.   
 The basic structure is:
 ````javascript
 let variableName = () => //Expression;
@@ -157,7 +157,7 @@ very similar to the **named function expression**, with the difference that with
 Also allows to use of the ``this`` or ``arguments`` and is more memory efficient by sharing properties and methods.
 ````javascript
 function TotalSum(){
-    this.totalSum = Number();
+    this.totalSum = 0;
     for (let i = 0; i < arguments.length; i++) {
         this.totalSum += arguments[i];
     }
@@ -207,7 +207,7 @@ let b = 10;
 ````
 
 Some of the reasons for using this approach could be:
-- **Doesn't pollute** the global object namespaces, through scope or closures by isolating declarations within the function:
+- **prevents pollution** of the global object namespaces, through scope or closures by isolating declarations within the function:
 ````javascript
 let num = 10;
 let printNum = function print(){console.log(num)};
@@ -229,7 +229,7 @@ printNum();//Shows 10
 //Passing the function to a variable so that we can invoke multiple times
 let increment = (() =>{
     //Count only exists inside this function, it's not passed as a property
-    let count = Number();
+    let count = 0;
 
     //printCount only exists inside this function, it's not passed as a method
     const printCount = (countUpdate) => console.log(`The counting was updated to ${countUpdate}.`);
@@ -248,12 +248,12 @@ increment();//Shows The counting was updated to 3.
 - also can present the **module pattern**, where **an object is returned** and has **direct access** to methods that can alter the function data, like private variables. In the example below, the object returned to the instance 'AlterNum' has 3 methods that, when invoked outside the function, can alter the variable, even when the 'AlterNum' instance doesn't have direct access to this private variable.
 ````javascript
 let AlterNum = (() => {
-    this.count = Number();
+    let count = 0;
 
     return {
-        incrementNum: () => this.count++,
-        resetNum: () => this.count = 0,
-        showNum: () => console.log(`the count is ${this.count}.`),
+        incrementNum: () => count++,
+        resetNum: () => count = 0,
+        showNum: () => console.log(`the count is ${count}.`),
     }
 })();
  
@@ -274,7 +274,7 @@ console.log(AlterNum.count)//Shows undefined
 - "**Revealing pattern**" as a variation from the module pattern above, but instead of passing the method directly in the object, we passed the pointer. This way, not only the variable but also the methods became private to the IIFE.
 ````javascript
 let AlterNum = (() => {
-    this.count = Number();
+    this.count = 0;
     let incrementNum = () => this.count++;
     let resetNum = () => this.count = 0;
     let showNum = () => console.log(`the count is ${this.count}.`);
@@ -304,7 +304,7 @@ Note in the example below that, through the IIEF, I can inject and retrieve data
 //Here, the person represents an existent object or structure 
 let person = {name: 'Luiz', age: 29, country: "Brazil", speak: () => "Hello!"};
 
-//person.speakLoud();//Shows TypeError: person.speakLoud is not a function, because it only exists after the IIEF
+//person.speakLoud();//Shows TypeError: person.speakLoud is not a function. The goSleep function is private to the IIFE and cannot be accessed outside, preventing global scope pollution.
 
 ((person) => {
 
@@ -498,15 +498,14 @@ sum.description = console.log('This function return the sum of all parameter. Us
 
 //Adding a method
 sum.showTotal = function(){
-    this.sumTotal = Number();
+    this.sumTotal = 0;
     for (let i = 0; i < arguments.length; i++) {
-        this.sumTotal = arguments[i];
+        this.sumTotal += arguments[i];
     }
-
     console.log(this.sumTotal);
 }
 
-sum.showTotal(1,2,3);//Shows 3
+sum.showTotal(1,2,3);//Shows 6
 sum.description;//Shows This function returns the sum of all parameters. Use the ".showTotal" method.
 
 delete sum.showTotal;
@@ -560,15 +559,15 @@ sum.description = console.log('This function return the sum of all parameter. Us
 
 //Adding a method
 sum.showTotal = function(){
-    this.sumTotal = Number();
+    this.sumTotal = 0;
     for (let i = 0; i < arguments.length; i++) {
-        this.sumTotal = arguments[i];
+        this.sumTotal += arguments[i];
     }
 
     console.log(this.sumTotal);
 }
 
-sum.showTotal(1,2,3);//Shows 3
+sum.showTotal(1,2,3);//Shows 6
 sum.description;//Shows This function returns the sum of all parameters. Use the ".showTotal" method.
 
 delete sum.showTotal;
@@ -588,8 +587,5 @@ console.log(greeter());//Shows "Hello!"
 
 
 
-####
-
-
-
-####
+#### Object methods for functions
+Since functions are objects, they also inherit properties and methods. You can check more about it in the section [objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/objects/intro.md), where we cover all about object methods.
