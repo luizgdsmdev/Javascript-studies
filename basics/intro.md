@@ -11,3 +11,5 @@ This section covers:
 - [Functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/functions/intro.md);
 - [Control Flow](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/control-flow/intro.md);
 - [Scope and closures](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/scope-closures/intro.md);
+- [Memory: stack vs heap](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/memory-stack-vs-heap/intro.md);
+
