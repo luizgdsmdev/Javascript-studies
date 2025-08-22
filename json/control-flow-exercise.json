@@ -1,0 +1,679 @@
+{
+  "1": [
+    [
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "An `if` statement executes its code block only if the condition evaluates to `true`.",
+        "answer": true,
+        "explanation": "The `if` statement evaluates a condition, and if it is `true`, the associated code block is executed. If `false`, the block is skipped.",
+        "example": "let x = 5; if (x > 0) { console.log('Positive'); } // Outputs: Positive"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = 10; if (x === '10') { console.log('Equal'); } else { console.log('Not equal'); }`?",
+        "options": {
+          "1": "Equal",
+          "2": "Not equal",
+          "3": "undefined",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The `===` operator checks both value and type. Since `x` is a number (10) and `'10'` is a string, the condition is `false`, so the `else` block executes.",
+        "example": "let x = 10; if (x === '10') { console.log('Equal'); } else { console.log('Not equal'); } // Outputs: Not equal"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A `for` loop requires a counter variable to be declared with `let` inside the loop statement.",
+        "answer": false,
+        "explanation": "A `for` loop does not require the counter variable to be declared with `let` inside the loop; it can use `var`, `let`, or an existing variable. Using `let` ensures block scope.",
+        "example": "let i = 0; for (i; i < 3; i++) { console.log(i); } // Outputs: 0, 1, 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What does the following `switch` statement output? `let value = 2; switch (value) { case 1: console.log('One'); break; case 2: console.log('Two'); break; default: console.log('Default'); }`",
+        "options": {
+          "1": "One",
+          "2": "Two",
+          "3": "Default",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The `switch` statement matches `value` to `case 2`, executes `console.log('Two')`, and exits due to `break`.",
+        "example": "let value = 2; switch (value) { case 1: console.log('One'); break; case 2: console.log('Two'); break; default: console.log('Default'); } // Outputs: Two"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A `while` loop continues executing as long as its condition is `true`.",
+        "answer": true,
+        "explanation": "A `while` loop evaluates its condition before each iteration, executing the code block only if the condition is `true`.",
+        "example": "let i = 0; while (i < 2) { console.log(i); i++; } // Outputs: 0, 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let i = 0; do { console.log(i); i++; } while (i < 1);`?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "0, 1",
+          "4": "Nothing"
+        },
+        "answer": "1",
+        "explanation": "A `do...while` loop executes at least once. Here, it logs `0` and increments `i` to 1, then stops as the condition `i < 1` is `false`.",
+        "example": "let i = 0; do { console.log(i); i++; } while (i < 1); // Outputs: 0"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "The `break` statement can be used to exit a `for` loop early.",
+        "answer": true,
+        "explanation": "The `break` statement immediately exits a loop, stopping further iterations.",
+        "example": "for (let i = 0; i < 3; i++) { if (i === 1) break; console.log(i); } // Outputs: 0"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = 5; if (x > 0 && x < 10) { console.log('In range'); }`?",
+        "options": {
+          "1": "In range",
+          "2": "Nothing",
+          "3": "Error",
+          "4": "undefined"
+        },
+        "answer": "1",
+        "explanation": "The `&&` operator requires both conditions to be `true`. Since `x > 0` and `x < 10` are both `true`, the `if` block executes.",
+        "example": "let x = 5; if (x > 0 && x < 10) { console.log('In range'); } // Outputs: In range"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "The `continue` statement skips the current iteration of a loop and proceeds to the next one.",
+        "answer": true,
+        "explanation": "The `continue` statement skips the rest of the current iteration and moves to the next iteration of the loop.",
+        "example": "for (let i = 0; i < 3; i++) { if (i === 1) continue; console.log(i); } // Outputs: 0, 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = 15; console.log(x > 10 ? 'High' : 'Low');`?",
+        "options": {
+          "1": "High",
+          "2": "Low",
+          "3": "Error",
+          "4": "undefined"
+        },
+        "answer": "1",
+        "explanation": "The ternary operator evaluates `x > 10`. Since it’s `true`, it returns `'High'`.",
+        "example": "let x = 15; console.log(x > 10 ? 'High' : 'Low'); // Outputs: High"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "The `else` block is required in an `if` statement.",
+        "answer": false,
+        "explanation": "An `else` block is optional in an `if` statement. The `if` block can stand alone.",
+        "example": "let x = 5; if (x > 0) { console.log('Positive'); } // Outputs: Positive"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `for (let i = 0; i < 2; i++) { console.log('Loop'); }`?",
+        "options": {
+          "1": "Loop",
+          "2": "Loop Loop",
+          "3": "Nothing",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The `for` loop iterates twice (i = 0, 1), logging 'Loop' each time.",
+        "example": "for (let i = 0; i < 2; i++) { console.log('Loop'); } // Outputs: Loop, Loop"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A `switch` statement requires a `default` case.",
+        "answer": false,
+        "explanation": "The `default` case in a `switch` statement is optional and executes only if no other cases match.",
+        "example": "let x = 1; switch (x) { case 1: console.log('One'); break; } // Outputs: One"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = false; x || console.log('Executed');`?",
+        "options": {
+          "1": "Executed",
+          "2": "Nothing",
+          "3": "Error",
+          "4": "false"
+        },
+        "answer": "1",
+        "explanation": "The `||` operator evaluates to the first truthy value or the last value. Since `x` is `false`, the second expression (`console.log('Executed')`) is evaluated, logging 'Executed'.",
+        "example": "let x = false; x || console.log('Executed'); // Outputs: Executed"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A `do...while` loop executes at least once, even if the condition is `false`.",
+        "answer": true,
+        "explanation": "A `do...while` loop executes its block at least once before checking the condition.",
+        "example": "let i = 0; do { console.log('Run'); i++; } while (i < 0); // Outputs: Run"
+      }
+    ]
+  }
+]
+  ],
+  "2": [
+    [
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A `for...in` loop iterates over all properties of an object, including inherited ones.",
+        "answer": true,
+        "explanation": "A `for...in` loop iterates over all enumerable properties of an object, including those inherited from its prototype chain.",
+        "example": "let obj = { a: 1 }; Object.prototype.b = 2; for (let key in obj) { console.log(key); } // Outputs: a, b"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2, 3]; for (let x of arr) { console.log(x * 2); }`?",
+        "options": {
+          "1": "1, 2, 3",
+          "2": "2, 4, 6",
+          "3": "Nothing",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The `for...of` loop iterates over the values of the array, and each value is multiplied by 2 before being logged.",
+        "example": "let arr = [1, 2, 3]; for (let x of arr) { console.log(x * 2); } // Outputs: 2, 4, 6"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Using `continue` in a `switch` statement is valid and skips to the next case.",
+        "answer": false,
+        "explanation": "`continue` is used in loops to skip to the next iteration, not in `switch` statements. Using it in a `switch` causes a syntax error unless the `switch` is inside a loop.",
+        "example": "let x = 1; switch (x) { case 1: continue; } // SyntaxError"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let i = 0; while (i < 3) { if (i === 1) { i++; continue; } console.log(i); i++; }`?",
+        "options": {
+          "1": "0, 2",
+          "2": "0, 1, 2",
+          "3": "1, 2",
+          "4": "0"
+        },
+        "answer": "1",
+        "explanation": "The `while` loop logs `i` and increments it. When `i` is 1, `continue` skips the rest of the loop body, so 1 is not logged, and the loop continues with `i = 2`.",
+        "example": "let i = 0; while (i < 3) { if (i === 1) { i++; continue; } console.log(i); i++; } // Outputs: 0, 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `&&` operator short-circuits and stops evaluating as soon as it encounters a falsy value.",
+        "answer": true,
+        "explanation": "The `&&` operator evaluates expressions from left to right and stops at the first falsy value, returning it, or returns the last value if all are truthy.",
+        "example": "let x = 0; console.log(x && 'test'); // Outputs: 0"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let obj = {a: 1, b: 2}; for (let key in obj) { console.log(key); }`?",
+        "options": {
+          "1": "1, 2",
+          "2": "a, b",
+          "3": "a: 1, b: 2",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The `for...in` loop iterates over the enumerable property names of an object, not their values.",
+        "example": "let obj = {a: 1, b: 2}; for (let key in obj) { console.log(key); } // Outputs: a, b"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A `try...catch` block can be used to handle errors within a loop.",
+        "answer": true,
+        "explanation": "A `try...catch` block can catch errors thrown during loop execution, allowing the program to continue or handle the error gracefully.",
+        "example": "try { for (let i = 0; i < 2; i++) { if (i === 1) throw new Error('Stop'); console.log(i); } } catch (e) { console.log(e.message); } // Outputs: 0, Stop"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let x = 5; console.log(x > 10 ? 'High' : x > 0 ? 'Positive' : 'Negative');`?",
+        "options": {
+          "1": "High",
+          "2": "Positive",
+          "3": "Negative",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "The nested ternary operator evaluates `x > 10` (false), then `x > 0` (true), returning 'Positive'.",
+        "example": "let x = 5; console.log(x > 10 ? 'High' : x > 0 ? 'Positive' : 'Negative'); // Outputs: Positive"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `break` statement can exit a nested loop if used with a label.",
+        "answer": true,
+        "explanation": "A labeled `break` statement can exit a specific outer loop in a nested loop structure.",
+        "example": "outer: for (let i = 0; i < 2; i++) { for (let j = 0; j < 2; j++) { if (j === 1) break outer; console.log(j); } } // Outputs: 0"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let i = 0; do { console.log(i); i++; } while (i < 0);`?",
+        "options": {
+          "1": "0",
+          "2": "Nothing",
+          "3": "0, 1",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `do...while` loop executes once before checking the condition. Since `i < 0` is `false` after the first iteration, only `0` is logged.",
+        "example": "let i = 0; do { console.log(i); i++; } while (i < 0); // Outputs: 0"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Variables declared with `let` inside an `if` block are accessible outside the block.",
+        "answer": false,
+        "explanation": "Variables declared with `let` inside a block (like an `if` block) are block-scoped and not accessible outside it.",
+        "example": "if (true) { let x = 1; } console.log(x); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let x = true; x && console.log('Run');`?",
+        "options": {
+          "1": "Run",
+          "2": "true",
+          "3": "Nothing",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `&&` operator evaluates to the last value if all are truthy. Since `x` is `true`, the `console.log('Run')` expression is evaluated, logging 'Run'.",
+        "example": "let x = true; x && console.log('Run'); // Outputs: Run"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "The `for...of` loop can iterate over the characters of a string.",
+        "answer": true,
+        "explanation": "The `for...of` loop iterates over iterable objects, such as strings, yielding each character.",
+        "example": "for (let char of 'hi') { console.log(char); } // Outputs: h, i"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let x = 0; if (x) { console.log('Truthy'); } else { console.log('Falsy'); }`?",
+        "options": {
+          "1": "Truthy",
+          "2": "Falsy",
+          "3": "Nothing",
+          "4": "Error"
+        },
+        "answer": "2",
+        "explanation": "In JavaScript, `0` is a falsy value, so the `else` block executes.",
+        "example": "let x = 0; if (x) { console.log('Truthy'); } else { console.log('Falsy'); } // Outputs: Falsy"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A `switch` statement can use expressions as case values.",
+        "answer": false,
+        "explanation": "A `switch` statement compares the switch expression to case values using strict equality (`===`). Case values must be constants, not expressions.",
+        "example": "let x = 1; switch (x) { case 1 + 0: console.log('Match'); } // Outputs: Match, but case must be a constant like `1`"
+      }
+    ]
+  }
+]
+  ],
+  "3": [[
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "In a `switch` statement, omitting a `break` causes fall-through to the next case.",
+        "answer": true,
+        "explanation": "Without a `break`, a `switch` statement continues executing subsequent cases until a `break` or the end of the `switch` is reached (fall-through behavior).",
+        "example": "let x = 1; switch (x) { case 1: console.log('One'); case 2: console.log('Two'); break; } // Outputs: One, Two"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let obj = {a: 1, b: 2}; for (let key of Object.keys(obj)) { if (obj[key] > 1) console.log(key); }`?",
+        "options": {
+          "1": "a",
+          "2": "b",
+          "3": "a, b",
+          "4": "Nothing"
+        },
+        "answer": "2",
+        "explanation": "`Object.keys(obj)` returns `['a', 'b']`. The `for...of` loop checks each value, logging the key if `obj[key] > 1`. Only `b` (value 2) meets the condition.",
+        "example": "let obj = {a: 1, b: 2}; for (let key of Object.keys(obj)) { if (obj[key] > 1) console.log(key); } // Outputs: b"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`hasOwnProperty()` returns `false` for inherited properties in a `for...in` loop.",
+        "answer": true,
+        "explanation": "`hasOwnProperty()` checks if a property is directly defined on an object, returning `false` for properties inherited from the prototype chain.",
+        "example": "let obj = {a: 1}; Object.prototype.b = 2; for (let key in obj) { console.log(obj.hasOwnProperty(key)); } // Outputs: true, false"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `try { for (let i = 0; i < 3; i++) { if (i === 2) throw new Error('Stop'); console.log(i); } } catch (e) { console.log('Caught'); }`?",
+        "options": {
+          "1": "0, 1, Caught",
+          "2": "0, 1, 2",
+          "3": "Caught",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The loop logs `0` and `1`, then throws an error when `i === 2`. The `catch` block logs 'Caught'.",
+        "example": "try { for (let i = 0; i < 3; i++) { if (i === 2) throw new Error('Stop'); console.log(i); } } catch (e) { console.log('Caught'); } // Outputs: 0, 1, Caught"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A labeled `continue` statement can skip to the next iteration of an outer loop in a nested loop.",
+        "answer": true,
+        "explanation": "A labeled `continue` statement can skip to the next iteration of a specific outer loop in a nested loop structure.",
+        "example": "outer: for (let i = 0; i < 2; i++) { for (let j = 0; j < 2; j++) { if (j === 1) continue outer; console.log(j); } } // Outputs: 0, 0"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 2, 3]; for (let i of arr) { if (i === 2) break; console.log(i); }`?",
+        "options": {
+          "1": "1",
+          "2": "1, 2",
+          "3": "1, 2, 3",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The `for...of` loop iterates over the array. When `i === 2`, the `break` statement exits the loop, so only `1` is logged.",
+        "example": "let arr = [1, 2, 3]; for (let i of arr) { if (i === 2) break; console.log(i); } // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`Object.values()` returns an array of an object’s enumerable property values, which can be used in a `for...of` loop.",
+        "answer": true,
+        "explanation": "`Object.values()` returns an array of an object’s enumerable property values, suitable for iteration with `for...of`.",
+        "example": "let obj = {a: 1, b: 2}; for (let val of Object.values(obj)) { console.log(val); } // Outputs: 1, 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let x = 0; console.log(x || 1 && 2 || 3);`?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "2",
+          "4": "3"
+        },
+        "answer": "3",
+        "explanation": "The `&&` operator has higher precedence and returns `2` (last truthy value). The `||` operator then evaluates `0 || 2 || 3`, returning `2` (first truthy value).",
+        "example": "let x = 0; console.log(x || 1 && 2 || 3); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `Object.freeze()` on an object prevents its properties from being modified in a loop.",
+        "answer": true,
+        "explanation": "`Object.freeze()` makes an object immutable, preventing property modifications in loops or conditionals.",
+        "example": "let obj = {a: 1}; Object.freeze(obj); for (let key in obj) { obj[key] = 2; } console.log(obj.a); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let matrix = [[1, 2], [3, 4]]; outer: for (let i = 0; i < matrix.length; i++) { for (let j = 0; j < matrix[i].length; j++) { if (matrix[i][j] === 3) break outer; console.log(matrix[i][j]); } }`?",
+        "options": {
+          "1": "1, 2",
+          "2": "1, 2, 3",
+          "3": "1, 2, 3, 4",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The labeled `break outer` exits both loops when `matrix[i][j] === 3`, so only `1` and `2` are logged.",
+        "example": "let matrix = [[1, 2], [3, 4]]; outer: for (let i = 0; i < matrix.length; i++) { for (let j = 0; j < matrix[i].length; j++) { if (matrix[i][j] === 3) break outer; console.log(matrix[i][j]); } } // Outputs: 1, 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `Object.seal()` on an object allows modifying existing properties but prevents adding new ones in a loop.",
+        "answer": true,
+        "explanation": "`Object.seal()` prevents adding or removing properties but allows modifying existing ones, which can affect loop behavior.",
+        "example": "let obj = {a: 1}; Object.seal(obj); for (let key in obj) { obj[key] = 2; } console.log(obj.a); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let arr = [1, 'two', 3]; try { for (let x of arr) { if (isNaN(x)) throw new Error('Invalid'); console.log(x); } } catch (e) { console.log('Error caught'); }`?",
+        "options": {
+          "1": "1, Error caught",
+          "2": "1, two, 3",
+          "3": "1, 3, Error caught",
+          "4": "Error"
+        },
+        "answer": "1",
+        "explanation": "The loop logs `1`, then throws an error when `x` is `'two'` (non-numeric). The `catch` block logs 'Error caught'.",
+        "example": "let arr = [1, 'two', 3]; try { for (let x of arr) { if (isNaN(x)) throw new Error('Invalid'); console.log(x); } } catch (e) { console.log('Error caught'); } // Outputs: 1, Error caught"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A `for...in` loop skips non-enumerable properties of an object.",
+        "answer": true,
+        "explanation": "A `for...in` loop only iterates over enumerable properties, skipping non-enumerable ones defined with `Object.defineProperty`.",
+        "example": "let obj = {a: 1}; Object.defineProperty(obj, 'b', {value: 2, enumerable: false}); for (let key in obj) { console.log(key); } // Outputs: a"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let obj = {a: 1, b: 2}; Object.defineProperty(obj, 'b', {enumerable: false}); for (let key in obj) { console.log(key); }`?",
+        "options": {
+          "1": "a, b",
+          "2": "a",
+          "3": "b",
+          "4": "Nothing"
+        },
+        "answer": "2",
+        "explanation": "After setting `b` as non-enumerable with `Object.defineProperty`, the `for...in` loop only iterates over `a`, the remaining enumerable property.",
+        "example": "let obj = {a: 1, b: 2}; Object.defineProperty(obj, 'b', {enumerable: false}); for (let key in obj) { console.log(key); } // Outputs: a"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "The `||` operator short-circuits and returns the first truthy value or the last value if none are truthy.",
+        "answer": true,
+        "explanation": "The `||` operator evaluates expressions from left to right, returning the first truthy value or the last value if all are falsy.",
+        "example": "let x = 0; let y = ''; console.log(x || y || 'last'); // Outputs: last"
+      }
+    ]
+  }
+]
+  ]
+}
