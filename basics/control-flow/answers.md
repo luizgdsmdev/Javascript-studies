@@ -1,383 +1,255 @@
-### Exercise 1: Declaring Functions with Different Syntaxes
-- **Description**: Practice declaring functions using different methods.
-- **Task**: Declare three functions using a function declaration, function expression, and arrow function. Each function should take two numbers and return their sum. Log the results of calling each function with arguments `5` and `3`.
+#### Exercise 1: Basic If Condition
+- **Description**: Practice using a simple `if` statement to check a condition.
+- **Task**: Declare a variable `temperature` with a value of 25. Use an `if` statement to check if the temperature is greater than 20 and log "It's warm!" if true.
 - **Solution**:
-```javascript
-function addDecl(a, b) {
-  return a + b;
-}
-const addExpr = function(a, b) {
-  return a + b;
-};
-const addArrow = (a, b) => a + b;
-
-console.log(addDecl(5, 3));
-console.log(addExpr(5, 3));
-console.log(addArrow(5, 3));
-```
-
-### Exercise 2: Function Declaration with Hoisting
-- **Description**: Demonstrate the hoisting behavior of function declarations.
-- **Task**: Call a function that calculates the square of a number before its declaration. Then, define the function using a function declaration and log the result for input `4`.
-- **Solution**:
-```javascript
-console.log(square(4));
-function square(num) {
-  return num * num;
-}
-```
-
-### Exercise 3: Anonymous Function Expression
-- **Description**: Practice creating an anonymous function expression.
-- **Task**: Create an anonymous function expression that multiplies two numbers and assign it to a variable. Call the function with arguments `6` and `7` and log the result.
-- **Solution**:
-```javascript
-const multiply = function(a, b) {
-  return a * b;
-};
-console.log(multiply(6, 7));
-```
-
-### Exercise 4: Arrow Function with Implicit Return
-- **Description**: Use an arrow function with implicit return for a simple operation.
-- **Task**: Create an arrow function that takes a number and returns its double. Log the result for input `10`.
-- **Solution**:
-```javascript
-const double = num => num * 2;
-console.log(double(10));
-```
-
-### Exercise 5: Constructor Function
-- **Description**: Practice creating objects with a constructor function.
-- **Task**: Define a constructor function `Car` that takes `brand` and `year` as parameters. Create an instance with `brand = "Toyota"` and `year = 2020`, and log the `brand` property.
-- **Solution**:
-```javascript
-function Car(brand, year) {
-  this.brand = brand;
-  this.year = year;
-}
-const myCar = new Car("Toyota", 2020);
-console.log(myCar.brand);
-```
-
-### Exercise 6: Immediately Invoked Function Expression (IIFE)
-- **Description**: Use an IIFE to execute code immediately.
-- **Task**: Create an IIFE that logs `"IIFE executed!"` to the console.
-- **Solution**:
-```javascript
-(function() {
-  console.log("IIFE executed!");
-})();
-```
-
-### Exercise 7: Named Function Expression
-- **Description**: Practice named function expressions and their scope.
-- **Task**: Create a named function expression assigned to a variable `factorial`. The function should calculate the factorial of a number recursively. Log the result for input `5`.
-- **Solution**:
-```javascript
-const factorial = function fact(n) {
-  return n === 0 ? 1 : n * fact(n - 1);
-};
-console.log(factorial(5));
-```
-
-### Exercise 8: Arrow Function with Multiple Parameters
-- **Description**: Use an arrow function with multiple parameters and explicit return.
-- **Task**: Create an arrow function that takes three numbers and returns their average. Log the result for inputs `10`, `20`, and `30`.
-- **Solution**:
-```javascript
-const average = (a, b, c) => {
-  return (a + b + c) / 3;
-};
-console.log(average(10, 20, 30));
-```
-
-### Exercise 9: IIFE with Parameters
-- **Description**: Pass parameters to an IIFE for immediate execution.
-- **Task**: Create an IIFE that takes a name and logs a greeting with that name. Use `"Alice"` as the parameter.
-- **Solution**:
-```javascript
-(function(name) {
-  console.log(`Hello, ${name}!`);
-})("Alice");
-```
-
-### Exercise 10: Function Scope
-- **Description**: Explore function scope and variable access.
-- **Task**: Create a function `outer` that defines a variable `message = "Outer"`. Inside it, define a function `inner` that logs `message` and a local variable `innerMessage = "Inner"`. Call `inner` and try logging `innerMessage` outside the function.
-- **Solution**:
-```javascript
-function outer() {
-  let message = "Outer";
-  function inner() {
-    let innerMessage = "Inner";
-    console.log(message);
-    console.log(innerMessage);
+  ```javascript
+  let temperature = 25;
+  if (temperature > 20) {
+    console.log("It's warm!");
   }
-  inner();
-}
-outer();
-console.log(innerMessage); // Throws ReferenceError
-```
+  ```
 
-### Exercise 11: Closure Basics
-- **Description**: Practice creating a closure to maintain state.
-- **Task**: Create a function `counter` that returns an inner function. The inner function increments a counter variable and returns its value. Call the inner function three times.
+#### Exercise 2: If-Else Decision
+- **Description**: Use `if-else` to make a decision based on a condition.
+- **Task**: Declare a variable `age` with a value of 16. Check if `age` is 18 or older and log "Adult" if true, otherwise log "Minor".
 - **Solution**:
-```javascript
-function counter() {
-  let count = 0;
-  return function() {
-    return ++count;
-  };
-}
-const increment = counter();
-console.log(increment());
-console.log(increment());
-console.log(increment());
-```
-
-### Exercise 12: Closure with Private Variables
-- **Description**: Use a closure to create private variables.
-- **Task**: Create a function `createPerson` that returns an object with methods to get and set a private `name` variable. Set the name to `"Bob"` and log it, then change it to `"Alice"` and log again.
-- **Solution**:
-```javascript
-function createPerson() {
-  let name = "Bob";
-  return {
-    getName: () => name,
-    setName: newName => name = newName
-  };
-}
-const person = createPerson();
-console.log(person.getName());
-person.setName("Alice");
-console.log(person.getName());
-```
-
-### Exercise 13: Module Pattern
-- **Description**: Implement the module pattern using an IIFE.
-- **Task**: Create an IIFE that returns an object with methods to increment and show a private counter. Call `increment` twice and then `show`.
-- **Solution**:
-```javascript
-const module = (function() {
-  let count = 0;
-  return {
-    increment: () => count++,
-    show: () => console.log(count)
-  };
-})();
-module.increment();
-module.increment();
-module.show();
-```
-
-### Exercise 14: Revealing Module Pattern
-- **Description**: Use the revealing module pattern for encapsulation.
-- **Task**: Create an IIFE that returns an object with methods to add to and get a private balance. Add `50` and `100`, then log the balance.
-- **Solution**:
-```javascript
-const bank = (function() {
-  let balance = 0;
-  function add(amount) { balance += amount; }
-  function get() { return balance; }
-  return { add, get };
-})();
-bank.add(50);
-bank.add(100);
-console.log(bank.get());
-```
-
-### Exercise 15: Injecting a Namespace Object
-- **Description**: Use an IIFE to extend an existing object.
-- **Task**: Create an object `utils` and use an IIFE to add a method `square` that returns the square of a number. Call `square(5)` and log the result.
-- **Solution**:
-```javascript
-const utils = {};
-(function(obj) {
-  obj.square = num => num * num;
-})(utils);
-console.log(utils.square(5));
-```
-
-### Exercise 16: Function Properties
-- **Description**: Add and access properties on a function.
-- **Task**: Create a function `calculate` and add a property `version = "1.0"`. Log the property value.
-- **Solution**:
-```javascript
-function calculate() {}
-calculate.version = "1.0";
-console.log(calculate.version);
-```
-
-### Exercise 17: Deleting Function Properties
-- **Description**: Practice deleting properties from a function.
-- **Task**: Add a property `description = "Math function"` to a function `math`. Log it, delete it, and log again.
-- **Solution**:
-```javascript
-function math() {}
-math.description = "Math function";
-console.log(math.description);
-delete math.description;
-console.log(math.description);
-```
-
-### Exercise 18: Using `.call()`
-- **Description**: Use `.call()` to set the `this` context.
-- **Task**: Create a function `greet` that logs `Hello, ${this.name}!`. Call it with an object `{ name: "John" }` using `.call()`.
-- **Solution**:
-```javascript
-function greet() {
-  console.log(`Hello, ${this.name}!`);
-}
-const person = { name: "John" };
-greet.call(person);
-```
-
-### Exercise 19: Using `.apply()`
-- **Description**: Use `.apply()` to pass arguments as an array.
-- **Task**: Create a function `sum` that logs the sum of its arguments. Call it with `[1, 2, 3]` using `.apply()`.
-- **Solution**:
-```javascript
-function sum() {
-  let total = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    total += arguments[i];
+  ```javascript
+  let age = 16;
+  if (age >= 18) {
+    console.log("Adult");
+  } else {
+    console.log("Minor");
   }
-  console.log(total);
-}
-sum.apply(null, [1, 2, 3]);
-```
+  ```
 
-### Exercise 20: Using `.bind()`
-- **Description**: Use `.bind()` to create a function with a fixed `this`.
-- **Task**: Create a function `introduce` that logs `I am ${this.name}.`. Bind it to `{ name: "Alice" }` and call the bound function.
+#### Exercise 3: Else-If Ladder
+- **Description**: Practice using `else if` to handle multiple conditions.
+- **Task**: Declare a variable `score` with a value of 85. Use `if`, `else if`, and `else` to check if the score is 90 or above (log "A"), 80 or above (log "B"), or below 80 (log "C").
 - **Solution**:
-```javascript
-function introduce() {
-  console.log(`I am ${this.name}.`);
-}
-const boundIntroduce = introduce.bind({ name: "Alice" });
-boundIntroduce();
-```
+  ```javascript
+  let score = 85;
+  if (score >= 90) {
+    console.log("A");
+  } else if (score >= 80) {
+    console.log("B");
+  } else {
+    console.log("C");
+  }
+  ```
 
-### Exercise 21: Default Parameters
-- **Description**: Use default parameters in a function.
-- **Task**: Create a function `welcome` that takes a `name` parameter with default `"Guest"`. Log a greeting. Call it with and without an argument.
+#### Exercise 4: Switch Statement
+- **Description**: Use a `switch` statement to match values.
+- **Task**: Declare a variable `day` with the value "Wednesday". Use a `switch` statement to log "Midweek" for Wednesday, "Start of week" for Monday, and "Other day" for any other value.
 - **Solution**:
-```javascript
-function welcome(name = "Guest") {
-  console.log(`Welcome, ${name}!`);
-}
-welcome();
-welcome("Bob");
-```
+  ```javascript
+  let day = "Wednesday";
+  switch (day) {
+    case "Monday":
+      console.log("Start of week");
+      break;
+    case "Wednesday":
+      console.log("Midweek");
+      break;
+    default:
+      console.log("Other day");
+  }
+  ```
 
-### Exercise 22: Rest Parameters
-- **Description**: Use rest parameters to handle variable arguments.
-- **Task**: Create a function `sumAll` that uses rest parameters to sum all arguments. Log the result for `1, 2, 3, 4`.
+#### Exercise 5: Basic For Loop
+- **Description**: Practice iterating with a `for` loop.
+- **Task**: Use a `for` loop to log numbers from 1 to 3.
 - **Solution**:
-```javascript
-function sumAll(...numbers) {
-  return numbers.reduce((sum, num) => sum + num, 0);
-}
-console.log(sumAll(1, 2, 3, 4));
-```
+  ```javascript
+  for (let i = 1; i <= 3; i++) {
+    console.log(i);
+  }
+  ```
 
-### Exercise 23: Higher-Order Function
-- **Description**: Create a higher-order function that accepts another function.
-- **Task**: Create a function `withLog` that takes a function and logs `"Calling function"` before executing it. Use it with a function that doubles a number.
+#### Exercise 6: While Loop
+- **Description**: Use a `while` loop to repeat an action.
+- **Task**: Declare a variable `count` with a value of 0. Use a `while` loop to log "Counting" and increment `count` until it reaches 3.
 - **Solution**:
-```javascript
-function withLog(fn) {
-  return function(...args) {
-    console.log("Calling function");
-    return fn(...args);
-  };
-}
-const double = num => num * 2;
-const loggedDouble = withLog(double);
-console.log(loggedDouble(5));
-```
+  ```javascript
+  let count = 0;
+  while (count < 3) {
+    console.log("Counting");
+    count++;
+  }
+  ```
 
-### Exercise 24: Async Function
-- **Description**: Practice async functions with a simple promise.
-- **Task**: Create an async function `fetchData` that returns a promise resolving to `"Data fetched"`. Log the result using `.then()`.
+#### Exercise 7: Do-While Loop
+- **Description**: Practice using a `do...while` loop that executes at least once.
+- **Task**: Declare a variable `value` with a value of 5. Use a `do...while` loop to log "Running" and decrement `value` until it is less than 5.
 - **Solution**:
-```javascript
-async function fetchData() {
-  return "Data fetched";
-}
-fetchData().then(console.log);
-```
+  ```javascript
+  let value = 5;
+  do {
+    console.log("Running");
+    value--;
+  } while (value < 5);
+  ```
 
-### Exercise 25: Object.keys() with Functions
-- **Description**: Use `Object.keys()` to list function properties.
-- **Task**: Create a function `calc` and add two properties: `type = "math"` and `version = "2.0"`. Log the property names using `Object.keys()`.
+#### Exercise 8: Nested If Statements
+- **Description**: Practice nested `if` statements for complex conditions.
+- **Task**: Declare variables `isStudent` (true) and `age` (20). Use nested `if` statements to check if `isStudent` is true and `age` is less than 25, logging "Young student" if both are true.
 - **Solution**:
-```javascript
-function calc() {}
-calc.type = "math";
-calc.version = "2.0";
-console.log(Object.keys(calc));
-```
+  ```javascript
+  let isStudent = true;
+  let age = 20;
+  if (isStudent) {
+    if (age < 25) {
+      console.log("Young student");
+    }
+  }
+  ```
 
-### Exercise 26: Object.values() with Functions
-- **Description**: Use `Object.values()` to list function property values.
-- **Task**: Use the same `calc` function from Exercise 25 and log the property values using `Object.values()`.
+#### Exercise 9: For Loop with Array
+- **Description**: Iterate over an array using a `for` loop.
+- **Task**: Declare an array `fruits` with values `["apple", "banana", "orange"]`. Use a `for` loop to log each fruit.
+  ```
 - **Solution**:
-```javascript
-function calc() {}
-calc.type = "math";
-calc.version = "2.0";
-console.log(Object.values(calc));
-```
+  ```javascript
+  let fruits = ["apple", "banana", "orange"];
+  for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+  }
+  ```
 
-### Exercise 27: Object.freeze() with Functions
-- **Description**: Prevent modifications to a function’s properties using `Object.freeze()`.
-- **Task**: Create a function `frozen` with a property `status = "active"`. Freeze it, attempt to add a new property `version = "1.0"`, and log the result.
+#### Exercise 10: For...Of Loop
+- **Description**: Use a `for...of` loop to iterate over an iterable.
+- **Task**: Declare an array `numbers` with values `[10, 20, 30]`. Use a `for...of` loop to log each number doubled.
 - **Solution**:
-```javascript
-function frozen() {}
-frozen.status = "active";
-Object.freeze(frozen);
-frozen.version = "1.0";
-console.log(frozen.version);
-```
+  ```javascript
+  let numbers = [10, 20, 30];
+  for (let num of numbers) {
+    console.log(num * 2);
+  }
+  ```
 
-### Exercise 28: Object.seal() with Functions
-- **Description**: Use `Object.seal()` to restrict adding/deleting properties.
-- **Task**: Create a function `sealed` with a property `mode = "on"`. Seal it, try to add a new property `version = "1.0"`, and log the result.
+#### Exercise 11: For...In Loop with Object
+- **Description**: Iterate over an object’s properties using `for...in`.
+- **Task**: Declare an object `person` with properties `{name: "Alice", age: 25}`. Use a `for...in` loop to log each property name and value.
 - **Solution**:
-```javascript
-function sealed() {}
-sealed.mode = "on";
-Object.seal(sealed);
-sealed.version = "1.0";
-console.log(sealed.version);
-```
+  ```javascript
+  let person = { name: "Alice", age: 25 };
+  for (let key in person) {
+    console.log(`${key}: ${person[key]}`);
+  }
+  ```
 
-### Exercise 29: hasOwnProperty() with Functions
-- **Description**: Check for properties on a function using `hasOwnProperty()`.
-- **Task**: Create a function `test` with a property `category = "utility"`. Use `hasOwnProperty()` to check for `category` and `version`.
+#### Exercise 12: Break in Loop
+- **Description**: Use `break` to exit a loop early.
+- **Task**: Use a `for` loop to iterate from 1 to 5. Break the loop when the number is 3 and log each number before that.
 - **Solution**:
-```javascript
-function test() {}
-test.category = "utility";
-console.log(test.hasOwnProperty("category"));
-console.log(test.hasOwnProperty("version"));
-```
+  ```javascript
+  for (let i = 1; i <= 5; i++) {
+    if (i === 3) break;
+    console.log(i);
+  }
+  ```
 
-### Exercise 30: Combining Closures and Higher-Order Functions
-- **Description**: Combine closures and higher-order functions for advanced logic.
-- **Task**: Create a function `createMultiplier` that takes a factor and returns a function that multiplies its argument by that factor. Use a closure to store the factor. Create two multipliers (factor `2` and `3`) and log results for input `5`.
+#### Exercise 13: Continue in Loop
+- **Description**: Use `continue` to skip iterations.
+- **Task**: Use a `while` loop to iterate from 1 to 5. Skip even numbers and log odd numbers.
+  ```
 - **Solution**:
-```javascript
-function createMultiplier(factor) {
-  return num => num * factor;
-}
-const double = createMultiplier(2);
-const triple = createMultiplier(3);
-console.log(double(5));
-console.log(triple(5));
-```
+  ```javascript
+  let i = 0;
+  while (i < 5) {
+    i++;
+    if (i % 2 === 0) continue;
+    console.log(i);
+  }
+  ```
+
+#### Exercise 14: Ternary Operator
+- **Description**: Practice using the ternary operator for concise conditionals.
+- **Task**: Declare a variable `temperature` with a value of 15. Use the ternary operator to log "Cold" if the temperature is below 20, otherwise log "Warm".
+- **Solution**:
+  ```javascript
+  let temperature = 15;
+  console.log(temperature < 20 ? "Cold" : "Warm");
+  ```
+
+#### Exercise 15: Switch with Fall-Through
+- **Description**: Practice `switch` with intentional fall-through behavior.
+- **Task**: Declare a variable `month` with the value "January". Use a `switch` statement to log "Winter" for January, February, or December, and "Other season" for other months, using fall-through for the winter months.
+- **Solution**:
+  ```javascript
+  let month = "January";
+  switch (month) {
+    case "January":
+    case "February":
+    case "December":
+      console.log("Winter");
+      break;
+    default:
+      console.log("Other season");
+  }
+  ```
+
+#### Exercise 16: Nested Loops
+- **Description**: Use nested loops to process a 2D structure.
+- **Task**: Declare a 2D array `matrix` with values `[[1, 2], [3, 4]]`. Use nested `for` loops to log each number.
+- **Solution**:
+  ```javascript
+  let matrix = [[1, 2], [3, 4]];
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      console.log(matrix[i][j]);
+    }
+  }
+  ```
+
+#### Exercise 17: Object.keys() in Loop
+- **Description**: Use `Object.keys()` with a `for...of` loop to iterate over an object.
+- **Task**: Declare an object `scores` with properties `{math: 90, science: 85}`. Use `Object.keys()` and a `for...of` loop to log keys and values where the value is above 80.
+- **Solution**:
+  ```javascript
+  let scores = { math: 90, science: 85 };
+  for (let key of Object.keys(scores)) {
+    if (scores[key] > 80) {
+      console.log(`${key}: ${scores[key]}`);
+    }
+  }
+  ```
+
+#### Exercise 18: hasOwnProperty() in Loop
+- **Description**: Use `hasOwnProperty()` to filter inherited properties.
+- **Task**: Create an object `student` with properties `{name: "Bob", grade: 10}`. Add an inherited property via prototype (e.g., `Object.prototype.extra = "inherited"`). Use a `for...in` loop with `hasOwnProperty()` to log only own properties.
+- **Solution**:
+  ```javascript
+  let student = { name: "Bob", grade: 10 };
+  Object.prototype.extra = "inherited";
+  for (let key in student) {
+    if (student.hasOwnProperty(key)) {
+      console.log(`${key}: ${student[key]}`);
+    }
+  }
+  ```
+
+#### Exercise 19: Short-Circuit Evaluation
+- **Description**: Use short-circuit evaluation to conditionally execute code.
+- **Task**: Declare variables `isValid` (true) and `message` ("Success"). Use `&&` to log `message` only if `isValid` is true.
+- **Solution**:
+  ```javascript
+  let isValid = true;
+  let message = "Success";
+  isValid && console.log(message);
+  ```
+
+#### Exercise 20: Try-Catch with Loop
+- **Description**: Practice error handling in a loop using `try...catch`.
+- **Task**: Create an array `data` with values `[1, "two", 3]`. Use a `for...of` loop to log each value as a number. Use `try...catch` to handle errors when a non-number is encountered, logging "Invalid number" instead.
+- **Solution**:
+  ```javascript
+  let data = [1, "two", 3];
+  for (let item of data) {
+    try {
+      if (isNaN(item)) throw new Error("Not a number");
+      console.log(Number(item));
+    } catch (e) {
+      console.log("Invalid number");
+    }
+  }
+  ```
