@@ -2,16 +2,8 @@
 This section is meant to cover everything we should know about scope and closures in JavaScript.  
 - [What are Scope and Closures?](#what-are-scope-and-closures)
 - [Methods for creating scope and closures](#scope-and-closures-creation-methods)
-- [Scope and Closures characteristics: Creation and access to variables](#scope-and-closures-characteristics-variable-creation-and-access)
 - [Scope and Closures deletion or cleanup](#scope-and-closures-cleanup)
-- [Scope and Closures characteristics: Memory storage](#scope-and-closures-characteristics-memory-storage)
-- [Scope and Closures characteristics: Type](#scope-and-closures-characteristics-type)
 - [Scope and Closures characteristics: Mutability](#scope-and-closures-characteristics-mutability)
-- [Scope and Closures methods: Iteration with Object.keys() and Object.values()](#scope-and-closures-methods-object-keys-and-object-values)
-- [Scope and Closures methods: Object.freeze() and Object.seal()](#scope-and-closures-methods-object-freeze-and-object-seal)
-- [Scope and Closures methods: hasOwnProperty()](#scope-and-closures-methods-hasownproperty)
-- [Scope and Closures methods: Bonus](#scope-and-closures-methods-bonus)
-
 
 Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/blob/main/basics/intro.md).  
 
@@ -70,7 +62,7 @@ function outerScope(){
 
     return {
         getProperty: (propertyName) => obj.hasOwnProperty(propertyName) ? obj[propertyName] : 'Property not found',
-        setProperty: setProperty = (propertyName, value) => obj[propertyName] = value,
+        setProperty: (propertyName, value) => obj[propertyName] = value,
     };
 }
 
@@ -81,7 +73,7 @@ newObject.setProperty('name', 'Marta');
 console.log(newObject.getProperty('name'));//Shows Marta
 //--------------------------------------------------------------------------------------------------------------------
 
-//Revealing patter, where we return a pointer inside the object being returned
+//Revealing pattern, where we return a pointer inside the object being returned
 function outerScope(){
     let obj = {name: 'Luiz', age: 29};
     let getProperty = (propertyName) => obj.hasOwnProperty(propertyName) ? obj[propertyName] : 'Property not found';
@@ -137,14 +129,14 @@ function myFunction() {
   let funcVar = "function scope";
   console.log(funcVar); //Accessible here
 }
-//console.log(funcVar); //Shows Error: funcVar is not defined
+//console.log(funcVar); //Shows ReferenceError: funcVar is not defined
 
 //Block scope
 if (true) {
   let blockVar = "block scope";
   console.log(blockVar); //Accessible here
 }
-//console.log(blockVar); //Shows Error: blockVar is not defined
+//console.log(blockVar); //Shows ReferenceError: blockVar is not defined
 
 //Closure
 function createCounter() {
@@ -161,3 +153,50 @@ console.log(counter()); //Shows 2
 
 
 
+
+#### Scope and Closures deletion or cleanup
+By default, **all variables are cleaned once their scope is closed**, for example, primitive variables declared inside a standard function is stored in the **stack memory**, and **no longer exist** after the function execution and closing, allowing the garbage collector to erase those variables from memory, once they're not invoked anywhere else in the code. The same applies for a block scope (like an ``if`` statement).   
+````javascript
+function myFunction(){
+    //This variable is created and visible only inside this function scope
+    let myName = 'Luiz';
+
+    if(myName){
+        //Also, this variable only exists inside the if block
+        let message = `Hello, ${myName}.`;
+        console.log(message);
+    }
+}
+
+myFunction();//Shows Hello, Luiz.
+
+//After execution and closing, none of the variables created above no longer exist in memory
+````
+
+But we have a different behavior when it comes to **closures**, functions, variables, and objects are stored in the **heap memory** with references in the stack memory, and since closures **still have access** to the outer properties of their outer function, these **properties don't cease** once the outer function is closed. Instead, they are kept in memory for closure use and need explicit action of deletion, allowing the garbage collector to reclaim the memory.
+````javascript
+function createClosure() {
+  let data = "I'm alive";
+  return function() {
+    console.log(data);
+  };
+}
+let closure = createClosure();
+closure = null;//Removes reference, allowing garbage collection
+````
+
+
+#### Scope and Closures characteristics: Mutability
+Scopes are a syntactic construction, they're part of the JavaScript language and therefore **don't have a type and are immutable**.   
+Closures depend on what is returned, being able to receive a **function type** or an **object type** depending on what is being returned. In essence, the closures themselves are **mutable** for being a object or function type, and they can change the value of the properties from the outer scope of the outer function where they were returned.
+````javascript
+function createCounter() {
+  let count = 0;
+  return function() {
+    return ++count;//Mutates outer variable
+  };
+}
+let counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+````
