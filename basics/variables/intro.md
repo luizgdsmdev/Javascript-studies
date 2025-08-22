@@ -99,7 +99,7 @@ let const;
 #### Variables behavior (scope)
 In this section, we're covering just the variable behavior in different scopes themselves. Bear in mind that scopes are a whole different topic, but a resume of scopes would be:
 
-*"- Global scope: The default scope for all code running in script mode.*
+- *"Global scope: The default scope for all code running in script mode.*
 - *Module scope: The scope for code running in module mode.*
 - *Function scope: The scope created with a function.*
 
