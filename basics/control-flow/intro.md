@@ -248,5 +248,45 @@ for(letter of word){
 //Shows e
 ````
 
-####
-####
+#### Control flow deletion or interruption
+Flows can be interrupted or modified at any time if the use of the following keywords:
+- ``Break``: stops the flow/loop and exits the code block;
+- ``continue``: skips to the next iteration in the loop;
+- ``return``: exits a function, interrupting any control flow within it.
+````javascript
+//Only interates ulti i iguals to 2
+for (let i = 0; i < 3; i++) {
+    if (i == 2) break;
+    console.log(i);
+    //Shows 0
+    //Shows 1
+}
+
+let controller = 0;
+while (controller <= 5) {//Skips even numbers
+    controller++;
+    if(controller % 2 === 0) continue;
+    console.log(controller);
+    //Shows 1
+    //Shows 3
+    //Shows 5
+}
+
+let array = [1,2,3,4,5,6];
+for (const element of array) {//As it returns, stops the flow
+    if(element === 4) return element;
+    console.log(element);
+    //Shows 1
+    //Shows 2
+    //Shows 3
+}
+````
+
+#### Control flow characteristics: Memory storage
+Control flow is **not an object stored in memory**, but rather syntactic instructions that manage code execution. This means that the variables and objects inside the blocks behave as a standard, where **variables are stored in the stack memory** and **objects in the heap memory**, and both are also under the **scope limits** control.
+
+
+#### Control flow characteristics: Type
+Control flow **do not have a type** for their own, since they are a syntactic construction, not values. However, the expressions used to evaluate the condition or loops **do need to be coerced to a Boolean type** (``true`` or ``false``) in order to work.
+
+
