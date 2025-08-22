@@ -8,7 +8,6 @@ This section is meant to cover everything we should know about Control Flow in J
 - [Control flow characteristics: Type](#control-flow-characteristics-type)
 - [Control flow characteristics: Mutability](#control-flow-characteristics-mutability)
 - [Control flow methods: Iteration with Object.keys() and Object.values()](#control-flow-methods-object-keys-and-object-values)
-- [Control flow methods: Object.freeze() and Object.seal()](#control-flow-methods-object-freeze-and-object-seal)
 - [Control flow methods: hasOwnProperty()](#control-flow-methods-hasownproperty)
 - [Control flow methods: Bonus](#control-flow-methods-bonus)
 
@@ -213,10 +212,8 @@ for(item in obj){
 
 //Shows This is the name.
 //Shows This is obj Luiz.
-//Shows script2.js:8
 //Shows This is the age.
 //Shows This is obj 29.
-//Shows script2.js:8
 //Shows This is the state.
 //Shows This is obj Minas Gerais.
 ````
@@ -254,7 +251,7 @@ Flows can be interrupted or modified at any time if the use of the following key
 - ``continue``: skips to the next iteration in the loop;
 - ``return``: exits a function, interrupting any control flow within it.
 ````javascript
-//Only interates ulti i iguals to 2
+//Only interates ultil i iguals to 2
 for (let i = 0; i < 3; i++) {
     if (i == 2) break;
     console.log(i);
@@ -273,13 +270,13 @@ while (controller <= 5) {//Skips even numbers
 }
 
 let array = [1,2,3,4,5,6];
-for (const element of array) {//As it returns, stops the flow
-    if(element === 4) return element;
-    console.log(element);
-    //Shows 1
-    //Shows 2
-    //Shows 3
+let newArray = function(){
+    for (const element of array) {//As it returns, stops the flow
+        if(element === 4) return element;
+        console.log(element);//Shows only 1, 2, 3 on console because on the fourth element it stops after the return
+    }
 }
+console.log(newArray());//Shows 4
 ````
 
 #### Control flow characteristics: Memory storage
@@ -289,4 +286,78 @@ Control flow is **not an object stored in memory**, but rather syntactic instruc
 #### Control flow characteristics: Type
 Control flow **do not have a type** for their own, since they are a syntactic construction, not values. However, the expressions used to evaluate the condition or loops **do need to be coerced to a Boolean type** (``true`` or ``false``) in order to work.
 
+#### Control flow characteristics: Mutability
+Control flows are **non-mutable** since they are part of the language syntax, meaning that their instructions cannot be changed once compiled. Their variables and values, however, can be changed during the execution, being able to **alter inner or outer scopes**.
+````javascript
+let outerArray = [1,2,3];
+let innerArray = Array();
+
+for (let i = 0; i < outerArray.length; i++) {
+    innerArray.push(outerArray[i] * 2);
+}
+
+console.log(innerArray);//Shows (3) [2, 4, 6]
+````
+
+
+#### Control flow methods: Iteration with Object.keys() and Object.values()
+``Object.keys()`` and ``Object.values()`` are not methods of the control flow, but aligned to the object in question, and can complement structures like ``for...in`` or ``for...of '' loops.
+````javascript
+const obj = { a: 1, b: 2, c: 3 };
+for (const key of Object.keys(obj)) {
+  console.log(key); // "a", "b", "c"
+}
+for (const value of Object.values(obj)) {
+  console.log(value); // 1, 2, 3
+}
+````
+
+
+#### Control flow methods: hasOwnProperty()
+often used in support of the control flow to avoid possible errors and ensure that the property belongs directly on an object.
+````javascript
+const obj = { name: "Luiz" };
+for (const key in obj) {
+  if (obj.hasOwnProperty(key)) {
+    console.log(`${key}: ${obj[key]}`); // "name: Luiz"
+  }
+}
+````
+
+
+#### Control flow methods: Bonus
+- Ternary Operator ``?:``: concise way to replace simple ``if...else`` statements:
+````javascript
+let age = 29;
+let allow = age > 18 ? true : false;
+console.log(allow);//Shows true
+
+age = 17;
+allow = age > 18 ? true : false;
+console.log(allow);//Shows false
+````
+
+- Short-circuit evaluation: use ``&&`` or ``||`` to execute actions conditionally. for ``&&`` the evaluation stops as soons as it finds a **falsy value**. For **||** it returns the **first truthy** value or the **last value** in case no truthy values were found.
+````javascript
+let boolTrue = true;
+let boolFalse = false;
+let numTruthy = 10;
+let numFalsy = 0;
+let stringTruthy = 'Luiz';
+let stringFalsy = '';
+
+let resultOfAnd = boolTrue && numTruthy && stringTruthy && 'All were truthy, returning the last element';
+console.log(resultOfAnd);//Shows All were truthy, returning the last element
+
+resultOfAnd = boolTrue && numTruthy && 'This is truthy value' && stringTruthy;
+console.log(resultOfAnd);//Shows Luiz, because all values were truthy, so it returns the last one
+
+//-------------------------------------------------------------------------------------------------------
+
+let resultOfOr = boolFalse || numTruthy || stringFalsy;
+console.log(resultOfOr);//Shows 10, since the second element is truthy
+
+resultOfOr = boolFalse || numFalsy || stringFalsy || stringTruthy;
+console.log(resultOfOr);//Shows Luiz, since only the last element is truthy
+````
 
