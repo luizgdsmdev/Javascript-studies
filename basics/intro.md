@@ -9,3 +9,4 @@ This section covers:
 - [Arrays](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/arrays/intro.md);
 - [Objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/objects/intro.md);
 - [Functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/functions/intro.md);
+- [Control Flow](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/control-flow/intro.md);
