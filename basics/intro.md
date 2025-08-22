@@ -10,3 +10,4 @@ This section covers:
 - [Objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/objects/intro.md);
 - [Functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/functions/intro.md);
 - [Control Flow](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/control-flow/intro.md);
+- [Scope and closures](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/scope-closures/intro.md);
