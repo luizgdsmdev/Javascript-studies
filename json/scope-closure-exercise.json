@@ -1,0 +1,674 @@
+{
+    "1": [
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A variable declared in the global scope is accessible inside a function scope.",
+        "answer": true,
+        "explanation": "Variables in the global scope are accessible to all inner scopes, including function scopes, unless shadowed by a local declaration.",
+        "example": "let globalVar = 'global'; function test() { console.log(globalVar); } test(); // Outputs: global"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = 'outer'; function test() { console.log(x); } test();`?",
+        "options": {
+          "1": "outer",
+          "2": "undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The function `test` accesses the global variable `x` because it is in the outer scope.",
+        "example": "let x = 'outer'; function test() { console.log(x); } test(); // Outputs: outer"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A variable declared with `let` inside an `if` block is accessible outside that block.",
+        "answer": false,
+        "explanation": "Variables declared with `let` in a block scope (e.g., `if` block) are not accessible outside that block due to block scoping.",
+        "example": "if (true) { let x = 1; } console.log(x); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `function test() { let x = 'inner'; console.log(x); } test();`?",
+        "options": {
+          "1": "inner",
+          "2": "undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The variable `x` is declared in the function scope of `test` and is accessible within that function.",
+        "example": "function test() { let x = 'inner'; console.log(x); } test(); // Outputs: inner"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function scope can access variables from the global scope.",
+        "answer": true,
+        "explanation": "Function scope has access to variables in its outer scope, including the global scope, following the scope chain.",
+        "example": "let global = 'global'; function test() { console.log(global); } test(); // Outputs: global"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What happens when you try to access a block-scoped variable outside its block? `if (true) { let x = 5; } console.log(x);`",
+        "options": {
+          "1": "Outputs 5",
+          "2": "Outputs undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "3",
+        "explanation": "Variables declared with `let` in a block scope are not accessible outside the block, resulting in a ReferenceError.",
+        "example": "if (true) { let x = 5; } console.log(x); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A variable declared with `var` in a function is limited to that function’s scope.",
+        "answer": true,
+        "explanation": "Variables declared with `var` inside a function are function-scoped and not accessible outside the function.",
+        "example": "function test() { var x = 1; } test(); console.log(x); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let x = 'global'; function test() { let x = 'local'; console.log(x); } test();`?",
+        "options": {
+          "1": "global",
+          "2": "local",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The local variable `x` in the function shadows the global `x`, so the function logs the local value.",
+        "example": "let x = 'global'; function test() { let x = 'local'; console.log(x); } test(); // Outputs: local"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A closure allows an inner function to access variables from its outer function scope.",
+        "answer": true,
+        "explanation": "A closure is created when an inner function retains access to variables from its outer function scope, even after the outer function finishes executing.",
+        "example": "function outer() { let x = 1; return function() { console.log(x); }; } let fn = outer(); fn(); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 10; return function() { console.log(x); }; } let fn = outer(); fn();`?",
+        "options": {
+          "1": "10",
+          "2": "undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The inner function forms a closure, retaining access to `x` from the outer function’s scope, and logs its value.",
+        "example": "function outer() { let x = 10; return function() { console.log(x); }; } let fn = outer(); fn(); // Outputs: 10"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "Variables declared with `const` in a block scope are accessible outside the block.",
+        "answer": false,
+        "explanation": "Variables declared with `const` in a block scope are limited to that block and cause a ReferenceError if accessed outside.",
+        "example": "if (true) { const x = 1; } console.log(x); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `let global = 'global'; function test() { console.log(global); } test();`?",
+        "options": {
+          "1": "global",
+          "2": "undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The function `test` accesses the global variable `global` via the scope chain.",
+        "example": "let global = 'global'; function test() { console.log(global); } test(); // Outputs: global"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A function cannot access variables declared in a sibling function’s scope.",
+        "answer": true,
+        "explanation": "Functions can only access their own scope and outer scopes, not sibling scopes, as they are separate contexts.",
+        "example": "function a() { let x = 1; } function b() { console.log(x); } b(); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "easy",
+    "question": [
+      {
+        "question": "What is the output of `for (let i = 0; i < 2; i++) { console.log(i); } console.log(i);`?",
+        "options": {
+          "1": "0, 1",
+          "2": "0, 1, undefined",
+          "3": "0, 1, ReferenceError",
+          "4": "Error"
+        },
+        "answer": "3",
+        "explanation": "The variable `i` is block-scoped with `let` in the `for` loop, so accessing it outside the loop causes a ReferenceError.",
+        "example": "for (let i = 0; i < 2; i++) { console.log(i); } console.log(i); // Outputs: 0, 1, ReferenceError"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "easy",
+    "question": [
+      {
+        "question": "A closure is created whenever a function is defined inside another function.",
+        "answer": true,
+        "explanation": "A closure is formed when an inner function is defined within an outer function and has access to the outer function’s variables.",
+        "example": "function outer() { let x = 1; function inner() { console.log(x); } return inner; } let fn = outer(); fn(); // Outputs: 1"
+      }
+    ]
+  }
+    ],
+    "2": [
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A closure retains access to an outer function’s variables even after the outer function has finished executing.",
+        "answer": true,
+        "explanation": "A closure allows an inner function to maintain a reference to its outer function’s variables, keeping them in memory after the outer function returns.",
+        "example": "function outer() { let x = 1; return function() { console.log(x); }; } let fn = outer(); fn(); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 5; return function() { x++; return x; }; } let fn = outer(); console.log(fn()); console.log(fn());`?",
+        "options": {
+          "1": "5, 5",
+          "2": "6, 7",
+          "3": "5, 6",
+          "4": "ReferenceError"
+        },
+        "answer": "2",
+        "explanation": "The inner function forms a closure over `x`, incrementing and returning it each time it is called, so the values increase.",
+        "example": "function outer() { let x = 5; return function() { x++; return x; }; } let fn = outer(); console.log(fn()); console.log(fn()); // Outputs: 6, 7"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Variables declared with `var` in a block scope are accessible outside the block.",
+        "answer": true,
+        "explanation": "Unlike `let` or `const`, `var` is not block-scoped; it is function-scoped or global, so it is accessible outside a block.",
+        "example": "if (true) { var x = 1; } console.log(x); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let x = 'global'; function outer() { let x = 'outer'; function inner() { console.log(x); } inner(); } outer();`?",
+        "options": {
+          "1": "global",
+          "2": "outer",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The inner function accesses `x` from its immediate outer scope (`outer` function), which shadows the global `x`.",
+        "example": "let x = 'global'; function outer() { let x = 'outer'; function inner() { console.log(x); } inner(); } outer(); // Outputs: outer"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A closure can modify the value of a variable in its outer scope if the variable is mutable.",
+        "answer": true,
+        "explanation": "Closures can modify outer scope variables declared with `let` or `var`, as they maintain a reference to those variables.",
+        "example": "function outer() { let x = 1; return function() { x++; return x; }; } let fn = outer(); console.log(fn()); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function createCounter() { let count = 0; return { increment: function() { count++; }, getCount: function() { return count; } }; } let counter = createCounter(); counter.increment(); console.log(counter.getCount());`?",
+        "options": {
+          "1": "0",
+          "2": "1",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The module pattern creates a closure, allowing `increment` to modify `count` and `getCount` to access it.",
+        "example": "function createCounter() { let count = 0; return { increment: function() { count++; }, getCount: function() { return count; } }; } let counter = createCounter(); counter.increment(); console.log(counter.getCount()); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A variable declared with `const` in a closure cannot be reassigned but its properties can be modified if it’s an object.",
+        "answer": true,
+        "explanation": "A `const` variable cannot be reassigned, but if it holds an object, the object’s properties can be modified within a closure.",
+        "example": "function outer() { const obj = { x: 1 }; return function() { obj.x++; return obj.x; }; } let fn = outer(); console.log(fn()); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 10; function inner() { let x = 20; console.log(x); } inner(); } outer();`?",
+        "options": {
+          "1": "10",
+          "2": "20",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The inner function declares its own `x`, which shadows the outer `x`, so it logs the local value.",
+        "example": "function outer() { let x = 10; function inner() { let x = 20; console.log(x); } inner(); } outer(); // Outputs: 20"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A closure is automatically garbage collected when no references to the inner function remain.",
+        "answer": true,
+        "explanation": "When all references to a closure are removed (e.g., set to `null`), the JavaScript garbage collector can reclaim the memory used by the closure and its captured variables.",
+        "example": "function outer() { let x = 1; return function() { console.log(x); }; } let fn = outer(); fn = null; // Closure is eligible for garbage collection"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function createAdder(n) { return function(x) { return x + n; }; } let addFive = createAdder(5); console.log(addFive(3));`?",
+        "options": {
+          "1": "5",
+          "2": "3",
+          "3": "8",
+          "4": "ReferenceError"
+        },
+        "answer": "3",
+        "explanation": "The inner function forms a closure over `n`, adding it to the input `x`. Here, `n` is 5, so `5 + 3 = 8`.",
+        "example": "function createAdder(n) { return function(x) { return x + n; }; } let addFive = createAdder(5); console.log(addFive(3)); // Outputs: 8"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A function scope cannot access variables declared in a block scope within the same function unless the block scope is its outer scope.",
+        "answer": true,
+        "explanation": "A function scope can only access block-scoped variables if they are in its outer scope, not in sibling or unrelated blocks.",
+        "example": "function test() { if (true) { let x = 1; } console.log(x); } test(); // ReferenceError: x is not defined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `let global = 'global'; function outer() { let global = 'outer'; return function() { console.log(global); }; } let fn = outer(); fn();`?",
+        "options": {
+          "1": "global",
+          "2": "outer",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The inner function’s closure captures the `global` variable from the `outer` function, which shadows the global scope variable.",
+        "example": "let global = 'global'; function outer() { let global = 'outer'; return function() { console.log(global); }; } let fn = outer(); fn(); // Outputs: outer"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "A closure can be created by returning an object with methods that access private variables.",
+        "answer": true,
+        "explanation": "The module pattern uses a closure to return an object with methods that access private variables, encapsulating data.",
+        "example": "function module() { let x = 1; return { getX: function() { return x; } }; } let m = module(); console.log(m.getX()); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "medium",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 0; return function() { return ++x; }; } let fn1 = outer(); let fn2 = outer(); console.log(fn1()); console.log(fn2());`?",
+        "options": {
+          "1": "1, 1",
+          "2": "1, 2",
+          "3": "2, 2",
+          "4": "ReferenceError"
+        },
+        "answer": "1",
+        "explanation": "Each call to `outer` creates a new closure with its own `x`. Thus, `fn1` and `fn2` have separate `x` variables, both starting at 0.",
+        "example": "function outer() { let x = 0; return function() { return ++x; }; } let fn1 = outer(); let fn2 = outer(); console.log(fn1()); console.log(fn2()); // Outputs: 1, 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "medium",
+    "question": [
+      {
+        "question": "Variables declared with `let` in a function scope are not hoisted to the top of the function.",
+        "answer": true,
+        "explanation": "Unlike `var`, variables declared with `let` are not hoisted to the top of their scope; they are only accessible after declaration.",
+        "example": "function test() { console.log(x); let x = 1; } test(); // ReferenceError: Cannot access 'x' before initialization"
+      }
+    ]
+  }
+    ],
+    "3": [
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "`hasOwnProperty()` in a closure can be used to filter out inherited properties when iterating over an object.",
+        "answer": true,
+        "explanation": "`hasOwnProperty()` checks if a property is directly defined on an object, useful in closures when iterating to avoid inherited properties.",
+        "example": "function check() { let obj = { a: 1 }; Object.prototype.b = 2; return function() { for (let key in obj) { if (obj.hasOwnProperty(key)) console.log(key); } }; } let fn = check(); fn(); // Outputs: a"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `function createModule() { let obj = { x: 1 }; Object.prototype.y = 2; return { getOwn: function(key) { return obj.hasOwnProperty(key) ? obj[key] : 'Not own'; } }; } let mod = createModule(); console.log(mod.getOwn('x'), mod.getOwn('y'));`?",
+        "options": {
+          "1": "1, 2",
+          "2": "1, Not own",
+          "3": "Not own, Not own",
+          "4": "ReferenceError"
+        },
+        "answer": "2",
+        "explanation": "The `getOwn` method uses `hasOwnProperty` to check if the property is own. `x` is own, but `y` is inherited, so it returns 'Not own'.",
+        "example": "function createModule() { let obj = { x: 1 }; Object.prototype.y = 2; return { getOwn: function(key) { return obj.hasOwnProperty(key) ? obj[key] : 'Not own'; } }; } let mod = createModule(); console.log(mod.getOwn('x'), mod.getOwn('y')); // Outputs: 1, Not own"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "An Immediately Invoked Function Expression (IIFE) creates a private scope to avoid polluting the global scope.",
+        "answer": true,
+        "explanation": "An IIFE executes immediately and creates a private scope, preventing its variables from being added to the global scope.",
+        "example": "(function() { let x = 1; console.log(x); })(); console.log(typeof x); // Outputs: 1, undefined"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `(function() { let x = 'secret'; return function() { console.log(x); }; })()();`?",
+        "options": {
+          "1": "secret",
+          "2": "undefined",
+          "3": "ReferenceError",
+          "4": "null"
+        },
+        "answer": "1",
+        "explanation": "The IIFE returns a closure that retains access to `x`. Calling the returned function immediately logs `x`.",
+        "example": "(function() { let x = 'secret'; return function() { console.log(x); }; })()(); // Outputs: secret"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A closure capturing a variable in a loop can lead to unexpected behavior if `var` is used instead of `let`.",
+        "answer": true,
+        "explanation": "Using `var` in a loop creates a single variable shared across all iterations, causing closures to capture the final value, whereas `let` creates a new binding per iteration.",
+        "example": "let fns = []; for (var i = 0; i < 2; i++) { fns.push(() => console.log(i)); } fns[0](); fns[1](); // Outputs: 2, 2"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `let fns = []; for (let i = 0; i < 2; i++) { fns.push(() => console.log(i)); } fns[0](); fns[1]();`?",
+        "options": {
+          "1": "0, 0",
+          "2": "0, 1",
+          "3": "2, 2",
+          "4": "ReferenceError"
+        },
+        "answer": "2",
+        "explanation": "Using `let` in the loop creates a new binding for `i` per iteration, so each closure captures its own `i` value.",
+        "example": "let fns = []; for (let i = 0; i < 2; i++) { fns.push(() => console.log(i)); } fns[0](); fns[1](); // Outputs: 0, 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A closure’s captured variables are stored in the heap to persist after the outer function finishes.",
+        "answer": true,
+        "explanation": "Variables captured by a closure are stored in the heap to remain accessible after the outer function’s execution, preventing garbage collection.",
+        "example": "function outer() { let x = 1; return function() { console.log(x); }; } let fn = outer(); fn(); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 1; return { inc: function() { x++; }, get: function() { return x; } }; } let obj1 = outer(); let obj2 = outer(); obj1.inc(); console.log(obj1.get(), obj2.get());`?",
+        "options": {
+          "1": "2, 1",
+          "2": "2, 2",
+          "3": "1, 1",
+          "4": "ReferenceError"
+        },
+        "answer": "1",
+        "explanation": "Each call to `outer` creates a new closure with its own `x`. `obj1.inc()` increments `obj1`’s `x`, but `obj2`’s `x` remains unchanged.",
+        "example": "function outer() { let x = 1; return { inc: function() { x++; }, get: function() { return x; } }; } let obj1 = outer(); let obj2 = outer(); obj1.inc(); console.log(obj1.get(), obj2.get()); // Outputs: 2, 1"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "An IIFE can return an object to create a module pattern with private variables.",
+        "answer": true,
+        "explanation": "An IIFE can return an object with methods that form closures over private variables, implementing the module pattern.",
+        "example": "(function() { let x = 1; return { getX: function() { return x; } }; })().getX(); // Outputs: 1"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 1; function inner() { let x = 2; return function() { console.log(x); }; } return inner(); } let fn = outer(); fn();`?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The innermost function forms a closure over the `x` in `inner`, which shadows the `x` in `outer`, so it logs `2`.",
+        "example": "function outer() { let x = 1; function inner() { let x = 2; return function() { console.log(x); }; } return inner(); } let fn = outer(); fn(); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Setting a closure to `null` allows its captured variables to be garbage collected if no other references exist.",
+        "answer": true,
+        "explanation": "When a closure is no longer referenced, its captured variables become eligible for garbage collection if no other references exist.",
+        "example": "function outer() { let x = 1; return function() { console.log(x); }; } let fn = outer(); fn = null; // x is eligible for garbage collection"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `const module = (function() { let x = 1; return { setX: function(val) { x = val; }, getX: function() { return x; } }; })(); module.setX(5); console.log(module.getX());`?",
+        "options": {
+          "1": "1",
+          "2": "5",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The module pattern creates a closure, allowing `setX` to modify the private `x` and `getX` to retrieve it.",
+        "example": "const module = (function() { let x = 1; return { setX: function(val) { x = val; }, getX: function() { return x; } }; })(); module.setX(5); console.log(module.getX()); // Outputs: 5"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "A closure can capture variables from multiple levels of outer scopes.",
+        "answer": true,
+        "explanation": "A closure can access variables from all outer scopes in its scope chain, including multiple nested levels.",
+        "example": "function outer() { let x = 1; function middle() { let y = 2; return function() { console.log(x + y); }; } return middle(); } let fn = outer(); fn(); // Outputs: 3"
+      }
+    ]
+  },
+  {
+    "type": 2,
+    "level": "hard",
+    "question": [
+      {
+        "question": "What is the output of `function outer() { let x = 1; return function() { x = 2; return function() { console.log(x); }; }; } let fn = outer()(); fn();`?",
+        "options": {
+          "1": "1",
+          "2": "2",
+          "3": "ReferenceError",
+          "4": "undefined"
+        },
+        "answer": "2",
+        "explanation": "The first returned function modifies `x` to 2 and returns another function that logs `x`, which is captured via closure.",
+        "example": "function outer() { let x = 1; return function() { x = 2; return function() { console.log(x); }; }; } let fn = outer()(); fn(); // Outputs: 2"
+      }
+    ]
+  },
+  {
+    "type": 1,
+    "level": "hard",
+    "question": [
+      {
+        "question": "Using `var` in a block scope inside a function makes the variable accessible throughout the function.",
+        "answer": true,
+        "explanation": "Variables declared with `var` are function-scoped, so a `var` declared in a block inside a function is accessible throughout the function.",
+        "example": "function test() { if (true) { var x = 1; } console.log(x); } test(); // Outputs: 1"
+      }
+    ]
+  }
+    ]
+}
