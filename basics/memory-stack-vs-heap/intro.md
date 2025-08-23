@@ -39,8 +39,43 @@ myFunction();//New stack frame created to manage the function call, popped after
 
 //Memory release process
 variable = null;//Stack memory updated to null; for primitives, no garbage collection needed
-//If a variable held an object (e.g., { name: 'Luiz' }), setting it to null makes the object eligible
-//for garbage collection via the mark-and-sweep algorithm if no other references exist
 ````
 
 #### Heap Memory
+Heap memory is a **dynamic**, **less structured** region used to **storing complex data**. Some of its characteristics are:
+- Objects, arrays, functions, and any other data structure that can **vary in size**.
+- Due to dynamic allocation/fragmentation, heap memory is **slower than the stack memory**.
+- The **heap memory stores the data** itself, while the **stack memory holds the reference** to the data stored in heap memory.
+- Heap memory is managed by the garbage collector, reclaiming memory once the data is no longer referenced.
+````javascript
+//Allocation process
+//Dynamic data is stored in the heap memory, with its reference in the stack memory
+let variable = {};
+let array = [];
+class Person{};
+function myFunction(){};
+
+//Memory usage process
+//Setting value to these dynamic structures alters the heap section and creates a new section in memory to store the changes
+//The reference now (in the stack memory) has a pointer to this new section.
+//Very similar to the process of changing a value on a non-mutative type, like strings or numbers
+variable = {name:'Luiz'};
+array = [1,2,3];
+Person = class { // Reassign, don’t re-declare
+    constructor(name) {
+        this.name = name;
+    }
+};
+myFunction = function(name) { console.log(name); }; // Reassign, don’t re-declare
+
+
+//Memory release process
+//Setting these dynamic structures to null makes the section in memory eligible for garbage collection via the mark-and-sweep algorithm if no other references exist
+variable = null;
+array = null;
+Person = null;//Notice: any instances (e.g., new Person('Luiz')) must also have their references removed (set to null or out of scope) to be collected.
+myFunction = null;
+````
+
+
+
