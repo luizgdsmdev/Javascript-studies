@@ -1,5 +1,5 @@
-### Functions in JavaScript
-This section is meant to cover everything we should know about functions in JavaScript.  
+### Memory in JavaScript
+This section is meant to cover everything we should know about Memory in JavaScript.  
 - [What is Memory in JavaScript](#what-is-memory-in-javascript)
 - [Stack Memory](#stack-memory)
 - [Heap Memory](#heap-memory)
@@ -16,7 +16,7 @@ Memory here could be defined as the **dynamic storage space** where data is **al
 In this context, the basic life cycle of memory in JavaScript would be:
 - **Memory allocation**: it's when anything inside your program is **created/declared**, like the declaration of variables, functions, objects, arrays, and so on. At this moment, JavaScript handles the allocation of a **specific amount of memory to store that data**.
 - **Memory usage**: this refers to the actions of **assigning or invoking the previously created section in memory**. It happens when you assign a value to a variable or invoke a function, for example.
-- **Memory release** (garbage collection): once the stored data is **no longer reachable/invoked or needed anywhere** in the program, JavaScript apply the garbage collection mechanism and **automatictly frees the memory section** of this data (deletion), claiming memory and preventing memory leaks (excessive memory usage) and sinplifies the management for us.
+- **Memory release** (garbage collection): once the stored data is **no longer reachable/referenced, or needed anywhere** in the program, JavaScript apply the garbage collection mechanism and **automatically deallocates the memory section** of this data, claiming memory and preventing memory leaks (excessive memory usage) and sinplifies the management for us.
 Also, memory here can be divided into two different spaces, being:
 - **Stack memory**: storage of the **primitives value types**, like numbers or strings, and also the **objects references** and **manage function calls**.
 - **Heap memory**: store **dynamic data** like objects, arrays and functions.
@@ -52,13 +52,12 @@ Heap memory is a **dynamic**, **less structured** region used to **storing compl
 //Dynamic data is stored in the heap memory, with its reference in the stack memory
 let variable = {};
 let array = [];
-class Person{};
-function myFunction(){};
+let Person = class {};
+let myFunction = function() {};
 
 //Memory usage process
 //Setting value to these dynamic structures alters the heap section and creates a new section in memory to store the changes
 //The reference now (in the stack memory) has a pointer to this new section.
-//Very similar to the process of changing a value on a non-mutative type, like strings or numbers
 variable = {name:'Luiz'};
 array = [1,2,3];
 Person = class { // Reassign, don’t re-declare
@@ -73,7 +72,7 @@ myFunction = function(name) { console.log(name); }; // Reassign, don’t re-decl
 //Setting these dynamic structures to null makes the section in memory eligible for garbage collection via the mark-and-sweep algorithm if no other references exist
 variable = null;
 array = null;
-Person = null;//Notice: any instances (e.g., new Person('Luiz')) must also have their references removed (set to null or out of scope) to be collected.
+Person = null;//Notice: any instances (e.g., new Person('Luiz')) must also have their references removed (set to null or out of scope) or go out of scope to be garbage-collected.
 myFunction = null;
 ````
 
@@ -89,21 +88,20 @@ This way, we have a collaborative work of both memories.
 ````javascript
 let myName = 'Luiz';//Stack memory
 
-function prinData(data){//Heap memory
+function printData(data){//Heap memory
 
-    let prinData = () => console.log(data);//It's keep in heap memory even after 'prinData()' function finish its execution
+    let printData = () => console.log(data);//It's keep in heap memory even after 'printData()' function finish its execution
     
     return {//As an object, it is stored in heap memory
-        prinData: prinData,
+        printData: printData,
     }
 }
 
 //Here, 'myFunction' (in stack memory) works as a pointer to the object being returned, where the object is stored in the heap memory
-let myFunction = prinData(myName);//The function call creates a new stack frame during its execution
+let myFunction = printData(myName);//The function call creates a new stack frame during its execution
 
-myFunction.prinData();
-//In this scenario, the heap memory of the outer function (prinData()) is kept because it returned a closure (object) that was 
-//referencing its properties after its execution.
+myFunction.printData();
+//The closure retains the outer function’s scope (including data) in the heap, allowing 'printData' (property) to access it even after printData finishes execution.
 ````
 
 #### Memory Allocation and Deallocation
@@ -111,7 +109,7 @@ myFunction.prinData();
 It's an **automatic and fast** process, variables are **allocated** when a function is called and **deallocated** when it finishes execution. No manual intervention is required.
 
 ###### Heap memory
-Dynamic and managed by the JavaScript engine, they allocate all dynamic data until they are no longer referenced.
+Managed by the JavaScript engine, dynamically allocates data like objects and arrays until they are no longer referenced.
 
 ###### Pass-by-value vs Pass-by-reference
 - **Primitives** (stack) are passed by value, creating a new copy.
@@ -134,7 +132,7 @@ It does so by **identifying objects** in the **heap memory** that are **no longe
 The Mark-and-Sweep Algorithm works in two phases:
 - **Mark**: first phase, starts at the root, like variables on the global scope or in the current stack, running through all references and 'marking' all objects that are still being reachable/referenced directly or indirectly by any of the variables checked.
 - **Sweep**: **second phase**, the algorithm 'sweeps' all objects in the heap memory that were not 'marked' in the previous phase, deallocating the memory.
-The Mark-and-Sweep is one of the most used on JavaScript engines, surpassing later problems such as the **cyclic reference**, where two objects using on other as a reference were often ignored and left in memory.
+The Mark-and-Sweep is one of the most widely used algorithms in JavaScript engines, solving earlier problems such as the **cyclic reference**, where two objects that use each other as a reference are often ignored and left in memory.
 ````javascript
 function createCycle() {
   let obj1 = {};
@@ -151,6 +149,27 @@ obj = null;//No reference to the object, eligible for garbage collection
 ````
 
 
-####
-####
-####
+#### Memory Leaks and Best Practices
+Memory leaks occur when the heap memory is **not deallocated correctly**, causing **excessive consumption** of memory. Although JavaScript handles most of the process automatically, it's important to notice that **good practices are an important tool**, preventing unwanted behavior in code and possibly preventing the incorrect use of the garbage collector. Let's see some examples of what could trigger memory leaks:
+- **Unintended Global Variables**: variables declared without ``let``, ``var`` or ``const`` that becomes global and persistent in memory. To **prevent** this, always use ``let`` or ``const`` when declaring variables.
+````javascript
+function leak() {
+  accidentalGlobal = 'I’m global!';//Persists in memory
+  let garbageCollected = 'I’m local and will be deallocated';
+}
+````
+
+- **Forgotten Timers or Callbacks**: timers like ``setInterval`` or event listeners that are not cleared retain references to objects. To **prevent** this, always clear timers and remove event listeners once no longer needed.
+````javascript
+let badInterval = setInterval(() => console.log("Running"), 1000);
+//Forgot to call clearInterval(badInterval)
+
+let goodInterval = setInterval(() => console.log("Running"), 1000);
+clearInterval(goodInterval);//Prevents memory leak
+````
+Other good practices include:
+- Set references to ``null`` for dynamic data (like objects or arrays) once no longer needed, helping the garbage collector.
+- Avoid storing large amounts of data in closures, unless necessary.
+
+
+
