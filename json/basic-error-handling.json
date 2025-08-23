@@ -1,0 +1,687 @@
+{
+  "1": [
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `try` block contains code that might throw an error.",
+          "answer": true,
+          "explanation": "The `try` block is used to wrap code that may cause a runtime error, allowing the `catch` block to handle it.",
+          "example": "try { console.log(undefinedVar); } catch (error) { console.log(error.message); } // Outputs: undefinedVar is not defined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What happens if no error occurs in a `try` block?",
+          "options": {
+            "1": "The `catch` block is executed",
+            "2": "The `catch` block is skipped",
+            "3": "The program crashes",
+            "4": "An error is thrown"
+          },
+          "answer": "2",
+          "explanation": "If no error occurs in the `try` block, the `catch` block is skipped, and execution continues normally.",
+          "example": "try { console.log('No error'); } catch (error) { console.log('Error'); } // Outputs: No error"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `catch` block receives an error object when an error is thrown.",
+          "answer": true,
+          "explanation": "The `catch` block receives an error object containing details like `name` and `message`.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log(error.message); } // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What type of error is thrown when accessing an undefined variable?",
+          "options": {
+            "1": "SyntaxError",
+            "2": "TypeError",
+            "3": "ReferenceError",
+            "4": "RangeError"
+          },
+          "answer": "3",
+          "explanation": "A `ReferenceError` is thrown when trying to access a variable that is not defined.",
+          "example": "try { console.log(undefinedVar); } catch (error) { console.log(error.name); } // Outputs: ReferenceError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`try-catch` can handle runtime errors but not syntax errors.",
+          "answer": true,
+          "explanation": "Syntax errors occur during parsing and prevent code execution, so `try-catch` cannot catch them.",
+          "example": "// SyntaxError: try { eval('let x ='); } catch (error) { console.log(error); } // Not reached"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `try { JSON.parse('{}'); } catch (error) { console.log('Error'); }`?",
+          "options": {
+            "1": "Error",
+            "2": "Nothing",
+            "3": "undefined",
+            "4": "SyntaxError"
+          },
+          "answer": "2",
+          "explanation": "The JSON is valid, so no error is thrown, and the `catch` block is skipped.",
+          "example": "try { JSON.parse('{}'); } catch (error) { console.log('Error'); } // Outputs: Nothing"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `finally` block executes regardless of whether an error occurs.",
+          "answer": true,
+          "explanation": "The `finally` block runs after the `try` or `catch` block, ensuring cleanup or final actions.",
+          "example": "try { console.log('Try'); } catch (error) {} finally { console.log('Finally'); } // Outputs: Try \n Finally"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `try { throw new Error('Test'); } catch (error) { console.log(error.message); }`?",
+          "options": {
+            "1": "Test",
+            "2": "Error",
+            "3": "undefined",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "The `catch` block logs the `message` property of the thrown `Error` object.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log(error.message); } // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Logical errors cannot be caught by `try-catch`.",
+          "answer": true,
+          "explanation": "Logical errors produce incorrect results but don’t throw exceptions, so `try-catch` cannot handle them.",
+          "example": "try { let x = undefined + 10; console.log(x); } catch (error) { console.log(error); } // Outputs: NaN"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which property of an error object provides the error type?",
+          "options": {
+            "1": "message",
+            "2": "name",
+            "3": "stack",
+            "4": "type"
+          },
+          "answer": "2",
+          "explanation": "The `name` property indicates the error type (e.g., 'ReferenceError').",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log(error.name); } // Outputs: Error"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `throw` statement can create a custom error.",
+          "answer": true,
+          "explanation": "The `throw` statement creates an error that triggers the `catch` block.",
+          "example": "try { throw new Error('Custom'); } catch (error) { console.log(error.message); } // Outputs: Custom"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `try { let x = 1 / 0; } catch (error) { console.log('Error'); }`?",
+          "options": {
+            "1": "Error",
+            "2": "Infinity",
+            "3": "Nothing",
+            "4": "undefined"
+          },
+          "answer": "3",
+          "explanation": "Dividing by zero in JavaScript returns `Infinity`, not an error, so the `catch` block is skipped.",
+          "example": "try { let x = 1 / 0; } catch (error) { console.log('Error'); } // Outputs: Nothing"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `error.stack` property provides a stack trace for debugging.",
+          "answer": true,
+          "explanation": "The `stack` property (non-standard but widely supported) shows the call stack at the time of the error.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log(error.stack); } // Outputs stack trace"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What type of error is thrown when calling a non-function?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "TypeError",
+            "3": "SyntaxError",
+            "4": "RangeError"
+          },
+          "answer": "2",
+          "explanation": "A `TypeError` is thrown when an operation is performed on an invalid type, like calling a non-function.",
+          "example": "try { let x = 42; x(); } catch (error) { console.log(error.name); } // Outputs: TypeError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Empty `catch` blocks are considered bad practice.",
+          "answer": true,
+          "explanation": "Empty `catch` blocks lead to silent failures, hiding errors and complicating debugging.",
+          "example": "try { throw new Error('Test'); } catch (error) {} // Bad: silent failure"
+        }
+      ]
+    }
+  ],
+
+  "2": [
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { JSON.parse('invalid'); } catch (error) { console.log(error.name); }`?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "TypeError",
+            "3": "SyntaxError",
+            "4": "Error"
+          },
+          "answer": "3",
+          "explanation": "Parsing invalid JSON throws a `SyntaxError`, which is caught and logged.",
+          "example": "try { JSON.parse('invalid'); } catch (error) { console.log(error.name); } // Outputs: SyntaxError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `finally` block is useful for cleanup tasks like closing resources.",
+          "answer": true,
+          "explanation": "The `finally` block ensures cleanup code runs regardless of whether an error occurs.",
+          "example": "try { console.log('Try'); } catch (error) {} finally { console.log('Cleanup'); } // Outputs: Try \n Cleanup"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { let obj = null; obj.prop; } catch (error) { console.log(error.message); }`?",
+          "options": {
+            "1": "obj is not defined",
+            "2": "Cannot read properties of null (reading 'prop')",
+            "3": "TypeError",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Accessing a property on `null` throws a `TypeError` with the specified message.",
+          "example": "try { let obj = null; obj.prop; } catch (error) { console.log(error.message); } // Outputs: Cannot read properties of null (reading 'prop')"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Custom errors can be thrown using the `throw` statement.",
+          "answer": true,
+          "explanation": "The `throw` statement allows developers to create custom errors to signal specific conditions.",
+          "example": "try { throw new Error('Invalid input'); } catch (error) { console.log(error.message); } // Outputs: Invalid input"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the best way to handle specific errors in a `try-catch` block?",
+          "options": {
+            "1": "Use an empty catch block",
+            "2": "Check error type with instanceof",
+            "3": "Ignore the error",
+            "4": "Use multiple try blocks"
+          },
+          "answer": "2",
+          "explanation": "Using `instanceof` to check error types allows handling specific errors differently.",
+          "example": "try { JSON.parse('invalid'); } catch (error) { if (error instanceof SyntaxError) console.log('Invalid JSON'); } // Outputs: Invalid JSON"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "A `RangeError` is thrown when a value is out of a valid range.",
+          "answer": true,
+          "explanation": "A `RangeError` occurs for invalid ranges, like excessive recursion or invalid array lengths.",
+          "example": "try { let arr = new Array(-1); } catch (error) { console.log(error.name); } // Outputs: RangeError"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { throw new Error('Test'); } catch (error) { console.log('Caught'); } finally { console.log('Done'); }`?",
+          "options": {
+            "1": "Caught \n Done",
+            "2": "Test \n Done",
+            "3": "Done",
+            "4": "Caught"
+          },
+          "answer": "1",
+          "explanation": "The `catch` block handles the error, and `finally` always executes afterward.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log('Caught'); } finally { console.log('Done'); } // Outputs: Caught \n Done"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Silent failures occur when errors are caught but not handled or logged.",
+          "answer": true,
+          "explanation": "Empty `catch` blocks or unlogged errors cause silent failures, hiding issues.",
+          "example": "try { throw new Error('Test'); } catch (error) {} // Silent failure"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { let x = '10'; x(); } catch (error) { console.log(error.name); }`?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "TypeError",
+            "3": "SyntaxError",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "Calling a non-function (like a string) throws a `TypeError`.",
+          "example": "try { let x = '10'; x(); } catch (error) { console.log(error.name); } // Outputs: TypeError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `finally` block executes even if no `catch` block is present.",
+          "answer": true,
+          "explanation": "A `finally` block runs after the `try` block, even without a `catch` block, unless the program crashes.",
+          "example": "try { console.log('Try'); } finally { console.log('Finally'); } // Outputs: Try \n Finally"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { let arr = [1]; console.log(arr[10]); } catch (error) { console.log('Error'); }`?",
+          "options": {
+            "1": "Error",
+            "2": "undefined",
+            "3": "null",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "Accessing an out-of-bounds array index returns `undefined`, not an error, so `catch` is skipped.",
+          "example": "try { let arr = [1]; console.log(arr[10]); } catch (error) { console.log('Error'); } // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Custom errors should include descriptive messages for clarity.",
+          "answer": true,
+          "explanation": "Descriptive error messages help diagnose issues effectively.",
+          "example": "try { throw new Error('Invalid input: value required'); } catch (error) { console.log(error.message); } // Outputs: Invalid input: value required"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What happens if a `try` block throws an error but there is no `catch` block?",
+          "options": {
+            "1": "The error is ignored",
+            "2": "The `finally` block still runs",
+            "3": "The program crashes immediately",
+            "4": "The error is logged automatically"
+          },
+          "answer": "2",
+          "explanation": "Without a `catch` block, the `finally` block runs, but the error propagates up, potentially crashing the program if unhandled.",
+          "example": "try { throw new Error('Test'); } finally { console.log('Finally'); } // Outputs: Finally, then crashes"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `error.message` property provides a description of the error.",
+          "answer": true,
+          "explanation": "The `message` property contains a human-readable description of the error.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log(error.message); } // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `try { let obj = {}; obj.fn(); } catch (error) { console.log(error.message); }`?",
+          "options": {
+            "1": "obj is not defined",
+            "2": "fn is not a function",
+            "3": "undefined",
+            "4": "TypeError"
+          },
+          "answer": "2",
+          "explanation": "Calling a non-existent method on an object throws a `TypeError`.",
+          "example": "try { let obj = {}; obj.fn(); } catch (error) { console.log(error.message); } // Outputs: fn is not a function"
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `async function fetchData() { try { await fetch('invalid-url'); } catch (error) { console.log(error.name); } } fetchData();`?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "TypeError",
+            "3": "Error",
+            "4": "SyntaxError"
+          },
+          "answer": "3",
+          "explanation": "An invalid URL in `fetch` throws a generic `Error` (e.g., 'Failed to fetch') in async code.",
+          "example": "async function fetchData() { try { await fetch('invalid-url'); } catch (error) { console.log(error.name); } } fetchData(); // Outputs: Error"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Asynchronous errors in `async` functions can be caught with `try-catch`.",
+          "answer": true,
+          "explanation": "In `async` functions, `try-catch` handles errors from `await`ed Promises.",
+          "example": "async function fn() { try { await Promise.reject('Test'); } catch (error) { console.log(error); } } fn(); // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `try { throw new Error('Inner'); } catch (error) { throw new Error('Outer: ' + error.message); } finally { console.log('Finally'); }`?",
+          "options": {
+            "1": "Inner \n Finally",
+            "2": "Finally",
+            "3": "Outer: Inner \n Finally",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "The `catch` block throws a new error, but `finally` runs before the error propagates.",
+          "example": "try { throw new Error('Inner'); } catch (error) { throw new Error('Outer: ' + error.message); } finally { console.log('Finally'); } // Outputs: Finally, then crashes"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A custom error class can extend the `Error` class to provide specific error types.",
+          "answer": true,
+          "explanation": "Extending `Error` allows custom error classes with specific names and behaviors.",
+          "example": "class CustomError extends Error {} try { throw new CustomError('Test'); } catch (error) { console.log(error.name); } // Outputs: CustomError"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the best practice to avoid silent failures in a `try-catch` block?",
+          "options": {
+            "1": "Use an empty catch block",
+            "2": "Log or handle errors",
+            "3": "Ignore specific errors",
+            "4": "Throw new errors"
+          },
+          "answer": "2",
+          "explanation": "Logging or handling errors in the `catch` block prevents silent failures and aids debugging.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log('Error:', error.message); } // Outputs: Error: Test"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Nested `try-catch` blocks can handle errors at multiple levels.",
+          "answer": true,
+          "explanation": "Nested `try-catch` blocks allow errors to be caught and rethrown, enabling layered error handling.",
+          "example": "try { try { throw new Error('Inner'); } catch (e) { throw new Error('Outer'); } } catch (e) { console.log(e.message); } // Outputs: Outer"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `Promise.resolve().then(() => { throw new Error('Test'); }).catch(error => console.log(error.message));`?",
+          "options": {
+            "1": "Test",
+            "2": "Error",
+            "3": "undefined",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "The `.catch` method handles errors thrown in a Promise chain.",
+          "example": "Promise.resolve().then(() => { throw new Error('Test'); }).catch(error => console.log(error.message)); // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Errors thrown in a `finally` block can override errors from `try` or `catch`.",
+          "answer": true,
+          "explanation": "A new error thrown in `finally` replaces any prior error, potentially complicating debugging.",
+          "example": "try { throw new Error('Try'); } catch (e) {} finally { throw new Error('Finally'); } // Crashes with Finally"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `try { let x; console.log(x.name); } catch (error) { console.log(error.name); } finally { console.log('Done'); }`?",
+          "options": {
+            "1": "ReferenceError \n Done",
+            "2": "TypeError \n Done",
+            "3": "undefined \n Done",
+            "4": "Error \n Done"
+          },
+          "answer": "2",
+          "explanation": "Accessing `name` on `undefined` throws a `TypeError`, caught and logged, followed by `finally`.",
+          "example": "try { let x; console.log(x.name); } catch (error) { console.log(error.name); } finally { console.log('Done'); } // Outputs: TypeError \n Done"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Overusing `try-catch` can reduce code readability.",
+          "answer": true,
+          "explanation": "Wrapping all code in `try-catch` makes it harder to read and may impact performance.",
+          "example": "// Bad: try { let x = 1; } catch (error) {} // Unnecessary"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `async function fn() { try { await Promise.reject('Test'); } catch (error) { console.log(error); } finally { console.log('Done'); } } fn();`?",
+          "options": {
+            "1": "Test \n Done",
+            "2": "Done",
+            "3": "Error \n Done",
+            "4": "undefined \n Done"
+          },
+          "answer": "1",
+          "explanation": "The rejected Promise is caught in `try-catch`, and `finally` runs afterward.",
+          "example": "async function fn() { try { await Promise.reject('Test'); } catch (error) { console.log(error); } finally { console.log('Done'); } } fn(); // Outputs: Test \n Done"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A custom error class can include additional properties for context.",
+          "answer": true,
+          "explanation": "Custom error classes can extend `Error` and add properties for more context.",
+          "example": "class CustomError extends Error { constructor(msg, code) { super(msg); this.code = code; } } try { throw new CustomError('Test', 400); } catch (e) { console.log(e.code); } // Outputs: 400"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `try { try { throw new Error('Inner'); } catch (e) { throw new Error('Outer'); } } catch (e) { console.log(e.message); }`?",
+          "options": {
+            "1": "Inner",
+            "2": "Outer",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "The inner `catch` rethrows a new error, caught by the outer `catch`.",
+          "example": "try { try { throw new Error('Inner'); } catch (e) { throw new Error('Outer'); } } catch (e) { console.log(e.message); } // Outputs: Outer"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Errors in event listeners require specific handling to avoid uncaught exceptions.",
+          "answer": true,
+          "explanation": "Errors in event listeners can crash the application if not caught explicitly.",
+          "example": "document.querySelector('button').addEventListener('click', () => { try { throw new Error('Test'); } catch (e) { console.log(e.message); } }); // Outputs: Test"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `try { throw new Error('Test'); } catch (error) { console.log('Caught'); throw error; } finally { console.log('Done'); }`?",
+          "options": {
+            "1": "Caught \n Done",
+            "2": "Done",
+            "3": "Test \n Done",
+            "4": "Caught"
+          },
+          "answer": "1",
+          "explanation": "The `catch` block logs 'Caught', rethrows the error, and `finally` logs 'Done' before the error propagates.",
+          "example": "try { throw new Error('Test'); } catch (error) { console.log('Caught'); throw error; } finally { console.log('Done'); } // Outputs: Caught \n Done, then crashes"
+        }
+      ]
+    }
+  ]
+}
