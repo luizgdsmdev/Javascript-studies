@@ -77,5 +77,80 @@ Person = null;//Notice: any instances (e.g., new Person('Luiz')) must also have 
 myFunction = null;
 ````
 
+#### How Stack and Heap Work Together
+The heap and stack memories collaborate to handle data in an efficient way:
+- **Primitives**: stored in the stack memory.
+- **Dynamic structures**: are stored in the heap memory, with their necessary reference (like a variable name) stored in the stack.
+- **Function call**: each **function call creates a stack frame** containing the local variables and necessary arguments.
+A good example could be a closure, where a function returns another function or an object. The outer function is stored in the heap memory, but the call is managed by the stack memory. When the inner function or object is returned and stored in a new variable, we have:
+- The new variable (stored in the stack memory) acts as a pointer.
+- The function/object returned is still stored in the heap memory.
+This way, we have a collaborative work of both memories.
+````javascript
+let myName = 'Luiz';//Stack memory
+
+function prinData(data){//Heap memory
+
+    let prinData = () => console.log(data);//It's keep in heap memory even after 'prinData()' function finish its execution
+    
+    return {//As an object, it is stored in heap memory
+        prinData: prinData,
+    }
+}
+
+//Here, 'myFunction' (in stack memory) works as a pointer to the object being returned, where the object is stored in the heap memory
+let myFunction = prinData(myName);//The function call creates a new stack frame during its execution
+
+myFunction.prinData();
+//In this scenario, the heap memory of the outer function (prinData()) is kept because it returned a closure (object) that was 
+//referencing its properties after its execution.
+````
+
+#### Memory Allocation and Deallocation
+###### Stack allocation
+It's an **automatic and fast** process, variables are **allocated** when a function is called and **deallocated** when it finishes execution. No manual intervention is required.
+
+###### Heap memory
+Dynamic and managed by the JavaScript engine, they allocate all dynamic data until they are no longer referenced.
+
+###### Pass-by-value vs Pass-by-reference
+- **Primitives** (stack) are passed by value, creating a new copy.
+- **Objects** (heap) or dynamic data are passed by reference, pointing to the original data.
+````javascript
+let a = 10;
+let b = a;//Stack, passed by value
+b = 20; // Does not affect a
+
+let obj = { num: 10 };
+let obj2 = obj;//Heap, passed by reference
+obj2.num = 20; // Affects obj
+````
+
+#### Garbage Collection and Mark-and-Sweep Algorithm
+The garbage collector in JavaScript is an **automatic process** to help with memory management, **preventing memory** leaks and simplifying the development.   
+It does so by **identifying objects** in the **heap memory** that are **no longer reachable**, meaning, they are no longer referenced by any variable or object in the stack or other reachable object. After being identified, these objects are **deallocated from memory**.
+
+###### Mark-and-Sweep Algorithm
+The Mark-and-Sweep Algorithm works in two phases:
+- **Mark**: first phase, starts at the root, like variables on the global scope or in the current stack, running through all references and 'marking' all objects that are still being reachable/referenced directly or indirectly by any of the variables checked.
+- **Sweep**: **second phase**, the algorithm 'sweeps' all objects in the heap memory that were not 'marked' in the previous phase, deallocating the memory.
+The Mark-and-Sweep is one of the most used on JavaScript engines, surpassing later problems such as the **cyclic reference**, where two objects using on other as a reference were often ignored and left in memory.
+````javascript
+function createCycle() {
+  let obj1 = {};
+  let obj2 = {};
+  obj1.ref = obj2;//obj1 references obj2
+  obj2.ref = obj1;//obj2 references obj1
+}
+createCycle();
+````
+The garbage collector will mark and sweep the ``{ name: 'Luiz' }`` object since it’s no longer reachable.
+````javascript
+let obj = { name: 'Luiz' };//Allocated in heap
+obj = null;//No reference to the object, eligible for garbage collection
+````
 
 
+####
+####
+####
