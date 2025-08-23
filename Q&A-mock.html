@@ -157,6 +157,228 @@
         
         const quizData = {
   "1": [
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Primitive values like numbers and strings are stored directly in the stack memory.",
+          "answer": true,
+          "explanation": "Primitive types (numbers, strings, booleans, etc.) are stored in the stack due to their fixed size and fast access requirements.",
+          "example": "let x = 42; let str = 'Hello'; // Both x and str are stored in the stack."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Where is the reference to an object stored in JavaScript?",
+          "options": {
+            "1": "Heap",
+            "2": "Stack",
+            "3": "Global scope",
+            "4": "Nowhere"
+          },
+          "answer": "2",
+          "explanation": "The reference to an object (e.g., variable name) is stored in the stack, while the object itself is stored in the heap.",
+          "example": "let obj = { key: 'value' }; // obj reference in stack, object in heap."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The stack memory operates on a Last In, First Out (LIFO) pattern.",
+          "answer": true,
+          "explanation": "The stack uses a LIFO structure, where the last item pushed (e.g., a function call) is the first to be popped.",
+          "example": "function a() { b(); } function b() { console.log('b'); } a(); // Stack manages calls."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What happens when you assign a new value to a primitive variable?",
+          "options": {
+            "1": "A new heap allocation is created",
+            "2": "The stack memory is updated",
+            "3": "The garbage collector is triggered",
+            "4": "An error occurs"
+          },
+          "answer": "2",
+          "explanation": "Primitives are stored in the stack, and reassigning updates the stack memory directly.",
+          "example": "let x = 10; x = 20; // Stack updates x to 20."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Objects and arrays are stored in the heap memory.",
+          "answer": true,
+          "explanation": "Dynamic data like objects and arrays are stored in the heap due to their variable size.",
+          "example": "let arr = [1, 2]; let obj = { a: 1 }; // Both stored in heap."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `let a = 5; let b = a; b = 10; console.log(a);`?",
+          "options": {
+            "1": "5",
+            "2": "10",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "1",
+          "explanation": "Primitives are passed by value, so `b` is a copy of `a` in the stack. Changing `b` doesn’t affect `a`.",
+          "example": "let a = 5; let b = a; b = 10; console.log(a); // Outputs: 5"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Function calls create stack frames to manage local variables.",
+          "answer": true,
+          "explanation": "Each function call creates a stack frame in the call stack to store local variables and execution context.",
+          "example": "function test() { let x = 1; } test(); // Stack frame created and popped."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Where is a function’s code stored in JavaScript?",
+          "options": {
+            "1": "Stack",
+            "2": "Heap",
+            "3": "Global scope",
+            "4": "Browser cache"
+          },
+          "answer": "2",
+          "explanation": "Functions are objects in JavaScript and are stored in the heap, with their references in the stack.",
+          "example": "let fn = function() {}; // fn in stack, function in heap."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Setting a variable to `null` removes its reference from the stack.",
+          "answer": true,
+          "explanation": "Setting a variable to `null` updates its stack value, removing the reference to heap data.",
+          "example": "let obj = { key: 1 }; obj = null; // Reference removed."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What happens to a primitive variable when its function scope ends?",
+          "options": {
+            "1": "It is garbage-collected",
+            "2": "Its stack frame is popped",
+            "3": "It moves to the heap",
+            "4": "It becomes global"
+          },
+          "answer": "2",
+          "explanation": "When a function scope ends, its stack frame is popped, freeing primitive variables.",
+          "example": "function test() { let x = 10; } test(); // x is removed from stack."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The heap memory is slower than the stack memory for allocation.",
+          "answer": true,
+          "explanation": "Heap memory allocation is slower due to its dynamic and fragmented nature compared to the stack’s sequential structure.",
+          "example": "let obj = { a: 1 }; // Heap allocation is slower than let x = 1;"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `let obj1 = { value: 10 }; let obj2 = obj1; obj2.value = 20; console.log(obj1.value);`?",
+          "options": {
+            "1": "10",
+            "2": "20",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "Objects are passed by reference; both variables point to the same heap object, so modifying `obj2` affects `obj1`.",
+          "example": "let obj1 = { value: 10 }; let obj2 = obj1; obj2.value = 20; console.log(obj1.value); // Outputs: 20"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The stack memory is used to manage function call execution.",
+          "answer": true,
+          "explanation": "The stack manages function calls via stack frames, which store local variables and execution context.",
+          "example": "function a() { let x = 1; } a(); // Stack frame created and popped."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which of the following is stored in the stack?",
+          "options": {
+            "1": "An object",
+            "2": "An array",
+            "3": "A string",
+            "4": "A function"
+          },
+          "answer": "3",
+          "explanation": "Strings are primitives and stored in the stack, while objects, arrays, and functions are stored in the heap.",
+          "example": "let str = 'Hello'; // Stored in stack."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The garbage collector manages heap memory in JavaScript.",
+          "answer": true,
+          "explanation": "The garbage collector automatically deallocates unreachable objects in the heap to free memory.",
+          "example": "let obj = { a: 1 }; obj = null; // Heap object becomes unreachable."
+        }
+      ]
+    },
   {
     "type": 1,
     "level": "easy",
@@ -1678,6 +1900,234 @@
   ],
   "2": [
     {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What happens to an object when its reference is set to `null` and no other references exist?",
+          "options": {
+            "1": "It is immediately deleted",
+            "2": "It is moved to the stack",
+            "3": "It becomes eligible for garbage collection",
+            "4": "It persists in memory"
+          },
+          "answer": "3",
+          "explanation": "Setting a reference to `null` makes the heap object unreachable, eligible for garbage collection via mark-and-sweep.",
+          "example": "let obj = { a: 1 }; obj = null; // Object eligible for collection."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "A closure retains heap memory even after the outer function’s execution ends.",
+          "answer": true,
+          "explanation": "Closures retain the outer function’s scope (including variables) in the heap if the inner function references them.",
+          "example": "function outer() { let x = 1; return () => x; } let fn = outer(); // x retained in heap."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `function outer() { let x = { a: 1 }; return () => x.a; } let fn = outer(); fn = null; console.log(typeof fn);`?",
+          "options": {
+            "1": "function",
+            "2": "object",
+            "3": "null",
+            "4": "undefined"
+          },
+          "answer": "3",
+          "explanation": "Setting `fn = null` removes the closure reference, making the heap data eligible for garbage collection. `typeof fn` returns 'null'.",
+          "example": "function outer() { let x = { a: 1 }; return () => x.a; } let fn = outer(); fn = null; console.log(typeof fn); // Outputs: null"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The mark-and-sweep algorithm can handle cyclic references.",
+          "answer": true,
+          "explanation": "Mark-and-sweep identifies unreachable objects, including cyclic references, unlike older reference-counting systems.",
+          "example": "let obj1 = {}; let obj2 = {}; obj1.ref = obj2; obj2.ref = obj1; obj1 = null; obj2 = null; // Cycle collected."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Which of the following can cause a memory leak?",
+          "options": {
+            "1": "Setting an object to null",
+            "2": "Using let for variable declarations",
+            "3": "Unremoved event listeners",
+            "4": "Primitive assignments"
+          },
+          "answer": "3",
+          "explanation": "Unremoved event listeners retain heap references, causing memory leaks. Other options don’t contribute to leaks.",
+          "example": "let btn = document.querySelector('button'); btn.addEventListener('click', () => console.log('Click')); // Leak if not removed."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Global variables can prevent garbage collection if not cleared.",
+          "answer": true,
+          "explanation": "Global variables persist in the heap, preventing garbage collection unless explicitly cleared or reassigned.",
+          "example": "globalVar = { a: 1 }; // Persists until cleared."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What happens to the stack when a function returns?",
+          "options": {
+            "1": "It is moved to the heap",
+            "2": "Its frame is popped",
+            "3": "It is garbage-collected",
+            "4": "It remains unchanged"
+          },
+          "answer": "2",
+          "explanation": "When a function returns, its stack frame is popped, freeing local variables.",
+          "example": "function test() { let x = 1; } test(); // Stack frame popped."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Assigning a new object to a variable creates a new heap allocation.",
+          "answer": true,
+          "explanation": "Each new object allocation creates a new memory section in the heap, with the stack reference updated.",
+          "example": "let obj = { a: 1 }; obj = { b: 2 }; // New heap allocation for { b: 2 }."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `let arr = [1, 2]; let arr2 = arr; arr = [3, 4]; console.log(arr2);`?",
+          "options": {
+            "1": "[1, 2]",
+            "2": "[3, 4]",
+            "3": "null",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Reassigning `arr` creates a new array in the heap; `arr2` still references the original array.",
+          "example": "let arr = [1, 2]; let arr2 = arr; arr = [3, 4]; console.log(arr2); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "A timer like `setInterval` can cause a memory leak if not cleared.",
+          "answer": true,
+          "explanation": "Uncleared timers retain callbacks in the heap, causing memory leaks.",
+          "example": "let timer = setInterval(() => console.log('Run'), 1000); // Leak if not cleared."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Which phase of mark-and-sweep identifies reachable objects?",
+          "options": {
+            "1": "Sweep phase",
+            "2": "Mark phase",
+            "3": "Allocation phase",
+            "4": "Deallocation phase"
+          },
+          "answer": "2",
+          "explanation": "The mark phase traverses from roots to mark reachable objects; the sweep phase deallocates unmarked ones.",
+          "example": "let obj = { a: 1 }; obj = null; // Mark phase skips obj, sweep phase collects it."
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Class instances are stored in the heap.",
+          "answer": true,
+          "explanation": "Class instances are objects and are stored in the heap, with references in the stack.",
+          "example": "class Person { constructor(name) { this.name = name; } } let p = new Person('Luiz'); // Instance in heap."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `function test() { let x = 10; } test(); console.log(typeof x);`?",
+          "options": {
+            "1": "number",
+            "2": "undefined",
+            "3": "ReferenceError",
+            "4": "null"
+          },
+          "answer": "3",
+          "explanation": "Local variable `x` is in the function’s stack frame, which is popped after execution, causing a ReferenceError.",
+          "example": "function test() { let x = 10; } test(); console.log(typeof x); // ReferenceError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Setting a variable to `null` helps the garbage collector by removing references.",
+          "answer": true,
+          "explanation": "Setting a variable to `null` removes its reference, making heap objects eligible for collection if no other references exist.",
+          "example": "let arr = [1, 2]; arr = null; // Array eligible for collection."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What can prevent an object from being garbage-collected?",
+          "options": {
+            "1": "Setting it to null",
+            "2": "A closure referencing it",
+            "3": "Using const for declaration",
+            "4": "Primitive assignment"
+          },
+          "answer": "2",
+          "explanation": "A closure retains referenced objects in the heap, preventing garbage collection.",
+          "example": "function outer() { let obj = {}; return () => obj; } let fn = outer(); // obj retained."
+        }
+      ]
+    },
+    {
     "type": 1,
     "level": "medium",
     "question": [
@@ -2975,6 +3425,234 @@
     }, 
   ],
   "3": [
+  {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the memory impact of `function outer() { let arr = new Array(1000).fill('data'); return () => arr; } let fn = outer(); fn = null;`?",
+          "options": {
+            "1": "Array persists in heap",
+            "2": "Array is moved to stack",
+            "3": "Array is eligible for garbage collection",
+            "4": "Stack frame retains array"
+          },
+          "answer": "3",
+          "explanation": "Setting `fn = null` removes the closure reference, making the array unreachable and eligible for garbage collection.",
+          "example": "function outer() { let arr = new Array(1000).fill('data'); return () => arr; } let fn = outer(); fn = null;"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A recursive function creates multiple stack frames that are popped after each call completes.",
+          "answer": true,
+          "explanation": "Each recursive call creates a new stack frame; frames are popped as calls return, freeing stack memory.",
+          "example": "function recurse(n) { if (n <= 0) return; recurse(n-1); } recurse(3); // Multiple stack frames."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `let globalArr = []; function add() { globalArr.push(new Array(1000)); } add(); add(); globalArr = null; console.log(globalArr);`?",
+          "options": {
+            "1": "[Array(1000), Array(1000)]",
+            "2": "null",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "Setting `globalArr = null` removes the reference, making the arrays eligible for garbage collection. `console.log` outputs `null`.",
+          "example": "let globalArr = []; function add() { globalArr.push(new Array(1000)); } add(); add(); globalArr = null; console.log(globalArr); // Outputs: null"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A memory leak can occur if a closure retains a large object unnecessarily.",
+          "answer": true,
+          "explanation": "Closures retain heap objects, causing leaks if large objects are unnecessarily referenced.",
+          "example": "function outer() { let large = new Array(1000); return () => large; } let fn = outer(); // large retained."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens to the objects in `function cycle() { let obj1 = { a: 1 }; let obj2 = { b: 2 }; obj1.ref = obj2; obj2.ref = obj1; } cycle();`?",
+          "options": {
+            "1": "They persist in memory",
+            "2": "They are immediately collected",
+            "3": "They are eligible for garbage collection",
+            "4": "They move to the stack"
+          },
+          "answer": "3",
+          "explanation": "The objects form a cycle but are unreachable after the function ends, so mark-and-sweep collects them.",
+          "example": "function cycle() { let obj1 = { a: 1 }; let obj2 = { b: 2 }; obj1.ref = obj2; obj2.ref = obj1; } cycle();"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "The mark-and-sweep algorithm starts from roots like global variables and the stack.",
+          "answer": true,
+          "explanation": "Mark-and-sweep begins at roots (global variables, stack variables) to mark reachable objects.",
+          "example": "let obj = { a: 1 }; // Root; marked as reachable."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is a potential memory leak in `let timer = setInterval(() => console.log(new Array(1000)), 1000);`?",
+          "options": {
+            "1": "The array is stack-allocated",
+            "2": "The timer is never cleared",
+            "3": "The console.log is recursive",
+            "4": "The interval is too short"
+          },
+          "answer": "2",
+          "explanation": "An uncleared `setInterval` retains the callback and new arrays in the heap, causing a memory leak.",
+          "example": "let timer = setInterval(() => console.log(new Array(1000)), 1000); // Fix: clearInterval(timer);"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Reassigning a variable to a new object creates a new heap allocation and makes the old object eligible for collection if unreferenced.",
+          "answer": true,
+          "explanation": "A new heap allocation is created, and the old object becomes unreachable if no other references exist.",
+          "example": "let obj = { a: 1 }; obj = { b: 2 }; // { a: 1 } eligible for collection."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `function outer() { let x = { a: 1 }; return () => x; } let fn1 = outer(); let fn2 = outer(); fn1 = null; console.log(typeof fn2);`?",
+          "options": {
+            "1": "null",
+            "2": "function",
+            "3": "object",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Each call to `outer` creates a new closure. Setting `fn1 = null` affects only its closure; `fn2` retains its closure, so `typeof fn2` is 'function'.",
+          "example": "function outer() { let x = { a: 1 }; return () => x; } let fn1 = outer(); let fn2 = outer(); fn1 = null; console.log(typeof fn2); // Outputs: function"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Detached DOM elements can cause memory leaks if referenced in JavaScript.",
+          "answer": true,
+          "explanation": "DOM elements removed from the DOM but referenced in JavaScript remain in the heap, causing leaks.",
+          "example": "let div = document.querySelector('div'); document.body.removeChild(div); // div retained in heap."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the memory impact of `let arr = []; for (let i = 0; i < 1000; i++) arr.push({ id: i }); arr.length = 0;`?",
+          "options": {
+            "1": "Objects remain in heap",
+            "2": "Objects are immediately collected",
+            "3": "Objects are eligible for garbage collection",
+            "4": "Objects move to stack"
+          },
+          "answer": "3",
+          "explanation": "Setting `arr.length = 0` removes references to the objects, making them eligible for garbage collection.",
+          "example": "let arr = []; for (let i = 0; i < 1000; i++) arr.push({ id: i }); arr.length = 0;"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "The garbage collector cannot collect objects referenced by active closures.",
+          "answer": true,
+          "explanation": "Active closures keep referenced objects in the heap, preventing garbage collection.",
+          "example": "function outer() { let x = {}; return () => x; } let fn = outer(); // x retained."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the best practice to prevent a memory leak in `let btn = document.querySelector('button'); btn.addEventListener('click', () => console.log('Click'));`?",
+          "options": {
+            "1": "Set btn to null",
+            "2": "Use const instead of let",
+            "3": "Remove the event listener",
+            "4": "Use a primitive callback"
+          },
+          "answer": "3",
+          "explanation": "Removing the event listener with `removeEventListener` frees the callback from the heap.",
+          "example": "let btn = document.querySelector('button'); let fn = () => console.log('Click'); btn.addEventListener('click', fn); btn.removeEventListener('click', fn);"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "A large array retained by a closure can cause excessive memory usage.",
+          "answer": true,
+          "explanation": "Closures retaining large data structures like arrays keep them in the heap, increasing memory usage.",
+          "example": "function outer() { let arr = new Array(1000); return () => arr; } let fn = outer(); // arr retained."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `let obj = { fn: function() { let x = new Array(1000); return () => x; } }; let fn = obj.fn(); obj = null; console.log(typeof fn);`?",
+          "options": {
+            "1": "null",
+            "2": "function",
+            "3": "object",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "The closure `fn` retains the array in the heap. Setting `obj = null` doesn’t affect `fn`, so `typeof fn` is 'function'.",
+          "example": "let obj = { fn: function() { let x = new Array(1000); return () => x; } }; let fn = obj.fn(); obj = null; console.log(typeof fn); // Outputs: function"
+        }
+      ]
+    },
     {
     "type": 1,
     "level": "hard",
