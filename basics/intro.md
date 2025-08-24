@@ -8,9 +8,11 @@ This section covers:
 - [Booleans](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/booleans/intro.md);
 - [Arrays](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/arrays/intro.md);
 - [Objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/objects/intro.md);
+- [Prototype](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/prototype/intro.md);
 - [Functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/functions/intro.md);
 - [Control Flow](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/control-flow/intro.md);
 - [Scope and closures](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/scope-closures/intro.md);
 - [Memory: stack vs heap](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/memory-stack-vs-heap/intro.md);
 - [Error handling](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/basic-error-handling/intro.md);
+- [WON (Windows object manipulation)](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/won/intro.md);
 
