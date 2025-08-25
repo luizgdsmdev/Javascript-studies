@@ -10,10 +10,10 @@ Go back to [basics listing](https://github.com/luizgdsmdev/-Javascript-studies/b
 
 
 #### What is the Window Object in JavaScript
-The Window object in JavaScript is an **global object** that represents the **browser** or a **tab** containing a web page. It serves as a **top-level object** for the browser's JavaScript environment, providing **access to its features** like properties, methods, and event control, such as timers, storage, and UI.
-- **Global scope**: the ``window`` object is the global scope in browsers, so any ``var`` variables or functions are a property of ``windows``.
-- **Properties**: for being a object, ``window`` also have the property mechanism and already some build-in like ``window.document`` (for DOM), ``window.location`` (URL), ``window.localStorage`` (memory), and more.
-- **Methods**: ``window`` also have some build-in methods like ``alert()``, ``setTimeOut()``, ``open()``, and others.
+The Window object in JavaScript is a **global object** that represents the **browser** or a **tab** containing a web page. It serves as a **top-level object** for the browser's JavaScript environment, providing **access to its features** like properties, methods, and event control, such as timers, storage, and UI.
+- **Global scope**: the ``window`` object is the global scope in browsers, so any ``var`` variables or functions are a property of ``window``.
+- **Properties**: as an object, ``window`` also have the property mechanism and already some build-in like ``window.document`` (for DOM), ``window.location`` (URL), ``window.localStorage`` (memory), and more.
+- **Methods**: ``window`` also has some build-in methods like ``alert()``, ``setTimeOut()``, ``open()``, and others.
 ````javascript
 //Display an alert on the browser's tab where the page is open
 window.alert("This was invoked by the WOM object.");
@@ -21,10 +21,10 @@ window.alert("This was invoked by the WOM object.");
 **Notice**: the environment of WOM is **limited by its window/tab**, meaning that the manipulation being made **will only reflect on its environment** (page), and not for all windows/tabs. Imagine it like different scopes, where each tab is an autonomous scope, and they cannot interact with each other through their own WOM.
 
 #### The Role of the Window Object
-The WOM **works as an interface** through which the JavaScript can **interact with the browser features**, the **DOM**, and the **global context**. It's **always available** in the browser's JavaScript environment, representing a single window or tab, as mentioned before.  
+The WOM **works as an interface** through which JavaScript can **interact with the browser features**, the **DOM**, and the **global context**. It's **always available** in the browser's JavaScript environment, representing a single window or tab, as mentioned before.  
 
-###### Implicity vs explicit access
-- **Implicity access**: access of the ``window``s properties and methods by **omitting the window keyword**. Let's check an example:
+###### Implicitly vs explicit access
+- **Implicitly access**: access of the ``window``s properties and methods by **omitting the window keyword**. Let's check an example:
 ````javascript
 alert('This alert comes from the WOM!');
 //Is the very same as 
@@ -34,7 +34,7 @@ document.getElementById('Item-id');
 //Is the very same as 
 window.document.getElementById('Item-id');
 ````
-``Window`` being an **object of the environment** means that it also abides by some rules like scopes and prototype chain. What happens behind the scenes with the **Implicity access** is that once the local scope **doesn't find the property/method locally**, it follows the prototype chain to the higher levels checking for it until find the correspondence, the same as a prototype of any other object we saw arlier at - [Prototype](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/prototype/intro.md) section. In this scenario, ``window`` being the **top-level object** on the browser's JavaScript environment, is the last one to be checked.   
+``Window`` being an **object of the environment** means that it also abides by some rules like scopes and prototype chain. What happens behind the scenes with the **Implicitly access** is that once the local scope **doesn't find the property/method locally**, it follows the prototype chain to the higher levels checking for it until find the correspondence, the same as a prototype of any other object we saw earlier at - [Prototype](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/prototype/intro.md) section. In this scenario, ``window`` being the **top-level object** on the browser's JavaScript environment, is the last one to be checked.   
 But the implicit access is **not recommended** since the same property/method name may exist in your application and therefore, being invoked (instead of the ``window``), and cause some unwanted results. Also, for matters of syntax and legibility of code, the **explicit access** is always recommended.
 
 ###### Global context
@@ -46,15 +46,15 @@ console.log(window.num);//Shows 1
 ````
 
 ###### DOM access
-The ``window`` object also provide access to the DOM (document object manipulation), making it possible to manipulate the page content.
+The ``window`` object also provides access to the DOM (document object manipulation), making it possible to manipulate the page content.
 ````javascript
-let buttom = window.document.getElementById('Item-id');
+let button = window.document.getElementById('Item-id');
 //Or Implicitly referenced 
-let buttom = document.getElementById('Item-id');//No 'window.' used
+let button = document.getElementById('Item-id');//No 'window.' used
 ````
 
 ###### Browser control
-Manages browser related data like navigation (``window.navigatio``), timers (``setTimeout``, ``setInterval``), or UI interactions/information (``alert``, ``window.screen.width``).
+Manages browser-related data like location (``window.location``), timers (``setTimeout``, ``setInterval``), or UI interactions/information (``alert``, ``window.screen.width``).
 ````javascript
 let widthScr = window.screen.width;
 console.log("Your screen width is ", widthScr);
@@ -69,7 +69,7 @@ let horizontalScroll = window.scrollX;
 
 
 #### Event Handling with the Window Object
-The ``window`` support a numerous build-in event listeners for the **browser level event**, like resizing, scolling or loading.   
+The ``window`` object supports numerous built-in event listeners for the **browser-level event**, like resizing, scrolling, or loading.   
 The basic structure for this is:
 ````javascript
 window.addEventListener('event', function callbackFunction(){});
@@ -87,14 +87,14 @@ window.addEventListener('load', () =>{
 - ``resize``: fired when the window is resized.
 ````javascript
 window.addEventListener('resize', () =>{
-    //Alter some DOM elements for better fit
+    //Alter some DOM elements for a better fit
 });
 ````
 
 - ``scroll``: fired when the user scrolls the page.
 ````javascript
 window.addEventListener('scroll', () =>{
-    //Show some elements like pop-ups at specific height of the page
+    //Show some elements like pop-ups at a specific height of the page
 });
 ````
 
@@ -105,7 +105,36 @@ window.addEventListener('beforeunload', () =>{
 });
 ````
 
+**IMPORTANT**: A best practice when dealing with event listeners is to **always remove them** after use, to avoid memory leaks and ensure better performance.
 
-###
-####
-####
+#### Best Practices for Window Object Manipulation
+- **Avoid Overusing Global Variables**: minimize the use of ``var`` on declarations to prevent polluting the window context.
+````javascript
+//Not recommended
+var globalVar = 42; // Adds to window.globalVar
+
+//Better approach
+let localVar = 42; // Scoped, not on window
+````
+
+- **Remove Event Listeners**: always remove listeners to avoid memory leaks.
+````javascript
+let handler = () => console.log("Resize");
+window.addEventListener("resize", handler);
+//Remove after use
+window.removeEventListener("resize", handler);
+````
+
+- **Check for Window Availability**: ensures your code is in a browser environment (not node.js).
+````javascript
+if (typeof window !== "undefined") {
+    window.alert("Browser environment");
+}
+````
+
+- **Use Modern approaches**: for example, prefer ``window.fetch`` over older APIs like ``XMLHttpRequest``.
+````javascript
+window.fetch("https://api.example.com")
+    .then(response => response.json())
+    .then(data => console.log(data));
+````
