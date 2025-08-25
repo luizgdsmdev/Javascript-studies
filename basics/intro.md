@@ -15,4 +15,5 @@ This section covers:
 - [Memory: stack vs heap](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/memory-stack-vs-heap/intro.md);
 - [Error handling](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/basic-error-handling/intro.md);
 - [WON (Windows object manipulation)](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/won/intro.md);
+- [Event Handling](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/event-handling/intro.md);
 
