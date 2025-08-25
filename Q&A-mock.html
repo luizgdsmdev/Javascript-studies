@@ -162,6 +162,228 @@
       "level": "easy",
       "question": [
         {
+          "question": "The `window` object is the global object in a browser's JavaScript environment.",
+          "answer": true,
+          "explanation": "The `window` object represents the browser window or tab and serves as the global scope for JavaScript in browsers.",
+          "example": "var x = 42; console.log(window.x); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which method displays a simple alert dialog in the browser?",
+          "options": {
+            "1": "window.prompt",
+            "2": "window.alert",
+            "3": "window.confirm",
+            "4": "window.setTimeout"
+          },
+          "answer": "2",
+          "explanation": "`window.alert` displays a simple dialog with a message and an OK button.",
+          "example": "window.alert('Hello!'); // Shows an alert with 'Hello!'"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Variables declared with `var` in the global scope are attached to the `window` object.",
+          "answer": true,
+          "explanation": "Global `var` declarations become properties of the `window` object.",
+          "example": "var test = 10; console.log(window.test); // Outputs: 10"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `window.innerWidth` return?",
+          "options": {
+            "1": "The browser's total width",
+            "2": "The viewport width including scrollbars",
+            "3": "The viewport width excluding scrollbars",
+            "4": "The document's width"
+          },
+          "answer": "3",
+          "explanation": "`window.innerWidth` returns the viewport width, excluding scrollbars.",
+          "example": "console.log(window.innerWidth); // Outputs: e.g., 1280"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `window.document` property provides access to the DOM.",
+          "answer": true,
+          "explanation": "`window.document` is the entry point to the Document Object Model for manipulating page content.",
+          "example": "console.log(window.document.title); // Outputs: page title"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `window.alert('Test');`?",
+          "options": {
+            "1": "Logs 'Test' to the console",
+            "2": "Displays an alert with 'Test'",
+            "3": "Changes the page title to 'Test'",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "`window.alert` shows a dialog with the message 'Test'.",
+          "example": "window.alert('Test'); // Shows alert with 'Test'"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Implicit access to `window` methods like `alert()` is not recommended.",
+          "answer": true,
+          "explanation": "Implicit access (omitting `window.`) can cause conflicts if global variables override `window` properties.",
+          "example": "alert('Test'); // Same as window.alert('Test'), but less clear"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which property stores data persistently across sessions?",
+          "options": {
+            "1": "window.sessionStorage",
+            "2": "window.localStorage",
+            "3": "window.document",
+            "4": "window.location"
+          },
+          "answer": "2",
+          "explanation": "`window.localStorage` stores data with no expiration, unlike `sessionStorage`.",
+          "example": "window.localStorage.setItem('key', 'value'); console.log(window.localStorage.getItem('key')); // Outputs: value"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Each browser tab has its own `window` object.",
+          "answer": true,
+          "explanation": "Each tab or window has an isolated `window` instance, preventing cross-tab interference.",
+          "example": "console.log(window === window); // Outputs: true (same tab)"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `window.setTimeout(() => console.log('Hi'), 1000);` do?",
+          "options": {
+            "1": "Logs 'Hi' immediately",
+            "2": "Logs 'Hi' after 1 second",
+            "3": "Opens a new window",
+            "4": "Prompts the user"
+          },
+          "answer": "2",
+          "explanation": "`window.setTimeout` executes a function after a specified delay (1000ms = 1s).",
+          "example": "window.setTimeout(() => console.log('Hi'), 1000); // Logs 'Hi' after 1 second"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `window.location` property manages the browser's URL.",
+          "answer": true,
+          "explanation": "`window.location` allows navigation and URL manipulation.",
+          "example": "console.log(window.location.href); // Outputs: current URL"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `var x = 5; console.log(window.x);`?",
+          "options": {
+            "1": "undefined",
+            "2": "5",
+            "3": "null",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "Global `var` declarations become properties of the `window` object.",
+          "example": "var x = 5; console.log(window.x); // Outputs: 5"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `window.prompt` method collects user input.",
+          "answer": true,
+          "explanation": "`window.prompt` displays a dialog for user input and returns the entered value.",
+          "example": "let name = window.prompt('Enter name'); console.log(name); // Outputs: entered text"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which method runs a function repeatedly at intervals?",
+          "options": {
+            "1": "window.setTimeout",
+            "2": "window.setInterval",
+            "3": "window.alert",
+            "4": "window.open"
+          },
+          "answer": "2",
+          "explanation": "`window.setInterval` runs a function repeatedly at specified intervals.",
+          "example": "window.setInterval(() => console.log('Tick'), 1000); // Logs 'Tick' every second"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `window.screen` object provides screen dimensions.",
+          "answer": true,
+          "explanation": "`window.screen` provides properties like `width` and `height` for the user’s screen.",
+          "example": "console.log(window.screen.width); // Outputs: screen width"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
           "question": "The `try` block contains code that might throw an error.",
           "answer": true,
           "explanation": "The `try` block is used to wrap code that may cause a runtime error, allowing the `catch` block to handle it.",
@@ -2126,6 +2348,234 @@
       "level": "medium",
       "question": [
         {
+          "question": "What is the output of `window.addEventListener('load', () => console.log('Loaded'));` when the page loads?",
+          "options": {
+            "1": "Nothing",
+            "2": "Loaded",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "The `load` event fires when the page and resources are fully loaded, triggering the callback.",
+          "example": "window.addEventListener('load', () => console.log('Loaded')); // Outputs: Loaded on page load"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Event listeners on `window` should be removed to prevent memory leaks.",
+          "answer": true,
+          "explanation": "Unremoved listeners keep function references in memory, causing leaks.",
+          "example": "function handler() { console.log('Resize'); } window.addEventListener('resize', handler); window.removeEventListener('resize', handler);"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `window.location.href = 'https://example.com';` do?",
+          "options": {
+            "1": "Opens a new tab",
+            "2": "Navigates to the URL",
+            "3": "Logs the URL",
+            "4": "Stores the URL"
+          },
+          "answer": "2",
+          "explanation": "Setting `window.location.href` navigates the current tab to the specified URL.",
+          "example": "window.location.href = 'https://example.com'; // Navigates to example.com"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `resize` event fires when the browser window is resized.",
+          "answer": true,
+          "explanation": "The `resize` event is triggered on the `window` object when its size changes.",
+          "example": "window.addEventListener('resize', () => console.log('Resized')); // Logs on resize"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `window.localStorage.setItem('key', 'value'); console.log(window.localStorage.getItem('key'));`?",
+          "options": {
+            "1": "undefined",
+            "2": "value",
+            "3": "key",
+            "4": "null"
+          },
+          "answer": "2",
+          "explanation": "`localStorage.getItem` retrieves the value stored for the given key.",
+          "example": "window.localStorage.setItem('key', 'value'); console.log(window.localStorage.getItem('key')); // Outputs: value"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Using `let` instead of `var` prevents global variables from being attached to `window`.",
+          "answer": true,
+          "explanation": "`let` and `const` are block-scoped and do not add properties to `window`.",
+          "example": "let x = 10; console.log(window.x); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `window.confirm('Continue?');` return if the user clicks 'OK'?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "null",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`window.confirm` returns `true` if the user clicks 'OK', `false` if 'Cancel'.",
+          "example": "if (window.confirm('Continue?')) console.log('OK'); // Logs 'OK' if user clicks OK"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `scroll` event fires when the user scrolls the page.",
+          "answer": true,
+          "explanation": "The `scroll` event is triggered on `window` when the viewport is scrolled.",
+          "example": "window.addEventListener('scroll', () => console.log(window.scrollY)); // Logs scroll position"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `window.setInterval(() => console.log('Tick'), 1000);`?",
+          "options": {
+            "1": "Logs 'Tick' once",
+            "2": "Logs 'Tick' every second",
+            "3": "Logs 'Tick' after 1 second",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "`window.setInterval` runs the callback repeatedly every 1000ms.",
+          "example": "window.setInterval(() => console.log('Tick'), 1000); // Logs 'Tick' every second"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Explicitly using `window.alert` is clearer than implicit `alert`.",
+          "answer": true,
+          "explanation": "Explicit `window.alert` avoids potential conflicts with global variables.",
+          "example": "window.alert('Test'); // Clearer than alert('Test')"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `window.scrollY` return?",
+          "options": {
+            "1": "Horizontal scroll position",
+            "2": "Vertical scroll position",
+            "3": "Window width",
+            "4": "Page title"
+          },
+          "answer": "2",
+          "explanation": "`window.scrollY` returns the vertical scroll position in pixels.",
+          "example": "window.addEventListener('scroll', () => console.log(window.scrollY)); // Logs vertical scroll"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `beforeunload` event can prompt the user before closing the tab.",
+          "answer": true,
+          "explanation": "Setting `event.returnValue` in a `beforeunload` handler triggers a confirmation dialog.",
+          "example": "window.addEventListener('beforeunload', (e) => { e.returnValue = 'Sure?'; }); // Shows dialog"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `let x = 10; console.log(window.x);`?",
+          "options": {
+            "1": "10",
+            "2": "undefined",
+            "3": "null",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "`let` variables are not attached to `window`, unlike `var`.",
+          "example": "let x = 10; console.log(window.x); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `window.open` method can open a new browser tab.",
+          "answer": true,
+          "explanation": "`window.open(url, '_blank')` opens a URL in a new tab.",
+          "example": "window.open('https://example.com', '_blank'); // Opens new tab"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `window.clearInterval(id);` do?",
+          "options": {
+            "1": "Stops a `setTimeout`",
+            "2": "Stops a `setInterval`",
+            "3": "Clears `localStorage`",
+            "4": "Closes the window"
+          },
+          "answer": "2",
+          "explanation": "`window.clearInterval` stops a repeating `setInterval` timer.",
+          "example": "let id = window.setInterval(() => console.log('Tick'), 1000); window.clearInterval(id); // Stops ticking"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
           "question": "What is the output of `try { JSON.parse('invalid'); } catch (error) { console.log(error.name); }`?",
           "options": {
             "1": "ReferenceError",
@@ -3875,6 +4325,234 @@
     }, 
   ],
   "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `async function fn() { try { await window.fetch('invalid'); } catch (e) { console.log(e.name); } } fn();`?",
+          "options": {
+            "1": "TypeError",
+            "2": "ReferenceError",
+            "3": "Error",
+            "4": "SyntaxError"
+          },
+          "answer": "3",
+          "explanation": "An invalid URL in `window.fetch` throws a generic `Error` (e.g., 'Failed to fetch').",
+          "example": "async function fn() { try { await window.fetch('invalid'); } catch (e) { console.log(e.name); } } fn(); // Outputs: Error"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `try-catch` with `window.localStorage` is necessary in private browsing mode.",
+          "answer": true,
+          "explanation": "`localStorage` may throw errors (e.g., QuotaExceededError) in private mode.",
+          "example": "try { window.localStorage.setItem('key', 'value'); } catch (e) { console.log(e.message); } // Catches errors"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `function handler() { console.log('Resize'); } window.addEventListener('resize', handler); window.removeEventListener('resize', handler);`?",
+          "options": {
+            "1": "Resize",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "The listener is removed immediately, so resizing does not trigger the callback.",
+          "example": "function handler() { console.log('Resize'); } window.addEventListener('resize', handler); window.removeEventListener('resize', handler); // No output on resize"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Inputs from `window.prompt` should be sanitized to prevent XSS attacks.",
+          "answer": true,
+          "explanation": "Unsanitized inputs can lead to security vulnerabilities if used in the DOM.",
+          "example": "let input = window.prompt('Enter text'); // Sanitize before using, e.g., with DOMPurify"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('beforeunload', (e) => { e.returnValue = 'Sure?'; });` when closing the tab?",
+          "options": {
+            "1": "Logs 'Sure?'",
+            "2": "Shows a confirmation dialog",
+            "3": "Nothing",
+            "4": "Closes the tab"
+          },
+          "answer": "2",
+          "explanation": "Setting `event.returnValue` in `beforeunload` triggers a confirmation dialog.",
+          "example": "window.addEventListener('beforeunload', (e) => { e.returnValue = 'Sure?'; }); // Shows dialog on close"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Throttling `resize` events can improve performance.",
+          "answer": true,
+          "explanation": "Throttling limits how often a `resize` callback runs, reducing performance overhead.",
+          "example": "let timeout; window.addEventListener('resize', () => { if (!timeout) { timeout = setTimeout(() => { console.log('Resized'); timeout = null; }, 500); } });"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.history.pushState({}, '', '/new'); console.log(window.location.pathname);`?",
+          "options": {
+            "1": "/new",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Current URL"
+          },
+          "answer": "1",
+          "explanation": "`window.history.pushState` updates the URL without reloading, reflected in `window.location.pathname`.",
+          "example": "window.history.pushState({}, '', '/new'); console.log(window.location.pathname); // Outputs: /new"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Checking `typeof window !== 'undefined'` ensures code runs in a browser environment.",
+          "answer": true,
+          "explanation": "This check prevents errors in non-browser environments like Node.js.",
+          "example": "if (typeof window !== 'undefined') { window.alert('Browser'); } // Runs only in browser"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens if you call `window.removeEventListener('resize', () => console.log('Resize'));` after adding the same anonymous function?",
+          "options": {
+            "1": "Removes the listener",
+            "2": "Does nothing",
+            "3": "Throws an error",
+            "4": "Logs 'Resize'"
+          },
+          "answer": "2",
+          "explanation": "Anonymous functions create new references, so `removeEventListener` fails to match the original.",
+          "example": "window.addEventListener('resize', () => console.log('Resize')); window.removeEventListener('resize', () => console.log('Resize')); // Listener remains"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Custom events can be dispatched on the `window` object.",
+          "answer": true,
+          "explanation": "The `window` object supports custom events via `dispatchEvent` and `addEventListener`.",
+          "example": "window.addEventListener('myEvent', () => console.log('Custom')); window.dispatchEvent(new Event('myEvent')); // Outputs: Custom"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `try { window.localStorage.setItem('key', 'value'); } catch (e) { console.log(e.name); }` in private browsing mode?",
+          "options": {
+            "1": "QuotaExceededError",
+            "2": "TypeError",
+            "3": "ReferenceError",
+            "4": "Nothing"
+          },
+          "answer": "1",
+          "explanation": "In private mode, `localStorage` may throw a `QuotaExceededError`.",
+          "example": "try { window.localStorage.setItem('key', 'value'); } catch (e) { console.log(e.name); } // Outputs: QuotaExceededError in private mode"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `window.fetch` is preferred over `XMLHttpRequest` for modern APIs.",
+          "answer": true,
+          "explanation": "`window.fetch` is simpler and Promise-based, making it a modern standard.",
+          "example": "window.fetch('https://api.example.com').then(res => res.json()).then(data => console.log(data));"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `let id = window.setTimeout(() => console.log('Done'), 1000); window.clearTimeout(id);`?",
+          "options": {
+            "1": "Done",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "`window.clearTimeout` cancels the `setTimeout` before it runs.",
+          "example": "let id = window.setTimeout(() => console.log('Done'), 1000); window.clearTimeout(id); // No output"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Event listeners on `window` can cause memory leaks if not removed.",
+          "answer": true,
+          "explanation": "Unremoved listeners keep references in memory, preventing garbage collection.",
+          "example": "function handler() { console.log('Scroll'); } window.addEventListener('scroll', handler); // Must remove with window.removeEventListener('scroll', handler);"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('myEvent', () => console.log('Event')); window.dispatchEvent(new Event('myEvent'));`?",
+          "options": {
+            "1": "Event",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`dispatchEvent` triggers the custom event, firing the listener.",
+          "example": "window.addEventListener('myEvent', () => console.log('Event')); window.dispatchEvent(new Event('myEvent')); // Outputs: Event"
+        }
+      ]
+    },
     {
       "type": 2,
       "level": "hard",
