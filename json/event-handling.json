@@ -1,0 +1,689 @@
+{
+
+    "1": [
+      {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Event handling in JavaScript allows responding to user or browser interactions.",
+          "answer": true,
+          "explanation": "Event handling involves detecting and responding to actions like clicks or page loads using listeners.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log('Clicked')); // Logs on click"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which method is used to attach an event listener in JavaScript?",
+          "options": {
+            "1": "addEventHandler",
+            "2": "addEventListener",
+            "3": "onEvent",
+            "4": "attachEvent"
+          },
+          "answer": "2",
+          "explanation": "`addEventListener` is the modern method to attach listeners to elements or the `window` object.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log('Click')); // Logs on click"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `event` object is automatically passed to an event listener’s callback.",
+          "answer": true,
+          "explanation": "The `event` object is passed to the callback, providing details like the event type or target.",
+          "example": "document.addEventListener('click', (e) => console.log(e.type)); // Logs: click"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `event.target` represent?",
+          "options": {
+            "1": "The element the listener is attached to",
+            "2": "The element that triggered the event",
+            "3": "The event type",
+            "4": "The parent element"
+          },
+          "answer": "2",
+          "explanation": "`event.target` is the element that triggered the event, such as the clicked button.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => console.log(e.target)); // Logs button element"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `click` event is triggered when a user clicks an element.",
+          "answer": true,
+          "explanation": "The `click` event fires when an element is clicked, commonly used for buttons or links.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log('Clicked')); // Logs on click"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `document.addEventListener('keydown', (e) => console.log(e.key));` when pressing the 'Enter' key?",
+          "options": {
+            "1": "Enter",
+            "2": "keydown",
+            "3": "undefined",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`event.key` returns the value of the pressed key, such as 'Enter'.",
+          "example": "document.addEventListener('keydown', (e) => console.log(e.key)); // Logs: Enter"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `load` event fires when a page and its resources are fully loaded.",
+          "answer": true,
+          "explanation": "The `load` event on `window` triggers when the page, images, and scripts are loaded.",
+          "example": "window.addEventListener('load', () => console.log('Loaded')); // Logs on page load"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Which method prevents an event’s default behavior?",
+          "options": {
+            "1": "event.stopPropagation",
+            "2": "event.preventDefault",
+            "3": "event.stopImmediatePropagation",
+            "4": "event.target"
+          },
+          "answer": "2",
+          "explanation": "`event.preventDefault()` cancels the default action, like form submission.",
+          "example": "document.getElementById('form').addEventListener('submit', (e) => e.preventDefault()); // Blocks submission"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `mouseover` event fires when the mouse enters an element.",
+          "answer": true,
+          "explanation": "The `mouseover` event triggers when the cursor moves over an element.",
+          "example": "document.getElementById('div').addEventListener('mouseover', () => console.log('Hovered')); // Logs on hover"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `event.type` return for a `click` event?",
+          "options": {
+            "1": "target",
+            "2": "click",
+            "3": "undefined",
+            "4": "element"
+          },
+          "answer": "2",
+          "explanation": "`event.type` returns the name of the event, such as 'click'.",
+          "example": "document.addEventListener('click', (e) => console.log(e.type)); // Logs: click"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Event listeners can be attached to the `window` object.",
+          "answer": true,
+          "explanation": "The `window` object supports events like `load`, `resize`, or `scroll`.",
+          "example": "window.addEventListener('resize', () => console.log('Resized')); // Logs on resize"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', (e) => console.log(e.currentTarget === e.target));` when clicking the button?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "1",
+          "explanation": "`event.currentTarget` is the element with the listener, which equals `event.target` if clicked directly.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => console.log(e.currentTarget === e.target)); // Logs: true"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The `submit` event can be used on a form element.",
+          "answer": true,
+          "explanation": "The `submit` event fires when a form is submitted.",
+          "example": "document.getElementById('form').addEventListener('submit', () => console.log('Submitted')); // Logs on submit"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `event.clientX` return for a mouse event?",
+          "options": {
+            "1": "The element’s position",
+            "2": "The mouse’s X-coordinate relative to the viewport",
+            "3": "The event type",
+            "4": "The window’s width"
+          },
+          "answer": "2",
+          "explanation": "`event.clientX` provides the mouse’s horizontal position relative to the viewport.",
+          "example": "document.addEventListener('click', (e) => console.log(e.clientX)); // Logs X-coordinate"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Inline HTML event handlers like `<button onclick=\"myFunction()\">` are discouraged.",
+          "answer": true,
+          "explanation": "Inline handlers mix concerns and pose security risks, unlike `addEventListener`.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log('Better')); // Preferred"
+        }
+      ]
+    }
+    ],
+
+    "2": [
+      {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('child').addEventListener('click', (e) => { e.stopPropagation(); console.log('Child'); });` when clicking a child element inside a parent with a click listener?",
+          "options": {
+            "1": "Child and parent",
+            "2": "Child only",
+            "3": "Parent only",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "`event.stopPropagation()` prevents the event from bubbling to the parent.",
+          "example": "document.getElementById('parent').addEventListener('click', () => console.log('Parent')); document.getElementById('child').addEventListener('click', (e) => { e.stopPropagation(); console.log('Child'); }); // Logs: Child"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `capture` option in `addEventListener` triggers the listener during the capture phase.",
+          "answer": true,
+          "explanation": "`{ capture: true }` makes the listener fire during the top-down capture phase.",
+          "example": "document.getElementById('parent').addEventListener('click', () => console.log('Parent'), { capture: true }); // Logs before child"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `event.stopImmediatePropagation()` do?",
+          "options": {
+            "1": "Prevents the default action",
+            "2": "Stops propagation and other listeners on the same element",
+            "3": "Removes the listener",
+            "4": "Logs the event"
+          },
+          "answer": "2",
+          "explanation": "`stopImmediatePropagation` stops bubbling/capturing and prevents other listeners on the same element.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => { e.stopImmediatePropagation(); console.log('First'); }); document.getElementById('btn').addEventListener('click', () => console.log('Second')); // Logs: First"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `once` option in `addEventListener` removes the listener after one execution.",
+          "answer": true,
+          "explanation": "`{ once: true }` ensures the listener runs once and is automatically removed.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log('Once'), { once: true }); // Logs once"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('resize', () => console.log('Resized'), { once: true });` after resizing the window?",
+          "options": {
+            "1": "Resized (every resize)",
+            "2": "Resized (once)",
+            "3": "Nothing",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "`{ once: true }` runs the listener once, then removes it.",
+          "example": "window.addEventListener('resize', () => console.log('Resized'), { once: true }); // Logs: Resized (once)"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Event bubbling allows a parent element to handle events from its children.",
+          "answer": true,
+          "explanation": "Events bubble up from the target to parent elements unless stopped.",
+          "example": "document.getElementById('parent').addEventListener('click', () => console.log('Parent')); // Logs on child click"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What phase does a listener with `{ capture: true }` trigger in?",
+          "options": {
+            "1": "Bubbling phase",
+            "2": "Target phase",
+            "3": "Capture phase",
+            "4": "None"
+          },
+          "answer": "3",
+          "explanation": "`{ capture: true }` triggers the listener during the capture phase.",
+          "example": "document.getElementById('parent').addEventListener('click', () => console.log('Capture'), { capture: true }); // Logs in capture phase"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `passive` option improves performance for scroll or touch events.",
+          "answer": true,
+          "explanation": "`{ passive: true }` indicates the listener won’t call `preventDefault`, optimizing performance.",
+          "example": "window.addEventListener('scroll', () => console.log('Scroll'), { passive: true }); // Optimized scrolling"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Blocked'); });` when submitting a form?",
+          "options": {
+            "1": "Submits the form",
+            "2": "Blocked",
+            "3": "Nothing",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "`preventDefault` stops the form submission and runs the callback.",
+          "example": "document.getElementById('form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Blocked'); }); // Logs: Blocked"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `removeEventListener` method requires the same function reference used in `addEventListener`.",
+          "answer": true,
+          "explanation": "A named function is needed to remove a listener, as anonymous functions create new references.",
+          "example": "function handler() { console.log('Click'); } document.addEventListener('click', handler); document.removeEventListener('click', handler);"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `event.currentTarget` represent?",
+          "options": {
+            "1": "The element that triggered the event",
+            "2": "The element the listener is attached to",
+            "3": "The parent element",
+            "4": "The event type"
+          },
+          "answer": "2",
+          "explanation": "`event.currentTarget` is the element with the listener, which may differ from `event.target`.",
+          "example": "document.getElementById('parent').addEventListener('click', (e) => console.log(e.currentTarget)); // Logs parent element"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The `input` event fires when an input field’s value changes.",
+          "answer": true,
+          "explanation": "The `input` event triggers on value changes in input elements.",
+          "example": "document.getElementById('input').addEventListener('input', (e) => console.log(e.target.value)); // Logs input value"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').onclick = () => console.log('Click');` when clicked?",
+          "options": {
+            "1": "Click",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "The `onclick` property sets a handler, but it’s deprecated compared to `addEventListener`.",
+          "example": "document.getElementById('btn').onclick = () => console.log('Click'); // Logs: Click"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Events propagate through the DOM in capturing, target, and bubbling phases.",
+          "answer": true,
+          "explanation": "Events travel down (capture), hit the target, then bubble up unless stopped.",
+          "example": "document.getElementById('child').addEventListener('click', () => console.log('Child')); // Bubbles to parent"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `window.addEventListener('scroll', () => console.log('Scroll'), { passive: true });` do?",
+          "options": {
+            "1": "Prevents scrolling",
+            "2": "Logs 'Scroll' with performance optimization",
+            "3": "Runs once",
+            "4": "Stops propagation"
+          },
+          "answer": "2",
+          "explanation": "`{ passive: true }` optimizes performance by indicating no `preventDefault` call.",
+          "example": "window.addEventListener('scroll', () => console.log('Scroll'), { passive: true }); // Logs: Scroll"
+        }
+      ]
+    }
+    ],
+
+    "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', (e) => { e.stopImmediatePropagation(); console.log('First'); }); document.getElementById('btn').addEventListener('click', () => console.log('Second'));` when clicked?",
+          "options": {
+            "1": "First and Second",
+            "2": "First only",
+            "3": "Second only",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "`stopImmediatePropagation` prevents other listeners on the same element from running.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => { e.stopImmediatePropagation(); console.log('First'); }); document.getElementById('btn').addEventListener('click', () => console.log('Second')); // Logs: First"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `event.stopPropagation()` in the capture phase prevents bubbling.",
+          "answer": true,
+          "explanation": "`stopPropagation` stops the event in any phase, preventing further propagation.",
+          "example": "document.getElementById('parent').addEventListener('click', (e) => { e.stopPropagation(); console.log('Parent'); }, { capture: true }); // Stops bubbling"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('myEvent', (e) => console.log(e.detail)); window.dispatchEvent(new CustomEvent('myEvent', { detail: 'Data' }));`?",
+          "options": {
+            "1": "Data",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Nothing"
+          },
+          "answer": "1",
+          "explanation": "`CustomEvent` allows passing data via the `detail` property, accessible in the listener.",
+          "example": "window.addEventListener('myEvent', (e) => console.log(e.detail)); window.dispatchEvent(new CustomEvent('myEvent', { detail: 'Data' })); // Logs: Data"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "The `signal` option with `AbortController` allows programmatic listener removal.",
+          "answer": true,
+          "explanation": "`{ signal: controller.signal }` ties a listener to an `AbortController`, removed by calling `abort()`.",
+          "example": "const controller = new AbortController(); window.addEventListener('click', () => console.log('Click'), { signal: controller.signal }); controller.abort();"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens if you call `removeEventListener` with an anonymous function?",
+          "options": {
+            "1": "Removes the listener",
+            "2": "Does nothing",
+            "3": "Throws an error",
+            "4": "Logs the event"
+          },
+          "answer": "2",
+          "explanation": "Anonymous functions create new references, so `removeEventListener` fails to match.",
+          "example": "document.addEventListener('click', () => console.log('Click')); document.removeEventListener('click', () => console.log('Click')); // Listener remains"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Throttling a `scroll` event improves performance by limiting callback executions.",
+          "answer": true,
+          "explanation": "Throttling reduces how often a `scroll` listener runs, improving performance.",
+          "example": "let timeout; window.addEventListener('scroll', () => { if (!timeout) { timeout = setTimeout(() => { console.log('Scroll'); timeout = null; }, 200); } });"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('beforeunload', (e) => { e.returnValue = 'Sure?'; });` when closing the tab?",
+          "options": {
+            "1": "Logs 'Sure?'",
+            "2": "Shows a confirmation dialog",
+            "3": "Nothing",
+            "4": "Closes the tab"
+          },
+          "answer": "2",
+          "explanation": "Setting `event.returnValue` in `beforeunload` triggers a confirmation dialog.",
+          "example": "window.addEventListener('beforeunload', (e) => { e.returnValue = 'Sure?'; }); // Shows dialog on close"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Event delegation reduces memory usage by attaching a single listener to a parent element.",
+          "answer": true,
+          "explanation": "Delegation handles events for multiple children with one listener, improving efficiency.",
+          "example": "document.getElementById('list').addEventListener('click', (e) => { if (e.target.tagName === 'LI') console.log('Item'); });"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('parent').addEventListener('click', () => console.log('Parent'), { capture: true }); document.getElementById('child').addEventListener('click', (e) => { e.stopPropagation(); console.log('Child'); });` when clicking the child?",
+          "options": {
+            "1": "Child only",
+            "2": "Parent then Child",
+            "3": "Child then Parent",
+            "4": "Nothing"
+          },
+          "answer": "2",
+          "explanation": "The parent listener triggers in the capture phase, then the child stops bubbling.",
+          "example": "document.getElementById('parent').addEventListener('click', () => console.log('Parent'), { capture: true }); document.getElementById('child').addEventListener('click', (e) => { e.stopPropagation(); console.log('Child'); }); // Logs: Parent, Child"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `passive: true` can cause `preventDefault` to be ignored.",
+          "answer": true,
+          "explanation": "With `passive: true`, calling `preventDefault` has no effect, as the browser optimizes assuming it won’t be called.",
+          "example": "window.addEventListener('scroll', (e) => { e.preventDefault(); console.log('Scroll'); }, { passive: true }); // preventDefault ignored"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const controller = new AbortController(); document.addEventListener('click', () => console.log('Click'), { signal: controller.signal }); controller.abort();` when clicking?",
+          "options": {
+            "1": "Click",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Calling `controller.abort()` removes the listener via the `signal` option.",
+          "example": "const controller = new AbortController(); document.addEventListener('click', () => console.log('Click'), { signal: controller.signal }); controller.abort(); // No output"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Custom events can be created with `new Event` or `new CustomEvent`.",
+          "answer": true,
+          "explanation": "`new Event` creates a basic event, while `new CustomEvent` allows custom data via `detail`.",
+          "example": "window.dispatchEvent(new CustomEvent('myEvent', { detail: 'Data' })); window.addEventListener('myEvent', (e) => console.log(e.detail)); // Logs: Data"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens if you call `preventDefault` in a passive listener?",
+          "options": {
+            "1": "Prevents the default action",
+            "2": "Is ignored",
+            "3": "Throws an error",
+            "4": "Stops propagation"
+          },
+          "answer": "2",
+          "explanation": "In a passive listener (`{ passive: true }`), `preventDefault` is ignored for performance.",
+          "example": "window.addEventListener('touchstart', (e) => { e.preventDefault(); }, { passive: true }); // Ignored"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `on[event]` properties limits you to one handler per event.",
+          "answer": true,
+          "explanation": "`on[event]` properties like `onclick` overwrite previous handlers, unlike `addEventListener`.",
+          "example": "document.getElementById('btn').onclick = () => console.log('First'); document.getElementById('btn').onclick = () => console.log('Second'); // Only Second logs"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of a throttled `scroll` listener running every 200ms?",
+          "options": {
+            "1": "Logs every scroll event",
+            "2": "Logs at most every 200ms",
+            "3": "Logs once",
+            "4": "Throws an error"
+          },
+          "answer": "2",
+          "explanation": "Throttling limits the `scroll` listener to run at most every 200ms, improving performance.",
+          "example": "let timeout; window.addEventListener('scroll', () => { if (!timeout) { timeout = setTimeout(() => { console.log('Scroll'); timeout = null; }, 200); } }); // Logs every 200ms"
+        }
+      ]
+    }
+  ]
+}
