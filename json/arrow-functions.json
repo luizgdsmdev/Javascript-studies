@@ -1,0 +1,686 @@
+{
+    "1": [
+      {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions use a concise syntax with the `=>` operator.",
+          "answer": true,
+          "explanation": "Arrow functions, introduced in ES6, use `=>` for a shorter syntax than regular functions.",
+          "example": "const add = (a, b) => a + b; console.log(add(2, 3)); // Outputs: 5"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const sum = (x, y) => x + y; console.log(sum(4, 5));`?",
+          "options": {
+            "1": "9",
+            "2": "undefined",
+            "3": "Error",
+            "4": "45"
+          },
+          "answer": "1",
+          "explanation": "Arrow functions with a single expression implicitly return the result.",
+          "example": "const sum = (x, y) => x + y; console.log(sum(4, 5)); // Outputs: 9"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions with a block body require an explicit `return` statement.",
+          "answer": true,
+          "explanation": "Block arrow functions (`{}`) need `return` for values to be returned.",
+          "example": "const func = () => { return 42; }; console.log(func()); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const greet = (name) => `Hello, ${name}!`; console.log(greet('Luiz'));`?",
+          "options": {
+            "1": "Hello, Luiz!",
+            "2": "undefined",
+            "3": "Hello, undefined!",
+            "4": "Error"
+          },
+          "answer": "1",
+          "explanation": "Single-expression arrow functions implicitly return the expression’s result.",
+          "example": "const greet = (name) => `Hello, ${name}!`; console.log(greet('Luiz')); // Outputs: Hello, Luiz!"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions do not have their own `arguments` object.",
+          "answer": true,
+          "explanation": "Arrow functions lack the `arguments` object; use rest parameters (`...args`) instead.",
+          "example": "const func = (...args) => console.log(args); func(1, 2); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What does `const log = (...args) => console.log(args.length); log(1, 'a', true);` output?",
+          "options": {
+            "1": "3",
+            "2": "undefined",
+            "3": "Error",
+            "4": "0"
+          },
+          "answer": "1",
+          "explanation": "Rest parameters (`...args`) collect all arguments into an array.",
+          "example": "const log = (...args) => console.log(args.length); log(1, 'a', true); // Outputs: 3"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions cannot be used as constructors with `new`.",
+          "answer": true,
+          "explanation": "Arrow functions lack a `prototype` property, so they cannot be constructors.",
+          "example": "const Func = () => {}; new Func(); // Throws: TypeError: Func is not a constructor"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What happens when you try `new Func()` with `const Func = () => {};`?",
+          "options": {
+            "1": "Creates an instance",
+            "2": "Throws a TypeError",
+            "3": "Returns undefined",
+            "4": "Logs the function"
+          },
+          "answer": "2",
+          "explanation": "Arrow functions cannot be used with `new` due to no `prototype`.",
+          "example": "const Func = () => {}; new Func(); // Throws: TypeError"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions are often used in array methods like `map`.",
+          "answer": true,
+          "explanation": "Arrow functions’ concise syntax is ideal for `map`, `filter`, etc.",
+          "example": "const arr = [1, 2].map(n => n * 2); console.log(arr); // Outputs: [2, 4]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1, 2, 3].filter(n => n > 1); console.log(arr);`?",
+          "options": {
+            "1": "[1, 2, 3]",
+            "2": "[2, 3]",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "The arrow function filters elements greater than 1.",
+          "example": "const arr = [1, 2, 3].filter(n => n > 1); console.log(arr); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions inherit `this` from their surrounding scope.",
+          "answer": true,
+          "explanation": "Arrow functions use lexical `this`, unlike regular functions.",
+          "example": "const obj = { arrow: () => console.log(this); }; obj.arrow(); // Outputs: Window"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: () => console.log(this.value); }; obj.func();`?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "2",
+          "explanation": "`this` is the global `window` (no `window.value`), not `obj`.",
+          "example": "const obj = { value: 42, func: () => console.log(this.value); }; obj.func(); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Regular functions determine `this` based on how they are called.",
+          "answer": true,
+          "explanation": "Regular functions’ `this` is dynamic, unlike arrow functions’ lexical `this`.",
+          "example": "const obj = { value: 42, func: function() { console.log(this.value); } }; obj.func(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: function() { console.log(this.value); } }; obj.func();`?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "1",
+          "explanation": "Regular functions’ `this` is the object when called as a method.",
+          "example": "const obj = { value: 42, func: function() { console.log(this.value); } }; obj.func(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Arrow functions are suitable for single-expression callbacks.",
+          "answer": true,
+          "explanation": "Their concise syntax is ideal for short callbacks.",
+          "example": "setTimeout(() => console.log('Hi'), 1000); // Outputs: Hi after 1s"
+        }
+      ]
+    }
+    ],
+    "2": [
+      {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: function() { const inner = () => console.log(this.value); inner(); } }; obj.func();`?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "1",
+          "explanation": "The arrow function’s `this` is lexical, inheriting `obj` from the outer regular function.",
+          "example": "const obj = { value: 42, func: function() { const inner = () => console.log(this.value); inner(); } }; obj.func(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Arrow functions are not suitable as object methods expecting `this` to be the object.",
+          "answer": true,
+          "explanation": "Lexical `this` makes arrow functions refer to the outer scope, not the object.",
+          "example": "const obj = { value: 42, func: () => console.log(this.value); }; obj.func(); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', () => console.log(this.id));` when clicking a button with `id='btn'`?",
+          "options": {
+            "1": "btn",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "2",
+          "explanation": "Arrow functions use lexical `this` (window), so `this.id` is `window.id` (undefined).",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log(this.id)); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "In event listeners, arrow functions require `event.currentTarget` to access the element.",
+          "answer": true,
+          "explanation": "Since `this` is lexical, arrow functions use `event.currentTarget` for the element.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => console.log(e.currentTarget.id)); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', function() { console.log(this.id); });` for a button with `id='btn'`?",
+          "options": {
+            "1": "btn",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "1",
+          "explanation": "Regular functions in event listeners set `this` to the element (`event.currentTarget`).",
+          "example": "document.getElementById('btn').addEventListener('click', function() { console.log(this.id); }); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Arrow functions preserve `this` in `setTimeout` callbacks.",
+          "answer": true,
+          "explanation": "Lexical `this` ensures `this` is the outer scope in `setTimeout`.",
+          "example": "const obj = { value: 42, start: function() { setTimeout(() => console.log(this.value), 1000); } }; obj.start(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, start: function() { setTimeout(function() { console.log(this.value); }, 1000); } }; obj.start();`?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "2",
+          "explanation": "Regular functions in `setTimeout` set `this` to `window` (undefined for `value`).",
+          "example": "const obj = { value: 42, start: function() { setTimeout(function() { console.log(this.value); }, 1000); } }; obj.start(); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Regular functions in event listeners set `this` to the element.",
+          "answer": true,
+          "explanation": "`this` in a regular function event listener is the element (`event.currentTarget`).",
+          "example": "document.getElementById('btn').addEventListener('click', function() { console.log(this.id); }); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "How do you access arguments in an arrow function?",
+          "options": {
+            "1": "Using the `arguments` object",
+            "2": "Using rest parameters (`...args`)",
+            "3": "Using `this.args`",
+            "4": "Not possible"
+          },
+          "answer": "2",
+          "explanation": "Arrow functions use rest parameters since they lack `arguments`.",
+          "example": "const func = (...args) => console.log(args); func(1, 2); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Arrow functions are ideal for class methods needing the class instance’s `this`.",
+          "answer": true,
+          "explanation": "Lexical `this` preserves the class instance in arrow function callbacks.",
+          "example": "class App { value = 42; run() { setTimeout(() => console.log(this.value), 1000); } } new App().run(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: () => console.log(this === window); }; obj.func();`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Arrow functions’ `this` is the global `window` in the global scope.",
+          "example": "const obj = { value: 42, func: () => console.log(this === window); }; obj.func(); // Outputs: true"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Using `.bind(this)` is unnecessary with arrow functions in callbacks.",
+          "answer": true,
+          "explanation": "Lexical `this` eliminates the need for `.bind(this)` in arrow functions.",
+          "example": "const obj = { value: 42, start: function() { setTimeout(() => console.log(this.value), 1000); } }; obj.start(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: function() { console.log(this === obj); } }; obj.func();`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Regular functions’ `this` is the object when called as a method.",
+          "example": "const obj = { value: 42, func: function() { console.log(this === obj); } }; obj.func(); // Outputs: true"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Arrow functions in event listeners cannot use `this` to access the element.",
+          "answer": true,
+          "explanation": "Lexical `this` in arrow functions refers to the outer scope, not the element.",
+          "example": "document.getElementById('btn').addEventListener('click', () => console.log(this.id)); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', (e) => console.log(e.currentTarget.id));` for a button with `id='btn'`?",
+          "options": {
+            "1": "btn",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "1",
+          "explanation": "Arrow functions use `event.currentTarget` to access the element.",
+          "example": "document.getElementById('btn').addEventListener('click', (e) => console.log(e.currentTarget.id)); // Outputs: btn"
+        }
+      ]
+    }
+    ],
+    "3": [
+      {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, outer: function() { const inner = function() { console.log(this.value); }; inner(); } }; obj.outer();`?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "2",
+          "explanation": "Nested regular functions set `this` to `window` unless bound.",
+          "example": "const obj = { value: 42, outer: function() { const inner = function() { console.log(this.value); }; inner(); } }; obj.outer(); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Arrow functions in class methods preserve the class instance’s `this` in event listeners.",
+          "answer": true,
+          "explanation": "Lexical `this` ensures `this` is the class instance in arrow functions.",
+          "example": "class App { value = 42; run() { document.addEventListener('click', () => console.log(this.value)); } } new App().run(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `class App { value = 42; run() { document.addEventListener('click', function() { console.log(this.value); }); } } new App().run();` when clicking?",
+          "options": {
+            "1": "42",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "2",
+          "explanation": "Regular functions in event listeners set `this` to the element, not the class instance.",
+          "example": "class App { value = 42; run() { document.addEventListener('click', function() { console.log(this.value); }); } } new App().run(); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Arrow functions cannot be removed with `removeEventListener` unless stored.",
+          "answer": true,
+          "explanation": "Anonymous arrow functions create new references, making removal impossible without storage.",
+          "example": "document.addEventListener('click', () => console.log('Click')); // Cannot remove"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const handler = () => console.log('Click'); document.addEventListener('click', handler); document.removeEventListener('click', handler);` when clicking?",
+          "options": {
+            "1": "Click",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Storing the arrow function allows successful removal with `removeEventListener`.",
+          "example": "const handler = () => console.log('Click'); document.addEventListener('click', handler); document.removeEventListener('click', handler); // No output"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Regular functions in `setTimeout` require `.bind(this)` to preserve object context.",
+          "answer": true,
+          "explanation": "Regular functions lose object context in `setTimeout` unless bound.",
+          "example": "const obj = { value: 42, start: function() { setTimeout(function() { console.log(this.value); }.bind(this), 1000); } }; obj.start(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `window.addEventListener('myEvent', () => console.log(this.value)); window.dispatchEvent(new CustomEvent('myEvent'));`?",
+          "options": {
+            "1": "undefined",
+            "2": "Error",
+            "3": "Window",
+            "4": "CustomEvent"
+          },
+          "answer": "1",
+          "explanation": "Arrow functions’ `this` is `window`, so `this.value` is undefined.",
+          "example": "window.addEventListener('myEvent', () => console.log(this.value)); window.dispatchEvent(new CustomEvent('myEvent')); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Arrow functions in event delegation use `event.target` to access the clicked element.",
+          "answer": true,
+          "explanation": "Lexical `this` requires `event.target` for delegation in arrow functions.",
+          "example": "document.getElementById('list').addEventListener('click', (e) => { if (e.target.tagName === 'LI') console.log(e.target.textContent); }); // Outputs: Item text"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: function() { const inner = () => console.log(this === window); inner(); } }; obj.func();`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "The arrow function’s `this` is `obj` from the outer regular function’s scope.",
+          "example": "const obj = { value: 42, func: function() { const inner = () => console.log(this === window); inner(); } }; obj.func(); // Outputs: false"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Arrow functions eliminate the need for `.bind(this)` in class event listeners.",
+          "answer": true,
+          "explanation": "Lexical `this` preserves the class instance without binding.",
+          "example": "class App { value = 42; run() { document.addEventListener('click', () => console.log(this.value)); } } new App().run(); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { value: 42, func: function() { const inner = function() { console.log(this === obj); }; inner(); } }; obj.func();`?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Nested regular functions set `this` to `window`, not `obj`.",
+          "example": "const obj = { value: 42, func: function() { const inner = function() { console.log(this === obj); }; inner(); } }; obj.func(); // Outputs: false"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Arrow functions in `forEach` preserve the outer `this` context.",
+          "answer": true,
+          "explanation": "Lexical `this` ensures `this` is the outer scope in `forEach`.",
+          "example": "class App { value = 42; run() { [1, 2].forEach(() => console.log(this.value)); } } new App().run(); // Outputs: 42, 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `class App { value = 42; run() { document.addEventListener('click', () => console.log(this === window)); } } new App().run();` when clicking?",
+          "options": {
+            "1": "true",
+            "2": "false",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Arrow functions’ `this` is the class instance, not `window`.",
+          "example": "class App { value = 42; run() { document.addEventListener('click', () => console.log(this === window)); } } new App().run(); // Outputs: false"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Regular functions in event listeners may need `.bind(this)` to preserve object context.",
+          "answer": true,
+          "explanation": "Regular functions’ `this` is the element unless bound to the object.",
+          "example": "const obj = { value: 42, func: function() { console.log(this.value); } }; document.addEventListener('click', obj.func.bind(obj)); // Outputs: 42"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const controller = new AbortController(); document.addEventListener('click', () => console.log('Click'), { signal: controller.signal }); controller.abort();` when clicking?",
+          "options": {
+            "1": "Click",
+            "2": "Nothing",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "`AbortController` removes the arrow function listener via `signal`.",
+          "example": "const controller = new AbortController(); document.addEventListener('click', () => console.log('Click'), { signal: controller.signal }); controller.abort(); // No output"
+        }
+      ]
+    }
+  ]
+}
