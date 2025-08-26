@@ -1,0 +1,686 @@
+{
+  "1": [
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Destructuring allows unpacking values from arrays or objects into variables.",
+          "answer": true,
+          "explanation": "Destructuring, introduced in ES6, extracts array elements or object properties into variables concisely.",
+          "example": "const [a, b] = [1, 2]; console.log(a, b); // Outputs: 1, 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const [x, y] = [5, 10]; console.log(x, y);`?",
+          "options": {
+            "1": "5, 10",
+            "2": "undefined, undefined",
+            "3": "Error",
+            "4": "5, undefined"
+          },
+          "answer": "1",
+          "explanation": "Array destructuring assigns elements to variables by position.",
+          "example": "const [x, y] = [5, 10]; console.log(x, y); // Outputs: 5, 10"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Object destructuring requires variable names to match property names unless renamed.",
+          "answer": true,
+          "explanation": "Object destructuring matches property names, but `prop: newName` allows renaming.",
+          "example": "const { name } = { name: 'Luiz' }; console.log(name); // Outputs: Luiz"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const { age } = { name: 'Luiz', age: 29 }; console.log(age);`?",
+          "options": {
+            "1": "29",
+            "2": "Luiz",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "1",
+          "explanation": "Object destructuring extracts the `age` property into a variable.",
+          "example": "const { age } = { name: 'Luiz', age: 29 }; console.log(age); // Outputs: 29"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Array destructuring can skip elements using commas.",
+          "answer": true,
+          "explanation": "Commas without variable names skip elements in array destructuring.",
+          "example": "const [, , z] = [1, 2, 3]; console.log(z); // Outputs: 3"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const [, y] = [1, 2, 3]; console.log(y);`?",
+          "options": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "A comma skips the first element, assigning the second to `y`.",
+          "example": "const [, y] = [1, 2, 3]; console.log(y); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Destructuring uses `[]` for arrays and `{}` for objects.",
+          "answer": true,
+          "explanation": "Square brackets `[]` are used for arrays, curly brackets `{}` for objects.",
+          "example": "const [a] = [1]; const { b } = { b: 2 }; console.log(a, b); // Outputs: 1, 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const { name: userName } = { name: 'Marta' }; console.log(userName);`?",
+          "options": {
+            "1": "Marta",
+            "2": "name",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "1",
+          "explanation": "Renaming with `name: userName` assigns the `name` property to `userName`.",
+          "example": "const { name: userName } = { name: 'Marta' }; console.log(userName); // Outputs: Marta"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Array destructuring can assign default values to undefined elements.",
+          "answer": true,
+          "explanation": "Default values are assigned when array elements are undefined.",
+          "example": "const [a, b = 5] = [1]; console.log(a, b); // Outputs: 1, 5"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const [x, y = 10] = [5]; console.log(x, y);`?",
+          "options": {
+            "1": "5, 10",
+            "2": "5, undefined",
+            "3": "Error",
+            "4": "undefined, 10"
+          },
+          "answer": "1",
+          "explanation": "Default value `10` is assigned to `y` since the second element is undefined.",
+          "example": "const [x, y = 10] = [5]; console.log(x, y); // Outputs: 5, 10"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Object destructuring can assign default values to undefined properties.",
+          "answer": true,
+          "explanation": "Default values are used when object properties are undefined.",
+          "example": "const { name, role = 'user' } = { name: 'Luiz' }; console.log(role); // Outputs: user"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const { role = 'user' } = { name: 'Luiz' }; console.log(role);`?",
+          "options": {
+            "1": "Luiz",
+            "2": "user",
+            "3": "undefined",
+            "4": "Error"
+          },
+          "answer": "2",
+          "explanation": "Default value `user` is assigned since `role` is undefined.",
+          "example": "const { role = 'user' } = { name: 'Luiz' }; console.log(role); // Outputs: user"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Destructuring can swap variables without a temporary variable.",
+          "answer": true,
+          "explanation": "Array destructuring allows swapping by reassigning values.",
+          "example": "let a = 1, b = 2; [a, b] = [b, a]; console.log(a, b); // Outputs: 2, 1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `let x = 3, y = 4; [x, y] = [y, x]; console.log(x, y);`?",
+          "options": {
+            "1": "3, 4",
+            "2": "4, 3",
+            "3": "Error",
+            "4": "undefined, undefined"
+          },
+          "answer": "2",
+          "explanation": "Array destructuring swaps the values of `x` and `y`.",
+          "example": "let x = 3, y = 4; [x, y] = [y, x]; console.log(x, y); // Outputs: 4, 3"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Destructuring improves code readability when extracting multiple values.",
+          "answer": true,
+          "explanation": "Destructuring reduces verbose indexing or property access.",
+          "example": "const { name } = { name: 'Luiz', age: 29 }; console.log(name); // Outputs: Luiz"
+        }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const [first, ...rest] = [1, 2, 3, 4]; console.log(rest);`?",
+          "options": {
+            "1": "[2, 3, 4]",
+            "2": "[1, 2, 3, 4]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest syntax (`...`) collects remaining array elements into a new array.",
+          "example": "const [first, ...rest] = [1, 2, 3, 4]; console.log(rest); // Outputs: [2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Rest syntax in array destructuring must be the last variable.",
+          "answer": true,
+          "explanation": "Only one rest element is allowed, and it must be last in array destructuring.",
+          "example": "const [a, ...rest] = [1, 2, 3]; console.log(rest); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const { name, ...rest } = { name: 'Luiz', age: 29, role: 'engineer' }; console.log(rest);`?",
+          "options": {
+            "1": "{ age: 29, role: 'engineer' }",
+            "2": "[age, role]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest syntax in object destructuring collects remaining properties into an object.",
+          "example": "const { name, ...rest } = { name: 'Luiz', age: 29, role: 'engineer' }; console.log(rest); // Outputs: { age: 29, role: 'engineer' }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Nested object destructuring can extract properties from nested objects.",
+          "answer": true,
+          "explanation": "Nested destructuring uses `{ prop: { subProp } }` to access nested properties.",
+          "example": "const { info: { city } } = { info: { city: 'São Paulo' } }; console.log(city); // Outputs: São Paulo"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const { info: { city } } = { info: { city: 'Rio' } }; console.log(city);`?",
+          "options": {
+            "1": "Rio",
+            "2": "undefined",
+            "3": "Error",
+            "4": "{ city: 'Rio' }"
+          },
+          "answer": "1",
+          "explanation": "Nested destructuring extracts the `city` property from the `info` object.",
+          "example": "const { info: { city } } = { info: { city: 'Rio' } }; console.log(city); // Outputs: Rio"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Destructuring in event handlers can extract specific event properties.",
+          "answer": true,
+          "explanation": "Destructuring simplifies accessing `event` properties like `target` or `clientX`.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target }) => console.log(target.id)); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', ({ target }) => console.log(target.id));` for a button with `id='btn'`?",
+          "options": {
+            "1": "btn",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Window"
+          },
+          "answer": "1",
+          "explanation": "Destructuring extracts `target` from the event, accessing its `id`.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target }) => console.log(target.id)); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Destructuring `event.target` properties simplifies event handler code.",
+          "answer": true,
+          "explanation": "Destructuring `target` properties like `id` or `value` reduces code verbosity.",
+          "example": "document.getElementById('input').addEventListener('input', ({ target: { value } }) => console.log(value)); // Outputs: typed text"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('input').addEventListener('input', ({ target: { value } }) => console.log(value));` when typing 'test'?",
+          "options": {
+            "1": "test",
+            "2": "undefined",
+            "3": "Error",
+            "4": "input"
+          },
+          "answer": "1",
+          "explanation": "Destructuring extracts `value` from `event.target`.",
+          "example": "document.getElementById('input').addEventListener('input', ({ target: { value } }) => console.log(value)); // Outputs: test"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Destructuring in function parameters simplifies argument handling.",
+          "answer": true,
+          "explanation": "Destructuring parameters directly extracts properties into variables.",
+          "example": "const func = ({ name }) => console.log(name); func({ name: 'Luiz' }); // Outputs: Luiz"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const func = ({ name, age = 18 }) => console.log(age); func({ name: 'Luiz' });`?",
+          "options": {
+            "1": "18",
+            "2": "undefined",
+            "3": "Error",
+            "4": "Luiz"
+          },
+          "answer": "1",
+          "explanation": "Default value `18` is used for undefined `age` in parameter destructuring.",
+          "example": "const func = ({ name, age = 18 }) => console.log(age); func({ name: 'Luiz' }); // Outputs: 18"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Destructuring in loops can extract properties from array elements.",
+          "answer": true,
+          "explanation": "`for...of` loops can destructure object properties in each iteration.",
+          "example": "for (const { name } of [{ name: 'Luiz' }, { name: 'Marta' }]) { console.log(name); } // Outputs: Luiz, Marta"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `for (const { name } of [{ name: 'Luiz' }, { name: 'Marta' }]) { console.log(name); }`?",
+          "options": {
+            "1": "Luiz, Marta",
+            "2": "undefined, undefined",
+            "3": "Error",
+            "4": "name, name"
+          },
+          "answer": "1",
+          "explanation": "Destructuring extracts `name` in each loop iteration.",
+          "example": "for (const { name } of [{ name: 'Luiz' }, { name: 'Marta' }]) { console.log(name); } // Outputs: Luiz, Marta"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Rest syntax in object destructuring creates a new object with remaining properties.",
+          "answer": true,
+          "explanation": "Rest syntax (`...`) collects remaining properties into an object.",
+          "example": "const { name, ...rest } = { name: 'Luiz', age: 29 }; console.log(rest); // Outputs: { age: 29 }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const [a, , ...rest] = [1, 2, 3, 4]; console.log(rest);`?",
+          "options": {
+            "1": "[3, 4]",
+            "2": "[2, 3, 4]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "A comma skips the second element, and rest collects the remaining elements.",
+          "example": "const [a, , ...rest] = [1, 2, 3, 4]; console.log(rest); // Outputs: [3, 4]"
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const { items: [first], meta: { count } } = { items: [1, 2], meta: { count: 2 } }; console.log(first, count);`?",
+          "options": {
+            "1": "1, 2",
+            "2": "undefined, undefined",
+            "3": "Error",
+            "4": "[1, 2], 2"
+          },
+          "answer": "1",
+          "explanation": "Combines array and object destructuring to extract `first` and `count`.",
+          "example": "const { items: [first], meta: { count } } = { items: [1, 2], meta: { count: 2 } }; console.log(first, count); // Outputs: 1, 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Destructuring with computed property names allows dynamic key extraction.",
+          "answer": true,
+          "explanation": "Computed property names (`[key]`) enable dynamic destructuring.",
+          "example": "const key = 'name'; const { [key]: userName } = { name: 'Luiz' }; console.log(userName); // Outputs: Luiz"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const key = 'age'; const { [key]: value } = { age: 29 }; console.log(value);`?",
+          "options": {
+            "1": "29",
+            "2": "undefined",
+            "3": "Error",
+            "4": "age"
+          },
+          "answer": "1",
+          "explanation": "Computed property names use `key` to extract the `age` property.",
+          "example": "const key = 'age'; const { [key]: value } = { age: 29 }; console.log(value); // Outputs: 29"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Destructuring in event delegation can extract `event.target` properties.",
+          "answer": true,
+          "explanation": "Destructuring `event.target` properties simplifies delegation logic.",
+          "example": "document.getElementById('list').addEventListener('click', ({ target: { textContent } }) => console.log(textContent)); // Outputs: Item text"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('list').addEventListener('click', ({ target: { textContent, tagName } }) => { if (tagName === 'LI') console.log(textContent); });` when clicking an `<li>Item 1</li>`?",
+          "options": {
+            "1": "Item 1",
+            "2": "undefined",
+            "3": "Error",
+            "4": "LI"
+          },
+          "answer": "1",
+          "explanation": "Destructuring extracts `textContent` for `<li>` elements in delegation.",
+          "example": "document.getElementById('list').addEventListener('click', ({ target: { textContent, tagName } }) => { if (tagName === 'LI') console.log(textContent); }); // Outputs: Item 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Nested destructuring in function parameters can extract deeply nested properties.",
+          "answer": true,
+          "explanation": "Function parameters can destructure nested object properties.",
+          "example": "const func = ({ info: { city } }) => console.log(city); func({ info: { city: 'São Paulo' } }); // Outputs: São Paulo"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const func = ({ info: { city = 'Unknown' } }) => console.log(city); func({ info: {} });`?",
+          "options": {
+            "1": "Unknown",
+            "2": "undefined",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "Default value `Unknown` is used for undefined nested `city`.",
+          "example": "const func = ({ info: { city = 'Unknown' } }) => console.log(city); func({ info: {} }); // Outputs: Unknown"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Destructuring with defaults prevents errors from undefined properties.",
+          "answer": true,
+          "explanation": "Defaults ensure safe handling of missing properties.",
+          "example": "const { name = 'Guest' } = {}; console.log(name); // Outputs: Guest"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const { items: [, second], meta: { count = 0 } } = { items: [1, 2], meta: {} }; console.log(second, count);`?",
+          "options": {
+            "1": "2, 0",
+            "2": "undefined, 0",
+            "3": "Error",
+            "4": "2, undefined"
+          },
+          "answer": "1",
+          "explanation": "Skips first array element, uses default for missing `count`.",
+          "example": "const { items: [, second], meta: { count = 0 } } = { items: [1, 2], meta: {} }; console.log(second, count); // Outputs: 2, 0"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Destructuring in event handlers should avoid overly complex syntax.",
+          "answer": true,
+          "explanation": "Complex destructuring reduces readability in event handlers.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target: { id } }) => console.log(id)); // Outputs: btn"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', ({ target: { dataset: { info = 'none' } } }) => console.log(info));` for `<button id='btn'>`?",
+          "options": {
+            "1": "none",
+            "2": "undefined",
+            "3": "Error",
+            "4": "btn"
+          },
+          "answer": "1",
+          "explanation": "Default `none` is used since `dataset.info` is undefined.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target: { dataset: { info = 'none' } } }) => console.log(info)); // Outputs: none"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Combining rest syntax with nested destructuring collects remaining nested properties.",
+          "answer": true,
+          "explanation": "Rest syntax can collect remaining properties in nested destructuring.",
+          "example": "const { info: { city, ...rest } } = { info: { city: 'Rio', country: 'Brazil' } }; console.log(rest); // Outputs: { country: 'Brazil' }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const { info: { city, ...rest } } = { info: { city: 'Rio', country: 'Brazil', state: 'RJ' } }; console.log(rest);`?",
+          "options": {
+            "1": "{ country: 'Brazil', state: 'RJ' }",
+            "2": "undefined",
+            "3": "Error",
+            "4": "[country, state]"
+          },
+          "answer": "1",
+          "explanation": "Rest syntax collects remaining nested properties into an object.",
+          "example": "const { info: { city, ...rest } } = { info: { city: 'Rio', country: 'Brazil', state: 'RJ' } }; console.log(rest); // Outputs: { country: 'Brazil', state: 'RJ' }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Destructuring with defaults in event handlers prevents errors from missing event properties.",
+          "answer": true,
+          "explanation": "Defaults handle missing event properties safely.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ type = 'click' }) => console.log(type)); // Outputs: click"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `for (const { name, age = 18 } of [{ name: 'Luiz' }, { name: 'Marta', age: 25 }]) { console.log(age); }`?",
+          "options": {
+            "1": "18, 25",
+            "2": "undefined, 25",
+            "3": "Error",
+            "4": "Luiz, Marta"
+          },
+          "answer": "1",
+          "explanation": "Default `age` of 18 is used for the first object, 25 for the second.",
+          "example": "for (const { name, age = 18 } of [{ name: 'Luiz' }, { name: 'Marta', age: 25 }]) { console.log(age); } // Outputs: 18, 25"
+        }
+      ]
+    }
+  ]
+}
