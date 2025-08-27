@@ -1,0 +1,686 @@
+{
+    "1": [
+      {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`var` declares variables that are function-scoped.",
+          "answer": true,
+          "explanation": "`var` is limited to the function scope or global scope, ignoring block boundaries.",
+          "example": "function test() { var x = 1; if (true) { var x = 2; } console.log(x); } test(); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `var x = 1; console.log(x);`?",
+          "options": {
+            "1": "1",
+            "2": "undefined",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`var` declares a variable and assigns it the value 1, which is logged.",
+          "example": "var x = 1; console.log(x); // Outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`let` declares variables that are block-scoped.",
+          "answer": true,
+          "explanation": "`let` is limited to the block (e.g., `if`, `for`) where it’s declared.",
+          "example": "if (true) { let x = 1; } console.log(x); // ReferenceError: x is not defined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `function test() { let x = 1; if (true) { let x = 2; } console.log(x); } test();`?",
+          "options": {
+            "1": "1",
+            "2": "2",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`let` is block-scoped, so the inner `x` doesn’t affect the outer `x`.",
+          "example": "function test() { let x = 1; if (true) { let x = 2; } console.log(x); } test(); // Outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`const` declares variables that cannot be reassigned.",
+          "answer": true,
+          "explanation": "`const` prevents reassignment of the variable, but allows mutation of objects/arrays.",
+          "example": "const x = 1; x = 2; // TypeError: Assignment to constant variable"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const x = 1; console.log(x);`?",
+          "options": {
+            "1": "1",
+            "2": "undefined",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`const` assigns the value 1, which is logged.",
+          "example": "const x = 1; console.log(x); // Outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`var` allows redeclaration in the same scope.",
+          "answer": true,
+          "explanation": "`var` permits redeclaring a variable without error.",
+          "example": "var x = 1; var x = 2; console.log(x); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `var x = 1; var x = 2; console.log(x);`?",
+          "options": {
+            "1": "2",
+            "2": "1",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`var` allows redeclaration, so `x` is reassigned to 2.",
+          "example": "var x = 1; var x = 2; console.log(x); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`let` allows reassignment but not redeclaration in the same scope.",
+          "answer": true,
+          "explanation": "`let` permits reassignment but throws a SyntaxError on redeclaration.",
+          "example": "let x = 1; x = 2; console.log(x); // Outputs: 2\nlet x = 3; // SyntaxError"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `let x = 1; x = 2; console.log(x);`?",
+          "options": {
+            "1": "2",
+            "2": "1",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`let` allows reassignment, so `x` is updated to 2.",
+          "example": "let x = 1; x = 2; console.log(x); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`const` allows mutation of object properties.",
+          "answer": true,
+          "explanation": "`const` prevents reassignment but allows modifying object properties or array elements.",
+          "example": "const obj = { a: 1 }; obj.a = 2; console.log(obj.a); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { a: 1 }; obj.a = 2; console.log(obj.a);`?",
+          "options": {
+            "1": "2",
+            "2": "1",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`const` allows mutation of object properties, so `obj.a` is updated to 2.",
+          "example": "const obj = { a: 1 }; obj.a = 2; console.log(obj.a); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`var` variables declared globally become properties of the global object.",
+          "answer": true,
+          "explanation": "Global `var` variables are added to the global object (e.g., `window` in browsers).",
+          "example": "var x = 1; console.log(window.x); // Outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `var x = 1; console.log(window.x);` in a browser?",
+          "options": {
+            "1": "1",
+            "2": "undefined",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "Global `var` variables become properties of the global object (`window`).",
+          "example": "var x = 1; console.log(window.x); // Outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "`let` and `const` variables do not become properties of the global object.",
+          "answer": true,
+          "explanation": "Global `let` and `const` variables are not added to the global object.",
+          "example": "let x = 1; console.log(window.x); // Outputs: undefined"
+        }
+      ]
+    }
+    ],
+    "2": [
+      {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `function test() { var x = 1; if (true) { var x = 2; console.log(x); } console.log(x); } test();`?",
+          "options": {
+            "1": "2, 2",
+            "2": "1, 1",
+            "3": "Error",
+            "4": "undefined, undefined"
+          },
+          "answer": "1",
+          "explanation": "`var` is function-scoped, so the inner `x` overwrites the outer `x`.",
+          "example": "function test() { var x = 1; if (true) { var x = 2; console.log(x); } console.log(x); } test(); // Outputs: 2, 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`var` variables can be accessed before declaration due to hoisting.",
+          "answer": true,
+          "explanation": "`var` is hoisted and initialized to `undefined` before execution.",
+          "example": "console.log(x); var x = 1; // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `console.log(x); var x = 1; console.log(x);`?",
+          "options": {
+            "1": "undefined, 1",
+            "2": "1, 1",
+            "3": "Error",
+            "4": "null, 1"
+          },
+          "answer": "1",
+          "explanation": "`var` is hoisted, so the first log outputs `undefined`, then `x` is assigned 1.",
+          "example": "console.log(x); var x = 1; console.log(x); // Outputs: undefined, 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`let` variables are hoisted but inaccessible before declaration due to the Temporal Dead Zone (TDZ).",
+          "answer": true,
+          "explanation": "`let` is hoisted but not initialized, causing a ReferenceError in the TDZ.",
+          "example": "console.log(x); let x = 1; // ReferenceError: Cannot access 'x' before initialization"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `console.log(x); let x = 1;`?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "undefined",
+            "3": "1",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`let` is hoisted but in the TDZ, causing a ReferenceError before declaration.",
+          "example": "console.log(x); let x = 1; // ReferenceError: Cannot access 'x' before initialization"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`const` variables are hoisted but inaccessible before declaration due to the Temporal Dead Zone.",
+          "answer": true,
+          "explanation": "`const` is hoisted but not initialized, causing a ReferenceError in the TDZ.",
+          "example": "console.log(x); const x = 1; // ReferenceError: Cannot access 'x' before initialization"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `console.log(x); const x = 1;`?",
+          "options": {
+            "1": "ReferenceError",
+            "2": "undefined",
+            "3": "1",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`const` is in the TDZ, causing a ReferenceError before declaration.",
+          "example": "console.log(x); const x = 1; // ReferenceError: Cannot access 'x' before initialization"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`let` can be redeclared in different block scopes.",
+          "answer": true,
+          "explanation": "`let` allows redeclaration in different block scopes, but not in the same scope.",
+          "example": "{ let x = 1; } { let x = 2; console.log(x); } // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `{ let x = 1; } { let x = 2; console.log(x); }`?",
+          "options": {
+            "1": "2",
+            "2": "1",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`let` allows redeclaration in different block scopes, so the second `x` is 2.",
+          "example": "{ let x = 1; } { let x = 2; console.log(x); } // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Attempting to reassign a `const` variable causes a TypeError.",
+          "answer": true,
+          "explanation": "`const` prevents reassignment, throwing a TypeError if attempted.",
+          "example": "const x = 1; x = 2; // TypeError: Assignment to constant variable"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What happens when running `const x = 1; x = 2; console.log(x);`?",
+          "options": {
+            "1": "TypeError",
+            "2": "2",
+            "3": "1",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Reassigning a `const` variable causes a TypeError.",
+          "example": "const x = 1; x = 2; // TypeError: Assignment to constant variable"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "`const` arrays can have elements added or modified.",
+          "answer": true,
+          "explanation": "`const` prevents reassignment but allows mutation of array elements.",
+          "example": "const arr = [1]; arr.push(2); console.log(arr); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1]; arr.push(2); console.log(arr);`?",
+          "options": {
+            "1": "[1, 2]",
+            "2": "[1]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`const` allows array mutation, so `push` adds 2.",
+          "example": "const arr = [1]; arr.push(2); console.log(arr); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Global `let` variables are not added to the global object.",
+          "answer": true,
+          "explanation": "Unlike `var`, global `let` variables do not become properties of the global object.",
+          "example": "let x = 1; console.log(window.x); // Outputs: undefined"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `let x = 1; console.log(window.x);` in a browser?",
+          "options": {
+            "1": "undefined",
+            "2": "1",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "Global `let` variables are not added to the global object (`window`).",
+          "example": "let x = 1; console.log(window.x); // Outputs: undefined"
+        }
+      ]
+    }
+    ],
+    "3": [
+      {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); }`?",
+          "options": {
+            "1": "3, 3, 3",
+            "2": "0, 1, 2",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`var` is function-scoped, so `i` is shared across iterations, resulting in 3 for all timeouts.",
+          "example": "for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); } // Outputs: 3, 3, 3"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "`let` in a loop creates a new binding for each iteration.",
+          "answer": true,
+          "explanation": "`let` is block-scoped, creating a new `i` for each loop iteration.",
+          "example": "for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); } // Outputs: 0, 1, 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); }`?",
+          "options": {
+            "1": "0, 1, 2",
+            "2": "3, 3, 3",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`let` creates a new binding per iteration, so each timeout logs its own `i`.",
+          "example": "for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); } // Outputs: 0, 1, 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Attempting to redeclare a `let` variable in the same scope causes a SyntaxError.",
+          "answer": true,
+          "explanation": "`let` prohibits redeclaration in the same scope, unlike `var`.",
+          "example": "let x = 1; let x = 2; // SyntaxError: Identifier 'x' has already been declared"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens when running `let x = 1; let x = 2; console.log(x);`?",
+          "options": {
+            "1": "SyntaxError",
+            "2": "2",
+            "3": "1",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Redeclaring a `let` variable in the same scope causes a SyntaxError.",
+          "example": "let x = 1; let x = 2; // SyntaxError: Identifier 'x' has already been declared"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Attempting to redeclare a `const` variable in the same scope causes a SyntaxError.",
+          "answer": true,
+          "explanation": "`const` prohibits redeclaration in the same scope.",
+          "example": "const x = 1; const x = 2; // SyntaxError: Identifier 'x' has already been declared"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens when running `const x = 1; const x = 2; console.log(x);`?",
+          "options": {
+            "1": "SyntaxError",
+            "2": "2",
+            "3": "1",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Redeclaring a `const` variable in the same scope causes a SyntaxError.",
+          "example": "const x = 1; const x = 2; // SyntaxError: Identifier 'x' has already been declared"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "`var` in a loop with event listeners causes all handlers to share the same variable.",
+          "answer": true,
+          "explanation": "`var` is function-scoped, so all event handlers reference the same variable.",
+          "example": "<button id='btn0'>0</button><script>for (var i = 0; i < 1; i++) { document.getElementById('btn0').addEventListener('click', () => console.log(i)); }</script> // Clicking outputs: 1"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output when clicking a button in `<button id='btn0'>0</button><button id='btn1'>1</button><script>for (var i = 0; i < 2; i++) { document.getElementById('btn' + i).addEventListener('click', () => console.log(i)); }</script>`?",
+          "options": {
+            "1": "2 (for both buttons)",
+            "2": "0, 1 (depending on button)",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`var` is function-scoped, so all handlers share the final value of `i`.",
+          "example": "<button id='btn0'>0</button><button id='btn1'>1</button><script>for (var i = 0; i < 2; i++) { document.getElementById('btn' + i).addEventListener('click', () => console.log(i)); }</script> // Clicking outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "`let` in a loop with event listeners creates a new binding for each iteration.",
+          "answer": true,
+          "explanation": "`let` is block-scoped, so each event handler gets its own `i`.",
+          "example": "<button id='btn0'>0</button><script>for (let i = 0; i < 1; i++) { document.getElementById('btn0').addEventListener('click', () => console.log(i)); }</script> // Clicking outputs: 0"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output when clicking buttons in `<button id='btn0'>0</button><button id='btn1'>1</button><script>for (let i = 0; i < 2; i++) { document.getElementById('btn' + i).addEventListener('click', () => console.log(i)); }</script>`?",
+          "options": {
+            "1": "0, 1 (depending on button)",
+            "2": "2 (for both buttons)",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "`let` creates a new binding per iteration, so each handler logs its own `i`.",
+          "example": "<button id='btn0'>0</button><button id='btn1'>1</button><script>for (let i = 0; i < 2; i++) { document.getElementById('btn' + i).addEventListener('click', () => console.log(i)); }</script> // Clicking outputs: 0, 1"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `const` with destructuring allows default values for missing properties.",
+          "answer": true,
+          "explanation": "`const` with destructuring supports defaults, and properties can be mutated if objects.",
+          "example": "const { name = 'Guest', ...rest } = { age: 29 }; console.log(name, rest); // Outputs: Guest, { age: 29 }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const { name = 'Guest', ...rest } = { age: 29 }; console.log(name, rest);`?",
+          "options": {
+            "1": "Guest, { age: 29 }",
+            "2": "undefined, { age: 29 }",
+            "3": "Error",
+            "4": "null, {}"
+          },
+          "answer": "1",
+          "explanation": "`const` with destructuring assigns default `name` and collects remaining properties in `rest`.",
+          "example": "const { name = 'Guest', ...rest } = { age: 29 }; console.log(name, rest); // Outputs: Guest, { age: 29 }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using `const` in event handlers is suitable for fixed references.",
+          "answer": true,
+          "explanation": "`const` is ideal for event handler configurations that won’t be reassigned.",
+          "example": "<button id='btn'>Click</button><script>const id = 'btn'; document.getElementById(id).addEventListener('click', () => console.log(id)); // Clicking outputs: btn</script>"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output when clicking in `<button id='btn'>Click</button><script>const id = 'btn'; document.getElementById(id).addEventListener('click', () => console.log(id)); </script>`?",
+          "options": {
+            "1": "btn",
+            "2": "undefined",
+            "3": "Error",
+            "4": "null"
+          },
+          "answer": "1",
+          "explanation": "`const` holds a fixed reference, so the handler logs `id`.",
+          "example": "<button id='btn'>Click</button><script>const id = 'btn'; document.getElementById(id).addEventListener('click', () => console.log(id)); </script> // Clicking outputs: btn"
+        }
+      ]
+    }
+  ]
+}
