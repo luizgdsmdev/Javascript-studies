@@ -162,6 +162,228 @@
       "level": "easy",
       "question": [
         {
+          "question": "The spread operator (`...`) expands elements of an iterable into individual elements.",
+          "answer": true,
+          "explanation": "Spread syntax expands iterables like arrays or strings into individual elements.",
+          "example": "const arr = [1, 2, 3]; console.log(...arr); // Outputs: 1, 2, 3"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1, 2, 3]; console.log(...arr);`?",
+          "options": {
+            "1": "1, 2, 3",
+            "2": "[1, 2, 3]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread operator expands array elements into individual arguments for console.log.",
+          "example": "const arr = [1, 2, 3]; console.log(...arr); // Outputs: 1, 2, 3"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The rest operator (`...`) collects multiple elements into a single variable.",
+          "answer": true,
+          "explanation": "Rest operator gathers elements into an array or object in destructuring or functions.",
+          "example": "const [first, ...rest] = [1, 2, 3]; console.log(rest); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const [first, ...rest] = [1, 2, 3]; console.log(rest);`?",
+          "options": {
+            "1": "[2, 3]",
+            "2": "[1, 2, 3]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest operator collects remaining array elements into a new array.",
+          "example": "const [first, ...rest] = [1, 2, 3]; console.log(rest); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The spread operator can create a shallow copy of an array.",
+          "answer": true,
+          "explanation": "Spread creates a shallow copy, copying top-level elements but not nested references.",
+          "example": "const arr = [1, 2]; const copy = [...arr]; console.log(copy); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1, 2]; const copy = [...arr]; console.log(copy);`?",
+          "options": {
+            "1": "[1, 2]",
+            "2": "1, 2",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread creates a shallow copy of the array.",
+          "example": "const arr = [1, 2]; const copy = [...arr]; console.log(copy); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The spread operator can copy object properties.",
+          "answer": true,
+          "explanation": "Spread copies an object's enumerable properties into a new object.",
+          "example": "const obj = { name: 'Luiz' }; const copy = { ...obj }; console.log(copy); // Outputs: { name: 'Luiz' }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { name: 'Luiz' }; const copy = { ...obj }; console.log(copy);`?",
+          "options": {
+            "1": "{ name: 'Luiz' }",
+            "2": "Luiz",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread creates a shallow copy of the object's properties.",
+          "example": "const obj = { name: 'Luiz' }; const copy = { ...obj }; console.log(copy); // Outputs: { name: 'Luiz' }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The rest operator in destructuring must be the last variable.",
+          "answer": true,
+          "explanation": "Rest must be the last in destructuring to collect remaining elements or properties.",
+          "example": "const { name, ...rest } = { name: 'Luiz', age: 29 }; console.log(rest); // Outputs: { age: 29 }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const { name, ...rest } = { name: 'Luiz', age: 29 }; console.log(rest);`?",
+          "options": {
+            "1": "{ age: 29 }",
+            "2": "[age, 29]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest collects remaining object properties into a new object.",
+          "example": "const { name, ...rest } = { name: 'Luiz', age: 29 }; console.log(rest); // Outputs: { age: 29 }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The spread operator can expand a string into individual characters.",
+          "answer": true,
+          "explanation": "Spread treats strings as iterables, expanding them into characters.",
+          "example": "const str = 'Luiz'; console.log(...str); // Outputs: L, u, i, z"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const str = 'Luiz'; console.log(...str);`?",
+          "options": {
+            "1": "L, u, i, z",
+            "2": "Luiz",
+            "3": "Error",
+            "4": "[L, u, i, z]"
+          },
+          "answer": "1",
+          "explanation": "Spread expands the string into individual characters.",
+          "example": "const str = 'Luiz'; console.log(...str); // Outputs: L, u, i, z"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "The spread operator can merge arrays into a single array.",
+          "answer": true,
+          "explanation": "Spread combines multiple arrays into one by expanding their elements.",
+          "example": "const arr1 = [1, 2]; const arr2 = [3, 4]; console.log([...arr1, ...arr2]); // Outputs: [1, 2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "easy",
+      "question": [
+        {
+          "question": "What is the output of `const arr1 = [1, 2]; const arr2 = [3, 4]; console.log([...arr1, ...arr2]);`?",
+          "options": {
+            "1": "[1, 2, 3, 4]",
+            "2": "[1, 2, [3, 4]]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread merges arrays by expanding elements into a new array.",
+          "example": "const arr1 = [1, 2]; const arr2 = [3, 4]; console.log([...arr1, ...arr2]); // Outputs: [1, 2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
+          "question": "Spread and rest operators use the same syntax (`...`).",
+          "answer": true,
+          "explanation": "Both operators use `...`, but their behavior depends on context (spreading vs. collecting).",
+          "example": "const arr = [1, 2]; console.log(...arr); // Spread: Outputs: 1, 2\nconst [first, ...rest] = arr; console.log(rest); // Rest: Outputs: [2]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "easy",
+      "question": [
+        {
           "question": "Destructuring allows unpacking values from arrays or objects into variables.",
           "answer": true,
           "explanation": "Destructuring, introduced in ES6, extracts array elements or object properties into variables concisely.",
@@ -3014,6 +3236,234 @@
       "level": "medium",
       "question": [
         {
+          "question": "What is the output of `const numbers = [1, 2, 3]; const sum = (a, b, c) => a + b + c; console.log(sum(...numbers));`?",
+          "options": {
+            "1": "6",
+            "2": "[1, 2, 3]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread passes array elements as individual arguments to the function.",
+          "example": "const numbers = [1, 2, 3]; const sum = (a, b, c) => a + b + c; console.log(sum(...numbers)); // Outputs: 6"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "The rest operator in function parameters collects arguments into an array.",
+          "answer": true,
+          "explanation": "Rest gathers all arguments into an array, useful in arrow functions.",
+          "example": "const sum = (...nums) => nums.reduce((a, b) => a + b, 0); console.log(sum(1, 2, 3)); // Outputs: 6"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const sum = (...nums) => nums.reduce((a, b) => a + b, 0); console.log(sum(1, 2, 3, 4));`?",
+          "options": {
+            "1": "10",
+            "2": "[1, 2, 3, 4]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest collects arguments into an array, which reduce sums.",
+          "example": "const sum = (...nums) => nums.reduce((a, b) => a + b, 0); console.log(sum(1, 2, 3, 4)); // Outputs: 10"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Spread can merge objects, with later properties overriding earlier ones.",
+          "answer": true,
+          "explanation": "Spread combines objects, and later properties override earlier duplicates.",
+          "example": "const obj1 = { name: 'Luiz' }; const obj2 = { name: 'Marta' }; console.log({ ...obj1, ...obj2 }); // Outputs: { name: 'Marta' }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj1 = { name: 'Luiz', age: 29 }; const obj2 = { age: 30 }; console.log({ ...obj1, ...obj2 });`?",
+          "options": {
+            "1": "{ name: 'Luiz', age: 30 }",
+            "2": "{ name: 'Luiz', age: 29 }",
+            "3": "Error",
+            "4": "{ age: 30 }"
+          },
+          "answer": "1",
+          "explanation": "Spread merges objects, with `obj2`'s `age` overriding `obj1`'s.",
+          "example": "const obj1 = { name: 'Luiz', age: 29 }; const obj2 = { age: 30 }; console.log({ ...obj1, ...obj2 }); // Outputs: { name: 'Luiz', age: 30 }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Spread can add new elements to an array during creation.",
+          "answer": true,
+          "explanation": "Spread allows adding elements by expanding an array into a new one.",
+          "example": "const arr = [1, 2]; const newArr = [...arr, 3, 4]; console.log(newArr); // Outputs: [1, 2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1, 2]; const newArr = [...arr, 3, 4]; console.log(newArr);`?",
+          "options": {
+            "1": "[1, 2, 3, 4]",
+            "2": "[1, 2, [3, 4]]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread expands `arr` and adds new elements to the new array.",
+          "example": "const arr = [1, 2]; const newArr = [...arr, 3, 4]; console.log(newArr); // Outputs: [1, 2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Spread can convert a DOM NodeList to an array in event handling.",
+          "answer": true,
+          "explanation": "Spread converts NodeList to an array for array method usage.",
+          "example": "const buttons = document.querySelectorAll('button'); console.log([...buttons].map(btn => btn.id)); // Outputs: ['btn1', 'btn2']"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const buttons = document.querySelectorAll('button'); console.log([...buttons].map(btn => btn.id));` for `<button id='btn1'>` and `<button id='btn2'>`?",
+          "options": {
+            "1": "['btn1', 'btn2']",
+            "2": "NodeList[btn1, btn2]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread converts NodeList to an array, allowing `.map` to extract IDs.",
+          "example": "const buttons = document.querySelectorAll('button'); console.log([...buttons].map(btn => btn.id)); // Outputs: ['btn1', 'btn2']"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Rest in event handlers can collect extra event properties during destructuring.",
+          "answer": true,
+          "explanation": "Rest collects remaining event properties into an object.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target, ...rest }) => console.log(rest)); // Outputs: { clientX: X, clientY: Y, ... }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What does `document.getElementById('btn').addEventListener('click', ({ target, ...rest }) => console.log(Object.keys(rest)));` output when clicking a button?",
+          "options": {
+            "1": "Array of event property names (e.g., ['clientX', 'clientY', ...])",
+            "2": "['target']",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest collects remaining event properties into an object, and Object.keys lists their names.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target, ...rest }) => console.log(Object.keys(rest))); // Outputs: ['clientX', 'clientY', ...]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Spread can update specific object properties while copying others.",
+          "answer": true,
+          "explanation": "Spread copies properties and allows overriding specific ones.",
+          "example": "const obj = { name: 'Luiz', age: 29 }; console.log({ ...obj, age: 30 }); // Outputs: { name: 'Luiz', age: 30 }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { name: 'Luiz', age: 29 }; console.log({ ...obj, age: 30 });`?",
+          "options": {
+            "1": "{ name: 'Luiz', age: 30 }",
+            "2": "{ name: 'Luiz', age: 29 }",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread copies `obj` and overrides `age` with 30.",
+          "example": "const obj = { name: 'Luiz', age: 29 }; console.log({ ...obj, age: 30 }); // Outputs: { name: 'Luiz', age: 30 }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "medium",
+      "question": [
+        {
+          "question": "Rest in function parameters must be the last parameter.",
+          "answer": true,
+          "explanation": "Rest must be the last parameter to collect remaining arguments.",
+          "example": "const func = (first, ...rest) => console.log(rest); func(1, 2, 3); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
+          "question": "What is the output of `const func = (first, ...rest) => console.log(rest); func(1, 2, 3, 4);`?",
+          "options": {
+            "1": "[2, 3, 4]",
+            "2": "[1, 2, 3, 4]",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest collects arguments after `first` into an array.",
+          "example": "const func = (first, ...rest) => console.log(rest); func(1, 2, 3, 4); // Outputs: [2, 3, 4]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "medium",
+      "question": [
+        {
           "question": "What is the output of `const [first, ...rest] = [1, 2, 3, 4]; console.log(rest);`?",
           "options": {
             "1": "[2, 3, 4]",
@@ -5675,6 +6125,234 @@
     }, 
   ],
   "3": [
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { name: 'Luiz', info: { state: 'MG' } }; const copy = { ...obj }; copy.info.state = 'SP'; console.log(obj.info.state);`?",
+          "options": {
+            "1": "SP",
+            "2": "MG",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread creates a shallow copy; nested objects are copied by reference, so modifying `copy.info.state` affects `obj.info.state`.",
+          "example": "const obj = { name: 'Luiz', info: { state: 'MG' } }; const copy = { ...obj }; copy.info.state = 'SP'; console.log(obj.info.state); // Outputs: SP"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Spread creates shallow copies, so nested objects share references.",
+          "answer": true,
+          "explanation": "Spread copies top-level properties, but nested objects remain references.",
+          "example": "const obj = { a: { b: 1 } }; const copy = { ...obj }; copy.a.b = 2; console.log(obj.a.b); // Outputs: 2"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const arr = [1, [2, 3]]; const copy = [...arr]; copy[1][0] = 4; console.log(arr[1][0]);`?",
+          "options": {
+            "1": "4",
+            "2": "2",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread creates a shallow copy; nested arrays are copied by reference, so modifying `copy[1][0]` affects `arr[1][0]`.",
+          "example": "const arr = [1, [2, 3]]; const copy = [...arr]; copy[1][0] = 4; console.log(arr[1][0]); // Outputs: 4"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Combining spread and rest in event handlers can collect and process event data efficiently.",
+          "answer": true,
+          "explanation": "Rest collects extra event properties, and spread can process DOM collections.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target: { id }, ...rest }) => console.log(id, rest)); // Outputs: btn, { clientX: X, ... }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `document.getElementById('btn').addEventListener('click', ({ target: { id }, ...rest }) => console.log(id, rest.clientX));` when clicking a button with `id='btn'`?",
+          "options": {
+            "1": "btn, X (click coordinate)",
+            "2": "undefined, undefined",
+            "3": "Error",
+            "4": "btn, undefined"
+          },
+          "answer": "1",
+          "explanation": "Rest collects remaining event properties, including `clientX`, after destructuring `id`.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target: { id }, ...rest }) => console.log(id, rest.clientX)); // Outputs: btn, X"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Spread can merge multiple objects with successive overrides.",
+          "answer": true,
+          "explanation": "Later objects in a spread operation override earlier properties with the same key.",
+          "example": "const obj1 = { age: 29 }; const obj2 = { age: 30 }; const obj3 = { age: 31 }; console.log({ ...obj1, ...obj2, ...obj3 }); // Outputs: { age: 31 }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj1 = { name: 'Luiz', age: 29 }; const obj2 = { age: 30 }; const obj3 = { age: 31 }; console.log({ ...obj1, ...obj2, ...obj3 });`?",
+          "options": {
+            "1": "{ name: 'Luiz', age: 31 }",
+            "2": "{ name: 'Luiz', age: 29 }",
+            "3": "Error",
+            "4": "{ age: 31 }"
+          },
+          "answer": "1",
+          "explanation": "Spread merges objects, with `obj3`'s `age` overriding previous values.",
+          "example": "const obj1 = { name: 'Luiz', age: 29 }; const obj2 = { age: 30 }; const obj3 = { age: 31 }; console.log({ ...obj1, ...obj2, ...obj3 }); // Outputs: { name: 'Luiz', age: 31 }"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Using spread and rest together in a function can handle dynamic arguments.",
+          "answer": true,
+          "explanation": "Spread passes array elements as arguments, and rest collects them into an array.",
+          "example": "const func = (...args) => console.log(args); const arr = [1, 2]; func(...arr); // Outputs: [1, 2]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const func = (...args) => console.log(args); const arr = [1, 2, 3]; func(...arr);`?",
+          "options": {
+            "1": "[1, 2, 3]",
+            "2": "1, 2, 3",
+            "3": "Error",
+            "4": "undefined"
+          },
+          "answer": "1",
+          "explanation": "Spread passes array elements as arguments, and rest collects them into an array.",
+          "example": "const func = (...args) => console.log(args); const arr = [1, 2, 3]; func(...arr); // Outputs: [1, 2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Spread in event handling can convert a NodeList to an array for processing.",
+          "answer": true,
+          "explanation": "Spread enables array methods on NodeList by converting it to an array.",
+          "example": "const buttons = document.querySelectorAll('button'); console.log([...buttons].length); // Outputs: number of buttons"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const buttons = document.querySelectorAll('button'); console.log([...buttons].length);` for three buttons?",
+          "options": {
+            "1": "3",
+            "2": "undefined",
+            "3": "Error",
+            "4": "0"
+          },
+          "answer": "1",
+          "explanation": "Spread converts NodeList to an array, and `.length` counts the buttons.",
+          "example": "const buttons = document.querySelectorAll('button'); console.log([...buttons].length); // Outputs: 3"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Rest in destructuring must be the last variable to avoid a SyntaxError.",
+          "answer": true,
+          "explanation": "Rest must be last in destructuring; otherwise, it causes a SyntaxError.",
+          "example": "const [first, ...rest] = [1, 2, 3]; console.log(rest); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What happens when running `const [...rest, last] = [1, 2, 3]; console.log(rest);`?",
+          "options": {
+            "1": "[1, 2]",
+            "2": "SyntaxError",
+            "3": "[2, 3]",
+            "4": "undefined"
+          },
+          "answer": "2",
+          "explanation": "Rest must be the last variable in destructuring; otherwise, it causes a SyntaxError.",
+          "example": "// const [...rest, last] = [1, 2, 3]; // SyntaxError\nconst [first, ...rest] = [1, 2, 3]; console.log(rest); // Outputs: [2, 3]"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "level": "hard",
+      "question": [
+        {
+          "question": "Spread and rest in event handlers should be used only for relevant properties to maintain readability.",
+          "answer": true,
+          "explanation": "Overusing spread/rest in event handlers can reduce code clarity.",
+          "example": "document.getElementById('btn').addEventListener('click', ({ target: { id }, ...rest }) => console.log(id, rest)); // Outputs: btn, { clientX: X, ... }"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "level": "hard",
+      "question": [
+        {
+          "question": "What is the output of `const obj = { name: 'Luiz', age: 29, state: 'MG' }; console.log({ ...obj, age: 30, state: 'SP' });`?",
+          "options": {
+            "1": "{ name: 'Luiz', age: 30, state: 'SP' }",
+            "2": "{ name: 'Luiz', age: 29, state: 'MG' }",
+            "3": "Error",
+            "4": "{ age: 30, state: 'SP' }"
+          },
+          "answer": "1",
+          "explanation": "Spread copies `obj` and overrides `age` and `state` with new values.",
+          "example": "const obj = { name: 'Luiz', age: 29, state: 'MG' }; console.log({ ...obj, age: 30, state: 'SP' }); // Outputs: { name: 'Luiz', age: 30, state: 'SP' }"
+        }
+      ]
+    },
     {
       "type": 2,
       "level": "hard",
