@@ -3,6 +3,7 @@ This repository is designed to keep track of my evolution in JavaScript studies,
 
 ## Topics
 - [Basics](https://github.com/luizgdsmdev/Javascript-studies/blob/main/basics/intro.md);
+- [Meium](https://github.com/luizgdsmdev/Javascript-studies/blob/main/medium/intro.md);
 
 <!-- - [Prototype chain](https://github.com/luizgdsmdev/Javascript-studies/tree/main/prototype-chain); -->
 

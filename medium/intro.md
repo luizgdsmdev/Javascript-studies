@@ -5,5 +5,6 @@ This section covers:
 - [Arrow functions](https://github.com/luizgdsmdev/Javascript-studies/blob/main/medium/arrow-functions/intro.md);
 - [Destructuring Arrays and Objects](https://github.com/luizgdsmdev/Javascript-studies/blob/main/medium/destructuring/intro.md);
 - [Spread and rest operators](https://github.com/luizgdsmdev/Javascript-studies/blob/main/medium/spread-rest-operators/intro.md);
+- [let vs. const vs. var in depth](https://github.com/luizgdsmdev/Javascript-studies/blob/main/medium/let-const-var-depth/intro.md);
 
 
